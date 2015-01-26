@@ -12,50 +12,139 @@
 
 \section{Introduction}
 
-\section{Arctic Ocean}
+\subsection{Arctic Ocean}
 
-\subsection{Physical Ocean}
+Basically the Arctic part of my CofS
 
-\subsection{Numerical Models}
+\subsubsection{Physical Ocean}
 
-\section{Mean-Eddy Interaction Theory}
+Arctic Constituents and Dynamics. Topography,
+vertical stratification, water masses, circulation.
 
-\subsection{GM}
+\subsubsection{Numerical Models}
 
-\subsection{PV Closure}
+AOMIP and attempts to have predictive models of
+the Ocean. Prominent problems and successes.
 
-\subsection{Eliason-Palm Tensor}
+\subsection{Mean-Eddy Interaction Theory}
 
-\subsection{TWA Equations}
+Overview of Residual Theory from GM in 1990 and the
+stuff in the late 80's through to M and M 2013.
 
-\section{Hypothesis}
+\subsubsection{GM}
 
-\section{Shallow Water Equations}
+\subsubsection{PV Closure}
 
-\subsection{Shallow Water Theory}
+I.e. Greatbach
 
-\subsection{Forcing and Dissipation}
+\subsubsection{TWA Equations}
 
-\subsection{Model Discretisation}
+I.e. Young 2012
 
-\subsection{Eddy Stresses}
+\subsubsection{Eliason-Palm Tensor}
 
-\section{Model Configurations}
+I.e. M and M 2013
 
-\subsection{Doubly Re-entrant Domain, Channel and Basin}
+\subsection{Shallow Water Equations}
 
-\subsection{Constant Wind Stress, Random Wind Stress, and Heating and Cooling}
+My own development of the shallow water equations
 
-\subsection{linear, quadratic and n-polynomial bottom friction}
+\subsubsection{Shallow Water Theory}
 
-\section{Results}
+Rational for using shallow water equations and
+description. Explanation of Rigid Lid approximation.
 
-\subsection{Mean-Eddy Balances}
+\subsubsection{Model Discretisation}
 
-\subsection{Bounds on E-P Tensor}
+C-grid, AB time stepping, Preconditioned CG solver. 
 
-\subsection{Comparison of mean PVs}
+\subsubsection{Forcing and Dissipation}
 
+The form of wind stress and bottom friction in
+shallow water models (i.e. $\tau/h$). Viscosity:
+laplacian, biharmonic as well as Smagorinsky.
+Linear, quadratic and n-polynomial bottom friction.
+
+\subsubsection{Eddy Stresses}
+
+Thickness weighted mean of the shallow water
+equation. Form of the momentum and pv eddy stresses.
+Thickness weighted PV vs PV derived from thickness weighted equations.
+
+Time averaged diagnostics. Explain that this requires steady state dynamics. Need configurations
+with a unique mean steady state.
+
+\subsection{Thesis Outline}
+
+Outline of hypotheses.
+
+\section{Zero-Mean Wind Forced Models}
+
+Model where the mean forcing is quasi-zero. 
+Model is forced by a residual wind stress which 
+invokes a turbulent cascade. Hence Eddy-Mean
+interaction is entirely from the eddy to the mean.
+
+\subsection{Mean Eddy Balances}
+
+Break down of the tendency terms for the mean
+dynamics
+
+\subsection{Bounding of E-P Tensor}
+
+A look at how the E-P Tensor is characterised by
+the topography, eddy energy and enstrophy.
+
+\subsection{Comparison of Mean PVs}
+
+An examination of the similarities and differences
+of the 2 PVs
+
+\section{PV Mixing and Unmixing}
+
+A look at models with some from strong pv gradient.
+
+\subsection{Mean Eddy Balances}
+
+Break down of the tendency terms for the mean
+dynamics
+
+\subsection{Bounding of E-P Tensor}
+
+A look at how the E-P Tensor is characterised by
+the topography, eddy energy and enstrophy.
+
+\subsection{Comparison of Mean PVs}
+
+An examination of the similarities and differences
+of the 2 PVs
+
+\section{Strong Flow Models}
+
+A look at models with a strong mean state and hence
+a two way mean eddy interaction. E.g. Jets.
+
+\subsection{Mean Eddy Balances}
+
+Break down of the tendency terms for the mean
+dynamics
+
+\subsection{Bounding of E-P Tensor}
+
+A look at how the E-P Tensor is characterised by
+the topography, eddy energy and enstrophy.
+
+\subsection{Comparison of Mean PVs}
+
+An examination of the similarities and differences
+of the 2 PVs
+
+\section{Diagnostic Summary and Eddy-Mean Interaction Predictions}
+
+Niave attempt to parameterise eddies using the 
+results from the previous chapters.
+
+\section{Conclusions}
 
 
 

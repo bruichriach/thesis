@@ -14,16 +14,42 @@
 
 \subsection{Arctic Ocean}
 
-An, albeit relatively brief, description of the Arctic Ocean. This will focus on 
-the defining the Arctic water masses based upon the vertical profile and stratification
-observed in the Arctic. This leads to discussing the observed circulation in the Arctic,
-particularly in the Atlantic Water Layer. The other descriptions of the Arctic do still deserve
-mention, such as Sheldon's budget calculations using boundary fluxes, but perhaps in less detail
-than they were in the reports.
+An, albeit relatively brief, description of the Arctic Ocean. This will focus on:
+\begin{itemize}
+\item Defining the Arctic water masses based upon the vertical profile and stratification.
+\item Observed circulation in the Arctic, particularly in the Atlantic Water Layer.
+\item A brief mention of  Sheldon's budget calculations using boundary fluxes etc.
+\end{itemize}
 
 An area that I've not touched on yet is eddies in the Arctic, mostly because the literature
 is still very sparse. Papers like Zhao 2014 give some idea of their prevalence, at least in the
-halocline. I'd really like more ways of talking about this though.
+halocline. The Woodgate paper is also useful for this.
+
+\subsection{Mean-Eddy Interaction Theory}
+
+Overview of the development of eddy parameterisations over the years along
+the lines of what was briefly described in the Transfer of Status report. 
+A discussion of how
+modern climate models implement eddy parameterisations
+as well as the positives and limitation of current 
+eddy parameterisation techniques. 
+This is more specifically a conversation on the development
+of the Gent and McWilliams parameterisation. 
+How it is implemented, what it does and how it demonstrates itself in the Arctic.
+\begin{equation}
+  \frac{\partial\tau}{\partial t} + (\boldsymbol{u}\cdot\boldsymbol{\nabla})\tau  = -\boldsymbol{\nabla}(\kappa\sigma
+  \boldsymbol{\nabla}\tau)/\sigma,
+\end{equation}
+\begin{itemize}
+\item MITgcm uses GM as a tracer mixer (see GMREDI)
+\end{itemize}
+
+A discussion alternative approaches to parametrising eddies,
+such as potential vorticity closure  and 
+the Neptune Effect, and how this
+leads onto the Eliason-Palm Tensor.
+Schematic c.f. A\&M00 but basin instead of sea mount.
+
 
 \subsection{Numerical Models of Arctic}
 
@@ -33,24 +59,6 @@ the increased success of using higher resolution eddy permitting models.
 
 Somewhere amongst either this section or the previous I'd like to mention Yang 2005, the 
 PV balance explanation for a cyclonic Atlantic Water Layer.
-
-\subsection{Mean-Eddy Interaction Theory}
-
-Overview of the development of eddy parameterisations over the years along
-the lines of what was briefly described in the Transfer of Status report. 
-A discussion of how
-modern climate models implement eddy parameterisations
-as well as the positives and limitation current 
-eddy parameterisation techniques. 
-This is more specifically a conversation on the development
-of the Gent and McWilliams parameterisation. 
-How it is implemented, what it does and how it demonstrates itself in the Arctic.
-
-A discussion alternative approaches to parametrising eddies,
-such as potential vorticity closure  and 
-the Neptune Effect, and how this
-leads onto the Eliason-Palm Tensor.
-Schematic c.f. A\&M00 but basin instead of sea mount.
 
 \section{Developement of Shallow Water Equations}
 
@@ -80,7 +88,7 @@ C-grid, AB time stepping, Preconditioned CG solver.
 Parallelisation.
 Forcing and Dissipation used in the model.
 The form of wind stress and bottom friction in
-shallow water models (e.g. $\tau/h$ and 
+shallow water models (e.g. $\boldsymbol{\tau}/h$ and 
 $-r\left|\boldsymbol{u}\right|^{2}\boldsymbol{u}/h$). Viscosity:
 laplacian, biharmonic as well as Smagorinsky.
 Linear, quadratic and n-polynomial bottom friction.

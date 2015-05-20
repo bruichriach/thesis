@@ -42,15 +42,17 @@ A discussion of how
 modern climate models implement eddy parameterisations
 as well as the positives and limitation current 
 eddy parameterisation techniques. 
-For the most part this is a conversation on the development
-of the Gent and McWilliams parameterisation.
+This is more specifically a conversation on the development
+of the Gent and McWilliams parameterisation. 
+How it is implemented, what it does and how it demonstrates itself in the Arctic.
 
 A discussion alternative approaches to parametrising eddies,
 such as potential vorticity closure  and 
 the Neptune Effect, and how this
 leads onto the Eliason-Palm Tensor.
+Schematic c.f. A\&M00 but basin instead of sea mount.
 
-\section{Shallow Water Equations}
+\section{Developement of Shallow Water Equations}
 
 The theoretical advancement made as part of this thesis, as well as the technical development 
 needed to test hypotheses. The development of the 
@@ -72,6 +74,7 @@ simulations.
 
 \subsection{Model Discretisation}
 
+Continuous model to discontinous discrete model.
 Technical description of the models. 
 C-grid, AB time stepping, Preconditioned CG solver. 
 Parallelisation.
@@ -82,6 +85,8 @@ $-r\left|\boldsymbol{u}\right|^{2}\boldsymbol{u}/h$). Viscosity:
 laplacian, biharmonic as well as Smagorinsky.
 Linear, quadratic and n-polynomial bottom friction.
 
+Example model output.
+
 \subsection{Eddy Stresses}
 
 Thickness weighted mean of the shallow water
@@ -89,11 +94,14 @@ equation. Form of the momentum and pv eddy stresses.
 Thickness weighted PV vs PV derived from thickness 
 weighted equations.
 
+Eddy energy and eddy enstrophy. State equations with 
+possible application in terms of carrying them in the system.
+
 Time averaged diagnostics. Explain that this 
 requires steady state dynamics. Need configurations
 with a unique mean steady state.
 
-\section{Model Descriptions and Mean balances}
+\section{Analysis of a hierarchy of models}
 
 A description of the different dynamics that evolve
 in the models by using the forcings and 
@@ -108,6 +116,9 @@ dynamics. A look at how the eddy stresses are
 in balancing the mean states (usually through
 balancing the ageostropic component of the
 momentum tendency).
+
+A closer look at the eddy stress, their bounds 
+and the available eddy budgets.
 
 \subsection{Zero-Mean Wind Forced Models}
 
@@ -152,6 +163,9 @@ some sort of step function to turn on and off the
 "GM like" and "holloway like" parts of the parametrisation at appropriate moments.
 
 
+\section{conclusions and discussions}
 
+Summary of results.
+Future work (keep this as unexplored possible ideas for now)
 
 \end{document}

@@ -4,7 +4,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\title{Thesis Plan}
+\title{Plan}
 \begin{document}
 
 \maketitle
@@ -14,62 +14,68 @@
 
 \subsection{Arctic Ocean}
 
-Why the Arctic is important for climate and ocean circulation.
+An, albeit relatively brief, description of the Arctic Ocean. This will focus on 
+the defining the Arctic water masses based upon the vertical profile and stratification
+observed in the Arctic. This leads to discussing the observed circulation in the Arctic,
+particularly in the Atlantic Water Layer. The other descriptions of the Arctic do still deserve
+mention, such as Sheldon's budget calculations using boundary fluxes, but perhaps in less detail
+than they were in the reports.
 
-\subsubsection{Thesis Outline}
-
-Outline of hypotheses.
-
-\subsection{Arctic Ocean}
-
-Basically the Arctic part of my CofS
-Description of the constituents of the Arctic
-and its Dynamics. Topography,
-vertical stratification, water masses, circulation.
+An area that I've not touched on yet is eddies in the Arctic, mostly because the literature
+is still very sparse. Papers like Zhao 2014 give some idea of their prevalence, at least in the
+halocline. I'd really like more ways of talking about this though.
 
 \subsection{Numerical Models of Arctic}
 
-AOMIP and attempts to have predictive models of
-the Ocean. Prominent problems and successes.
+AOMIP and attempts to have predictive models of the Arctic Ocean. This includes attempts
+to implement the Neptune effect or other parameterisations such as MEP as well as
+the increased success of using higher resolution eddy permitting models.
+
+Somewhere amongst either this section or the previous I'd like to mention Yang 2005, the 
+PV balance explanation for a cyclonic Atlantic Water Layer.
 
 \subsection{Mean-Eddy Interaction Theory}
 
-Overview of Residual Theory from GM in 1990 and the
-stuff in the late 80's through to M and M 2013.
+Overview of the development of eddy parameterisations over the years along
+the lines of what was briefly described in the Transfer of Status report. 
+A discussion of how
+modern climate models implement eddy parameterisations
+as well as the positives and limitation current 
+eddy parameterisation techniques. 
+For the most part this is a conversation on the development
+of the Gent and McWilliams parameterisation.
 
-\subsubsection{GM}
-
-\subsubsection{PV Closure}
-
-I.e. Greatbach
-
-\subsubsection{TWA Equations}
-
-I.e. Young 2012
-
-\subsubsection{Eliason-Palm Tensor}
-
-I.e. M and M 2013
+A discussion alternative approaches to parametrising eddies,
+such as potential vorticity closure  and 
+the Neptune Effect, and how this
+leads onto the Eliason-Palm Tensor.
 
 \section{Shallow Water Equations}
 
-My own development of the layered shallow water equations
+The theoretical advancement made as part of this thesis, as well as the technical development 
+needed to test hypotheses. The development of the 
+multi-layered  shallow water approximation case of the 
+Eliason-Palm eddy closure theory.
 
 \subsection{Shallow Water Theory}
 
 Rational for using shallow water equations and
 description. I.e. Arctic water masses, 
-strong stratification.
+strong stratification. Development of the eddy closure theory in the shallow water case
+including examining certain nuances the approximation includes, such
+as the description of physical quantities, like
+potential and kinetic energy, on the discontinuous 
+jump between layers.
 
 Note the use of Rigid Lid approximation in
 simulations.
 
 \subsection{Model Discretisation}
 
+Technical description of the models. 
 C-grid, AB time stepping, Preconditioned CG solver. 
-
-\subsection{Forcing and Dissipation}
-
+Parallelisation.
+Forcing and Dissipation used in the model.
 The form of wind stress and bottom friction in
 shallow water models (e.g. $\tau/h$ and 
 $-r\left|\boldsymbol{u}\right|^{2}\boldsymbol{u}/h$). Viscosity:
@@ -112,33 +118,29 @@ system by
 invoking a turbulent cascade. Hence Eddy-Mean
 interaction is entirely from the eddy to the mean.
 
-\subsection{PV Mixing and Unmixing}
+\subsection{Comparison of Mean PVs}
 
-A look at models with some from strong pv gradient.
+An examination of the similarities and differences
+of the two definitions of potential vorticity. 
+A discussion of whether the thickness
+weighted and tracer decomposition forms of the
+PV eddy stresses can be used interchangeably.
+This will be done by examining models with
+different structures of potential vorticity.
 
 \subsection{Strong Flow Models}
 
-A look at models with a strong mean state and hence
-a two way mean eddy interaction. E.g. Jets in
-channels or double gyres. Examination of the
-difficulty of defining a mean state.
+more interesting situations, such as, models
+with a strong mean state, which hence
+generate there own eddy fields. E.g. Jets in
+channels or double gyres. Hopefully allowing 
+for the investigation of configurations where 
+Eddy Enstrophy is the constraining bound.
 
-
-\section{Comparison of Mean PVs}
-
-An examination of the similarities and differences
-of the 2 PVs. A discussion of whether the thickness
-weighted and tracer decomposition forms of the
-PV eddy stresses can be used interchangeably.
-
-\section{Bounding of E-P Tensor}
-
-A look at how the E-P Tensor is characterised by
-the topography, eddy energy and enstrophy.
 
 \section{Diagnostic Summary and Eddy-Mean Interaction Predictions}
 
-Niave attempt to parameterise eddies using the 
+Na\"{\i}ve attempt to parameterise eddies using the 
 results from the previous chapters, depending
 on what can be said about how the eddy stress can
 be characterised and constrained by the topography,
@@ -148,14 +150,6 @@ Likely will need to carry the time and spatial
 evolution of eddy energy and eddy enstrophy and have
 some sort of step function to turn on and off the
 "GM like" and "holloway like" parts of the parametrisation at appropriate moments.
-
-\section{Conclusions}
-
-
-
-
-
-
 
 
 

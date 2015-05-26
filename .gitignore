@@ -1,6 +1,8 @@
 plan/*.aux
 plan/*.gz
 plan/*.log
+plan/*.pdf
 *.aux
 *.gz
 *.log
+*.pdf

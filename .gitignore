@@ -6,3 +6,9 @@ plan/*.pdf
 *.gz
 *.log
 *.pdf
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.tex
+

@@ -1,0 +1,150 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+
+
+\usepackage[acronym]{glossaries}
+\usepackage[backend=biber,style=bwl-FU,maxbibnames=99]{biblatex}
+\addbibresource{bibrefs.bib}
+
+\usepackage{setspace}
+%\singlespacing
+%\onehalfspacing
+\doublespacing
+%\setstretch{1.1
+
+%\title{The Importance of Eddy-Topographic Interactions for Arctic
+%	Ocean Dynamics and Steps Towards Improving Climate Models}
+%\author{Mark Edward Forshaw\\ Department of Physics\\
+%University of Oxford\\ E-mail: \url{forshaw@atm.ox.ac.uk}}
+
+
+\newacronym{amoc}{AMOC}{Antarctic Meridional Overturning Circulation}
+\newacronym{bas}{BAS}{British Antarctic Survey}
+\newacronym{arp}{ARP}{Arctic Research Program}
+\newacronym{ipy}{IPY}{International Polar Year}
+\newacronym{awl}{AWL}{Atlantic Water Layer}
+\newacronym{aomip}{AOMIP}{Arctic Ocean Model Inter-comparison Project}
+\newacronym{pv}{PV}{potential vorticity}
+\newacronym{gcm}{GCM}{Global Climate Model}
+\newacronym{bso}{BSO}{Barents Sea Opening}
+
+\nocite{cushman2011introduction}
+\nocite{vallis2006atmospheric}
+
+\title{Thesis}
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{Introduction}
+
+\subsection{Arctic Ocean}
+
+
+Despite its small size (only $3\%$ of the Earth's surface), the Arctic
+Ocean is an important part of the global ocean and has the potential
+to affect the world's climate in major ways. Located above
+$70\,^{\circ}{\rm N}$, the Arctic is characterised by its seasonally
+varying ice cap. This ice cap, along with its counterpart at the South
+Pole, is a major contribution to the planet's albedo as well as being
+a large reservoir for freshwater. The Arctic Ocean is a key component
+in how the polar ice cap interacts with the climate and, in turn, how
+the climate affects the ice cap. 
+The Ocean itself is a highly stable body of water with strong stratification, 
+which means that the water column can be divided into advective water masses.
+The Arctic is commonly divided into four different layers:
+The Polar Mixed Layer, which is a well mixed layer in
+contact with the atmosphere and surface ice; the halocline, which acts as
+reservoir of fresh water and penetrates to around ${\sim}200\,{\rm m}$; the \gls{awl},
+which is body of warm salty water which originates from the North Atlantic and Nordic 
+Sea via Fram Strait and typically sits at around ${\sim}400\,{\rm m}$ deep; and finally, 
+the Polar Deep Water, defined by the water masses that aren't
+able to communicate freely with the global ocean due to being trapped by the Arctic basin walls.
+
+Because of the strong stratification, the forcing from the ocean surface 
+struggles to penetrate deep into the ocean; and so whether forced directly by wind 
+or by sea ice stress, the circulation
+directly forced from the surface is contained within the Polar Mixed Layer 
+and halocline in the upper ${\sim}200\,{\rm m}$ of the Arctic Ocean. 
+This surface circulation has been well documented by observations
+from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
+the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it's a very different
+story for the circulation in the \gls{awl} and lower layers. Observations made
+inside the Ocean Basins rarely are able to profile the structure  and
+circulation  below 500m  although much progress has been made here in the
+past decade. This lack of observations means that  we  still only have  a  sense  of  the circulation 
+of the \gls{awl} and the Deep  Waters.  The  observations  we  do 
+have  infer stable cyclonic  rim  currents about each of the basins in the
+\gls{awl} and it's believed that this trend extends through the Deep Water to the 
+ocean floor.  Because of the highly stratified nature of the halocline, the surface forcing 
+is likely to have little effect on the deeper ocean, which leaves the other 
+two possibilities as the determining features. There has been much discussion
+into how the fluxes in and out of the Arctic could influence the circulation
+for example by a forcing a balance of \gls{pv} within the region by
+the fluxes of \gls{pv} though the boundaries (\cite{yang2005arctic}). 
+\begin{itemize}
+	\item A brief mention of  Sheldon's budget calculations using boundary fluxes etc.
+\end{itemize}
+However, the deep water circulation in the Arctic Ocean is more likely determined by 
+internal processes, which are poor understood in an Ocean with such sparse observations.
+
+A likely candidate for generating a cyclonic circulation in the Northern hemisphere is
+geostrophic turbulence. A number of studies have demonstrated how, in an eddying system, 
+sloping topography can generate along-topography flows (\cite{treguier1989topographically}, \cite{adcock2000interactions}, \cite{nost2008asymmetry}). Hence, in the absence of stronger
+forcing, this effect is likely to become the dominant feature. The obvious question that then
+comes to mind is how turbulent is the Arctic Ocean? Over recent years a large amount  of 
+effort has been made to observe and catalogue eddies in the Arctic
+(\cite{zhao2014characterizing}) and has demonstrated their prevalence in the Arctic Ocean.
+Whilst these studies have frequently been focused on the halocline and the surface dynamics
+there is good reason to believe that eddies also penetrate deep into the Arctic 
+(\cite{woodgate2001arctic}).
+
+\subsection{Mean-Eddy Interaction Theory}
+
+ Obviously, whilst observations play a vital role in understanding the Arctic
+ Ocean and its role in the global ocean, it is limited by the sparsely available
+ observations that only usefully reach back a handful of decades into the past.
+ To be able to test possible scenarios and make future predictions it is vital
+ that we have reliable simulations of the Arctic Ocean (\cite{proshutinsky2008toward}). 
+ However, due to limitations
+ in modern computing power and poor understanding of the unresolved processes 
+ in the ocean this is, more often than not, far from reality.
+ By attempting  to understand the physics behind these unresolved processes 
+ and developing parameterisations that mimic their effect on the resolved ocean
+ the value of computational models can be improved without dramatically increasing the
+ computing power required.  Due to these computational limits a practical \gls{gcm} is 
+ limited to a  resolution of the order of tens of kilometres, this means that with a 
+ resolution  cut off at around $10 \textendash 100 \, \rm km$, 
+ \glspl{gcm} are unable to fully resolve a large portion of the mesoscale turbulence that is
+ observed in the physical ocean.
+ 
+ The turbulent, chaotic nature of the ocean is caused by the non-linearity of its 
+ governing equations. Because of this,  the discretisation of the equations generates cross-correlation, or eddy, terms when applying the 
+ averaging operator,
+ \begin{equation}
+ \overline{\phi\psi} = \overline{\phi}\,\overline{\psi} + 
+ \overline{\phi^{\prime}\psi^{\prime}},
+ \label{non-lin average}
+ \end{equation}
+ where the prime denotes the residual, ${\phi^{\prime} = \phi - \overline{\phi}}$,
+ and the ${\overline{\phi}}$ is the average of the variable ${\phi}$, used in
+ the discretisation and satisfying
+ the expected properties of an averaging operator.
+ The discretised system has no knowledge of the residual terms and hence
+ the contributions to the full system by these eddy terms are
+ ignored in the discretised system. It is, therefore, this ``sub-grid scale process"
+ that is missing from the model dynamics and so it is common practise to try and
+ `close' the system by including a parameterisation of the eddy
+ term in place of the term itself, which is usually dependent on the averaged 
+ variables and some physical assumptions.
+
+
+\end{document}

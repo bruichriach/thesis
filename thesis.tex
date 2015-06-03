@@ -25,15 +25,15 @@
 %University of Oxford\\ E-mail: \url{forshaw@atm.ox.ac.uk}}
 
 
-\newacronym{amoc}{AMOC}{Antarctic Meridional Overturning Circulation}
-\newacronym{bas}{BAS}{British Antarctic Survey}
-\newacronym{arp}{ARP}{Arctic Research Program}
-\newacronym{ipy}{IPY}{International Polar Year}
-\newacronym{awl}{AWL}{Atlantic Water Layer}
-\newacronym{aomip}{AOMIP}{Arctic Ocean Model Inter-comparison Project}
+\newacronym{amoc}{AMOC}{Antarctic~Meridional~Overturning~Circulation}
+\newacronym{bas}{BAS}{British~Antarctic~Survey}
+\newacronym{arp}{ARP}{Arctic~Research~Program}
+\newacronym{ipy}{IPY}{International~Polar~Year}
+\newacronym{awl}{AWL}{Atlantic~Water~Layer}
+\newacronym{aomip}{AOMIP}{Arctic~Ocean~Model~Inter--comparison~Project}
 \newacronym{pv}{PV}{potential vorticity}
-\newacronym{gcm}{GCM}{Global Climate Model}
-\newacronym{bso}{BSO}{Barents Sea Opening}
+\newacronym{gcm}{GCM}{Global~Climate~Model}
+\newacronym{bso}{BSO}{Barents~Sea~Opening}
 
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
@@ -47,6 +47,8 @@
 
 
 \section{Introduction}
+
+\glsresetall
 
 \subsection{Arctic Ocean}
 
@@ -62,7 +64,7 @@ in how the polar ice cap interacts with the climate and, in turn, how
 the climate affects the ice cap. 
 The Ocean itself is a highly stable body of water with strong stratification, 
 which means that the water column can be divided into advective water masses.
-The Arctic Ocean is commonly divided into four different layers (Figure \ref{fig:amap}):
+The Arctic Ocean is commonly divided into four different layers (Figure~\ref{fig:amap}):
 The Polar Mixed Layer, which is a well mixed layer in
 contact with the atmosphere and surface ice; the halocline, which acts as
 reservoir of fresh water and penetrates to around ${\sim}200\,{\rm m}$; the \gls{awl},
@@ -82,6 +84,26 @@ able to communicate freely with the global ocean due to being trapped by the Arc
 	\label{fig:amap}
 \end{figure}
 
+Because of the strong stratification, the forcing from the ocean surface 
+struggles to penetrate deep into the ocean; and so whether forced directly by wind 
+or by sea ice stress, the circulation
+directly forced from the surface is contained within the Polar Mixed Layer 
+and halocline in the upper ${\sim}200\,{\rm m}$ of the Arctic Ocean. 
+This surface circulation has been well documented by observations
+from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
+the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it's a very different
+story for the circulation in the \gls{awl} and lower layers (Figure~\ref{fig:Proshutinsky2005Circulation}). Observations made
+inside the Ocean Basins rarely are able to profile the structure  and
+circulation  below 500m  although much progress has been made here in the
+past decade. This lack of observations means that  we  still only have  a  sense  of  the circulation 
+of the \gls{awl} and the Deep  Waters.  The  observations  we  do 
+have  infer stable cyclonic  rim  currents about each of the basins in the
+\gls{awl} and it's believed that this trend extends through the Deep Water to the 
+ocean floor.  Because of the highly stratified nature of the halocline, the surface forcing 
+is likely to have little effect on the deeper ocean, which leaves the other 
+two possibilities as the determining features.
+
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Proshutinsky2005Circulation}
@@ -94,25 +116,29 @@ able to communicate freely with the global ocean due to being trapped by the Arc
 	\label{fig:Proshutinsky2005Circulation}
 \end{figure}
 
-Because of the strong stratification, the forcing from the ocean surface 
-struggles to penetrate deep into the ocean; and so whether forced directly by wind 
-or by sea ice stress, the circulation
-directly forced from the surface is contained within the Polar Mixed Layer 
-and halocline in the upper ${\sim}200\,{\rm m}$ of the Arctic Ocean. 
-This surface circulation has been well documented by observations
-from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
-the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it's a very different
-story for the circulation in the \gls{awl} and lower layers (Figure \ref{fig:Proshutinsky2005Circulation}). Observations made
-inside the Ocean Basins rarely are able to profile the structure  and
-circulation  below 500m  although much progress has been made here in the
-past decade. This lack of observations means that  we  still only have  a  sense  of  the circulation 
-of the \gls{awl} and the Deep  Waters.  The  observations  we  do 
-have  infer stable cyclonic  rim  currents about each of the basins in the
-\gls{awl} and it's believed that this trend extends through the Deep Water to the 
-ocean floor.  Because of the highly stratified nature of the halocline, the surface forcing 
-is likely to have little effect on the deeper ocean, which leaves the other 
-two possibilities as the determining features.
-
+There has been much discussion
+into how the fluxes in and out of the Arctic could influence the circulation,
+for example, by a forcing a balance of \gls{pv} within the region by
+the fluxes of \gls{pv} though the boundaries. \cite{yang2005arctic} demonstrated how,
+in an idealised barotropic model of a basin, controlling the flux 
+of \gls{pv} through inflows and outflows
+at the boundary, the circulation in the basin could be switched between cyclonic and
+anti-cyclonic circulations (Figure~\ref{fig:Yang2005}). This principle suggests
+that the persistent cyclonic nature of the \gls{awl} implies that there is a 
+net influx of \gls{pv} via the Arctic Gateways. Fortunately, permanent moorings 
+covering the majority of the ocean gateways into the Arctic~Ocean~(Figure
+\ref{fig:Tsubouchi2012Gateways}) have built
+up a detailed picture of the transport in and out of the Arctic Ocean 
+(\cite{tsubouchi2012arctic}, Figure~\ref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
+where $Q_{i}$ is the volume transport and $H_i$ the depth, for location $i$. 
+Whilst there is a tendency for total to infer a positive influx of \gls{pv}, the
+results are not convincing; \cite{munchow2006observational} shows that by including the
+Canadian Archipelago in the \cite{yang2005arctic} calculation the flux can be negated whilst
+\cite{tsubouchi2012arctic} demonstrates large variations of transport from the mean over time.
+These factors make it unconvincing that its the \gls{pv} transport that determines the 
+cyclonic nature of the \gls{awl}.
+Hence, the deep water circulation in the Arctic Ocean is more likely determined by 
+internal processes, which are poor understood in an Ocean with such sparse observations.
 
 \begin{figure}
 	\centering
@@ -146,39 +172,6 @@ two possibilities as the determining features.
 	\label{fig:Tsubouchi2012Transport}
 \end{figure}
 
-There has been much discussion
-into how the fluxes in and out of the Arctic could influence the circulation,
-for example, by a forcing a balance of \gls{pv} within the region by
-the fluxes of \gls{pv} though the boundaries. \cite{yang2005arctic} demonstrated how,
-in an idealised barotropic model of a basin, controlling the flux 
-of \gls{pv} through inflows and outflows
-at the boundary, the circulation in the basin could be switched between cyclonic and
-anti-cyclonic circulations (Figure \ref{fig:Yang2005}). This principle suggests
-that the persistent cyclonic nature of the \gls{awl} implies that there is a 
-net influx of \gls{pv} via the Arctic Gateways. Fortunately, permanent moorings 
-covering the majority of the ocean gateways into the Arctic Ocean (Figure
-\ref{fig:Tsubouchi2012Gateways}) have built
-up a detailed picture of the transport in and out of the Arctic Ocean 
-(\cite{tsubouchi2012arctic}, Figure \ref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
-where $Q_{i}$ is the volume transport and $H_i$ the depth, for location $i$. 
-Whilst there is a tendency for total to infer a positive influx of \gls{pv}, the
-results are not convincing; \cite{munchow2006observational} shows that by including the
-Canadian Archipelago in the \cite{yang2005arctic} calculation the flux can be negated whilst
-\cite{tsubouchi2012arctic} demonstrates large variations of transport from the mean over time.
-These factors make it unconvincing that its the \gls{pv} transport that determines the 
-cyclonic nature of the \gls{awl}.
-Hence, the deep water circulation in the Arctic Ocean is more likely determined by 
-internal processes, which are poor understood in an Ocean with such sparse observations.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{Woodgate2001Mooring}
-	\caption[Adapted from \cite{woodgate2001arctic}]{A Velocity Stickplot 
-		from a year-long mooring at \ang{78;30.8;} N, \ang{133;57.7;} E, west of the Lomonosov Ridge.  Adapted from \cite{woodgate2001arctic}.}
-	\label{fig:Woodgate2001Mooring}
-\end{figure}
-
 A likely candidate for generating a cyclonic circulation in the Northern hemisphere is
 geostrophic turbulence. A number of studies have demonstrated how, in an eddying system, 
 sloping topography can generate along-topography flows (\cite{treguier1989topographically}, \cite{adcock2000interactions}, \cite{nost2008asymmetry}). Hence, in the absence of stronger
@@ -188,7 +181,17 @@ effort has been made to observe and catalogue eddies in the Arctic
 (\cite{zhao2014characterizing}) and has demonstrated their prevalence in the Arctic Ocean.
 Whilst these studies have frequently been focused on the halocline and the surface dynamics
 there is good reason to believe that eddies also penetrate deep into the Arctic 
-(Figure \ref{fig:Woodgate2001Mooring}, \cite{woodgate2001arctic}).
+(Figure~\ref{fig:Woodgate2001Mooring}, \cite{woodgate2001arctic}).
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{Woodgate2001Mooring}
+	\caption[Adapted from \cite{woodgate2001arctic}]{A Velocity Stickplot 
+		from a year-long mooring at \ang{78;30.8;} N, \ang{133;57.7;} E, west of the Lomonosov Ridge.  Adapted from \cite{woodgate2001arctic}.}
+	\label{fig:Woodgate2001Mooring}
+\end{figure}
 
 \subsection{Mean-Eddy Interaction Theory}
 

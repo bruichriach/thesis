@@ -36,6 +36,13 @@
 \newacronym{bso}{BSO}{Barents~Sea~Opening}
 \newacronym{gm}{GM}{Gent~and~Mcwilliams~Parameterisation}
 
+\newcommand*\mean[1]{\overline{#1}}
+\newcommand*\res[1]{{#1}^{\prime}}
+\newcommand*\nthkmean[1]{\overline{#1}}
+\newcommand*\nthkres[1]{{#1}^{\prime}}
+\newcommand*\thkmean[1]{\left\langle{#1}\right\rangle}
+\newcommand*\thkres[1]{{#1}^{\#}}
+
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
 
@@ -221,12 +228,12 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  governing equations. Because of this,  the discretisation of the equations generates cross-correlation, or eddy, terms when applying the 
  averaging operator,
  \begin{equation}
- \overline{\phi\psi} = \overline{\phi}\,\overline{\psi} + 
- \overline{\phi^{\prime}\psi^{\prime}},
+ \mean{\phi\psi} = \mean{\phi}\,\mean{\psi} + 
+ \mean{\res{\psi}\res{\psi}},
  \label{non-lin average}
  \end{equation}
- where the prime denotes the residual, ${\phi^{\prime} = \phi - \overline{\phi}}$,
- and the ${\overline{\phi}}$ is the average of the variable ${\phi}$, used in
+ where the prime denotes the residual, ${\phi^{\prime} = \phi - \mean{\phi}}$,
+ and the ${\mean{\phi}}$ is the average of the variable ${\phi}$, used in
  the discretisation and satisfying
  the expected properties of an averaging operator.
  The discretised system has no knowledge of the residual terms and hence
@@ -252,10 +259,55 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  of tracers ocean models would be able to break up water masses much quick than
  is observed in the physical ocean. Hence, a more physically appropriate eddy parameterisation 
  was needed.
- 
- And so, in today's world it seems obvious, parameterise eddies in such a way that their effect
- acts along isopycnal surfaces. The effort to do this in the 80's and early 90's gave birth
+  And so, in a way that seems obvious today, eddies need to be
+   parameterised in 
+ such a way that their effect acts along isopycnal surfaces. 
+ The effort to do this in the 80's and early 90's gave birth
  to what is known as the \gls{gm}, first introduced in \cite{gent1990}.
+ 
+ So what is the \gls{gm} parameterisation? Since mixing occurs primarily
+ along isopycnal surfaces it make sense to have this discussion in
+ isopycnal coordinates, that is in the coordinate space $(x,y,\rho)$,
+  where density, $\rho$, has replaced depth, $z$, as the vertical
+  coordinate. Whilst the rigorous exploration of this coordinate system
+  will be discussed in detail later on, for our current purposes 
+  it is enough to say that this coordinate system produces an equation
+  for isopycnal "thickness",
+  \begin{equation}
+  \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = 0,
+  \end{equation}
+  where $z_{\rho} = \frac{\partial z}{\partial \rho}$ is defined as the
+   isopycnal thickness and $\boldsymbol{u}$ is the horizontal fluid
+   velocity. Since it is non-linear, when this equation is discretised
+   it produces an eddy covariance term as demonstrated by equation
+   \ref{non-lin average}. Hence, the averaged equation can be written as
+     \begin{equation}
+     \frac{\partial \mean{z_{\rho}}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{z_{\rho}} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}\right).
+     \end{equation}
+   The eddies should therefore be parameterised by some representation
+   of $\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}$, say $\boldsymbol{F}$,
+   so that the thickness equation becomes
+     \begin{equation}
+     \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) + \boldsymbol{\nabla}\cdot\boldsymbol{F} = 0,
+     \label{thicknessgeneralparam}
+     \end{equation}
+    where the bars have been dropped for convenience. It can also 
+    be noted that by defining $\boldsymbol{u}^\star = \boldsymbol{F}/z_{\rho}$ the above equation can be interpreted as
+    the isopycnal thickness
+    being advected by the mean horizontal velocity, $\boldsymbol{u}$, 
+    plus an eddy induced
+    velocity, $\boldsymbol{u}^\star$. \cite{gent1990} then goes one
+    step further and proposes that eddies act to dissipate potential
+    energy by diffusing the isopycnal thickness, hence the 
+    \gls{gm} parameterisation is given by $\boldsymbol{F} = - \left(\kappa
+    \boldsymbol{\nabla} z \right)_{\rho}$, where $\kappa$ can both be
+     spatially and temporally varying parameter. Combining this with equation \ref{thicknessgeneralparam} we have
+          \begin{equation}
+          \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = \boldsymbol{\nabla}\cdot\left(\kappa
+              \boldsymbol{\nabla} z \right)_{\rho} .
+          \end{equation}
+ 
+ 
 
 
 \end{document}

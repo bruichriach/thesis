@@ -297,17 +297,64 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
     being advected by the mean horizontal velocity, $\boldsymbol{u}$, 
     plus an eddy induced
     velocity, $\boldsymbol{u}^\star$. \cite{gent1990} then goes one
-    step further and proposes that eddies act to dissipate potential
-    energy by diffusing the isopycnal thickness, hence the 
+    step further and proposes that eddies act to homogenise each
+    isopyncal layer, hence the 
     \gls{gm} parameterisation is given by $\boldsymbol{F} = - \left(\kappa
     \boldsymbol{\nabla} z \right)_{\rho}$, where $\kappa$ can both be
      spatially and temporally varying parameter. Combining this with equation \ref{thicknessgeneralparam} we have
           \begin{equation}
           \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = \boldsymbol{\nabla}\cdot\left(\kappa
               \boldsymbol{\nabla} z \right)_{\rho} .
+              \label{contgm}
           \end{equation}
- 
- 
+    Similarly, for a tracer, say $\tau$, we can write an equation
+    describing it's transport,
+            \begin{equation}
+              \frac{\partial \tau}{\partial t} + \boldsymbol{u}\cdot\boldsymbol{\nabla}\tau = \boldsymbol{\nabla}\tau\cdot
+              \left(\kappa \boldsymbol{\nabla} z \right)_{\rho}/z_{\rho} .
+            \end{equation}
+            
+    There are a few properties of this parameterisation that can be 
+    noted to help describe its overall effect of its implementation in
+    ocean models. Firstly, by writing $\boldsymbol{u}^{\star} = \boldsymbol{u} -
+    \left(\kappa \boldsymbol{\nabla} z \right)_{\rho}/z_{\rho}$ we 
+    simply have that $\frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}^{\star}\right) = 0$ and $\frac{\partial \tau}{\partial t} + \boldsymbol{u}^{\star}\cdot\boldsymbol{\nabla}\tau = 0$ indicating
+    that the tracer $\tau$ is effectively transported by the `bolus velocity',  $\boldsymbol{u}^{\star}$. Secondly, an important 
+    question is who does \gls{gm} change the energy of the system. 
+    The right hand side of equation \ref{contgm} adds 
+    $\phi \boldsymbol{\nabla}\cdot\left(\kappa
+                  \boldsymbol{\nabla} z \right)_{\rho} 
+                  = \boldsymbol{\nabla}\cdot\left(\phi\kappa
+                       \boldsymbol{\nabla} z \right)_{\rho} 
+                  -\left(\kappa
+              \boldsymbol{\nabla}\phi\cdot \boldsymbol{\nabla} z \right)_{\rho} 
+                                -\left(\kappa g
+                            \boldsymbol{\nabla}z\cdot \boldsymbol{\nabla} z \right)/{\rho_{0}} 
+                $ to the energy tendency. Integrating over an entire domain
+                eliminates the first two terms leaving the final term
+                as a positive definite sink of energy. These two 
+                properties characterise \gls{gm}; the parameterisation
+                acts along isopycnal surfaces to homogenise isopycnal 
+                thickness whilst dissipating potential energy.
+                
+        The dissipative nature of \gls{gm} is both an strength and a
+         weakness. \gls{gm} is incapable of introducing spurious energy,
+         which allows it to be very robust and stable when implemented 
+         with little tuning. However, it is also understood that
+         ocean turbulence is not purely dissipative.
+          \cite{adcock2000interactions} concisely demonstrated that
+         in an idealised model, with no external forcing other
+         than an initial eddy field, will develop a persistent along
+         topography flow. \cite{nost2008asymmetry} showed that these
+         flows develop asymmetrically, such that the flow is 
+         predominantly cyclonic in
+         a basin in the northern hemisphere. For this to occur 
+         when the eddy field is unresolved there needs to be an 
+         injection of energy into the system representing the 
+         inverse cascade of energy from the eddy scales to the large scale.
+         However, this is prohibited by the purely dissipative \gls{gm}
+         and so a different parameterisation is required to mimic this
+         effect.
 
 
 \end{document}

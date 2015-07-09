@@ -355,6 +355,29 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
          However, this is prohibited by the purely dissipative \gls{gm}
          and so a different parameterisation is required to mimic this
          effect.
+         
+         To proceed one might wonder what makes the continuity equation
+         so special, in truth there is a number of non-linearities that
+         crop up when examining the equations. Take, for example, the
+         absolute vorticity, which can be written in the same form as the continuity equation, i.e.
+           \begin{equation}
+           \frac{\partial \omega}{\partial t} + \boldsymbol{\nabla}\cdot\left(\omega\boldsymbol{u}\right) = 0,
+           \end{equation}
+           where $\omega=f+\xi$ is the absolute vorticity and
+           $\xi = \boldsymbol{k} \cdot\left( \boldsymbol{\nabla}\wedge \boldsymbol{u}\right)$ is the relative vorticity. 
+           Hence, we have the same averaged equation,
+                \begin{equation}
+                \frac{\partial \mean{\omega}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{\omega} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right),
+                \end{equation}
+                which to close in a numerical model requires the
+                right hand side, $ \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right)$, to be parameterised.
+                \cite{greatbatch1998exploring} makes the observation
+                here that the mechanism this equation is describing 
+                is much clearer if we note the following; if we take
+                $\mean{q}$ to be the thickness weighted mean of $q$, i.e.
+                $\mean{q}=\mean{z_{\rho}q}/\mean{z_{\rho}}$, then 
+                $\mean{\omega}=\mean{q}\,\mean{z_{\rho}}$ and $\res{\omega}=\mean{z_{\rho}}\res{q}+\mean{q}\res{z_{\rho}}$
+                
 
 
 \end{document}

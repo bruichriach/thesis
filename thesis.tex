@@ -47,6 +47,7 @@
 \newcommand*\nthkmean[1]{\left\langle{#1}\right\rangle}
 \newcommand*\nthkres[1]{{#1}^{\#}}
 \newcommand*\spec[1]{\mathring{#1}}
+\newcommand*\e[1]{{\times 10}^{#1}}
 
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
@@ -70,7 +71,7 @@
 Despite its small size (only $3\%$ of the Earth's surface), the Arctic
 Ocean is a disproportionately important part of the global ocean and has the potential
 to affect the world's climate in major ways. Located above
-$70\,^{\circ}{\rm N}$, the Arctic is characterised by its seasonally
+$70\,^{\circ}\mathrm{N}$, the Arctic is characterised by its seasonally
 varying ice cap. This ice cap, along with its counterpart at the South
 Pole, is a major contribution to the planet's albedo as well as being
 a large reservoir for freshwater. The Arctic Ocean is a key component
@@ -81,11 +82,11 @@ which means that the water column can be divided into advective water masses.
 The Arctic Ocean is commonly divided into four different layers (Figure~\ref{fig:amap}):
 The polar mixed layer, which is a well mixed layer in
 contact with the atmosphere and surface ice; the halocline, which acts as
-reservoir of fresh water and penetrates to around ${\sim}200\,{\rm m}$; the \gls{awl},
+reservoir of fresh water and penetrates to around ${\sim}200\,\mathrm{m}$; the \gls{awl},
 which is body of warm salty water which originates from the North Atlantic and Nordic 
-Sea via Fram Strait and typically sits at around ${\sim}400\,{\rm m}$ deep; and finally, 
-the Arctc Deep Water, defined by the water masses that aren't
-able to communicate freely with the global ocean due to being trapped by the Arctic basin's walls.
+Sea via Fram Strait and typically sits at around ${\sim}400\,\mathrm{m}$ deep; and finally, 
+the Polar Deep Water, defined by the water masses that aren't
+able to communicate freely with the global ocean due to being trapped by the Arctic basin walls.
 
 
 
@@ -101,8 +102,8 @@ able to communicate freely with the global ocean due to being trapped by the Arc
 Because of the strong stratification, the forcing from the ocean surface 
 struggles to penetrate deep into the ocean; and so whether forced directly by wind 
 or by sea ice stress, the circulation
-directly forced from the surface is contained within the polar mixed layer 
-and halocline in the upper ${\sim}200\,{\rm m}$ of the Arctic Ocean. 
+directly forced from the surface is contained within the Polar Mixed Layer 
+and halocline in the upper ${\sim}200\,\mathrm{m}$ of the Arctic Ocean. 
 This surface circulation has been well documented by observations
 from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
 the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it's a very different
@@ -170,7 +171,7 @@ internal processes, which are poor understood, especially in an Ocean with such 
 	\centering
 	\includegraphics[width=\linewidth]{Tsubouchi2012Transport}
 	\caption[Adapted from \cite{tsubouchi2012arctic}]{Velocity
-		sections (${\rm cm} \, {\rm s}^{-1}$) from Arctic gateway mooring arrays;
+		sections ($\mathrm{cm}\, \mathrm{s}^{-1}$) from Arctic gateway mooring arrays;
 		Demonstrates the pathways through the gateways, from which transport 
 		in to the Arctic can be calculated.
 		Bold black lines show certain isopycnals, and the red (blue) colors show inflow
@@ -214,7 +215,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  in the ocean this is, more often than not, far from reality.
  Due to these computational limits a practical \gls{gcm} is 
  limited to a  resolution of the order of tens of kilometres. This means that with a 
- resolution  cut off at around $10 \textendash 100 \, \rm km$, 
+ resolution  cut off at around $10 \textendash 100 \, \mathrm{km}$, 
  \glspl{gcm} are unable to fully resolve a large portion of the mesoscale turbulence that is
  observed in the physical ocean.
  By attempting  to understand the physics behind these unresolved processes 
@@ -247,7 +248,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  the grid scale, the viscosity parameter is tuned such that the turbulent energy cascade is 
  dissipated at the grid scale whilst still allowing as active dynamics as possible. 
  Assuming modern day computing power this implies a horizontal viscosity of around 
- $10^{5} - 10^{7} \rm Pa \cdot s$, a viscosity more suited to peanut butter than 
+ $10^{5} - 10^{7} \mathrm{Pa} \cdot \mathrm{s}$, a viscosity more suited to peanut butter than 
  a the ocean. A second problem with having such a strong horizontal diffusion is
  that it diffuses or mixes tracers horizontally, when applied as
  an eddy parameterisation for tracer mixing. It has long been understood that tracers 

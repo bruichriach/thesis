@@ -18,6 +18,11 @@
 \doublespacing
 %\setstretch{1.1
 
+
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{equation}{section}
+
 %\title{The Importance of Eddy-Topographic Interactions for Arctic
 %	Ocean Dynamics and Steps Towards Improving Climate Models}
 %\author{Mark Edward Forshaw\\ Department of Physics\\
@@ -41,11 +46,12 @@
 \newcommand*\thkres[1]{{#1}^{\prime}}
 \newcommand*\nthkmean[1]{\left\langle{#1}\right\rangle}
 \newcommand*\nthkres[1]{{#1}^{\#}}
+\newcommand*\spec[1]{\mathring{#1}}
 
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
 
-\title{Thesis}
+\title{Draft}
 
 
 \begin{document}
@@ -58,6 +64,7 @@
 \glsresetall
 
 \subsection{Arctic Ocean}
+\label{arcticocean}
 
 
 Despite its small size (only $3\%$ of the Earth's surface), the Arctic
@@ -77,8 +84,8 @@ contact with the atmosphere and surface ice; the halocline, which acts as
 reservoir of fresh water and penetrates to around ${\sim}200\,{\rm m}$; the \gls{awl},
 which is body of warm salty water which originates from the North Atlantic and Nordic 
 Sea via Fram Strait and typically sits at around ${\sim}400\,{\rm m}$ deep; and finally, 
-the Polar Deep Water, defined by the water masses that aren't
-able to communicate freely with the global ocean due to being trapped by the Arctic basin walls.
+the Arctc Deep Water, defined by the water masses that aren't
+able to communicate freely with the global ocean due to being trapped by the Arctic basin's walls.
 
 
 
@@ -94,7 +101,7 @@ able to communicate freely with the global ocean due to being trapped by the Arc
 Because of the strong stratification, the forcing from the ocean surface 
 struggles to penetrate deep into the ocean; and so whether forced directly by wind 
 or by sea ice stress, the circulation
-directly forced from the surface is contained within the Polar Mixed Layer 
+directly forced from the surface is contained within the polar mixed layer 
 and halocline in the upper ${\sim}200\,{\rm m}$ of the Arctic Ocean. 
 This surface circulation has been well documented by observations
 from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
@@ -113,7 +120,7 @@ two possibilities as the determining features.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Proshutinsky2005Circulation}
+	\includegraphics[width=0.9\linewidth]{Proshutinsky2005Circulation}
 	\caption[\cite{proshutinsky2005arctic}]{ Two freshwater layer regimes (light 
 		blue arrows) overlaying the cyclonic rim currents of the \gls{awl} (red arrows).
 		Whilst the Freshwater regimes are vastly different from each other, the
@@ -133,8 +140,7 @@ at the boundary, the circulation in the basin could be switched between cyclonic
 anti-cyclonic circulations (Figure~\ref{fig:Yang2005}). This principle suggests
 that the persistent cyclonic nature of the \gls{awl} implies that there is a 
 net influx of \gls{pv} via the Arctic Gateways. Fortunately, permanent moorings 
-covering the majority of the ocean gateways into the Arctic~Ocean~(Figure
-\ref{fig:Tsubouchi2012Gateways}) have built
+covering the majority of the ocean gateways into the Arctic~Ocean have built
 up a detailed picture of the transport in and out of the Arctic Ocean 
 (\cite{tsubouchi2012arctic}, Figure~\ref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
 where $Q_{i}$ is the volume transport and $H_i$ the depth, for location $i$. 
@@ -142,10 +148,11 @@ Whilst there is a tendency for total to infer a positive influx of \gls{pv}, the
 results are not convincing; \cite{munchow2006observational} shows that by including the
 Canadian Archipelago in the \cite{yang2005arctic} calculation the flux can be negated whilst
 \cite{tsubouchi2012arctic} demonstrates large variations of transport from the mean over time.
-These factors make it unconvincing that its the \gls{pv} transport that determines the 
+These factors, especially the large variability, make it unconvincing that its the \gls{pv}
+ transport, or in fact any properties of the gateway fluxes, that determines the 
 cyclonic nature of the \gls{awl}.
 Hence, the deep water circulation in the Arctic Ocean is more likely determined by 
-internal processes, which are poor understood in an Ocean with such sparse observations.
+internal processes, which are poor understood, especially in an Ocean with such sparse observations.
 
 \begin{figure}
 	\centering
@@ -161,31 +168,20 @@ internal processes, which are poor understood in an Ocean with such sparse obser
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{Tsubouchi2012Gateways}
-	\caption[Adapted from \cite{tsubouchi2012arctic}]{The distribution of water masses and
-		layer boundaries along sections of Davis Strait, Fram Strait, the \gls{bso} and
-		Bering Strait. Water masses are labelled as SURF, the Mixed Layer; SUB, the halocline;
-		UAW, AW, the upper and middle \glspl{awl}; and IW and DW, the intermediate and deep
-		waters.  Adapted from \cite{tsubouchi2012arctic}.}
-	\label{fig:Tsubouchi2012Gateways}
-\end{figure}
-
-\begin{figure}
-	\centering
 	\includegraphics[width=\linewidth]{Tsubouchi2012Transport}
 	\caption[Adapted from \cite{tsubouchi2012arctic}]{Velocity
 		sections (${\rm cm} \, {\rm s}^{-1}$) from Arctic gateway mooring arrays;
 		Demonstrates the pathways through the gateways, from which transport 
 		in to the Arctic can be calculated.
-		Bold black lines show defined water mass boundaries, and red (blue) colors show inflow
-		to (outflow from) the Arctic.  Adapted from \cite{tsubouchi2012arctic}.}
+		Bold black lines show certain isopycnals, and the red (blue) colors show inflow
+		into (outflow from) the Arctic.  Adapted from \cite{tsubouchi2012arctic}.}
 	\label{fig:Tsubouchi2012Transport}
 \end{figure}
 
 A likely candidate for generating a cyclonic circulation in the Northern hemisphere is
 geostrophic turbulence. A number of studies have demonstrated how, in an eddying system, 
 sloping topography can generate along-topography flows (\cite{treguier1989topographically}, \cite{adcock2000interactions}, \cite{nost2008asymmetry}). Hence, in the absence of stronger
-forcing, this effect is likely to become the dominant feature. The obvious question that then
+forcing, this effect is likely to become the dominant feature. An obvious question that then
 comes to mind is how turbulent is the Arctic Ocean? Over recent years a large amount  of 
 effort has been made to observe and catalogue eddies in the Arctic
 (\cite{zhao2014characterizing}) and has demonstrated their prevalence in the Arctic Ocean.
@@ -206,6 +202,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
 
 \subsection{Mean-Eddy Interaction Theory}
 
+\label{meaneddyinteractiontheory}
+
  Obviously, whilst observations play a vital role in understanding the Arctic
  Ocean and its role in the global ocean, it is limited by the sparsely available
  observations that only usefully reach back a handful of decades into the past.
@@ -214,14 +212,15 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  however, due to limitations
  in modern computing power and poor understanding of the unresolved processes 
  in the ocean this is, more often than not, far from reality.
- By attempting  to understand the physics behind these unresolved processes 
- and developing parameterisations that mimic their effect on the resolved ocean
- the value of computational models can be improved without dramatically increasing the
- computing power required.  Due to these computational limits a practical \gls{gcm} is 
+ Due to these computational limits a practical \gls{gcm} is 
  limited to a  resolution of the order of tens of kilometres. This means that with a 
  resolution  cut off at around $10 \textendash 100 \, \rm km$, 
  \glspl{gcm} are unable to fully resolve a large portion of the mesoscale turbulence that is
  observed in the physical ocean.
+ By attempting  to understand the physics behind these unresolved processes 
+ and developing parameterisations that mimic their effect on the resolved ocean
+ the value of computational models can be improved without dramatically increasing the
+ computing power required.  
  
  The turbulent, chaotic nature of the ocean is caused by the non-linearity of its 
  governing equations. Because of this,  the discretisation of the equations generates cross-correlation, or eddy, terms when applying the 
@@ -231,10 +230,9 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  \mean{\res{\psi}\res{\psi}},
  \label{non-lin average}
  \end{equation}
- where the prime denotes the residual, ${\phi^{\prime} = \phi - \mean{\phi}}$,
- and the ${\mean{\phi}}$ is the average of the variable ${\phi}$, used in
+ where the ${\mean{\phi}}$ is the average of the variable ${\phi}$, used in
  the discretisation and satisfying
- the expected properties of an averaging operator.
+ the expected properties of an averaging operator, and the prime denotes the residual, ${\phi^{\prime} = \phi - \mean{\phi}}$.
  The discretised system has no knowledge of the residual terms and hence
  the contributions to the full system by these eddy terms are
  ignored in the discretised system. It is, therefore, this ``sub-grid scale process"
@@ -244,21 +242,23 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  variables and some physical assumptions.
  
  The earliest ocean models (\cite{bryan1969numerical}) had vertical $z$-coordinate, or depth-coordinates, with simple horizontal and vertical Laplacian diffusion to act as 
- the closure. Whether these term are interpreted as a parameterisation for the effects
- of unresolved turbulence or simply as a numerical tool to avoid numerical noise at 
+ the closure. Whether these terms are interpreted as a parameterisation for the effects
+ of unresolved turbulence or simply as a numerical tool to avoid noise at 
  the grid scale, the viscosity parameter is tuned such that the turbulent energy cascade is 
  dissipated at the grid scale whilst still allowing as active dynamics as possible. 
  Assuming modern day computing power this implies a horizontal viscosity of around 
  $10^{5} - 10^{7} \rm Pa \cdot s$, a viscosity more suited to peanut butter than 
- a saline ocean. A second problem with having such a strong horizontal diffusion is
- that it effectively large horizontal diffusion, or mixing of tracers when applied as
+ a the ocean. A second problem with having such a strong horizontal diffusion is
+ that it diffuses or mixes tracers horizontally, when applied as
  an eddy parameterisation for tracer mixing. It has long been understood that tracers 
  mix much more along isopycnal surfaces than across them (\cite{iselin1939influence}, \cite{montgomery1940present}), which is a property which allowed for the definition of
- distinct water masses in the global ocean. Hence, by along excessive horizontal diffusion
- of tracers ocean models would be able to break up water masses much quick than
- is observed in the physical ocean. Hence, a more physically appropriate eddy parameterisation 
- was needed.
-  And so, in a way that seems obvious today, eddies need to be
+ distinct water masses in the global ocean (for example, \cite{emery1986global}).
+  Hence, with an excessive horizontal diffusion
+ of tracers ocean models are able to break up water masses much quick than
+ is observed in the physical ocean creating, for example, the "Veronis Effect" (\cite{veronis1975role}).
+ Hence, a more physically appropriate eddy parameterisation 
+ is needed;
+  and so, in a way that seems obvious today, eddies need to be
    parameterised in 
  such a way that their effect acts along isopycnal surfaces. 
  The effort to do this in the 80's and early 90's gave birth
@@ -269,17 +269,18 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  isopycnal coordinates, that is in the coordinate space $(x,y,\rho)$,
   where density, $\rho$, has replaced depth, $z$, as the vertical
   coordinate. Whilst the rigorous exploration of this coordinate system
-  will be discussed in detail later on, for our current purposes 
+  will be discussed in detail later in this section, for our current purposes 
   it is enough to say that this coordinate system produces an equation
   for isopycnal "thickness",
   \begin{equation}
+  \label{cont}
   \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = 0,
   \end{equation}
   where $z_{\rho} = \frac{\partial z}{\partial \rho}$ is defined as the
    isopycnal thickness and $\boldsymbol{u}$ is the horizontal fluid
    velocity. Since it is non-linear, when this equation is discretised
    it produces an eddy covariance term as demonstrated by equation
-   \ref{non-lin average}. Hence, the averaged equation can be written as
+   \ref{non-lin average}; the averaged equation can be written as
      \begin{equation}
      \frac{\partial \mean{z_{\rho}}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{z_{\rho}} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}\right).
      \label{meancont}
@@ -298,7 +299,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
     plus an eddy induced
     `bolus velocity', $\hat{\boldsymbol{u}}$. \cite{gent1990} then goes one
     step further and proposes that eddies act to homogenise each
-    isopyncal layer, hence the 
+    isopyncal layer via baroclinic instability, hence the 
     \gls{gm} parameterisation is given by $\boldsymbol{F} = - \left(\kappa
     \boldsymbol{\nabla} z \right)_{\rho}$, where $\kappa$ can both be
      spatially and temporally varying parameter. Combining this with equation \ref{thicknessgeneralparam} we have
@@ -321,7 +322,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
     simply have that $\frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}^{\star}\right) = 0$ and $\frac{\partial \tau}{\partial t} + \boldsymbol{u}^{\star}\cdot\boldsymbol{\nabla}\tau = 0$ indicating
     that the tracer $\tau$ is effectively advected by a transport velocity, 
      $\boldsymbol{u}^{\star}$. Secondly, an important 
-    question is who does \gls{gm} change the energy of the system. 
+    question is how does \gls{gm} change the energy of the system. 
     The right hand side of equation \ref{contgm} adds 
     $\phi \boldsymbol{\nabla}\cdot\left(\kappa
                   \boldsymbol{\nabla} z \right)_{\rho} 
@@ -335,22 +336,23 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 eliminates the first two terms leaving the final term
                 as a positive definite sink of energy. These two 
                 properties characterise \gls{gm}; the parameterisation
-                acts along isopycnal surfaces to homogenise isopycnal 
-                thickness whilst dissipating potential energy.
+                acts along isopycnal surfaces to flatten isopycnal 
+                surfaces whilst dissipating potential energy.
                 
         The dissipative nature of \gls{gm} is both an strength and a
          weakness. \gls{gm} is incapable of introducing spurious energy,
-         which allows it to be very robust and stable when implemented 
-         with little tuning. However, it is also understood that
+         which allows it to be very robust and stable meaning it can be implemented 
+         into a \gls{gcm} with little tuning. However, it is also understood that
          ocean turbulence is not purely dissipative.
           \cite{adcock2000interactions} concisely demonstrated that
          in an idealised model, with no external forcing other
          than an initial eddy field, will develop a persistent along
-         topography flow. \cite{nost2008asymmetry} showed that these
+         topography flow and the isopycnals will dome slightly above topography.
+          \cite{nost2008asymmetry} showed that these
          flows develop asymmetrically, such that the flow is 
          predominantly cyclonic in
          a basin in the northern hemisphere. For this to occur 
-         when the eddy field is unresolved there needs to be an 
+         when the eddy field is unresolved there must be an 
          injection of energy into the system representing the 
          inverse cascade of energy from the eddy scales to the large scale.
          However, this is prohibited by the purely dissipative \gls{gm}
@@ -359,7 +361,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
          
          To proceed one might wonder what makes the continuity equation
          so special, in truth there is a number of non-linearities that
-         crop up when examining the equations. Take, for example, the
+         crop up when examining the full state equations. Take, for example, the
          absolute vorticity, which can be written in the same form as the continuity equation, i.e.
            \begin{equation}
            \frac{\partial \omega}{\partial t} + \boldsymbol{\nabla}\cdot\left(\omega\boldsymbol{u}\right) = 0,
@@ -367,12 +369,12 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
            \end{equation}
            where $\omega=f+\xi$ is the absolute vorticity and
            $\xi = \boldsymbol{k} \cdot\left( \boldsymbol{\nabla}\wedge \boldsymbol{u}\right)$ is the relative vorticity. 
-           By applying an average operator to Equation \ref{vort}, we have the same averaged equation as \ref{meancont} but for the mean absolute vorticity, $\mean{\omega}$,
+           By applying an average operator to Equation \ref{vort}, we have the same averaged equation as Equation \ref{meancont} but for the mean absolute vorticity, $\mean{\omega}$,
                 \begin{equation}
                 \frac{\partial \mean{\omega}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{\omega} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right),
                 \end{equation}
                 which to close in a numerical model requires the
-                right hand side, $ \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right)$, to be parameterised.
+                right hand side, $- \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right)$, to be parameterised.
                 \cite{greatbatch1998exploring} makes the observation
                 here that the mechanism this equation is describing 
                 is much clearer if we note the following; if we take
@@ -403,65 +405,319 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 \begin{equation}
                 \frac{D^\star \mean{q}}{D t}\equiv\frac{\partial \mean{q}}{\partial t} + \boldsymbol{u}^\star\cdot\boldsymbol{\nabla}\mean{q} = \boldsymbol{\nabla}\cdot
                 \left(\kappa \mean{z}_{\rho}\boldsymbol{\nabla} \mean{q} \right)/\mean{z}_{\rho} ,
+                \label{pvclosure}
                 \end{equation}
                 applied to the mean \gls{pv}, which is advected by the transport velocity $\boldsymbol{u}^\star$ and diffused along isopycnal surfaces. This is now
                 the \gls{pv} closure first proposed in \cite{greatbatch1998exploring}.
                 
-                \begin{itemize}
-                	\item Enstrophy dissipation
-                	\begin{itemize}
-                		\item $\frac{\partial  }{\partial t}\left(\frac{1}{2}z_{\rho}q^{2}\right) + \boldsymbol{\nabla}\cdot\left(...\right)=-\kappa z_\rho \boldsymbol{\nabla}q\cdot\boldsymbol{\nabla}q$
-	                	\item Tends towards homogeneous PV
-	                	\begin{itemize}
-	                		\item Topography implies unrealistic doming
-	                		\item Spurious energy
-	                		\item \cite{adcock2000interactions}
-	                		\item Need more realistic cold doming
-	                	\end{itemize}
-	                	\item Propose eddies do a combination potential energy and enstrophy dissipation 
-	                	\item Question of when are topographic effects important versus baroclinic effects.            
-	                \end{itemize}    
-	                 
-                	\item Eliassen-Palm Tensor   
-                	\begin{itemize}      
-                		\item can construct a tensor for the dynamical equations which contains all of the eddy correlations
-                		\item tensor coordinate invariant up to gauge transformations (\cite{maddison2013eliassen})
-                		\item \cite{marshall2012framework} bounds eddy tensor by eddy energy
-                		and eddy enstrophy in quasi-geostrophic case.
-                		\item with a bound, tensor can be written in terms of bounds 
-                		and anisotropies.
-                	\end{itemize}     
-                	
-                	\item Thickness Weighted Averaged Form
-                	\begin{itemize}      
-                		\item Rather than quasi-geostrophic start with primative equations in isopycnal coordinates (assuming hydrostatic balance).
-                		\item \cite{young2012exact} derives an eddy stress tensor by
-                		using a thickness weighted averaging operator.
-                		\item define thickness weighted with $\thkmean{\psi}$, $\thkres{\psi}$;
-                		and non-thickness weighted with $\nthkmean{\psi}$, $\nthkres{\psi}$. 
-                		$\sigma = z_{\rho}$.
-                		\item $\thkmean{\boldsymbol{u}}=\nthkmean{\sigma\boldsymbol{u}}/\nthkmean{\sigma}=\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}/\nthkmean{\sigma}$
-                		\begin{itemize} 
-                			\item \cite{young2012exact} noted that the second term on the RHS
-                			 is the bolus velocity, and hence this is precisely the transport
-                			  velocity that appears in the derivation of \gls{gm}.
-                			\item this implies that rather than being an equation with mean
-                			velocities, the equations explicitly represent the evolution of the
-                			transport velocities.
-                		\end{itemize}          
-                		\item \cite{maddison2013eliassen} shows that the eddy stresses
-                		can be bounded in a similar fashion to  \cite{marshall2012framework} 
-                		at a leading order Rossby number.	
-                		\item assuming some knowledge of the bounds, the stresses can
-                		be then parameterised in terms of how constrictive the bounds are
-                		and	the anisotropies.
-                	\end{itemize}  
+                Equation \ref{pvclosure} represents the interaction of eddies as the
+                down-gradient diffusion of \gls{pv}; and hence suggests that eddies
+                act to homogenise \gls{pv}. Since \gls{pv} can be approximately written
+                as $q=f/\sigma$ for small relative vorticity, the parametrisation acts  to homogenise isopycnal thickness. In the case 
+                where there is no topography this is identical to the flattening of isopycnals.
+                However, in the presence of topography homogenised isopycnal thickness
+                causes the isopycnals to mimic the shape of the topography and hence 
+                rise over topography. However, to allow this to happen freely
+                clearly violates energy conservation, as demonstrated schematically in 
+                Figure \ref{fig:Colddoming}. In reality, the ocean attempts to 
+                homogenise \gls{pv} but only so far as it can with the available energy;
+                the result is the slight ``cold doming" above topography as observed in
+                \cite{adcock2000interactions}. 
+                
+                It isn't all bad news though. Whilst, unlike \gls{gm}, the downgradient
+                dissipation of \gls{pv} capable of introducing spurious energy, it does
+                control another important quantity: Enstrophy. By multiplying through 
+                by $\mean{z}_{\rho} \mean{q}$, Equation \ref{pvclosure} becomes 
+                \begin{equation}
+                \frac{\partial  }{\partial t}\left(\frac{1}{2}z_{\rho}q^{2}\right) + \boldsymbol{\nabla}\cdot\left(z_{\rho}q\boldsymbol{u}^\star-\kappa z_{\rho}q\boldsymbol{\nabla} q
+                \right)=-\kappa z_\rho \boldsymbol{\nabla}q\cdot\boldsymbol{\nabla}q
+                \end{equation}
+                where the bars have been dropped for convenience.
+                Integrating over the entire domain eliminates the divergent term
+                leaving just a positive definite dissipation.
+                Hence, in the same way that \gls{gm} dissipates potential energy, this
+                \gls{pv} closure dissipates enstrophy. This suggests the tantalising
+                possibility that eddy-mean interactions are \gls{gm}-like when
+                there is limited eddy energy available but diffuse \gls{pv} when
+                limited by eddy enstrophy.
+                
+                \begin{figure}
+                	\centering
+                	\includegraphics[width=0.6\linewidth]{am00}
+                	\caption[Cold-doming]{I'm going to redraw these for the basin case.}
+                	\label{fig:Colddoming}
+                \end{figure}
+                
+                It is clear from these attempts to parameterise the eddy-mean interaction
+                that the only way to proceed is by being able to take into account 
+                all eddy correlations that appear in the state equations. Residual-mean theory
+                allows the directionally averaged primitive equations to be written such that 
+                only diabatic buoyancy
+                fluxes only appear in the thermodynamic equation whilst the eddy-mean
+                interactions in the momentum equations appear as the divergence of Eliassen-Palm 
+                Flux vectors (\cite{eliassen1961transfer}, \cite{andrews1976planetary}). 
+                The Eliassen-Palm flux vectors also appear in other descriptions of ocean dynamics.
+                In the averaged hydrostatic primitive equations the eddy-mean interactions
+                appear as two Eliassen-Palm flux vectors, one for each component of the horizontal velocity
+                (\cite{young2012exact}). Similarly, a rank-two Eliassen-Palm flux tensor
+                can be derived for the statistically steady quasi-geostrophic equations (\cite{cronin1996eddy}). \cite{maddison2013eliassen} demonstrates
+                the geometric relationship between Eliassen-Palm fluxes and how they
+                collapse into a single coordinate invariant tensor in the
+                quasi-geostrophic limit up to a gauge transformation.
+                In this limit the Eliassen-Palm flux tensor can be written as
+                \begin{equation}
+                \boldsymbol{E} 
+                =\left(  \begin{array}{ccc}
+                -M+P &
+                N & 0 \\
+                N &  
+                M + P & 0\\
+                -S  &  
+                R & 0\\
+                \end{array} \right) 
+                \end{equation}
+                (\cite{plumb1986three}), where 
+                \begin{equation}
+                \begin{array}{ccc}
+                M = \frac{\mean{{\res{v}}^{2} - {\res{u}}^{2}}}{2}, & 
+                N = \mean{\res{u}\res{v} }, &
+                P =  \frac{\mean{{\res{b}}^{2}}}{2\mathcal{N}_{0}^{2}},  \\ 
+                R =  \frac{f_{0}}{\mathcal{N}_{0}^{2}}\mean{\res{b}\res{u}}, \, & \rm and  &  
+                S = \frac{f_{0}}{\mathcal{N}_{0}^{2}}\mean{\res{b}\res{v}} ;
+                \end{array} 
+                \end{equation}
+                 and where $f_{0}$ is the mean value of the Coriolis parameter and $\mathcal{N}_{0}$ is the buoyancy frequency. \cite{marshall2012framework}
+                demonstrates that by taking a weighted Frobenius norm on $\boldsymbol{E} $
+                and applying the Cauchy-Schwarz inequality a handful of times the 
+                 tensor is bounded by the eddy energy ${\left\|\boldsymbol{E}\right\|\leq\left(K+P\right)\equiv E}$,
+                 where $K=\frac{\mean{{\res{u}}^{2} + {\res{v}}^{2}}}{2}$ is the eddy
+                 kinetic energy.
+                 Without any loss of generality, this bound allows us to rewrite the components of the tensor in the form
+                 \begin{equation}
+                 \begin{array}{cc}
+                 M = -\gamma_{m}E\cos{2\phi_{m}}\cos^{2}{\lambda}, & 
+                 N = \gamma_{m}E\sin{2\phi_{m}}\cos^{2}{\lambda}, \\
+                 P =  E\sin^{2}{\lambda}, &  K =  E\cos^{2}{\lambda},  \\
+                 R =  \gamma_{b}\frac{f_{0}}{\mathcal{N}_{0}^{2}}E\cos{\phi_{b}}\sin{2\lambda}, &
+                 S = \gamma_{b}\frac{f_{0}}{\mathcal{N}_{0}^{2}}E\sin{\phi_{b}}\sin{2\lambda} .
+                 \end{array} 
+                 \end{equation}
+                 Here we have introduced two eddy anisotropies, $0\leq\gamma_{m},\gamma_{b}\leq1$, two eddy flux angles $0\leq\phi_{m},\phi_{b}\leq\pi$ and an eddy energy partition angle,
+                 $0\leq\lambda\leq\pi/2$. Now the Eliassen-Palm flux tensor
+                 is written in terms of five non-dimensional, bounded parameters
+                 and $E$, the eddy energy.
+                 
+                Returning to the Arctic Ocean as discussed in Section \ref{arcticocean},
+                the ocean is a relatively quiescent and highly stratified ocean. 
+                With that in mind, an appropriate framework for describing
+                the dynamics of the Arctic is the hydrostatic primitive equations
+                in isopycnal coordinates. \cite{young2012exact} carefully constructs
+                these equations from Cartesian coordinate hydrostatic primitive equations,
+                \begin{subequations}
+                	\begin{equation}
+                	\frac{D u}{D t} -fv + p_{x} = \mathcal{X} \\
+                	\end{equation}
+                	\begin{equation}
+                	\frac{D v}{D t} +fu + p_{y} = \mathcal{Y} \\
+                	\end{equation}
+                	\begin{equation}
+                	p_{z} = b \\
+                	\end{equation}
+                	\begin{equation}
+                	u_{x} + v_{y} + w_{z} = 0 \\
+                	\end{equation}
+                	\begin{equation}
+                	\frac{D b}{D t} = \omega,
+                	\end{equation}
+                \end{subequations}
+                where $b(\boldsymbol{x},t)$ is the buoyancy,
+                 $\rho=\rho_{0}\left(1-g^{-1}b\right)$; $\mathcal{X}$, $\mathcal{Y}$
+                 denote adiabatic processes and body forces and $\omega$ represents
+                 any diabatic forcing. In isopycnal coordinates this becomes
+                 \begin{subequations}
+                 	\label{isopyceq}
+                 	\begin{equation}
+                 	\frac{D u}{D t} -fv + m_{x} = \mathcal{X} \\
+                 	\end{equation}
+                 	\begin{equation}
+                 	\frac{D v}{D t} +fu + m_{y} = \mathcal{Y} \\
+                 	\end{equation}
+                 	\begin{equation}
+                 	m_{b} + \eta = 0  \\
+                 	\end{equation}
+                 	\begin{equation} 
+                 	\label{isopyccont}
+                 	\frac{\partial \sigma}{\partial t}  + \left( \sigma u\right)_{x} + \left( \sigma v\right)_{y} + \left( \sigma \omega\right)_{b} = 0 .
+                 	\end{equation}
+                 \end{subequations}
+                 Here $z \equiv \eta(x,y,b,t) $, where $\eta$ is used to distinguish 
+                 it has a dependent function; $\frac{D}{Dt} \equiv \frac{\partial}{\partial t}
+                 + u\frac{\partial}{\partial x} + v\frac{\partial}{\partial y}
+                 + \omega\frac{\partial}{\partial b}$ is the
+                  convective derivative in isopycnal coordinates; $m \equiv p-b\eta$ is the 
+                  Montgomery potential and $\sigma \equiv \eta_{b} = -m_{bb}$.
+                  Compare the continuity equation, Equation~\ref{isopyccont}, with 
+                  Equation~\ref{cont}, noting that
+                  $\sigma = \eta_{b}$ is equivalent to $-z_{\rho}$. Now, by defining a thickness weighted average,
+                  $\thkmean{\psi}=\nthkmean{\sigma\psi}/\nthkmean{\sigma}$, where
+                  $\nthkmean{\psi}$ is the standard average and their residuals,
+                  $\thkres{\psi}=\psi-\thkmean{\psi}$ and $\nthkres{\psi}=\psi-\nthkmean{\psi}$,
+                  \cite{young2012exact} constructs the Eliassen-Palm flux vectors, 
+                  $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$,  for
+                  these equations so that the momentum equations become
+                  \begin{subequations}
+                  	\label{thkweigheq}
+                  	\begin{equation}
+                  	\frac{\spec{D} \thkmean{u}}{D t} -f\thkmean{v} + \nthkmean{m}_{x} 
+                  	+\boldsymbol{\nabla}\cdot\boldsymbol{E}^u= \thkmean{\mathcal{X}} \\
+                  	\end{equation}
+                  	\begin{equation}
+                  	\frac{\spec{D} \thkmean{v}}{D t} +f\thkmean{u} + \nthkmean{m}_{y}
+                  	+\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \thkmean{\mathcal{Y}}, \\
+                  	\end{equation}
+                  	where $\frac{\spec{D} }{D t} = \equiv \frac{\partial}{\partial t}
+                  	+ \thkmean{u}\frac{\partial}{\partial x} + \thkmean{v}\frac{\partial}{\partial y}
+                  	+ \thkmean{\omega}\frac{\partial}{\partial b}$, whilst the continuity equation is just
+                  	\begin{equation} 
+                  	\frac{\partial \nthkmean{\sigma}}{\partial t}  + \left( \nthkmean{\sigma} \thkmean{u}\right)_{x} + \left( \nthkmean{\sigma} \thkmean{v}\right)_{y} + \left( \nthkmean{\sigma} \thkmean{\omega}\right)_{b} = 0 .
+                  	\end{equation}
+                  \end{subequations}
+                   $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$ are defined as
+                   \begin{equation}
+                   \begin{array}{cc}
+                   \boldsymbol{E}^{u}=\nthkmean{\sigma}^{-1}\left(
+                   \begin{array}{c}
+                   \thkmean{\thkres{u}\thkres{u}} \\
+                   \thkmean{\thkres{u}\thkres{v}} \\
+                    \thkmean{\thkres{u}\thkres{\omega}} \\
+                   \end{array}\right)+\nthkmean{\sigma}^{-1}\left(
+                   \begin{array}{c}
+                   \frac{1}{2}\nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
+                   0 \\
+                   \nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \\
+                   \end{array}\right), &
+                   \boldsymbol{E}^{v}=\nthkmean{\sigma}^{-1}\left(
+                   \begin{array}{c}
+                   \thkmean{\thkres{u}\thkres{v}} \\
+                   \thkmean{\thkres{v}\thkres{v}} \\
+                   \thkmean{\thkres{v}\thkres{\omega}} \\
+                   \end{array}\right)+\nthkmean{\sigma}^{-1}\left(
+                   \begin{array}{c}
+                   0\\
+                   \frac{1}{2}\nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
+                   \nthkmean{\nthkres{\eta}\nthkres{m}_{y}} \\
+                   \end{array}\right) \\
+                   \end{array}.
+                   \end{equation}
+                   Crucially, in \cite{young2012exact} the first two components of  $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$ are directed along 
+                   the isopycnals, whilst only  the third component directed through 
+                   isopycnal surfaces; hence, in the adiabatic case (i.e. when $\omega=0$)
+                   $ \nthkmean{\sigma}^{-1}\nthkmean{\nthkres{\eta}\nthkres{m}_{x}}$ and 
+                   $\nthkmean{\sigma}^{-1}\nthkmean{\nthkres{\eta}\nthkres{m}_{y}}$ are
+                   precisely the ``inviscid pressure drag"  or ``form drag" identified
+                   by \cite{rhines1979theoretical} and represents the transfer of momentum
+                   between isopycnal surfaces. One key feature of this formulation
+                   is that the eddy stresses are all entirely described in the momentum
+                   equations, hence one might wonder what has happened to 
+                   the bolus velocity described by \cite{gent1995parameterizing}. 
+                   It turns out that the thickness weighted velocity is precisely 
+                   the transport velocity, since $\thkmean{\boldsymbol{u}}=\nthkmean{\sigma\boldsymbol{u}}/\nthkmean{\sigma}=\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}/\nthkmean{\sigma}$
+                   and  $\nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}/\nthkmean{\sigma}$
+                   is the bolus velocity. Hence, this implies that  the equations explicitly
+                    represent the mean velocities as the  transport velocities.
+                     To retrieve the bounds derived by \cite{marshall2012framework} 
+                     we write $\boldsymbol{E} = (\boldsymbol{E}^{u}, \boldsymbol{E}^{v}, 0)$
+                     and note that in the geostrophic limit $m_x \sim fv$ and  $m_y \sim -fu$.
+                     Then by writing 
+                     \begin{equation}
+                     \begin{array}{ccc}
+                     M = \frac{\thkmean{{\thkres{v}}^{2} - {\thkres{u}}^{2}}}{2}, & 
+                     N = \thkmean{\thkres{u}\thkres{v} }, \\
+                     K = \frac{\thkmean{{\thkres{u}}^{2} + {\thkres{v}}^{2}}}{2}, & 
+                     P =  \nthkmean{{\nthkres{\eta}}^{2}},  \\ 
+                     R =  f\nthkmean{\nthkres{\eta}\nthkres{u}}, \, & \rm and  &  
+                     S = f\nthkmean{\nthkres{b}\nthkres{v}} ;
+                     \end{array} 
+                     \end{equation}
+                     we have (in the adiabatic case) that
+                     \begin{equation}
+                     \boldsymbol{E}=\nthkmean{\sigma}^{-1}\left(
+                     \begin{array}{ccc}
+                     -M+K+P & N & 0 \\
+                     N & M+K+P & 0 \\
+                     S & -R & 0 \\
+                     \end{array}\right).
+                     \end{equation}
+                     By applying the Frobenius norm in a similar fashion to 
+                     \cite{marshall2012framework} we retain the energy bound on
+                      $\boldsymbol{E}$
+                      
+                      Equations \ref{thkweigheq} are of the same form as Equations 
+                      \ref{isopyceq}. Hence, it's possible to derive an
+                      Rossby-Ertel \gls{pv} for the thickness weighted system
+                      as
+                      \begin{equation}
+                      \frac{\spec{D} \spec{q}}{D t} + \nthkmean{m}_{x} 
+                      +\boldsymbol{\nabla}\cdot\spec{\boldsymbol{F}}
+                      +\boldsymbol{\nabla}\cdot\spec{\boldsymbol{\Gamma}}=0,
+                      \end{equation} 
+                      where
+                      \begin{equation}
+                      \spec{q}\equiv\frac{f+\thkmean{v}_{x}-\thkmean{u}_{y}}{\nthkmean{\sigma}},
+                      \end{equation}
+                      is the Rossby-Ertel \gls{pv}, $\Gamma$ contains only the diabatic terms involving $\thkmean{\mathcal{X}} $, $\thkmean{\mathcal{Y}} $ and $\thkmean{\omega} $ and 
+                      \begin{equation}
+                      \spec{\boldsymbol{F}}=\nthkmean{\sigma}^{-1}\left(
+                      \begin{array}{c}
+                      \boldsymbol{\nabla}\cdot\boldsymbol{E}^v \\
+                      -\boldsymbol{\nabla}\cdot\boldsymbol{E}^u\\
+                      0 \\
+                      \end{array}\right).
+                      \end{equation}
+                      Hence, the \gls{pv} fluxes can be written in terms of
+                      the momentum fluxes, whilst by writing ${\boldsymbol{\nabla}\cdot\boldsymbol{E}^u = -\nthkmean{\sigma} \spec{\boldsymbol{F}}\cdot\boldsymbol{j}}$ and
+                      ${\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \nthkmean{\sigma} \spec{\boldsymbol{F}}\cdot\boldsymbol{i}}$ the momentum fluxes
+                      can be written in terms of the \gls{pv} fluxes.
+                      Rather than $\spec{q}$, \cite{greatbatch1998exploring} suggest
+                      the use of a thickness weighted Rossby-Ertel \gls{pv},
+                      \begin{equation}
+                      \thkmean{q}=\frac{\nthkmean{\sigma q}}{\nthkmean{\sigma}}=\frac{f+\nthkmean{v}_{x}-\nthkmean{u}_{y}}{\nthkmean{\sigma}},
+                      \end{equation}
+                      which leads  to
+                      \begin{equation}
+                      \frac{\spec{D} \left( \thkmean{q}\right)}{D t}
+                      + \boldsymbol{\nabla}\cdot\left(\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}\right)
+                      +\boldsymbol{\nabla}\cdot\boldsymbol{\Upsilon}=0 ,
+                      \end{equation}
+                      where, again, $\boldsymbol{\Upsilon}$ only contains
+                      diabatic terms. Compare with Equation \ref{meanpveq}, noting that
+                       ${\nthkmean{\sigma}\thkmean{\boldsymbol{u}}=\nthkmean{\sigma}\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}}$.
+                       Using the Cauchy-Schwarz inequality, it is easily noted that
+                       the norm of $\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}$ is bounded
+                       by $2\sqrt{KQ}$, where $K = \frac{\thkmean{{\thkres{u}}^{2} +
+                       	{\thkres{v}}^{2}}}{2}$ is the eddy kinetic energy and $Q =
+                        \frac{\thkmean{{\thkres{q}}^{2}}}{2}$ is the eddy enstrophy.
+                       Providing $\spec{q} \sim \thkmean{q}$, which is equivalent 
+                       to the  curl of the bolus velocities $\left(\nthkmean{\nthkres{\sigma}\nthkres{v}}/\nthkmean{\sigma}\right)_{x}-\left(\nthkmean{\nthkres{\sigma}\nthkres{u}}/\nthkmean{\sigma}\right)_{y}$ 
+                       being small, then it can be assumed, in the adiabatic case,
+                       that $\boldsymbol{\nabla}\cdot\spec{\boldsymbol{F}} \sim \boldsymbol{\nabla}\cdot\left(\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}\right)$ and so $\spec{\boldsymbol{F}}$,
+                       and hence $\boldsymbol{\nabla}\cdot\boldsymbol{E}$
+                       is also bounded by  $2\sqrt{KQ}$.
+                       
+                       
+                      
+                      
+                      
+                      
+                     
+                
+                \begin{itemize}    
                 	
                 	\item Entropy  Maximisation
                 	\begin{itemize}      
-                		\item Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy as been developing
+                		\item Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy has been developing
                 		in parallel.
-                		\item \cite{holloway1987systematic} introduced the principle with
+                		\item \cite{holloway1987systematic} demonstrated the principle with
                 		the idea that eddies in the ocean are like the jiggling of a box of 
                 		marbles that randomises them into their highest state of entropy.
                 		\item This therefore becomes the problem of deriving the maximum
@@ -494,30 +750,37 @@ the increased success of using higher resolution eddy permitting models.
 
 \subsection{Summary and Hypothesis}
 
+Since the likes of \cite{young1982shear}, \cite{holloway1987systematic} and
+\cite{gent1990}, we have seen much development of how to describe the mean-eddy interaction.
+Attempting to parameterise this in non-eddy-resolving models has lead to 
+continuity and \gls{pv} closure parameterisations such as \cite{gent1990}
+and \cite{greatbatch1998exploring} as well maximum entropy principle parameterisations 
+such as the ``Neptune Effect" (\cite{holloway1992representing}) and \cite{polyakov2001eddy}.
+However, to date these parameterisations are hopeless over topography. Either
+they are far to dissipative, like \gls{gm}, and fail to represent the driving nature
+of eddies-topographic interactions or they violate energy conservation
+by failing to appropriately control the energy injected into the system, as in the cases
+of \gls{pv} closure and the ``Neptune Effect". To avoid this models attempting to
+use non-dissipative parameterisations often attempt to tune the parameterisation in
+an ad-hoc fashion to avoid spurious energy injection. However, by carefully implementing
+the framework put forward by \cite{marshall2012framework} and generalised in
+\cite{maddison2013eliassen}, one might create a parameterisation which is
+inherently bounded by energy and enstrophy constraints.
+
+The discussion in this Section has shown that the mean-eddy interactions 
+emerge with competing \gls{gm}-like and ``Neptune Effect''-like natures
+\cite{adcock2000interactions}. Meanwhile  it's possible to show that
+the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy enstrophy
+\cite{marshall2012framework}.
+Diagnosis of the contributions to the eddy stress tensor from
+the eddy kinetic and potential energy, as well as the Reynolds' stress angle and eddy bouyancy flux angle will allow the investigation of the following:
 \begin{itemize} 
-	\item summary
-	\begin{itemize} 
-		\item quarter of a century has seen the development of how to describe the mean-eddy interaction
-		\item but not how to effectively parametrise eddies
-		\item the main sticking point is finding a parameterisation which incorporates the non-dissipative components of mean-eddy interaction without violating energy conservation.
-		\item A framework put forward by \cite{marshall2012framework} and generalised in
-		\cite{maddison2013eliassen} describes how one might create a parameterisation which
-		inherently is bounded by energy and enstrophy constraints.
-	\end{itemize}  
-	\item hypothesis
-	\begin{itemize} 
-		\item Diagnosis of the contributions to the eddy stress tensor from
-		the eddy kinetic and potential energy, as well as the Reynolds' stress angle and eddy bouyancy flux angle will allow the investigation of the following
-		\begin{itemize} 
-			\item how eddy stresses are limited by the available eddy energy and enstrophy in the system
-			\item that topographic slope is also likely to be a controlling factor for the structure of the eddy stresses.
-			\item how limited energy is likely to inhibit the ability for the eddies the
+		\item How much topographic slope is the controlling factor for the structure of the eddy stresses in eddy-topographic interactions.
+		\item How limited energy is likely to inhibit the ability for the eddies the
 			generate a mean along-topography flow.
-			\item where the \gls{gm}-like nature or ``Neptune Effect''-like natures of the 
-			eddy stress take precedence over the other.
-		\end{itemize} 
-	\end{itemize} 
-\end{itemize}      
+	    \item That $\spec{q} \sim \thkmean{q}$ so that the enstrophy bound hold for $\spec{F}$,
+		\item and hence, whether eddy stresses are limited by the available eddy enstrophy in the system.
+\end{itemize} 
  
 
 \section{Developement of Stacked Shallow Water Equations}
@@ -525,7 +788,7 @@ the increased success of using higher resolution eddy permitting models.
 With the hope of taking advantage of the invariance demonstrated by 
 \cite{maddison2013eliassen}, we need to be able to diagnose the
 eddy terms in a controlled and repeatable environment. Hence, we turn our attention to
-idealised models as a representation of ocean dynamics. This has the this has an advantage 
+idealised models as a representation of ocean dynamics. This has an advantage 
 over using observational data as well as output from \glspl{gcm} for a number of reasons.
 \begin{itemize}
 	\item The main limitation is that for this analysis to work, it must be possible to define an
@@ -547,6 +810,7 @@ over using observational data as well as output from \glspl{gcm} for a number of
 	\item Finally, the complex nature of \glspl{gcm} mean that there is potentially a large saving
 	of computational power than can be made by simplifying the problem into an idealised situation.
 \end{itemize}
+
 Starting from the full primitive equations we need to carefully make assumptions and
 simplifications to create a representation of the ocean which is simple enough for our
 purposes but still a close enough approximation to the ocean that any results are ultimately
@@ -575,24 +839,30 @@ For our study the equations that will give us the most efficient model whilst ca
    here. 
    In deriving the shallow water equations we make approximations which are frequently made in
    most GFD analyses. The first of these approximations to make that is made is that the ocean
-   incompressible or specifically the Boussinesq approximation. This is a reasonable
-   approximation to make given the small size of deviations in density from the mean state
+   incompressible or specifically the Boussinesq approximation. This is reasonable
+   given the small size of deviations in density from the mean state
    that occurs in the ocean (\cite{vallis2006atmospheric}).
-   The second approximation that is made in that the fluid is hydrostatic. That is to say that the equation $\frac{\partial p}{\partial z} + \rho g=0$ holds, where $p$ is pressure, $\rho$
+   The second approximation that is made is that the fluid is hydrostatic. That is to say that the equation $\frac{\partial p}{\partial z} + \rho g=0$ holds, where $p$ is pressure, $\rho$
    is density, $g$ is gravitational acceleration and $z$ is the vertical coordinate. Despite
    the fact that non-hydrostatic effects are likely to affect the vertical velocity, since
    there are only limited areas in the Arctic where dense water could overspill into less
    dense water, it is sensible to assume the hydrostatic approximation by scale arguments:
    the vertical components of velocity will be orders of magnitude smaller than the
    horizontal velocities. This give us the hydrostatic, Boussinesq  primitive equations:
+   \begin{subequations}
    \begin{equation}
-   \begin{split}
-   \frac{Du}{Dt}-fv &= -\frac{1}{\rho}   \frac{\partial p}{\partial x}+F_{u}-D_{u}, \\
-   \frac{Dv}{Dt}+fu &= -\frac{1}{\rho}   \frac{\partial p}{\partial y}+F_{v}-D_{v}, \\
-   \frac{\partial p}{\partial z} &+ \rho g=0 \\
-   \frac{\partial u}{\partial x} + &\frac{\partial v}{\partial y} +\frac{\partial w}{\partial z}  = 0 ,
-   \end{split}
+   \frac{Du}{Dt}-fv = -\frac{1}{\rho}   \frac{\partial p}{\partial x}+F_{u}-D_{u}, \\
    \end{equation}
+   \begin{equation}
+   \frac{Dv}{Dt}+fu = -\frac{1}{\rho}   \frac{\partial p}{\partial y}+F_{v}-D_{v}, \\
+   \end{equation}
+   \begin{equation}
+   \frac{\partial p}{\partial z} + \rho g=0 \\
+   \end{equation}
+   \begin{equation}
+   \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +\frac{\partial w}{\partial z}  = 0 ,
+   \end{equation}
+   \end{subequations}
    where $(u,v)$ are the horizontal velocities, $w$ the vertical velocity, $f$ is the Coriolis
     parameter, and $F_{u}$, $F_{v}$, $D_{u}$ and  $D_{v}$ are the $u$- and $v$-components of
     the Forcing and  Dissipation.
@@ -609,18 +879,18 @@ For our study the equations that will give us the most efficient model whilst ca
     
     The next step is to approximate the vertical density profile as a stack of
     fluids of constant density, as in Figure \ref{fig:swdensity}. 
-    The reason to do this is to allow the shallow
+    This is to allow the shallow
     water approximation to be made whilst allowing for baroclinic effects by 
     deriving the shallow water equations for each layer separately. Formally, 
-    the density profile is split into $N$ sections with densities 
+    the density profile is split into $N$ sections with constant densities 
     $\rho_{1}$ through to $\rho_{N}$, where $n=1$ is the lowest layer and $n=N$
-    is the uppermost layer. Integrating $\frac{\partial p}{\partial z} + \rho g=0$
-    downwards from the surface therefore yields 
+    is the uppermost layer. Integrating the hydrostatic equation, $\frac{\partial p}{\partial z} + \rho g=0$,
+    downwards from the surface yields 
     \begin{equation}
     p(x,y,z)=\sum^{N}_{k=n+1}\left(g \rho_{k} h_{k} \right) + g \rho_{n}\left(\eta_{n+\frac{1}{2}} - z \right)
     \end{equation}
-    for $\eta_{n-\frac{1}{2}}\leq z \leq \eta_{n+\frac{1}{2}}$, where $\eta_{n+\frac{1}{2}}$,
-    $\eta_{n-\frac{1}{2}}$ are the depths of the interfaces above and below layer $n$
+    for $\eta_{n-\frac{1}{2}}\leq z \leq \eta_{n+\frac{1}{2}}$, where $\eta_{n+\frac{1}{2}}(x,y,t)$,
+    $\eta_{n-\frac{1}{2}}(x,y,t)$ are the depths of the interfaces above and below layer $n$
     respectively and $h_{n} = \eta_{n+\frac{1}{2}} -\eta_{n-\frac{1}{2}}$ is the vertical
      thickness  of layer $n$. Similarly, by integrating the continuity equation over a layer
      we have
@@ -629,47 +899,54 @@ For our study the equations that will give us the most efficient model whilst ca
      0 &=\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}}\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +\frac{\partial w}{\partial z} \right){\rm d} z \\
      &=\frac{\partial }{\partial x}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} u{\rm d} z +
      \frac{\partial }{\partial y}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} v{\rm d} z
-      +  \left[ u   \frac{\partial z}{\partial x} \right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} 
-      +  \left[ v  \frac{\partial z}{\partial y}\right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}}  +
+      -  \left[ u   \frac{\partial z}{\partial x} \right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} 
+      -  \left[ v  \frac{\partial z}{\partial y}\right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}}  +
       \left[ w \right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} \\
      &=\frac{\partial h_{n} }{\partial t} +\frac{\partial h_{n} u_{n}}{\partial x}+
      \frac{\partial h_{n} v_{n} }{\partial y},      \\
      \end{split}
      \end{equation}
-   using that $0 =  \frac{\partial z }{\partial t} + u \frac{\partial z}{\partial x} 
-   + v \frac{\partial z}{\partial y} + w$, $u_{n} =\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} u{\rm d} z$ and $v_{n} =\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} v{\rm d} z$. By also defining 
+   using that $w =  \frac{\partial z }{\partial t} + u \frac{\partial z}{\partial x} 
+   + v \frac{\partial z}{\partial y}$ at $z = \eta_{n+\frac{1}{2}} , \eta_{n-\frac{1}{2}}$; $u_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} u{\rm d} z$ and $v_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} v{\rm d} z$. By also defining 
    the Montgomery potential as
-   $m_{n}=p+g \rho_{n} z=\sum^{N}_{k=n}\left(\rho_{N} g_{k+\frac{1}{2}} \eta_{k+\frac{1}{2}} \right) $ where 
+   $m_{n}(x,y,t)=p+g \rho_{n} z=\sum^{N}_{k=n}\left(\rho_{N} g_{k+\frac{1}{2}} \eta_{k+\frac{1}{2}} \right) $ where 
    $g_{n+\frac{1}{2}} =  \frac{\rho_{n} - \rho_{n+1}}{\rho_{N}}$, we have the stacked shallow water
    equations, 
+   \begin{subequations}
+   	content...
    \begin{equation}
-   \begin{split}
-   \frac{Du_{n}}{Dt}-fv_{n} &= -\frac{1}{\rho_{N}}   \frac{\partial m_{n}}{\partial x}+F_{u_{n}}-D_{u_{n}}, \\
-   \frac{Dv_{n}}{Dt}+fu_{n} &= -\frac{1}{\rho_{N}}   \frac{\partial m_{n}}{\partial y}+F_{v_{n}}-D_{v_{n}}, \\
-   0 &=\frac{\partial h_{n} }{\partial t} +\frac{\partial h_{n} u_{n}}{\partial x}+
-   \frac{\partial h_{n} v_{n} }{\partial y}.\\
-   \end{split}
+   \frac{Du_{n}}{Dt}-fv_{n} = -\frac{1}{\rho_{N}}   \frac{\partial m_{n}}{\partial x}+F_{u_{n}}-D_{u_{n}}, \\
    \end{equation}
+   \begin{equation}
+   \frac{Dv_{n}}{Dt}+fu_{n} = -\frac{1}{\rho_{N}}   \frac{\partial m_{n}}{\partial y}+F_{v_{n}}-D_{v_{n}}, \\
+   \end{equation}
+   \begin{equation}
+   0 =\frac{\partial h_{n} }{\partial t} +\frac{\partial h_{n} u_{n}}{\partial x}+
+   \frac{\partial h_{n} v_{n} }{\partial y}.\\
+   \end{equation}
+\end{subequations}
    It is worth noticing, here, the similarity between these equations and the isopycnal
-    primitive    equations set out by \cite{young2012exact}, but one should be aware that
+    primitive    equations set out by \cite{young2012exact}, and repeated in Section \ref{meaneddyinteractiontheory}, but one should be aware that
     the two sets of equations describe different realities; $h_{n}$, for example, is not
     equivalent to $\sigma = \frac{\partial z}{\partial \rho}$ since in the shallow water
     equations $\frac{\partial z}{\partial \rho}$ is not well-defined due to  $\rho$ being constant.
    
    
 \begin{itemize}
+	\item Note that up to this point everything is old, and now we have new stuff
+	\item Reason for careful definition is PE and Form Stresses on interfaces
+	\item Note the use of Rigid Lid approximation in
+	simulations.
 \item Development of the eddy closure theory in the shallow water case
 including examining certain nuances the approximation includes, such
 as the description of physical quantities, like
 potential and kinetic energy, on the discontinuous 
 jump between layers.
-\item Note the use of Rigid Lid approximation in
-simulations.
 \end{itemize}
 
 \subsection{Model Discretisation}
 
-Continuous model to discontinous discrete model.
+Continuous equations to discontinous discrete model.
 Technical description of the models. 
 C-grid, AB time stepping, Preconditioned CG solver. 
 Parallelisation.
@@ -684,8 +961,10 @@ Example model output.
 
 \subsection{Eddy Stresses}
 
-Thickness weighted mean of the shallow water
-equation. Form of the momentum and pv eddy stresses.
+Starting from thickness weighted mean of the shallow water
+equation. 
+
+Form of the pv eddy stresses.
 Thickness weighted PV vs PV derived from thickness 
 weighted equations.
 
@@ -755,7 +1034,7 @@ eddy energy, eddy enstrophy etc.
 Likely will need to carry the time and spatial
 evolution of eddy energy and eddy enstrophy and have
 some sort of step function to turn on and off the
-"GM like" and "holloway like" parts of the parametrisation at appropriate moments.
+``GM like" and ``holloway like" parts of the parametrisation at appropriate moments.
 
 
 \section{conclusions and discussions}

@@ -6,10 +6,11 @@
 \usepackage{graphicx}
 \usepackage[width=16.00cm, height=22.00cm]{geometry}
 
+\usepackage{color, soul}
 \usepackage{siunitx}
 
 \usepackage[acronym,translate=false]{glossaries}
-\usepackage[backend=biber,style=bwl-FU,uniquename=false,maxbibnames=99]{biblatex}
+\usepackage[backend=biber,style=bwl-FU,uniquename=false,maxcitenames=2,maxbibnames=99]{biblatex}
 \addbibresource{bibrefs.bib}
 
 \usepackage{setspace}
@@ -48,6 +49,9 @@
 \newcommand*\nthkres[1]{{#1}^{\#}}
 \newcommand*\spec[1]{\mathring{#1}}
 \newcommand*\e[1]{{\times 10}^{#1}}
+\newcommand*\figref[1]{Figure~\ref{#1}}
+\newcommand*\equref[1]{Equation~\ref{#1}}
+\newcommand*\secref[1]{Section~\ref{#1}}
 
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
@@ -79,7 +83,7 @@ in how the polar ice cap interacts with the climate and, in turn, how
 the climate affects the ice cap. 
 The Ocean itself is a highly stable body of water with strong stratification, 
 which means that the water column can be divided into advective water masses.
-The Arctic Ocean is commonly divided into four different layers (Figure~\ref{fig:amap}):
+The Arctic Ocean is commonly divided into four different layers (\figref{fig:amap}):
 The polar mixed layer, which is a well mixed layer in
 contact with the atmosphere and surface ice; the halocline, which acts as
 reservoir of fresh water and penetrates to around ${\sim}200\,\mathrm{m}$; the \gls{awl},
@@ -107,7 +111,7 @@ and halocline in the upper ${\sim}200\,\mathrm{m}$ of the Arctic Ocean.
 This surface circulation has been well documented by observations
 from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
 the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it's a very different
-story for the circulation in the \gls{awl} and lower layers (Figure~\ref{fig:Proshutinsky2005Circulation}). Observations made
+story for the circulation in the \gls{awl} and lower layers (\figref{fig:Proshutinsky2005Circulation}). Observations made
 inside the Ocean's basins rarely are able to profile the structure  and
 circulation  below 500m  although much progress has been made here in the
 past decade. This lack of observations means that  we  still only have  a  sense  of  the circulation 
@@ -138,12 +142,12 @@ the fluxes of \gls{pv} though the boundaries. \cite{yang2005arctic} demonstrates
 in an idealised barotropic model of a basin, controlling the flux 
 of \gls{pv} through inflows and outflows
 at the boundary, the circulation in the basin could be switched between cyclonic and
-anti-cyclonic circulations (Figure~\ref{fig:Yang2005}). This principle suggests
+anti-cyclonic circulations (\figref{fig:Yang2005}). This principle suggests
 that the persistent cyclonic nature of the \gls{awl} implies that there is a 
 net influx of \gls{pv} via the Arctic Gateways. Fortunately, permanent moorings 
 covering the majority of the ocean gateways into the Arctic~Ocean have built
 up a detailed picture of the transport in and out of the Arctic Ocean 
-(\cite{tsubouchi2012arctic}, Figure~\ref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
+(\cite{tsubouchi2012arctic}, \figref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
 where $Q_{i}$ is the volume transport and $H_i$ the depth, for location $i$. 
 Whilst there is a tendency for total to infer a positive influx of \gls{pv}, the
 results are not convincing; \cite{munchow2006observational} shows that by including the
@@ -188,7 +192,7 @@ effort has been made to observe and catalogue eddies in the Arctic
 (\cite{zhao2014characterizing}) and has demonstrated their prevalence in the Arctic Ocean.
 Whilst these studies have frequently been focused on the halocline and the surface dynamics
 there is good reason to believe that eddies also penetrate deep into the Arctic 
-(Figure~\ref{fig:Woodgate2001Mooring}, \cite{woodgate2001arctic}).
+(\figref{fig:Woodgate2001Mooring}, \cite{woodgate2001arctic}).
 
 
 
@@ -242,6 +246,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  term in place of the term itself, which is usually dependent on the averaged 
  variables and some physical assumptions.
  
+ \subsubsection{\cite{gent1990}}
+ 
  The earliest ocean models (\cite{bryan1969numerical}) had vertical $z$-coordinate, or depth-coordinates, with simple horizontal and vertical Laplacian diffusion to act as 
  the closure. Whether these terms are interpreted as a parameterisation for the effects
  of unresolved turbulence or simply as a numerical tool to avoid noise at 
@@ -280,8 +286,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
   where $z_{\rho} = \frac{\partial z}{\partial \rho}$ is defined as the
    isopycnal thickness and $\boldsymbol{u}$ is the horizontal fluid
    velocity. Since it is non-linear, when this equation is discretised
-   it produces an eddy covariance term as demonstrated by equation
-   \ref{non-lin average}; the averaged equation can be written as
+   it produces an eddy covariance term as demonstrated by 
+   \equref{non-lin average}; the averaged equation can be written as
      \begin{equation}
      \frac{\partial \mean{z_{\rho}}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{z_{\rho}} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}\right).
      \label{meancont}
@@ -303,7 +309,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
     isopyncal layer via baroclinic instability, hence the 
     \gls{gm} parameterisation is given by $\boldsymbol{F} = - \left(\kappa
     \boldsymbol{\nabla} z \right)_{\rho}$, where $\kappa$ can both be
-     spatially and temporally varying parameter. Combining this with equation \ref{thicknessgeneralparam} we have
+     spatially and temporally varying parameter. Combining this with  \equref{thicknessgeneralparam} we have
           \begin{equation}
           \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = \boldsymbol{\nabla}\cdot\left(\kappa
               \boldsymbol{\nabla} z \right)_{\rho} .
@@ -324,7 +330,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
     that the tracer $\tau$ is effectively advected by a transport velocity, 
      $\boldsymbol{u}^{\star}$. Secondly, an important 
     question is how does \gls{gm} change the energy of the system. 
-    The right hand side of equation \ref{contgm} adds 
+    The right hand side of \equref{contgm} adds 
     $\phi \boldsymbol{\nabla}\cdot\left(\kappa
                   \boldsymbol{\nabla} z \right)_{\rho} 
                   = \boldsymbol{\nabla}\cdot\left(\phi\kappa
@@ -360,6 +366,10 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
          and so a different parameterisation is required to mimic this
          effect.
          
+         
+         
+         \subsubsection{\gls{pv} Closure}
+         
          To proceed one might wonder what makes the continuity equation
          so special, in truth there is a number of non-linearities that
          crop up when examining the full state equations. Take, for example, the
@@ -370,7 +380,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
            \end{equation}
            where $\omega=f+\xi$ is the absolute vorticity and
            $\xi = \boldsymbol{k} \cdot\left( \boldsymbol{\nabla}\wedge \boldsymbol{u}\right)$ is the relative vorticity. 
-           By applying an average operator to Equation \ref{vort}, we have the same averaged equation as Equation \ref{meancont} but for the mean absolute vorticity, $\mean{\omega}$,
+           By applying an average operator to \equref{vort}, we have the same averaged equation as \equref{meancont} but for the mean absolute vorticity, $\mean{\omega}$,
                 \begin{equation}
                 \frac{\partial \mean{\omega}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{\omega} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right),
                 \end{equation}
@@ -382,7 +392,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 $\mean{q}$ to be the thickness weighted mean of $q$, i.e.
                 $\mean{q}=\mean{z_{\rho}q}/\mean{z}_{\rho}$, then 
                 $\mean{\omega}=\mean{q}\,\mean{z}_{\rho}$ and $\res{\omega}=\mean{z}_{\rho}\res{q}+\mean{q}\res{z}_{\rho}$. By 
-                combining this with Equation \ref{meancont} we gain a conservative equation 
+                combining this with \equref{meancont} we gain a conservative equation 
                 for \gls{pv}, 
                 \begin{equation}
                 \frac{\partial \left(\mean{z}_{\rho} \mean{q}\right)}{\partial t} +
@@ -395,14 +405,14 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 
                 Now, by making the same assumption that was made for isopycnal thickness in 
                 \gls{gm} for \gls{pv}, that ocean eddies mix PV along isopycnals and not
-                across them, equation \ref{meanpveq} becomes
+                across them, \equref{meanpveq} becomes
                 \begin{equation}
                 \frac{\partial \left(\mean{z}_{\rho} \mean{q}\right)}{\partial t} +
                 \boldsymbol{\nabla}\cdot\left(\mean{z}_{\rho}\,\mean{q}\,\mean{\boldsymbol{u}}+\mean{q}\mean{\res{z}_{\rho} \res{\boldsymbol{u}}}\right)
                 = \boldsymbol{\nabla}\cdot\left(\kappa \mean{z}_{\rho}\,\boldsymbol{\nabla}\mean{q}\right) ,
                 \label{parammeanpveq}
                 \end{equation}
-                where we've used the small slope approximation, demonstrated in \cite{gent1990}. By using Equations \ref{meancont} and \ref{parammeanpveq} we have exactly the equation for an arbitrary tracer given in Equation 6 of \cite{gent1995parameterizing},
+                where we've used the small slope approximation, demonstrated in \cite{gent1990}. By using Equations~\ref{meancont}~and~\ref{parammeanpveq} we have exactly the equation for an arbitrary tracer given in Equation 6 of \cite{gent1995parameterizing},
                 \begin{equation}
                 \frac{D^\star \mean{q}}{D t}\equiv\frac{\partial \mean{q}}{\partial t} + \boldsymbol{u}^\star\cdot\boldsymbol{\nabla}\mean{q} = \boldsymbol{\nabla}\cdot
                 \left(\kappa \mean{z}_{\rho}\boldsymbol{\nabla} \mean{q} \right)/\mean{z}_{\rho} ,
@@ -411,7 +421,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 applied to the mean \gls{pv}, which is advected by the transport velocity $\boldsymbol{u}^\star$ and diffused along isopycnal surfaces. This is now
                 the \gls{pv} closure first proposed in \cite{greatbatch1998exploring}.
                 
-                Equation \ref{pvclosure} represents the interaction of eddies as the
+                \equref{pvclosure} represents the interaction of eddies as the
                 down-gradient diffusion of \gls{pv}; and hence suggests that eddies
                 act to homogenise \gls{pv}. Since \gls{pv} can be approximately written
                 as $q=f/\sigma$ for small relative vorticity, the parametrisation acts  to homogenise isopycnal thickness. In the case 
@@ -420,7 +430,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 causes the isopycnals to mimic the shape of the topography and hence 
                 rise over topography. However, to allow this to happen freely
                 clearly violates energy conservation, as demonstrated schematically in 
-                Figure \ref{fig:Colddoming}. In reality, the ocean attempts to 
+                \figref{fig:Colddoming}. In reality, the ocean attempts to 
                 homogenise \gls{pv} but only so far as it can with the available energy;
                 the result is the slight ``cold doming" above topography as observed in
                 \cite{adcock2000interactions}. 
@@ -428,7 +438,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 It isn't all bad news though. Whilst, unlike \gls{gm}, the downgradient
                 dissipation of \gls{pv} capable of introducing spurious energy, it does
                 control another important quantity: Enstrophy. By multiplying through 
-                by $\mean{z}_{\rho} \mean{q}$, Equation \ref{pvclosure} becomes 
+                by $\mean{z}_{\rho} \mean{q}$, \equref{pvclosure} becomes 
                 \begin{equation}
                 \frac{\partial  }{\partial t}\left(\frac{1}{2}z_{\rho}q^{2}\right) + \boldsymbol{\nabla}\cdot\left(z_{\rho}q\boldsymbol{u}^\star-\kappa z_{\rho}q\boldsymbol{\nabla} q
                 \right)=-\kappa z_\rho \boldsymbol{\nabla}q\cdot\boldsymbol{\nabla}q
@@ -448,6 +458,10 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	\caption[Cold-doming]{I'm going to redraw these for the basin case.}
                 	\label{fig:Colddoming}
                 \end{figure}
+                
+                
+                
+                \subsubsection{Eliassen-Palm Flux Tensor}
                 
                 It is clear from these attempts to parameterise the eddy-mean interaction
                 that the only way to proceed is by being able to take into account 
@@ -508,7 +522,11 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  is written in terms of five non-dimensional, bounded parameters
                  and $E$, the eddy energy.
                  
-                Returning to the Arctic Ocean as discussed in Section \ref{arcticocean},
+                 
+                 
+                 \subsubsection{Thickness Weighted Averaging}
+                 
+                Returning to the Arctic Ocean as discussed in \secref{arcticocean},
                 the ocean is a relatively quiescent and highly stratified ocean. 
                 With that in mind, an appropriate framework for describing
                 the dynamics of the Arctic is the hydrostatic primitive equations
@@ -557,8 +575,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  + \omega\frac{\partial}{\partial b}$ is the
                   convective derivative in isopycnal coordinates; $m \equiv p-b\eta$ is the 
                   Montgomery potential and $\sigma \equiv \eta_{b} = -m_{bb}$.
-                  Compare the continuity equation, Equation~\ref{isopyccont}, with 
-                  Equation~\ref{cont}, noting that
+                  Compare the continuity equation, \equref{isopyccont}, with 
+                  \equref{cont}, noting that
                   $\sigma = \eta_{b}$ is equivalent to $-z_{\rho}$. Now, by defining a thickness weighted average,
                   $\thkmean{\psi}=\nthkmean{\sigma\psi}/\nthkmean{\sigma}$, where
                   $\nthkmean{\psi}$ is the standard average and their residuals,
@@ -653,8 +671,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                      \cite{marshall2012framework} we retain the energy bound on
                       $\boldsymbol{E}$
                       
-                      Equations \ref{thkweigheq} are of the same form as Equations 
-                      \ref{isopyceq}. Hence, it's possible to derive an
+                      Equations~\equref{thkweigheq} are of the same form as Equations~\ref{isopyceq}.
+                      Hence, it's possible to derive an
                       Rossby-Ertel \gls{pv} for the thickness weighted system
                       as
                       \begin{equation}
@@ -691,7 +709,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       +\boldsymbol{\nabla}\cdot\boldsymbol{\Upsilon}=0 ,
                       \end{equation}
                       where, again, $\boldsymbol{\Upsilon}$ only contains
-                      diabatic terms. Compare with Equation \ref{meanpveq}, noting that
+                      diabatic terms. Compare with \equref{meanpveq}, noting that
                        ${\nthkmean{\sigma}\thkmean{\boldsymbol{u}}=\nthkmean{\sigma}\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}}$.
                        Using the Cauchy-Schwarz inequality, it is easily noted that
                        the norm of $\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}$ is bounded
@@ -710,6 +728,9 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       
                       
                       
+                      
+                      \subsubsection{Entropy  Maximisation}
+                      \label{entropy}
                      
                 
                 \begin{itemize}    
@@ -744,10 +765,58 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
 
 
 \subsection{Numerical Models of Arctic}
-	
-AOMIP and attempts to have predictive models of the Arctic Ocean. This includes attempts
-to implement the Neptune effect or other parameterisations such as MEP as well as
-the increased success of using higher resolution eddy permitting models.
+
+	It was discussed in \secref{arcticocean} that to understand the circulation of the Arctic
+	 Ocean it is necessary to use \glspl{gcm}. However, due to poorly resolved processes or
+	  missing key physics, the \glspl{gcm} available show significant variability between
+	   models and frequently display behaviour not depicted in observations. 
+	A detailed comparison of the major Global Climate Models applied to the Arctic Ocean is
+	 being carried out by the \gls{aomip} (see \cite{proshutinsky2008toward} and
+	  \cite{proshutinsky2011recent}). In this section we will specifically discuss the skill
+	   of these models in reflecting the Arctic circulation and specifically the difficulty
+	    these models have in replicating the perceived flow in the Atlantic Water Layer.  
+
+As mentioned in the previous section, the circulation in the freshwater layer is strongly
+ governed by effects of surface forcing. To this extent, providing the various models being
+  compared are given the same forcing, or equivalent depending on how the model is
+   structured, then the resulting circulations are in good agreement
+    (\cite{proshutinsky2005arctic}). They have been shown to have a good skill in imitating
+     certain regimes which have been observed. However, despite good agreement of the general
+      circulation inside the basin there is still some variation between the climate models.
+       The first is how the Pacific Water entering via Bering Strait is advected through the
+    basin within the freshwater layer. The models, despite showing the same regime for the
+     Freshwater layer demonstrate different distributions of the Pacific Water when
+      represented as a passive tracer added in Bering Strait (\cite{proshutinsky2011recent}).
+       However, without an easy way of determining what water originates from the Pacific
+        there are few observations available to determine the legitimacy of the models. The
+     most successful attempts at determining the distribution of Pacific Water have been
+     done using tracers from other sources, such as radioactive tracers from the Atlantic and
+      determining where they?re being blocked by Pacific water such as in \cite{karcher2004dispersion}. More crucially models struggle to coherently and accurately represent
+    mechanisms for the release of freshwater from the Arctic Ocean. This is most likely
+     due to poor representation of the Arctic Gateways specifically in the Canadian
+      Archipelago, where many of the straits and channels are much narrower than can be
+   comfortably resolved. However, whilst these discrepancies are important, they are
+    not the main focus here due to the overall competence of climate models to
+ represent the freshwater layer in the Arctic. The more distressing problem is
+  their ability to represent the Atlantic Water Layer. 
+
+Observations suggest that the Atlantic Water Layer circulates counter clockwise around the Arctic basins at a depth of $200$ to $800\mathrm{m}$ (\figref{fig:Proshutinsky2005Circulation}). However, many attempts over the past twenty years to model the Atlantic Water Layer have resulted in confusing predictions where the circulation seemingly randomly organises into circulations that are cyclonic or anti-cyclonic with almost identical frequency. To attempt to diagnose the skill of a model to produce cyclonic boundary currents \cite{holloway2007water} introduces ``topostrophy", defined as   $\tau=(\boldsymbol{f}\times\boldsymbol{V})\cdot\boldsymbol{\nabla}D$, where $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{V}$ is velocity and  $D$ is the total depth. This so called topostrophy is a measure the strength of along slope flows and gives positive values for currents that flow with the upslope to their right (e.g. for cyclonic rim currents) and negative values for the opposite.  When calculated for the major \gls{aomip} models, most show variable and ambiguous values for $\tau$  whereas models that employ the ``Neptune Effect", mentioned in \secref{entropy}, shows a persistent and positive value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine simultaneous simulations using the NEMO model run with and without the Neptune Effect and show that the addition of this particular parameterisation is the likely cause of this tendency (\figref{fig:HolloWang2009}).  
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{HolloWang2009}
+	\caption[\cite{holloway2009representing}]{Left: The velocity field of the Arctic Ocean at 551m depth as simulated by the Nucleus for European Modeling of the Ocean (NEMO). Right: The velocity field at the same depth after NEMO was modified to include the Neptune Effect. The right panel clearly gives a better representation of the topographically aligned currents observed in the Arctic Ocean.  \cite{holloway2009representing}}
+	\label{fig:HolloWang2009}
+\end{figure}
+
+\textbf{This is material from transfer of status (needs review)}
+
+
+%There has been a lot of discussion over the years about what process could cause a predominantly cyclonic circulation in the Atlantic Water Layer and why it is apparently missing from most of the Arctic climate models. One of the more prevailing ideas is that the cyclonic behaviour of the Atlantic Water Layer is balanced by potential vorticity fluxes in and out of the Arctic (Yang [2005]). And indeed, it can be shown using idealised models that a basin with an inflow that has a prescribed potential vorticity flux can be made to switch regimes by inverting the PV flux. Yang (2005) even made some attempt to quantify the potential vorticity fluxes for the Arctic gateways and found a total flux that would infer a cyclonic circulation. However, further refinements in measuring the potential vorticity fluxes across the Arctic Gateways which have occurred since have demonstrated a large uncertainty and variability in the total potential vorticity flux. One example is the potential vorticity leaving the Arctic via Nares Strait (Munchow [2006]) which would contribute significantly towards an anti-cyclonic circulation but is missing from the budget calculated by Yang (2005). Overall, whilst potential vorticity conservation probably contributes towards the Atlantic Water Layer circulation, due to the high variability of the fluxes in and out of the Arctic and the relatively stable cyclonic circulation observed in the Atlantic Water Layer it is unlikely to be the main contributing factor. 
+
+So, if the circulation is not driven by a potential vorticity balance then what is it that gives such a stable cyclonic circulation in the Atlantic Water Layer and isn?t included in the AOMIP models? The most likely culprit for generating a cyclonic circula tion along the basin slopes is the interaction of the eddy field with the bottom topography. It is easy to show using a simple idealised eddy resolving model that kicking off an eddy field in an unforced and otherwise stationary ocean with variable bottom topography the flow will self organise into a persistent along slope circulation (Adcock and Marshall [2000]). On top of this, detailed observations made from three locations where the Lomonosov Ridge intersects the Eurasian Continental Slope over the period of a year (1995-1996) demonstrate this effect in the ocean (Woodgate [2001]). These observations suggest that the flow is 
+largely diverted to follow the Lomonosov Ridge with a greatly reduced eddy field further downstream, suggesting some form of eddy-topographic interaction takes place. However, due to constraints based on available computing power none of the models involved in AOMIP are eddy resolving. These models hence must use a parameterisation to attempt to represent the effect of eddies, unfortunately most of the commonly used methods for parameterising eddies do not include this eddy-topographic effect and so is the likely case of the inconsistent circulation observed in models. 
 
 \subsection{Summary and Hypothesis}
 
@@ -879,7 +948,7 @@ For our study the equations that will give us the most efficient model whilst ca
     \end{figure}
     
     The next step is to approximate the vertical density profile as a stack of
-    fluids of constant density, as in Figure \ref{fig:swdensity}. 
+    fluids of constant density, as in \figref{fig:swdensity}. 
     This is to allow the shallow
     water approximation to be made whilst allowing for baroclinic effects by 
     deriving the shallow water equations for each layer separately. Formally, 
@@ -927,7 +996,7 @@ For our study the equations that will give us the most efficient model whilst ca
    \end{equation}
 \end{subequations}
    It is worth noticing, here, the similarity between these equations and the isopycnal
-    primitive    equations set out by \cite{young2012exact}, and repeated in Section \ref{meaneddyinteractiontheory}, but one should be aware that
+    primitive    equations set out by \cite{young2012exact}, and repeated in  \secref{meaneddyinteractiontheory}, but one should be aware that
     the two sets of equations describe different realities; $h_{n}$, for example, is not
     equivalent to $\sigma = \frac{\partial z}{\partial \rho}$ since in the shallow water
     equations $\frac{\partial z}{\partial \rho}$ is not well-defined due to  $\rho$ being constant.

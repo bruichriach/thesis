@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper]{report}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -50,8 +50,9 @@
 \newcommand*\spec[1]{\mathring{#1}}
 \newcommand*\e[1]{{\times 10}^{#1}}
 \newcommand*\figref[1]{Figure~\ref{#1}}
-\newcommand*\equref[1]{Equation~\ref{#1}}
+\newcommand*\equref[1]{Equation~\eqref{#1}}
 \newcommand*\secref[1]{Section~\ref{#1}}
+\newcommand*{\half}{\frac{1}{2}}
 
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
@@ -64,11 +65,11 @@
 \maketitle
 
 
-\section{Introduction}
+\chapter{Introduction}
 
 \glsresetall
 
-\subsection{Arctic Ocean}
+\section{Arctic Ocean}
 \label{arcticocean}
 
 
@@ -205,7 +206,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
 	\label{fig:Woodgate2001Mooring}
 \end{figure}
 
-\subsection{Mean-Eddy Interaction Theory}
+\section{Mean-Eddy Interaction Theory}
 
 \label{meaneddyinteractiontheory}
 
@@ -440,7 +441,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 control another important quantity: Enstrophy. By multiplying through 
                 by $\mean{z}_{\rho} \mean{q}$, \equref{pvclosure} becomes 
                 \begin{equation}
-                \frac{\partial  }{\partial t}\left(\frac{1}{2}z_{\rho}q^{2}\right) + \boldsymbol{\nabla}\cdot\left(z_{\rho}q\boldsymbol{u}^\star-\kappa z_{\rho}q\boldsymbol{\nabla} q
+                \frac{\partial  }{\partial t}\left(\half z_{\rho}q^{2}\right) + \boldsymbol{\nabla}\cdot\left(z_{\rho}q\boldsymbol{u}^\star-\kappa z_{\rho}q\boldsymbol{\nabla} q
                 \right)=-\kappa z_\rho \boldsymbol{\nabla}q\cdot\boldsymbol{\nabla}q
                 \end{equation}
                 where the bars have been dropped for convenience.
@@ -577,7 +578,16 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                   Montgomery potential and $\sigma \equiv \eta_{b} = -m_{bb}$.
                   Compare the continuity equation, \equref{isopyccont}, with 
                   \equref{cont}, noting that
-                  $\sigma = \eta_{b}$ is equivalent to $-z_{\rho}$. Now, by defining a thickness weighted average,
+                  $\sigma = \eta_{b}$ is equivalent to $-z_{\rho}$. Using \equref{isopyceq}, an energy equation can also be derived,
+                  \begin{equation}
+                  \frac{\partial \sigma K}{\partial t} + \frac{\partial P}{\partial t} = -\boldsymbol{\nabla}\left(\sigma K \boldsymbol{u} +
+                  \sigma m \boldsymbol{u}\right) -\left(\frac{\partial \eta}{\partial t} m\right)_{b}, \\
+                  \label{isopycenergyeq}
+                  \end{equation}
+                  taking $\mathcal{X}$, $\mathcal{Y}$ and $\omega$ to be zero and where $K=\half \left| \boldsymbol{u}\right|^{2}$ is kinetic energy and
+                  $P=\eta^{2}$ is potential energy, integrating over the entire domain
+                  integrates the right hand side to zero. 
+                  Now, by defining a thickness weighted average,
                   $\thkmean{\psi}=\nthkmean{\sigma\psi}/\nthkmean{\sigma}$, where
                   $\nthkmean{\psi}$ is the standard average and their residuals,
                   $\thkres{\psi}=\psi-\thkmean{\psi}$ and $\nthkres{\psi}=\psi-\nthkmean{\psi}$,
@@ -611,7 +621,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                     \thkmean{\thkres{u}\thkres{\omega}} \\
                    \end{array}\right)+\nthkmean{\sigma}^{-1}\left(
                    \begin{array}{c}
-                   \frac{1}{2}\nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
+                   \half \nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
                    0 \\
                    \nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \\
                    \end{array}\right), &
@@ -623,7 +633,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                    \end{array}\right)+\nthkmean{\sigma}^{-1}\left(
                    \begin{array}{c}
                    0\\
-                   \frac{1}{2}\nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
+                   \half \nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
                    \nthkmean{\nthkres{\eta}\nthkres{m}_{y}} \\
                    \end{array}\right) \\
                    \end{array}.
@@ -764,7 +774,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 \end{itemize}
 
 
-\subsection{Numerical Models of Arctic}
+\section{Numerical Models of Arctic}
 
 	It was discussed in \secref{arcticocean} that to understand the circulation of the Arctic
 	 Ocean it is necessary to use \glspl{gcm}. However, due to poorly resolved processes or
@@ -810,15 +820,18 @@ Observations suggest that the Atlantic Water Layer circulates counter clockwise 
 	\label{fig:HolloWang2009}
 \end{figure}
 
-\textbf{This is material from transfer of status (needs review)}
 
+\Gls{aomip} has demonstrated that \glspl{gcm} are woefully inadequate for predicting the
+accurate circulation \gls{awl}. The evidence seems to suggest that this is because on 
+climate time-scales a \gls{gcm} can at best be eddy-permitting and hence
+lack the geostrophic turbulence that appears to be critical for setting the 
+cyclonic circulation in the \gls{awl}. As discussed in \secref{meaneddyinteractiontheory},
+the eddy parameterisations used in modern \glspl{gcm}, namely \gls{gm}, are too 
+dissipative and fail to express the driving nature of eddy-topography interactions. 
+The models that are more successful either better resolve the eddy fields or apply 
+a corrective force, such as the ``Neptune Effect", in irresponsible manner. 
 
-%There has been a lot of discussion over the years about what process could cause a predominantly cyclonic circulation in the Atlantic Water Layer and why it is apparently missing from most of the Arctic climate models. One of the more prevailing ideas is that the cyclonic behaviour of the Atlantic Water Layer is balanced by potential vorticity fluxes in and out of the Arctic (Yang [2005]). And indeed, it can be shown using idealised models that a basin with an inflow that has a prescribed potential vorticity flux can be made to switch regimes by inverting the PV flux. Yang (2005) even made some attempt to quantify the potential vorticity fluxes for the Arctic gateways and found a total flux that would infer a cyclonic circulation. However, further refinements in measuring the potential vorticity fluxes across the Arctic Gateways which have occurred since have demonstrated a large uncertainty and variability in the total potential vorticity flux. One example is the potential vorticity leaving the Arctic via Nares Strait (Munchow [2006]) which would contribute significantly towards an anti-cyclonic circulation but is missing from the budget calculated by Yang (2005). Overall, whilst potential vorticity conservation probably contributes towards the Atlantic Water Layer circulation, due to the high variability of the fluxes in and out of the Arctic and the relatively stable cyclonic circulation observed in the Atlantic Water Layer it is unlikely to be the main contributing factor. 
-
-So, if the circulation is not driven by a potential vorticity balance then what is it that gives such a stable cyclonic circulation in the Atlantic Water Layer and isn?t included in the AOMIP models? The most likely culprit for generating a cyclonic circula tion along the basin slopes is the interaction of the eddy field with the bottom topography. It is easy to show using a simple idealised eddy resolving model that kicking off an eddy field in an unforced and otherwise stationary ocean with variable bottom topography the flow will self organise into a persistent along slope circulation (Adcock and Marshall [2000]). On top of this, detailed observations made from three locations where the Lomonosov Ridge intersects the Eurasian Continental Slope over the period of a year (1995-1996) demonstrate this effect in the ocean (Woodgate [2001]). These observations suggest that the flow is 
-largely diverted to follow the Lomonosov Ridge with a greatly reduced eddy field further downstream, suggesting some form of eddy-topographic interaction takes place. However, due to constraints based on available computing power none of the models involved in AOMIP are eddy resolving. These models hence must use a parameterisation to attempt to represent the effect of eddies, unfortunately most of the commonly used methods for parameterising eddies do not include this eddy-topographic effect and so is the likely case of the inconsistent circulation observed in models. 
-
-\subsection{Summary and Hypothesis}
+\section{Summary and Hypothesis}
 
 Since the likes of \cite{young1982shear}, \cite{holloway1987systematic} and
 \cite{gent1990}, we have seen much development of how to describe the mean-eddy interaction.
@@ -853,7 +866,7 @@ the eddy kinetic and potential energy, as well as the Reynolds' stress angle and
 \end{itemize} 
  
 
-\section{Developement of Stacked Shallow Water Equations}
+\chapter{Developement of Stacked Shallow Water Equations}
 
 With the hope of taking advantage of the invariance demonstrated by 
 \cite{maddison2013eliassen}, we need to be able to diagnose the
@@ -901,7 +914,7 @@ purposes but still a close enough approximation to the ocean that any results ar
 In this section we follow the development of such a model 
 
 
-\subsection{Stacked Shallow Water Theory}
+\section{Stacked Shallow Water Theory}
 
 For our study the equations that will give us the most efficient model whilst capturing the
  processes we would like are the stacked shallow water equations. Whilst this is a common
@@ -957,79 +970,234 @@ For our study the equations that will give us the most efficient model whilst ca
     is the uppermost layer. Integrating the hydrostatic equation, $\frac{\partial p}{\partial z} + \rho g=0$,
     downwards from the surface yields 
     \begin{equation}
-    p(x,y,z)=\sum^{N}_{k=n+1}\left(g \rho_{k} h_{k} \right) + g \rho_{n}\left(\eta_{n+\frac{1}{2}} - z \right)
+    p(x,y,z)=\sum^{N}_{k=n+1}\left(g \rho_{k} h_{k} \right) + g \rho_{n}\left(\eta_{n+\half } - z \right)
     \end{equation}
-    for $\eta_{n-\frac{1}{2}}\leq z \leq \eta_{n+\frac{1}{2}}$, where $\eta_{n+\frac{1}{2}}(x,y,t)$,
-    $\eta_{n-\frac{1}{2}}(x,y,t)$ are the depths of the interfaces above and below layer $n$
-    respectively and $h_{n} = \eta_{n+\frac{1}{2}} -\eta_{n-\frac{1}{2}}$ is the vertical
+    for $\eta_{n-\half }\leq z \leq \eta_{n+\half }$, where $\eta_{n+\half }(x,y,t)$,
+    $\eta_{n-\half }(x,y,t)$ are the depths of the interfaces above and below layer $n$
+    respectively and $h_{n} = \eta_{n+\half } -\eta_{n-\half }$ is the vertical
      thickness  of layer $n$. Similarly, by integrating the continuity equation over a layer
      we have
      \begin{equation}
      \begin{split}
-     0 &=\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}}\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +\frac{\partial w}{\partial z} \right){\rm d} z \\
-     &=\frac{\partial }{\partial x}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} u{\rm d} z +
-     \frac{\partial }{\partial y}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} v{\rm d} z
-      -  \left[ u   \frac{\partial z}{\partial x} \right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} 
-      -  \left[ v  \frac{\partial z}{\partial y}\right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}}  +
-      \left[ w \right]^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} \\
+     0 &=\int^{\eta_{n+\half }}_{\eta_{n-\half }}\left(\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +\frac{\partial w}{\partial z} \right){\rm d} z \\
+     &=\frac{\partial }{\partial x}\int^{\eta_{n+\half }}_{\eta_{n-\half }} u{\rm d} z +
+     \frac{\partial }{\partial y}\int^{\eta_{n+\half }}_{\eta_{n-\half }} v{\rm d} z
+      -  \left[ u   \frac{\partial z}{\partial x} \right]^{\eta_{n+\half }}_{\eta_{n-\half }} 
+      -  \left[ v  \frac{\partial z}{\partial y}\right]^{\eta_{n+\half }}_{\eta_{n-\half }}  +
+      \left[ w \right]^{\eta_{n+\half }}_{\eta_{n-\half }} \\
      &=\frac{\partial h_{n} }{\partial t} +\frac{\partial h_{n} u_{n}}{\partial x}+
      \frac{\partial h_{n} v_{n} }{\partial y},      \\
      \end{split}
      \end{equation}
    using that $w =  \frac{\partial z }{\partial t} + u \frac{\partial z}{\partial x} 
-   + v \frac{\partial z}{\partial y}$ at $z = \eta_{n+\frac{1}{2}} , \eta_{n-\frac{1}{2}}$; $u_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} u{\rm d} z$ and $v_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\frac{1}{2}}}_{\eta_{n-\frac{1}{2}}} v{\rm d} z$. By also defining 
+   + v \frac{\partial z}{\partial y}$ at $z = \eta_{n+\half } , \eta_{n-\half }$; $u_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\half }}_{\eta_{n-\half }} u{\rm d} z$ and $v_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\half }}_{\eta_{n-\half }} v{\rm d} z$. By also defining 
    the Montgomery potential as
-   $m_{n}(x,y,t)=p+g \rho_{n} z=\sum^{N}_{k=n}\left(\rho_{N} g_{k+\frac{1}{2}} \eta_{k+\frac{1}{2}} \right) $ where 
-   $g_{n+\frac{1}{2}} =  \frac{\rho_{n} - \rho_{n+1}}{\rho_{N}}$, we have the stacked shallow water
-   equations, 
+   $m_{n}(x,y,t)=p+g \rho_{n} z=\sum^{N}_{k=n}\left(\rho_{N} g_{k+\half } \eta_{k+\half } \right) $ where 
+   $g_{n+\half } =  \frac{\rho_{n} - \rho_{n+1}}{\rho_{N}}$, we have the stacked shallow water
+   equations as derived in \cite{vallis2006atmospheric} and \cite{cushman2011introduction}, 
    \begin{subequations}
-   	content...
    \begin{equation}
-   \frac{Du_{n}}{Dt}-fv_{n} = -\frac{1}{\rho_{N}}   \frac{\partial m_{n}}{\partial x}+F_{u_{n}}-D_{u_{n}}, \\
+   \label{swumomeq}
+   \frac{Du_{n}}{Dt}-fv_{n} = -\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial x}+F_{u_{n}}-D_{u_{n}}, \\
    \end{equation}
    \begin{equation}
-   \frac{Dv_{n}}{Dt}+fu_{n} = -\frac{1}{\rho_{N}}   \frac{\partial m_{n}}{\partial y}+F_{v_{n}}-D_{v_{n}}, \\
+   \label{swvmomeq}
+   \frac{Dv_{n}}{Dt}+fu_{n} = -\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial y}+F_{v_{n}}-D_{v_{n}}, \\
    \end{equation}
    \begin{equation}
+   \label{swthkeq}
    0 =\frac{\partial h_{n} }{\partial t} +\frac{\partial h_{n} u_{n}}{\partial x}+
    \frac{\partial h_{n} v_{n} }{\partial y}.\\
    \end{equation}
 \end{subequations}
+ We have three equations and the unknowns, $h_{n}$, $u_{n}$ and $v_{n}$, for each layer $n$. 
+ 
    It is worth noticing, here, the similarity between these equations and the isopycnal
     primitive    equations set out by \cite{young2012exact}, and repeated in  \secref{meaneddyinteractiontheory}, but one should be aware that
     the two sets of equations describe different realities; $h_{n}$, for example, is not
     equivalent to $\sigma = \frac{\partial z}{\partial \rho}$ since in the shallow water
-    equations $\frac{\partial z}{\partial \rho}$ is not well-defined due to  $\rho$ being constant.
-   
-   
-\begin{itemize}
-	\item Note that up to this point everything is old, and now we have new stuff
-	\item Reason for careful definition is PE and Form Stresses on interfaces
-	\item Note the use of Rigid Lid approximation in
-	simulations.
-\item Development of the eddy closure theory in the shallow water case
-including examining certain nuances the approximation includes, such
-as the description of physical quantities, like
-potential and kinetic energy, on the discontinuous 
-jump between layers.
-\end{itemize}
+    equations $\frac{\partial z}{\partial \rho}$ is not well-defined due to  $\rho$ being
+    constant. This distinction is critical when considering the interfaces between each
+    layer. In the isopycnal primitive equations the velocities, the Montgomery potential, 
+    the energetics are all continuous throughout the water column, whereas in shallow 
+    water there is a discontinuous jump between the layers. This causes problems when
+    considering the transfer of information between different layers. To demonstrate this
+    let us derive conservation of energy. By dotting the momentum equations, \ref{swumomeq}
+    and \ref{swvmomeq}, with $h_{n}\boldsymbol{u}_{n}$ we gain an equation for the kinetic 
+    energy, $K_{n}=\half \left|\boldsymbol{u}_{n}\right|^{2}$,
+    \begin{equation}
+    \label{swkeeq}
+    \frac{\partial h_{n} K_{n}}{\partial t} + \frac{\partial h_{n} K_{n} u_{n}}{\partial x}+
+    \frac{\partial h_{n} K_{n} v_{n} }{\partial y} = - h_{n} u_{n}\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial x} - h_{n} v_{n}\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial y},
+    \end{equation}
+    or in non-conservative form, 
+    \begin{equation}
+    \frac{D  K_{n}}{D t}  = - u_{n}\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial x} - v_{n}\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial y},
+    \end{equation}
+    where the forcing and dissipation terms have been ignored. Now, since the
+    each layer has constant density, the total potential energy in a column
+    of water is easily calculated as $\sum_{n=1}^{N} \rho_{n} g h_{n}\eta_{n}$ where
+    $\eta_{n}=\half  \left(\eta_{n-\half }+\eta_{n+\half }\right)$ is
+    the centre of mass of each layer in the water column. By using that $h_{n} = \eta_{n+\half }-\eta_{n-\half }$ and manipulating the summation
+    indices, we can also write $\sum_{n=1}^{N} \rho_{n} g h_{n}\eta_{n}$ as
+    $\sum_{n=1}^{N}\half  \rho_{n} g \left(\eta_{n+\half }^{2}-\eta_{n-\half }^{2}\right)$
+    and as $\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \eta_{n+\half }^{2}-\rho_{1}g\eta_{\half }^{2}$, where we 
+    note that $\eta_{\half }$ is the bottom topography and so it constant
+    in time. The total energy in the
+    water column must therefore be $\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right)$. Combining this with \equref{swkeeq} we
+    can write down an equation for the evolution of this energy,
+    \begin{equation}
+    \begin{split}
+    \frac{\partial}{\partial t}\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right) 
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right) 
+    -\sum_{n=1}^{N}  h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
+    +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} \\
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right] 
+    -\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
+    +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} \\
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    -\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{N}g_{n+\half } \eta_{n+\half }\right) 
+    +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)   m_{n} \\
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    -\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)    m_{n+1} +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}\\
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    - \frac{\partial}{\partial t}\left(\eta_{N+\half }\right)    m_{N+1} + \frac{\partial}{\partial t}\left(\eta_{\half }\right) m_{1},
+    \end{split}
+    \end{equation}
+    where we have used the continuity equation, \equref{swthkeq}, to get the second line.
+    Integrating over the entire domain makes the right hand side equal to zero since
+    $m_{n+1} = 0$ and $\eta_{\half }$ is the bottom topography and so is constant in
+    time. No problems so far! One would then expect to be able to write down
+    an equation for the energy of a water column in a single layer, i.e. for 
+    $\rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right)$, however this is not
+    so simple because now the transfer of energy between layers which cancelled neatly
+    in through the full water column need to be taken accounted for:
+    \begin{equation}
+    \label{swlayerenergycalc}
+    \begin{split}
+    \frac{\partial}{\partial t}\rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right) 
+    =& - \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right) 
+    - h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
+    +\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
+    =& - \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right] 
+    - \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
+    +\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
+    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n+\half }\right) 
+    + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right) \\
+    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n+1} - \rho_{n+1}g \eta_{n+\half }\right) 
+    + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right).
+    \end{split}
+    \end{equation}
+    Since $m_{n+1} - \rho_{n+1}g \eta_{n+\half }=p\rvert_{z=\eta_{n+\half }}$ and
+    $m_{n} - \rho_{n}g \eta_{n-\half }=p\rvert_{z=\eta_{n-\half }}$ then the last
+    two terms represent the transfer of energy to the layer above and from the layer below
+    respectively. But \equref{swlayerenergycalc}
+    can be rearranged both as
+    \begin{equation}
+    \frac{\partial}{\partial t}\left(\rho_{n} h_{n} K_{n}+ 
+    \half \rho_{N} g_{n+\half }\eta_{n+\half }^{2} \right) 
+    = -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n+1}
+    + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}
+    \label{swlayercorrectenergy}
+    \end{equation}
+    or
+    \begin{equation}
+    \frac{\partial}{\partial t}\left(\rho_{n}h_{n} K_{n}+ 
+    \half \rho_{N} g_{n-\half }\eta_{n-\half }^{2} \right) 
+    = -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
+    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n}
+    + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n-1};
+    \end{equation}
+    or in fact, any combination of the two
+    \begin{equation}
+    \begin{split}
+    \frac{\partial}{\partial t}\left(\rho_{n}h_{n} K_{n}+ 
+    \half \lambda\rho_{N} g_{n+\half }\eta_{n+\half }^{2}  +
+    \half \left(1-\lambda\right)\rho_{N} g_{n-\half }\eta_{n-\half }^{2} \right) 
+    = -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    \begin{split}
+    &- \lambda\frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n+1}
+    + \lambda\frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n} \\
+    &- \left(1-\lambda\right)\frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n}
+    + \left(1-\lambda\right)\frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n-1}, \\
+    \end{split}
+    \end{split}
+    \end{equation}
+    where $0 \leq \lambda \leq 1$. The reason for this is that the Montgomery potential,
+    $m_{n}$, is constant in the vertical in the layers and discontinuous across the interfaces between the layers. Compare with \equref{isopycenergyeq} where the 
+    vertical transfer of energy is given by 
+    $\left(\frac{\partial \eta}{\partial t} m \right)_{b}$ and recall that since density is
+     constant within a layer, $\frac{\partial }{\partial b}$ is not well-defined, and so for
+      these equations the idea of potential energy is a degenerative one. However,
+      for the sake of making progress with this discussion we will take the
+      appropriate definition of potential energy as the term which appears in \equref{swlayercorrectenergy}.
+    
+    
 
-\subsection{Model Discretisation}
+\section{Model Discretisation}
 
-Continuous equations to discontinous discrete model.
-Technical description of the models. 
-C-grid, AB time stepping, Preconditioned CG solver. 
-Parallelisation.
-Forcing and Dissipation used in the model.
-The form of wind stress and bottom friction in
-shallow water models (e.g. $\boldsymbol{\tau}/h$ and 
-$-r\left|\boldsymbol{u}\right|^{2}\boldsymbol{u}/h$). Viscosity:
+Now that we have our governing equations, we need to solve them. To do this we
+discretise the equations onto an Arakawa C-grid and then solve for future times
+using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedrichs-Lewy
+ condition (\cite{courant1928partiellen}), the time step and grid spacing must satisfy $\frac{\Delta x}{\Delta t} \leq c_{\max}$ where $\Delta x$ is the smallest grid spacing, $\Delta t$ is
+ the time step and $c_{\max}$ is the fastest speed at which information is propagated at. 
+ In our equations this speed the gravity wave speed which is $\sqrt{g H}$, where $H$ is the
+ maximum fluid depth. However, since the next fastest speeds, which are the internal gravity
+  wave speeds $\left(\mathrm{approximately} \, \sqrt{g_{n+\half} H}\right)$, are much smaller than the surface
+  wave speed since $g_{n+\half} \sim g/1000$, it makes sense to suppress the surface 
+  wave speed. To do this in such a way that is consistent with mass, momentum and energy 
+  conservation we impose the rigid-lid approximation. By imagining a flat plate 
+  placed across the surface, we can re-imagine the pressure fluctuations from a free
+  surface as the fluid pushing or pulling on the plate and the resulting force 
+  applied to the fluid in reaction. 
+  
+  In practise, to apply the rigid-lid approximation we add a barotropic pressure
+  gradient to the momentum equations. This corrects the time-stepped velocities 
+  to ensure that conservation of mass is satisfied. Since the rigid-lid imposes a
+  boundary above the fluid whilst the topography imposes a similar one below 
+  we have that 
+  \begin{equation}
+  0=\frac{  \partial}{\partial t} \sum^{N}_{n=1} h_{n} = -
+  \sum^{N}_{n=1} \left( \frac{\partial }{\partial x} (u_{n}h_{n} )+ 
+  \frac{\partial }{\partial y} (v_{n}h_{n} ) \right) ,
+  \end{equation}
+  where $\left(u_n,v_n\right)=\left(u_n^{*},v^{*}_n\right)-\boldsymbol{\nabla}p$
+  is the corrected velocities, $p$ is the barotropic pressure correction and
+  $\left(u_n^{*},v^{*}_n\right)$ are the time-stepped velocities. This implies that to
+  calculate $p$ we need to solve 
+  \begin{equation}
+  \frac{  \partial}{\partial x} \left( H \frac{  \partial p}{\partial x} \right) +
+  \frac{  \partial}{\partial y} \left( H \frac{  \partial p}{\partial y} \right) =
+  \sum^{N}_{n=1} \left( \frac{\partial }{\partial x} (u^{*}_{n}h_{n} )+ 
+  \frac{\partial }{\partial y} (v^{*}_{n}h_{n} ) \right)
+  \label{swbaropressureeq}
+  \end{equation}
+  where $H= \sum^{N}_{n=1} h_{n}$. The right hand side is known after time-stepping 
+  and so \equref{swbaropressureeq} is simply an elliptic equation. This is solved using
+  the conjugate gradient method to within a small tolerance. Since
+  the discretised left hand side of \equref{swbaropressureeq} is sparse, the speed of the 
+  conjugate gradient method can be improved by choosing an appropriate matrix.
+  A choice that appears to make a reasonable improvement is the operation
+  \begin{equation}
+  \overline{\left(\overline{1/H}^{x} p\right) }^{x} + \overline{\left(\overline{1/H}^{y} p\right) }^{y}
+  \end{equation}
+  applied to $p$, where bars denote averaging in the $x$ and $y$ directions respectively.
+  
+Viscosity:
 laplacian, biharmonic as well as Smagorinsky.
 Linear, quadratic and n-polynomial bottom friction.
 
+Forcing and Dissipation used in the model.
+The form of wind stress and bottom friction in
+shallow water models (e.g. $\boldsymbol{\tau}/h$ and 
+$-r\left|\boldsymbol{u}\right|^{2}\boldsymbol{u}/h$). 
+
 Example model output.
 
-\subsection{Eddy Stresses}
+\section{Eddy Stresses}
 
 Starting from thickness weighted mean of the shallow water
 equation. 
@@ -1045,7 +1213,7 @@ Time averaged diagnostics. Explain that this
 requires steady state dynamics. Need configurations
 with a unique mean steady state.
 
-\section{Analysis of a hierarchy of models}
+\chapter{Analysis of a hierarchy of models}
 
 A description of the different dynamics that evolve
 in the models by using the forcings and 
@@ -1064,7 +1232,7 @@ momentum tendency).
 A closer look at the eddy stress, their bounds 
 and the available eddy budgets.
 
-\subsection{Zero-Mean Wind Forced Models}
+\section{Zero-Mean Wind Forced Models}
 
 Model where the mean forcing is effectively zero. 
 Hence the model is forced by a wind stress which is
@@ -1073,7 +1241,7 @@ system by
 invoking a turbulent cascade. Hence Eddy-Mean
 interaction is entirely from the eddy to the mean.
 
-\subsection{Comparison of Mean PVs}
+\section{Comparison of Mean PVs}
 
 An examination of the similarities and differences
 of the two definitions of potential vorticity. 
@@ -1083,7 +1251,7 @@ PV eddy stresses can be used interchangeably.
 This will be done by examining models with
 different structures of potential vorticity.
 
-\subsection{Strong Flow Models}
+\section{Strong Flow Models}
 
 more interesting situations, such as, models
 with a strong mean state, which hence
@@ -1093,7 +1261,7 @@ for the investigation of configurations where
 Eddy Enstrophy is the constraining bound.
 
 
-\section{Diagnostic Summary and Eddy-Mean Interaction Predictions}
+\chapter{Diagnostic Summary and Eddy-Mean Interaction Predictions}
 
 Na\"{\i}ve attempt to parameterise eddies using the 
 results from the previous chapters, depending
@@ -1107,7 +1275,7 @@ some sort of step function to turn on and off the
 ``GM like" and ``holloway like" parts of the parametrisation at appropriate moments.
 
 
-\section{conclusions and discussions}
+\chapter{conclusions and discussions}
 
 Summary of results.
 Future work (keep this as unexplored possible ideas for now)

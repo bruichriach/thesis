@@ -10,7 +10,7 @@
 \usepackage{siunitx}
 
 \usepackage[acronym,translate=false]{glossaries}
-\usepackage[backend=biber,style=bwl-FU,uniquename=false,maxcitenames=2,maxbibnames=99]{biblatex}
+\usepackage[backend=biber,style=bwl-FU,uniquename=false,maxcitenames=1,maxbibnames=99]{biblatex}
 \addbibresource{bibrefs.bib}
 
 \usepackage{setspace}
@@ -996,6 +996,7 @@ For our study the equations that will give us the most efficient model whilst ca
    $g_{n+\half } =  \frac{\rho_{n} - \rho_{n+1}}{\rho_{N}}$, we have the stacked shallow water
    equations as derived in \cite{vallis2006atmospheric} and \cite{cushman2011introduction}, 
    \begin{subequations}
+   	\label{sweqs}
    \begin{equation}
    \label{swumomeq}
    \frac{Du_{n}}{Dt}-fv_{n} = -\frac{1}{\rho_{n}}   \frac{\partial m_{n}}{\partial x}+F_{u_{n}}-D_{u_{n}}, \\
@@ -1136,14 +1137,30 @@ For our study the equations that will give us the most efficient model whilst ca
       appropriate definition of potential energy as the term which appears in \equref{swlayercorrectenergy}.
     
     
+    \section{Eddy Stresses}
+    
+    Starting from thickness weighted mean of the shallow water
+    equation. 
+    
+    Form of the pv eddy stresses.
+    Thickness weighted PV vs PV derived from thickness 
+    weighted equations.
+    
+    Eddy energy and eddy enstrophy. State equations with 
+    possible application in terms of carrying them in the system.
+    
+    Time averaged diagnostics. Explain that this 
+    requires steady state dynamics. Need configurations
+    with a unique mean steady state.
+    
 
 \section{Model Discretisation}
 
 Now that we have our governing equations, we need to solve them. To do this we
 discretise the equations onto an Arakawa C-grid and then solve for future times
 using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedrichs-Lewy
- condition (\cite{courant1928partiellen}), the time step and grid spacing must satisfy $\frac{\Delta x}{\Delta t} \leq c_{\max}$ where $\Delta x$ is the smallest grid spacing, $\Delta t$ is
- the time step and $c_{\max}$ is the fastest speed at which information is propagated at. 
+ condition (\cite{courant1928partiellen}), the time-step and grid spacing must satisfy $\frac{\Delta x}{\Delta t} \leq c_{\max}$ where $\Delta x$ is the smallest grid spacing, $\Delta t$ is
+ the time-step and $c_{\max}$ is the fastest speed at which information is propagated at. 
  In our equations this speed the gravity wave speed which is $\sqrt{g H}$, where $H$ is the
  maximum fluid depth. However, since the next fastest speeds, which are the internal gravity
   wave speeds $\left(\mathrm{approximately} \, \sqrt{g_{n+\half} H}\right)$, are much smaller than the surface
@@ -1164,8 +1181,9 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \sum^{N}_{n=1} \left( \frac{\partial }{\partial x} (u_{n}h_{n} )+ 
   \frac{\partial }{\partial y} (v_{n}h_{n} ) \right) ,
   \end{equation}
-  where $\left(u_n,v_n\right)=\left(u_n^{*},v^{*}_n\right)-\boldsymbol{\nabla}p$
-  is the corrected velocities, $p$ is the barotropic pressure correction and
+  where $\left(u_n,v_n\right)=\left(u_n^{*},v^{*}_n\right)-\Delta t \boldsymbol{\nabla}p$
+  is the corrected velocities, $p$ is the barotropic pressure correction,
+  $\Delta t$~is~the time-step and
   $\left(u_n^{*},v^{*}_n\right)$ are the time-stepped velocities. This implies that to
   calculate $p$ we need to solve 
   \begin{equation}
@@ -1186,32 +1204,114 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \end{equation}
   applied to $p$, where bars denote averaging in the $x$ and $y$ directions respectively.
   
-Viscosity:
-laplacian, biharmonic as well as Smagorinsky.
-Linear, quadratic and n-polynomial bottom friction.
+  Now, to generate dynamically interesting system we manipulate the system using 
+  the forcing and
+  dissipation terms, $\boldsymbol{F}_{\boldsymbol{u}} = \left(F_{u}, F_{v}\right)$ and $\boldsymbol{D}_{\boldsymbol{u}} = \left(D_{u}, D_{v}\right)$, in \equref{sweqs}.
+  This is typically achieved by applying parameterisations for wind stress
+  and bottom friction. An appropriate way to parameterise wind stress in terms of  
+  relative velocity between the atmospheric velocity at $10 \mathrm{m}$ above sea-level
+  and the sea surface velocity, for example as the quadratic stress
+  \begin{equation}
+  \boldsymbol{\tau}=\rho_{a} c_{d} \left|\boldsymbol{U}_{10}-\boldsymbol{u}_{a}\right|
+  \left(\boldsymbol{U}_{10}-\boldsymbol{u}_{a}\right),
+  \end{equation}
+  where $\boldsymbol{\tau}$ is the surface wind stress, $\rho_{a}$ is the density of
+  air at sea level, $c_{d}$ is the drag coefficient, $\boldsymbol{u}_{a}$ is the ocean
+  surface velocity and $\boldsymbol{U}_{10}$ is the wind velocity.
+  Whilst the importance of using the relative velocities is well established
+  (\cite{duhaut2006wind}, \cite{zhai2007wind}, \cite{hughes2008wind}, \cite{zhai2012wind}), 
+  however due to the idealised framework in which we are working in, it's enough
+  to assume that $\left|\boldsymbol{u}_{a}\right| \ll \left|\boldsymbol{U}_{10}\right|$
+  and $\boldsymbol{\tau}=\rho_{a} c_{d} \left|\boldsymbol{U}_{10}\right|
+  \boldsymbol{U}_{10}$, which is simply a vector set by the 
+  magnitude of $\rho_{a} c_{d} \left|\boldsymbol{U}_{10}\right|^{2}$ and the
+  direction of $\boldsymbol{U}_{10}$. Since the momentum within each layer
+  is defined to be constant with in each layer, the input of momentum from the wind
+  is distributed through the layer giving $\left(F_{u_{N}},F_{v_{N}}\right)=\boldsymbol{\tau}/\left(\rho_{N}h_{N}\right) \equiv
+  \left(\tau_{u},\tau_{v}\right)/\left(\rho_{N}h_{N}\right) $ in the
+  upper most layer, $n=N$. 
+  
+  Now that we have a mechanism to force the system we need a way of dissipating the 
+  energy input from the winds. The most physically reasonable way to do this would be to
+   introduce bottom friction to the model. Bottom friction is a drag intended to represent 
+  the shear stress felt by the ocean as it flows over the ocean floor, however
+  because this operates on a vertical scale much smaller then the layer thicknesses, $h_{n} \sim H$, of  the model it is a term that needs to be 
+  parameterised. Since we want the bottom friction to remove momentum
+  from the system, it seems sensible for it to be of the form $\boldsymbol{\tau} \propto
+  - \boldsymbol{u}_{1}$, where $\boldsymbol{u}_{1}$ is the horizontal velocity
+  in the bottom layer. A first guess might be a linear drag, similar to the wind stress,
+  given by  $h_{1}\boldsymbol{D}_{\boldsymbol{u}_{1}} = - r \boldsymbol{u}_{1}$ for
+  some parameter $r$. However, studies have shown (for example \cite{grianik2004effects} and
+  \cite{arbic2008quadratic})
+  that a straight forward linear
+  bottom friction gives rise to large, unrealistic eddies and that using a higher order
+  polynomial gives more realistic results.
+  The advantage of an $n$-polynomial bottom  friction rather than 
+  a linear bottom friction is that it can be scale selective. Take the 
+  drag to have the form $\boldsymbol{D}_{\boldsymbol{u}_{1}} = 
+  - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
+  {\left|\boldsymbol{u}^{\ast}\right|}\right)^{n}
+  \boldsymbol{u}_{1}/h_{1}$ for some typical velocity $\boldsymbol{u}^{\ast}$, 
+  natural number $n$ and friction coefficient $r$. Note that for $n=0$, this is 
+  just linear bottom friction. Now for $n \geq 1$, $\boldsymbol{D}_{\boldsymbol{u}_{1}}$
+  is stronger when $\left|\boldsymbol{u}_{1}\right| > \left|\boldsymbol{u}^{\ast}\right|$
+  and weaker when $\left|\boldsymbol{u}_{1}\right| < \left|\boldsymbol{u}^{\ast}\right|$
+  than in the linear case. Hence, the higher order polynomials limit the flows from 
+  becoming too strong by selectively limiting the stronger currents.
+  This means it's possible, by tuning $r$, $\left|\boldsymbol{u}^{\ast}\right|$ and 
+  $n$, a bottom friction can be chosen that limits the along-topography flow with
+  minimal effect on the eddy field. In order to tune these parameters, we begin by 
+  introducing topostrophy, a term coined by \cite{holloway2007water}, which is defined as
+  $\tau = \left(\boldsymbol{ f } \wedge
+  \boldsymbol{ u } \right) \cdot \boldsymbol{\nabla} D $,
+  where $\boldsymbol{f}$ is the Coriolis force, $\boldsymbol{u}$ is velocity and $D$
+  is topographic depth. Topostrophy is a correlation between the flow velocity
+  and contours of topography and hence, is a measure of how much the flow is
+  following topography. With this tool we can explore the sensitivity of the models
+  ability to generate along-topography flow to the choice of bottom friction. 
+  Figure \ref{fig:topostrophy} shows the mean topostrophy in seven models for the
+  initial spin up of the models. The first thing to note is how damped the 
+  topostrophy is in the linear
+  bottom friction case. It is clear that the bottom friction is inhibiting the 
+  eddies greatly and so stopping the formation of along-topography flows. In
+  the quadratic cases, there is a lot more variability in the topostrophy, indicating
+  that there is a much more active eddy field. However again, there is no obvious
+  along-topography flow, meaning the bottom friction is still too broadly dissipative.
+  It should however be noted that the lower layers have more positive topostrophy than
+  the upper layers, indicating that there is some along topography flow in the lower 
+  layers but that it's not being precipitated  through the water column
+  The cubic models are much more interesting. The flow appears to have much more
+  freedom to generate flows, whilst still being capped by $\left|\boldsymbol{u}^{\ast}\right|$. $\left|f\right| = 1$, $\boldsymbol{\nabla} D \sim 0.1$ and so $\left|\boldsymbol{u}\right| \sim 0.01 < \left|\boldsymbol{u}^{\ast}\right|$.
+  Given these results it seems sensible to use the cubic parameterisation for bottom 
+  friction. It's worth noticing that there is little physical rational for choosing
+  one parameterisation over another, other than one might produce more physically 
+  appealing results. 
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{topostrophy}
+  	\caption{Topostrophy for a range of different bottom friction parameters.
+  		Each plot shows a certain choice of  $\left|\boldsymbol{u}^{\ast}\right|$
+  		and $n$, with three different friction coefficients shown in red, green and blue.
+  		The topostrophies calculated from the velocities in layers 1, 2 and 3 in each model
+  		are shown by dotted, dashed and solid line respectively. Since 
+  		$\left|\boldsymbol{u}^{\ast}\right|$ is non-existent in the linear case only
+  		one plot is needed. }
+  	\label{fig:topostrophy}
+  \end{figure}
+  
+  Finally, we also require grid-scale dissipation. This is to dissipate the
+  numerical noise which develops at the grid-scale from the cascade of enstophy.
+  In these models we use biharmonic diffusion with the Smagorinsky viscosity (\cite{smagorinsky1963general}).
+  
+  
+  
+  
+  
+Viscosity: Smagorinsky with laplacian, biharmonic.
 
-Forcing and Dissipation used in the model.
-The form of wind stress and bottom friction in
-shallow water models (e.g. $\boldsymbol{\tau}/h$ and 
-$-r\left|\boldsymbol{u}\right|^{2}\boldsymbol{u}/h$). 
 
 Example model output.
-
-\section{Eddy Stresses}
-
-Starting from thickness weighted mean of the shallow water
-equation. 
-
-Form of the pv eddy stresses.
-Thickness weighted PV vs PV derived from thickness 
-weighted equations.
-
-Eddy energy and eddy enstrophy. State equations with 
-possible application in terms of carrying them in the system.
-
-Time averaged diagnostics. Explain that this 
-requires steady state dynamics. Need configurations
-with a unique mean steady state.
 
 \chapter{Analysis of a hierarchy of models}
 

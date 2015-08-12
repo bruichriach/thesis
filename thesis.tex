@@ -53,6 +53,7 @@
 \newcommand*\equref[1]{Equation~\eqref{#1}}
 \newcommand*\secref[1]{Section~\ref{#1}}
 \newcommand*{\half}{\frac{1}{2}}
+\newcommand*{\partialdiff}[2][{}]{\frac{\partial #1}{\partial #2}}
 
 \nocite{cushman2011introduction}
 \nocite{vallis2006atmospheric}
@@ -247,7 +248,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  term in place of the term itself, which is usually dependent on the averaged 
  variables and some physical assumptions.
  
- \subsubsection{\cite{gent1990}}
+ \subsection{\cite{gent1990}}
  
  The earliest ocean models (\cite{bryan1969numerical}) had vertical $z$-coordinate, or depth-coordinates, with simple horizontal and vertical Laplacian diffusion to act as 
  the closure. Whether these terms are interpreted as a parameterisation for the effects
@@ -369,7 +370,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
          
          
          
-         \subsubsection{\gls{pv} Closure}
+         \subsection{\gls{pv} Closure}
          
          To proceed one might wonder what makes the continuity equation
          so special, in truth there is a number of non-linearities that
@@ -462,7 +463,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 
                 
                 
-                \subsubsection{Eliassen-Palm Flux Tensor}
+                \subsection{Eliassen-Palm Flux Tensor}
                 
                 It is clear from these attempts to parameterise the eddy-mean interaction
                 that the only way to proceed is by being able to take into account 
@@ -525,7 +526,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  
                  
                  
-                 \subsubsection{Thickness Weighted Averaging}
+                 \subsection{Thickness Weighted Averaging}
+                 \label{youngtwa}
                  
                 Returning to the Arctic Ocean as discussed in \secref{arcticocean},
                 the ocean is a relatively quiescent and highly stratified ocean. 
@@ -598,46 +600,48 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                   	\label{thkweigheq}
                   	\begin{equation}
                   	\frac{\spec{D} \thkmean{u}}{D t} -f\thkmean{v} + \nthkmean{m}_{x} 
-                  	+\boldsymbol{\nabla}\cdot\boldsymbol{E}^u= \thkmean{\mathcal{X}} \\
+                  	+\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\boldsymbol{E}^u= \thkmean{\mathcal{X}} \\
                   	\end{equation}
                   	\begin{equation}
                   	\frac{\spec{D} \thkmean{v}}{D t} +f\thkmean{u} + \nthkmean{m}_{y}
-                  	+\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \thkmean{\mathcal{Y}}, \\
+                  	+\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \thkmean{\mathcal{Y}}, \\
                   	\end{equation}
                   	where $\frac{\spec{D} }{D t} = \equiv \frac{\partial}{\partial t}
                   	+ \thkmean{u}\frac{\partial}{\partial x} + \thkmean{v}\frac{\partial}{\partial y}
-                  	+ \thkmean{\omega}\frac{\partial}{\partial b}$, whilst the continuity equation is just
+                  	+ \thkmean{\omega}\frac{\partial}{\partial b}$ is the
+                  	mean convective derivative, whilst the continuity equation is just
                   	\begin{equation} 
                   	\frac{\partial \nthkmean{\sigma}}{\partial t}  + \left( \nthkmean{\sigma} \thkmean{u}\right)_{x} + \left( \nthkmean{\sigma} \thkmean{v}\right)_{y} + \left( \nthkmean{\sigma} \thkmean{\omega}\right)_{b} = 0 .
                   	\end{equation}
-                  \end{subequations}
                    $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$ are defined as
                    \begin{equation}
-                   \begin{array}{cc}
-                   \boldsymbol{E}^{u}=\nthkmean{\sigma}^{-1}\left(
+                   \label{youngtwaeptensor}
+                   \begin{array}{c}
+                   \boldsymbol{E}^{u}=\nthkmean{\sigma}\left(
                    \begin{array}{c}
                    \thkmean{\thkres{u}\thkres{u}} \\
                    \thkmean{\thkres{u}\thkres{v}} \\
                     \thkmean{\thkres{u}\thkres{\omega}} \\
-                   \end{array}\right)+\nthkmean{\sigma}^{-1}\left(
+                   \end{array}\right)+\left(
                    \begin{array}{c}
                    \half \nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
                    0 \\
                    \nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \\
-                   \end{array}\right), &
-                   \boldsymbol{E}^{v}=\nthkmean{\sigma}^{-1}\left(
+                   \end{array}\right), \\ \\
+                   \boldsymbol{E}^{v}=\nthkmean{\sigma}\left(
                    \begin{array}{c}
                    \thkmean{\thkres{u}\thkres{v}} \\
                    \thkmean{\thkres{v}\thkres{v}} \\
                    \thkmean{\thkres{v}\thkres{\omega}} \\
-                   \end{array}\right)+\nthkmean{\sigma}^{-1}\left(
+                   \end{array}\right)+\left(
                    \begin{array}{c}
                    0\\
                    \half \nthkmean{\nthkres{\eta}\nthkres{\eta}} \\
                    \nthkmean{\nthkres{\eta}\nthkres{m}_{y}} \\
-                   \end{array}\right) \\
-                   \end{array}.
+                   \end{array}\right). \\
+                   \end{array}
                    \end{equation}
+                \end{subequations}
                    Crucially, in \cite{young2012exact} the first two components of  $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$ are directed along 
                    the isopycnals, whilst only  the third component directed through 
                    isopycnal surfaces; hence, in the adiabatic case (i.e. when $\omega=0$)
@@ -687,8 +691,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       as
                       \begin{equation}
                       \frac{\spec{D} \spec{q}}{D t} + \nthkmean{m}_{x} 
-                      +\boldsymbol{\nabla}\cdot\spec{\boldsymbol{F}}
-                      +\boldsymbol{\nabla}\cdot\spec{\boldsymbol{\Gamma}}=0,
+                      +\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\spec{\boldsymbol{F}}
+                      +\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\spec{\boldsymbol{\Gamma}}=0,
                       \end{equation} 
                       where
                       \begin{equation}
@@ -704,8 +708,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       \end{array}\right).
                       \end{equation}
                       Hence, the \gls{pv} fluxes can be written in terms of
-                      the momentum fluxes, whilst by writing ${\boldsymbol{\nabla}\cdot\boldsymbol{E}^u = -\nthkmean{\sigma} \spec{\boldsymbol{F}}\cdot\boldsymbol{j}}$ and
-                      ${\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \nthkmean{\sigma} \spec{\boldsymbol{F}}\cdot\boldsymbol{i}}$ the momentum fluxes
+                      the momentum fluxes, whilst the momentum fluxes, ${\boldsymbol{\nabla}\cdot\boldsymbol{E}^u = -\nthkmean{\sigma} \spec{\boldsymbol{F}}\cdot\boldsymbol{j}}$ and                      ${\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \nthkmean{\sigma} \spec{\boldsymbol{F}}\cdot\boldsymbol{i}}$,
                       can be written in terms of the \gls{pv} fluxes.
                       Rather than $\spec{q}$, \cite{greatbatch1998exploring} suggest
                       the use of a thickness weighted Rossby-Ertel \gls{pv},
@@ -715,12 +718,13 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       which leads  to
                       \begin{equation}
                       \frac{\spec{D} \left( \thkmean{q}\right)}{D t}
-                      + \boldsymbol{\nabla}\cdot\left(\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}\right)
-                      +\boldsymbol{\nabla}\cdot\boldsymbol{\Upsilon}=0 ,
+                      + \nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\left(\nthkmean{\sigma}\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}\right)
+                      +\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\boldsymbol{\Upsilon}=0 ,
                       \end{equation}
                       where, again, $\boldsymbol{\Upsilon}$ only contains
-                      diabatic terms. Compare with \equref{meanpveq}, noting that
-                       ${\nthkmean{\sigma}\thkmean{\boldsymbol{u}}=\nthkmean{\sigma}\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}}$.
+                      diabatic terms. Compare with \equref{meanpveq}, and by noting that
+                       ${\nthkmean{\sigma}\thkmean{\boldsymbol{u}}=\nthkmean{\sigma}\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}}$, we have the 
+                       \cite{greatbatch1998exploring} form of \gls{pv} closure.
                        Using the Cauchy-Schwarz inequality, it is easily noted that
                        the norm of $\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}$ is bounded
                        by $2\sqrt{KQ}$, where $K = \frac{\thkmean{{\thkres{u}}^{2} +
@@ -739,36 +743,34 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       
                       
                       
-                      \subsubsection{Entropy  Maximisation}
+                      \subsection{Entropy  Maximisation}
                       \label{entropy}
                      
                 
                 \begin{itemize}    
                 	
-                	\item Entropy  Maximisation
+                	\item \hl{Entropy  Maximisation}
                 	\begin{itemize}      
-                		\item Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy has been developing
-                		in parallel.
-                		\item \cite{holloway1987systematic} demonstrated the principle with
-                		the idea that eddies in the ocean are like the jiggling of a box of 
-                		marbles that randomises them into their highest state of entropy.
-                		\item This therefore becomes the problem of deriving the maximum
-                		entropy state of the Ocean
+                		\item \hl{Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy has been developing
+                		in parallel.}
+                		\item \cite{holloway1987systematic} \hl{demonstrated the principle with the idea that eddies in the ocean are like the jiggling of a box of marbles that randomises them into their highest state of entropy.}
+                		\item \hl{This therefore becomes the problem of deriving the maximum
+                		entropy state of the Ocean}
                 		\begin{itemize}      
-                			\item \cite{holloway1992representing} does this for a
+                			\item \cite{holloway1992representing} \hl{does this for a
                 			 quasi-geostrophic ocean and by making a number of assumptions  
                 			 arrives at a maximum entropy state which describes along 
-                			 topography flow. Coined ``the Neptune Effect"
-                			\item other stuff
-                			\item Maximum Entropy Production. See \cite{polyakov2001eddy}.
+                			 topography flow. Coined ``the Neptune Effect"}
+                			\item \hl{other stuff}
+                			\item \hl{Maximum Entropy Production. See} \cite{polyakov2001eddy}.
                 		\end{itemize}
-                		\item These principles inevitably give a solution for the ocean in 
+                		\item \hl{These principles inevitably give a solution for the ocean in 
                 		a state of maximum entropy and then attempt to ``nudge" the ocean
-                		towards the desired state. 
-                		\item This could be reason if the ocean was subjected to unbounded 
+                		towards the desired state. }
+                		\item \hl{This could be reason if the ocean was subjected to unbounded 
                 		energy, or ``jiggling", but in reality it is likely the ocean is never
                 		pushed in the direction of maximum entropy production do to
-                		a limitation of available energy.
+                		a limitation of available energy.}
                 	\end{itemize}  
                 	
                 \end{itemize}
@@ -915,6 +917,7 @@ In this section we follow the development of such a model
 
 
 \section{Stacked Shallow Water Theory}
+\label{swtheory}
 
 For our study the equations that will give us the most efficient model whilst capturing the
  processes we would like are the stacked shallow water equations. Whilst this is a common
@@ -1139,19 +1142,223 @@ For our study the equations that will give us the most efficient model whilst ca
     
     \section{Eddy Stresses}
     
-    Starting from thickness weighted mean of the shallow water
-    equation. 
+    In a similar fashion to the thickness weighted average  formulation for the primitive equations
+    derived by \cite{young2012exact} (see \secref{youngtwa}), we can derive 
+    mean equations for \equref{sweqs} using a thickness weighted averaging operator. 
+    First we define the operator to be
+    $\thkmean{\psi}=\nthkmean{h_{n}\psi}/\nthkmean{h_{n}}$, for a variable
+    $\psi$ living in layer $n$, where
+    $\nthkmean{\psi}$ is a standard average operator, satisfying the standard
+    axioms of an averaging operator (for a more precise definition see \cite{maddison2013eliassen}); and their residuals,
+    $\thkres{\psi}=\psi-\thkmean{\psi}$ and $\nthkres{\psi}=\psi-\nthkmean{\psi}$.
+    By multiplying Equations~\eqref{swumomeq}~and~\eqref{swvmomeq} by $h_{n}$
+    and using \equref{swthkeq} we have that
+    \begin{subequations}
+    	\begin{equation}
+    	\frac{\partial }{\partial t}\left(h_{n} u_{n}\right) +\frac{\partial }{\partial x}\left(h_{n}u_{n}u_{n}\right)
+    	+\frac{\partial }{\partial y}\left(h_{n}u_{n}v_{n}\right) - fh_{n}v_{n} = -\frac{1}{\rho_{n}}   h_{n}\frac{\partial m_{n}}{\partial x}+h_{n}F_{u_{n}}-h_{n}D_{u_{n}}, \\
+    	\end{equation}
+    	\begin{equation}
+    	\frac{\partial }{\partial t}\left(h_{n}v_{n}\right) +\frac{\partial }{\partial x}\left(h_{n}u_{n}v_{n}\right)
+    	+\frac{\partial }{\partial y}\left(h_{n}v_{n}v_{n}\right) +fh_{n}u_{n} = -\frac{1}{\rho_{n}}   h_{n}\frac{\partial m_{n}}{\partial y}+h_{n}F_{v_{n}}-h_{n}D_{v_{n}}, \\
+    	\end{equation}
+    	\begin{equation}
+    	0 =\frac{\partial h_{n} }{\partial t} +\frac{\partial }{\partial x}\left(h_{n} u_{n}\right)+
+    	\frac{\partial  }{\partial y}\left(h_{n} v_{n}\right).\\
+    	\end{equation}
+    \end{subequations}
+    Applying the non-thickness weighted averaging operator to these equations then gives
+    us
+    \begin{subequations}
+    	\label{swundecconsequ}
+    	\begin{equation}
+    	\frac{\partial }{\partial t}\left(\nthkmean{h_{n}}\thkmean{u_{n}}\right) +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{u_{n}u_{n}}\right)
+    	+\frac{\partial }{\partial y}\left(\nthkmean{h_{n}}\thkmean{u_{n}v_{n}}\right) - f\nthkmean{h_{n}}\thkmean{v_{n}} = -\frac{1}{\rho_{n}}   \nthkmean{h_{n}\frac{\partial m_{n}}{\partial x}}+\nthkmean{h_{n}}\thkmean{F}_{u_{n}}-\nthkmean{h_{n}}\thkmean{D}_{u_{n}}, \\
+    	\end{equation}
+    	\begin{equation}
+    	\frac{\partial }{\partial t}\left(\nthkmean{h_{n}}\thkmean{v_{n}}\right) +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{u_{n}v_{n}}\right)
+    	+\frac{\partial }{\partial y}\left(\nthkmean{h_{n}}\thkmean{v_{n}v_{n}}\right) +f\nthkmean{h_{n}}\thkmean{u_{n}} = -\frac{1}{\rho_{n}}   \nthkmean{h_{n}\frac{\partial m_{n}}{\partial y}}+\nthkmean{h_{n}}\thkmean{F}_{v_{n}}-\nthkmean{h_{n}}\thkmean{D}_{v_{n}}, \\
+    	\end{equation}
+    	\begin{equation}
+    	0 =\frac{\partial \nthkmean{h_{n}} }{\partial t} +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{ u_{n}}\right)+
+    	\frac{\partial  }{\partial y}\left(\nthkmean{h_{n}}\thkmean{ v_{n}}\right).\\
+    	\end{equation}
+    \end{subequations}
+    Applying Reynold's decomposition it is clear that the advection terms will
+    supply Reynold's stresses, however the Montgomery potential term is more complicated.
+    Recall that $h_{n}=\eta_{n+\half}-\eta_{n-\half}$ and that, by the definition of $m_{n}$,
+    we have that $m_{n}=m_{n+1}+\rho_{N}g_{n+\half}\eta_{n+\half}$; hence,
+   \begin{equation}
+   \begin{split}
+    h_{n}\frac{\partial m_{n}}{\partial x}
+    &=\eta_{n+\half}\frac{\partial m_{n}}{\partial x}
+    -\eta_{n-\half}\frac{\partial m_{n}}{\partial x}\\
+    &=\eta_{n+\half}\frac{\partial }{\partial x}\left(m_{n+1}+\rho_{N}g_{n+\half}\eta_{n+\half}\right)
+    -\eta_{n-\half}\frac{\partial m_{n}}{\partial x}\\
+    &=\left(\eta_{n+\half}\frac{\partial m_{n+1}}{\partial x}
+    -\eta_{n-\half}\frac{\partial m_{n}}{\partial x}\right)
+    +\half\rho_{N}g_{n+\half}\frac{\partial }{\partial x}\left(\eta_{n+\half}^{2}\right),\\
+    \end{split}
+    \end{equation}
+    and the equivalent for the $y$-component. Comparing this with the second 
+    terms in \equref{youngtwaeptensor} and it is easy to identify these terms as being
+    the form stress between layer $n$ and the layers above and below plus the potential
+    energy. This also means that there is the same degeneracy as we had when 
+    deriving the energy equations in \secref{swtheory} meaning that 
+    \begin{equation}
+    \begin{split}
+    h_{n}\frac{\partial m_{n}}{\partial x}
+    =&\lambda\left[\left(\eta_{n+\half}\frac{\partial m_{n+1}}{\partial x}
+    -\eta_{n-\half}\frac{\partial m_{n}}{\partial x}\right)
+    +\half\rho_{N}g_{n+\half}\frac{\partial }{\partial x}\left(\eta_{n+\half}^{2}\right)\right]\\
+    &+\left(1-\lambda\right)\left[\left(\eta_{n+\half}\frac{\partial m_{n}}{\partial x}
+    -\eta_{n-\half}\frac{\partial m_{n-1}}{\partial x}\right)
+    +\half\rho_{N}g_{n-\half}\frac{\partial }{\partial x}\left(\eta_{n-\half}^{2}\right)\right]\\
+    \end{split}
+    \end{equation}
+    for $0\leq\lambda\leq1$. However, for the sake of simplicity, let us just consider
+    the case $\lambda = 1$. By decomposing \equref{swundecconsequ} and dividing 
+    through by $\nthkmean{h_{n}}$ we have that 
+    \begin{subequations}
+    	\label{swtwaeqs}
+    	\begin{equation}
+    	\label{swtwaumomeq}
+    	\frac{\spec{D}\thkmean{u}_{n}}{Dt}-f\thkmean{v}_{n} 
+    	= -\frac{1}{\rho_{n}}   \frac{\partial \nthkmean{m}_{n}}{\partial x}
+    	-\nthkmean{h_{n}}^{-1}\boldsymbol{\nabla}_{3}\cdot\boldsymbol{E}^{u}
+    	+\thkmean{F}_{u_{n}}-\thkmean{D}_{u_{n}}, \\
+    	\end{equation}
+    	\begin{equation}
+    	\label{swtwavmomeq}
+    	\frac{\spec{D}\thkmean{v}_{n}}{Dt}+f\thkmean{u}_{n} 
+    	= -\frac{1}{\rho_{n}}   \frac{\partial \nthkmean{m}_{n}}{\partial y}
+    	-\nthkmean{h_{n}}^{-1}\boldsymbol{\nabla}_{3}\cdot\boldsymbol{E}^{v}
+    	+\thkmean{F}_{v_{n}}-\thkmean{D}_{v_{n}}, \\
+    	\end{equation}
+    	\begin{equation}
+    	\label{swtwathkeq}
+    	0 =\frac{\partial \nthkmean{h_{n}} }{\partial t} +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{ u_{n}}\right)+
+    	\frac{\partial  }{\partial y}\left(\nthkmean{h_{n}}\thkmean{ v_{n}}\right).\\
+    	\end{equation}
+    	where $\frac{\spec{D}\thkmean{v}_{n}}{Dt}=\frac{\partial }{\partial t}+\thkmean{u}_{n}\frac{\partial }{\partial x}+\thkmean{v}_{n}\frac{\partial }{\partial y}$ is the
+    	mean convective derivative in layer $n$; $\boldsymbol{\nabla}_{3}$ is a special operator defined as
+    	$\boldsymbol{\nabla}_{3}=\left(\frac{\partial  }{\partial x},
+    	\frac{\partial }{\partial y},
+    	\frac{\partial  }{\partial b}\right)$ such that $\frac{\partial  \psi}{\partial b}
+    	= \left(\psi_{n+\half}-\psi_{n-\half}\right)$ where $\psi_{n+\half}$ and $\psi_{n-\half}$ are the values of $\psi$ on the interfaces above and below
+    	layer $n$ respectively; and $\boldsymbol{E}^{u}$, $\boldsymbol{E}^{v}$ are the
+    	eddy stresses
+    	\begin{equation}
+    	\label{swtwaeptensor}
+    	\begin{array}{c}
+    	\boldsymbol{E}^{u}=\nthkmean{h_{n}}\left(
+    	\begin{array}{c}
+    	\thkmean{\thkres{u}_{n}\thkres{u}_{n}} \\
+    	\thkmean{\thkres{u}_{n}\thkres{v}_{n}} \\
+    	0 \\
+    	\end{array}\right)+\left(
+    	\begin{array}{c}
+    	\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}} \\
+    	0 \\
+    	\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \\
+    	\end{array}\right), \\ \\
+    	\boldsymbol{E}^{v}=\nthkmean{h_{n}}\left(
+    	\begin{array}{c}
+    	\thkmean{\thkres{u}_{n}\thkres{v}_{n}} \\
+    	\thkmean{\thkres{v}_{n}\thkres{v}_{n}} \\
+    	0 \\
+    	\end{array}\right)+\left(
+    	\begin{array}{c}
+    	0\\
+    	\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}} \\
+    	\nthkmean{\nthkres{\eta}\nthkres{m}_{y}} \\
+    	\end{array}\right). \\
+    	\end{array}
+    	\end{equation}
+    \end{subequations}
+    As before, this can be written as a tensor,
+    \begin{equation}
+    \boldsymbol{E}=\left(\begin{array}{ccc}
+    -M + K + P & N & 0 \\
+    N & M + N + P& 0 \\
+    R & S & 0 \\
+    \end{array}\right)
+    \end{equation}
+    where $M=\frac{\nthkmean{h_{n}}}{2}
+    \left(\thkmean{\thkres{v}_{n}\thkres{v}_{n}}-\thkmean{\thkres{u}_{n}\thkres{u}_{n}}\right)$, $K=\frac{\nthkmean{h_{n}}}{2}
+    \left(\thkmean{\thkres{u}_{n}\thkres{u}_{n}}+\thkmean{\thkres{v}_{n}\thkres{v}_{n}}\right)$, $N=\nthkmean{h_{n}}
+    \thkmean{\thkres{u}_{n}\thkres{v}_{n}}$, $P=\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}}$, 
+    $R=\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} $ and 
+    $S=\nthkmean{\nthkres{\eta}\nthkres{m}_{y}} $; and once again this
+    can be bounded by the eddy energy.
     
-    Form of the pv eddy stresses.
-    Thickness weighted PV vs PV derived from thickness 
-    weighted equations.
+    With this we have a formulation for the 
+    averaged system which is equivalent to the
+    unaveraged system but with the addition of an
+    eddy stress term in the momentum equation.
+    This means that one can derive an equation for \gls{pv} using the averaged system
+    in an identical way to the unaveraged 
+    system. Hence we have that the \gls{pv} for
+    the averaged system is given by 
+    \begin{equation}
+    \spec{q}_{n} =
+    \frac{f+\partialdiff[\thkmean{v}_{n}]{x}-\partialdiff[\thkmean{u}_{n}]{y}}
+    {\nthkmean{h_{n}}},
+    \end{equation} 
+    satisfying
+    \begin{equation}
+    \frac{\spec{D}\spec{q}_{n}}{D t} 
+    =   -\nthkmean{h_{n}}^{-1}
+    \boldsymbol{\nabla}
+    \cdot\boldsymbol{\spec{F}},
+    \label{avpveq}
+    \end{equation} 
+    where $
+    \boldsymbol{\spec{F}}
+    =   \nthkmean{h_{n}}^{-1}\left( \,
+    \boldsymbol{\nabla}_{3}
+    \cdot(\nthkmean{h_{n}}
+    \boldsymbol{E}^{v}) \, , \,
+    - \boldsymbol{\nabla}_{3}
+    \cdot(\nthkmean{h_{n}}
+    \boldsymbol{E}^{u}) \, \right)^{T}  $ and $\boldsymbol{E}^{u}$,  $\boldsymbol{E}^{v}$ are the
+    columns of  $\boldsymbol{E}$. Here the forcing and dissipation terms, $\thkmean{
+    	\boldsymbol{F}}$ and $\thkmean{
+    	\boldsymbol{D}}$, have been ignored, but
+    would be inherited from the momentum
+    equation in the natural way. It should be noted that whilst $\thkmean{\spec{q}_{n}} = \spec{q}_{n}$, $\spec{q}_{n} \neq \thkmean{q}_{n}$.  However,
+    $\spec{q}_{n}$ is 
+    more useful than the averaged \gls{pv}, $\thkmean{q}_{n}$, because the eddy flux $
+    \boldsymbol{\spec{F}} $ is directly related to the Eliassen-Palm tensor, whilst  $\spec{q}_{n}$ involves
+    the weighted mean velocities and so is precisely the \gls{pv} for the averaged system. 
+    Despite this, it is worth discussing $\thkmean{q}_{n}$ for 
+    comparison. By applying the thickness weighted averaging operator to the 
+    definition of $q_{n}$ we get 
+    \begin{equation}
+    \thkmean{q}_{n} =
+    \frac{f+\partialdiff[\nthkmean{v}_{n}]{x}-\partialdiff[\nthkmean{u}_{n}]{y}}
+    {\nthkmean{h_{n}}}.
+    \end{equation} 
+    Then we can derive the dynamical equation for
+    $ \thkmean{q}$,
+    \begin{equation}
+    \begin{split}
+    0&=\nthkmean{ h_{n} \left(\partialdiff[q_{n}]{t} + \boldsymbol{u}_{n} \cdot\boldsymbol{\nabla}q_{n} \right) } =
+    \nthkmean{  \partialdiff{t}\left(h_{n}q_{n}\right) +  \boldsymbol{\nabla}\cdot\left(h_{n}\boldsymbol{u}_{n}q_{n} \right)}  \\
+    &= \partialdiff{t} \left(\nthkmean{ h_{n} } \thkmean{q}_{n}\right)
+    +  \boldsymbol{\nabla}\cdot\left( \nthkmean{ h_{n}}\thkmean{\boldsymbol{u}_{n}q_{n}} \right)
+    = \partialdiff{t} \left(\nthkmean{h_{n}} \thkmean{q}_{n}\right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\boldsymbol{u}}_{n} \, \thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right) \\
+    &= \nthkmean{h_{n}} \left(\partialdiff[q_{n}]{t}+  \thkmean{\boldsymbol{u}}_{n}\cdot \boldsymbol{\nabla}\thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)
+    \end{split}
+    \end{equation}
+    as used by \cite{greatbatch1998exploring} and \cite{smith1999primitive}.
+            
+    \hl{Eddy energy and eddy enstrophy. State equations with 
+    possible application in terms of carrying them in the system.}
     
-    Eddy energy and eddy enstrophy. State equations with 
-    possible application in terms of carrying them in the system.
-    
-    Time averaged diagnostics. Explain that this 
+    \hl{Time averaged diagnostics. Explain that this 
     requires steady state dynamics. Need configurations
-    with a unique mean steady state.
+    with a unique mean steady state.}
     
 
 \section{Model Discretisation}
@@ -1308,10 +1515,10 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   
   
   
-Viscosity: Smagorinsky with laplacian, biharmonic.
+\hl{Viscosity: Smagorinsky with laplacian, biharmonic.}
 
 
-Example model output.
+\hl{Example model output.}
 
 \chapter{Analysis of a hierarchy of models}
 

@@ -6,12 +6,26 @@
 \usepackage{graphicx}
 \usepackage[width=16.00cm, height=22.00cm]{geometry}
 
+\graphicspath{{figures/}}
+
 \usepackage{color, soul}
 \usepackage{siunitx}
 
 \usepackage[acronym,translate=false]{glossaries}
-\usepackage[backend=biber,style=bwl-FU,uniquename=false,maxcitenames=1,maxbibnames=99]{biblatex}
+\usepackage[backend=biber,style=bwl-FU,citetracker = true,uniquelist=false,uniquename=false,mincitenames=1,maxcitenames=2,maxbibnames=99]{biblatex}
 \addbibresource{bibrefs.bib}
+
+
+\AtEveryCitekey{\maxminformat} % cite all authors of
+
+\def\fgt{\setcounter{minnames}{1}\setcounter{maxnames}{1}} %non first and greater than two
+
+\def\flt{\setcounter{maxnames}{\value{labelname}}} %first and lower than two
+
+\def\maxminformat{%
+ \ifnumgreater{\value{labelname}}{2}
+    {\fgt}
+    {\flt}}
 
 \usepackage{setspace}
 %\singlespacing

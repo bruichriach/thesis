@@ -1,10 +1,17 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass[12pt,a4paper]{report}
 \usepackage[latin1]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\usepackage[width=16.00cm, height=22.00cm]{geometry}
+\usepackage[
+a4paper,
+total={210mm,297mm},
+left=30mm,
+right=20mm,
+top=30mm,
+bottom=30mm,
+]{geometry}
 
 \usepackage{color, soul}
 \usepackage{siunitx}
@@ -87,8 +94,9 @@ The Ocean itself is a highly stable body of water with strong stratification,
 which means that the water column can be divided into advective water masses.
 The Arctic Ocean is commonly divided into four different layers (\figref{fig:amap}):
 The polar mixed layer, which is a well mixed layer in
-contact with the atmosphere and surface ice; the halocline, which acts as
-reservoir of fresh water and penetrates to around ${\sim}200\,\mathrm{m}$; the \gls{awl},
+contact with the atmosphere and surface ice; the halocline, a
+reservoir of fresh water and penetrates to around ${\sim}200\,\mathrm{m}$, which acts
+as a buffer between the sea ice and the \gls{awl}; the \gls{awl},
 which is body of warm salty water which originates from the North Atlantic and Nordic 
 Sea via Fram Strait and typically sits at around ${\sim}400\,\mathrm{m}$ deep; and finally, 
 the Polar Deep Water, defined by the water masses that aren't
@@ -112,17 +120,16 @@ directly forced from the surface is contained within the Polar Mixed Layer
 and halocline in the upper ${\sim}200\,\mathrm{m}$ of the Arctic Ocean. 
 This surface circulation has been well documented by observations
 from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
-the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it's a very different
-story for the circulation in the \gls{awl} and lower layers (\figref{fig:Proshutinsky2005Circulation}). Observations made
+the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it is a very different
+story for the circulation in the \gls{awl} and lower layers. Observations made
 inside the Ocean's basins rarely are able to profile the structure  and
 circulation  below 500m  although much progress has been made here in the
 past decade. This lack of observations means that  we  still only have  a  sense  of  the circulation 
 of the \gls{awl} and the Deep  Waters.  The  observations  we  do 
 have  infer stable cyclonic  rim  currents about each of the basins in the
 \gls{awl} and it is believed that this trend extends through the Deep Water to the 
-ocean floor.  Because of the highly stratified nature of the halocline, the surface forcing 
-is likely to have little effect on the deeper ocean, which leaves the other 
-two possibilities as the determining features.
+ocean floor (\figref{fig:Proshutinsky2005Circulation}).  It is apparent that the surface flows have little correlation with these deep circulations, this is because of the 
+strong stratification in the halocline, and hence only leaves a handful of other possibilities for determining the processes that set the deep water circulation.
 
 
 \begin{figure}
@@ -145,7 +152,7 @@ in an idealised barotropic model of a basin, controlling the flux
 of \gls{pv} through inflows and outflows
 at the boundary, the circulation in the basin could be switched between cyclonic and
 anti-cyclonic circulations (\figref{fig:Yang2005}). This principle suggests
-that the persistent cyclonic nature of the \gls{awl} implies that there is a 
+that the persistent cyclonic nature of the \gls{awl} is induced by a 
 net influx of \gls{pv} via the Arctic Gateways. Fortunately, permanent moorings 
 covering the majority of the ocean gateways into the Arctic~Ocean have built
 up a detailed picture of the transport in and out of the Arctic Ocean 
@@ -158,7 +165,7 @@ Canadian Archipelago in the \cite{yang2005arctic} calculation the flux can be ne
 These factors, especially the large variability, make it unconvincing that its the \gls{pv}
  transport, or in fact any properties of the gateway fluxes, that determines the 
 cyclonic nature of the \gls{awl}.
-Hence, the deep water circulation in the Arctic Ocean is more likely determined by 
+Hence, the deep water circulation in the Arctic Ocean is most likely determined by 
 internal processes, which are poor understood, especially in an Ocean with such sparse observations.
 
 \begin{figure}
@@ -264,7 +271,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  distinct water masses in the global ocean (for example, \cite{emery1986global}).
   Hence, with an excessive horizontal diffusion
  of tracers ocean models are able to break up water masses much quick than
- is observed in the physical ocean creating, for example, the "Veronis Effect" (\cite{veronis1975role}).
+ is observed in the physical ocean creating, for example, the ``Veronis Effect" (\cite{veronis1975role}).
  Hence, a more physically appropriate eddy parameterisation 
  is needed;
   and so, in a way that seems obvious today, eddies need to be
@@ -278,9 +285,9 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  isopycnal coordinates, that is in the coordinate space $(x,y,\rho)$,
   where density, $\rho$, has replaced depth, $z$, as the vertical
   coordinate. Whilst the rigorous exploration of this coordinate system
-  will be discussed in detail later in this section, for our current purposes 
+  will be discussed in detail later on, in the \secref{youngtwa}, for our current purposes 
   it is enough to say that this coordinate system produces an equation
-  for isopycnal "thickness",
+  for isopycnal ``thickness",
   \begin{equation}
   \label{cont}
   \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = 0,
@@ -406,15 +413,15 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 of \cite{haynes1987evolution} and \cite{haynes1990conservation}.
                 
                 Now, by making the same assumption that was made for isopycnal thickness in 
-                \gls{gm} for \gls{pv}, that ocean eddies mix PV along isopycnals and not
-                across them, \equref{meanpveq} becomes
+                \gls{gm} for \gls{pv}, that ocean eddies mix PV along isopycnals in the down-gradient direction, \equref{meanpveq} becomes
                 \begin{equation}
                 \frac{\partial \left(\mean{z}_{\rho} \mean{q}\right)}{\partial t} +
                 \boldsymbol{\nabla}\cdot\left(\mean{z}_{\rho}\,\mean{q}\,\mean{\boldsymbol{u}}+\mean{q}\mean{\res{z}_{\rho} \res{\boldsymbol{u}}}\right)
                 = \boldsymbol{\nabla}\cdot\left(\kappa \mean{z}_{\rho}\,\boldsymbol{\nabla}\mean{q}\right) ,
                 \label{parammeanpveq}
                 \end{equation}
-                where we've used the small slope approximation, demonstrated in \cite{gent1990}. By using Equations~\ref{meancont}~and~\ref{parammeanpveq} we have exactly the equation for an arbitrary tracer given in Equation 6 of \cite{gent1995parameterizing},
+                where the small slope approximation has been used, as demonstrated in
+                \cite{gent1990}. By using Equations~\ref{meancont}~and~\ref{parammeanpveq} we have exactly the equation for an arbitrary tracer given in Equation 6 of \cite{gent1995parameterizing},
                 \begin{equation}
                 \frac{D^\star \mean{q}}{D t}\equiv\frac{\partial \mean{q}}{\partial t} + \boldsymbol{u}^\star\cdot\boldsymbol{\nabla}\mean{q} = \boldsymbol{\nabla}\cdot
                 \left(\kappa \mean{z}_{\rho}\boldsymbol{\nabla} \mean{q} \right)/\mean{z}_{\rho} ,
@@ -430,7 +437,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 where there is no topography this is identical to the flattening of isopycnals.
                 However, in the presence of topography homogenised isopycnal thickness
                 causes the isopycnals to mimic the shape of the topography and hence 
-                rise over topography. However, to allow this to happen freely
+                rise over topography. Unfortunately, to allow this to happen freely
                 clearly violates energy conservation, as demonstrated schematically in 
                 \figref{fig:Colddoming}. In reality, the ocean attempts to 
                 homogenise \gls{pv} but only so far as it can with the available energy;
@@ -457,7 +464,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 \begin{figure}
                 	\centering
                 	\includegraphics[width=0.6\linewidth]{am00}
-                	\caption[Cold-doming]{I'm going to redraw these for the basin case.}
+                	\caption[Cold-doming]{\hl{I'm going to redraw these for the basin case.}}
                 	\label{fig:Colddoming}
                 \end{figure}
                 
@@ -580,7 +587,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                   Montgomery potential and $\sigma \equiv \eta_{b} = -m_{bb}$.
                   Compare the continuity equation, \equref{isopyccont}, with 
                   \equref{cont}, noting that
-                  $\sigma = \eta_{b}$ is equivalent to $-z_{\rho}$. Using \equref{isopyceq}, an energy equation can also be derived,
+                  $\sigma = \eta_{b}$ is equivalent to $-z_{\rho}$. Using Equations~\eqref{isopyceq}, an energy equation can also be derived,
                   \begin{equation}
                   \frac{\partial \sigma K}{\partial t} + \frac{\partial P}{\partial t} = -\boldsymbol{\nabla}\left(\sigma K \boldsymbol{u} +
                   \sigma m \boldsymbol{u}\right) -\left(\frac{\partial \eta}{\partial t} m\right)_{b}, \\
@@ -667,14 +674,14 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                      M = \frac{\thkmean{{\thkres{v}}^{2} - {\thkres{u}}^{2}}}{2}, & 
                      N = \thkmean{\thkres{u}\thkres{v} }, \\
                      K = \frac{\thkmean{{\thkres{u}}^{2} + {\thkres{v}}^{2}}}{2}, & 
-                     P =  \nthkmean{{\nthkres{\eta}}^{2}},  \\ 
-                     R =  f\nthkmean{\nthkres{\eta}\nthkres{u}}, \, & \rm and  &  
-                     S = f\nthkmean{\nthkres{b}\nthkres{v}} ;
+                     P =  {\nthkmean{{\nthkres{\eta}}^{2}}}/{\nthkmean{\sigma}},  \\ 
+                     R =  f{\nthkmean{\nthkres{\eta}\nthkres{u}}}/{\nthkmean{\sigma}}, \, & \rm and  &  
+                     S = f{\nthkmean{\nthkres{b}\nthkres{v}}}/{\nthkmean{\sigma}} ;
                      \end{array} 
                      \end{equation}
                      we have (in the adiabatic case) that
                      \begin{equation}
-                     \boldsymbol{E}=\nthkmean{\sigma}^{-1}\left(
+                     \boldsymbol{E}=\nthkmean{\sigma}\left(
                      \begin{array}{ccc}
                      -M+K+P & N & 0 \\
                      N & M+K+P & 0 \\
@@ -812,7 +819,24 @@ As mentioned in the previous section, the circulation in the freshwater layer is
  represent the freshwater layer in the Arctic. The more distressing problem is
   their ability to represent the Atlantic Water Layer. 
 
-Observations suggest that the Atlantic Water Layer circulates counter clockwise around the Arctic basins at a depth of $200$ to $800\mathrm{m}$ (\figref{fig:Proshutinsky2005Circulation}). However, many attempts over the past twenty years to model the Atlantic Water Layer have resulted in confusing predictions where the circulation seemingly randomly organises into circulations that are cyclonic or anti-cyclonic with almost identical frequency. To attempt to diagnose the skill of a model to produce cyclonic boundary currents \cite{holloway2007water} introduces ``topostrophy", defined as   $\tau=(\boldsymbol{f}\times\boldsymbol{V})\cdot\boldsymbol{\nabla}D$, where $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{V}$ is velocity and  $D$ is the total depth. This so called topostrophy is a measure the strength of along slope flows and gives positive values for currents that flow with the upslope to their right (e.g. for cyclonic rim currents) and negative values for the opposite.  When calculated for the major \gls{aomip} models, most show variable and ambiguous values for $\tau$  whereas models that employ the ``Neptune Effect", mentioned in \secref{entropy}, shows a persistent and positive value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine simultaneous simulations using the NEMO model run with and without the Neptune Effect and show that the addition of this particular parameterisation is the likely cause of this tendency (\figref{fig:HolloWang2009}).  
+Observations suggest that the Atlantic Water Layer circulates counter clockwise around the
+ Arctic basins at a depth of $200$ to $800\mathrm{m}$
+ (\figref{fig:Proshutinsky2005Circulation}). However, many attempts over the past twenty
+ years to model the Atlantic Water Layer have resulted in confusing predictions where the
+ circulation seemingly randomly organises into circulations that are cyclonic or
+ anti-cyclonic with almost identical frequency. To attempt to diagnose the skill of a model
+ to produce cyclonic boundary currents \cite{holloway2007water} introduces ``topostrophy",
+ defined as   $\tau=(\boldsymbol{f}\times\boldsymbol{V})\cdot\boldsymbol{\nabla}D$, where
+ $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{V}$ is velocity and  $D$ is the total
+ depth. This so called topostrophy is a measure the strength of along slope flows and gives
+ positive values for currents that flow with the upslope to their right (e.g. for cyclonic
+ rim currents) and negative values for the opposite.  When calculated for the major
+ \gls{aomip} models, most show variable and ambiguous values for $\tau$  whereas models that
+ employ the ``Neptune Effect", mentioned in \secref{entropy}, shows a persistent and positive
+ value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine
+ simultaneous simulations using the NEMO model run with and without the Neptune Effect and
+ show that the addition of this particular parameterisation is the likely cause of this
+ tendency (\figref{fig:HolloWang2009}).  
 
 
 \begin{figure}
@@ -1056,14 +1080,14 @@ For our study the equations that will give us the most efficient model whilst ca
     =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right) 
     -\sum_{n=1}^{N}  h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
     +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} \\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right] 
-    -\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right]  \\
+    &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
     +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} \\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    -\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{N}g_{n+\half } \eta_{n+\half }\right) 
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right]  \\
+    &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{N}g_{n+\half } \eta_{n+\half }\right) 
     +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)   m_{n} \\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    -\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)    m_{n+1} +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}\\
+    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)    m_{n+1} +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}\\
     =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
     - \frac{\partial}{\partial t}\left(\eta_{N+\half }\right)    m_{N+1} + \frac{\partial}{\partial t}\left(\eta_{\half }\right) m_{1},
     \end{split}
@@ -1083,14 +1107,14 @@ For our study the equations that will give us the most efficient model whilst ca
     =& - \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right) 
     - h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
     +\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
-    =& - \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right] 
-    - \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
+    =& - \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    &- \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
     +\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
-    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n+\half }\right) 
+    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n+\half }\right) 
     + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right) \\
-    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n+1} - \rho_{n+1}g \eta_{n+\half }\right) 
+    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n+1} - \rho_{n+1}g \eta_{n+\half }\right) 
     + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right).
     \end{split}
     \end{equation}
@@ -1275,7 +1299,6 @@ For our study the equations that will give us the most efficient model whilst ca
     	\end{array}\right). \\
     	\end{array}
     	\end{equation}
-    \end{subequations}
     As before, this can be written as a tensor,
     \begin{equation}
     \boldsymbol{E}=\left(\begin{array}{ccc}
@@ -1284,12 +1307,19 @@ For our study the equations that will give us the most efficient model whilst ca
     R & S & 0 \\
     \end{array}\right)
     \end{equation}
-    where $M=\frac{\nthkmean{h_{n}}}{2}
-    \left(\thkmean{\thkres{v}_{n}\thkres{v}_{n}}-\thkmean{\thkres{u}_{n}\thkres{u}_{n}}\right)$, $K=\frac{\nthkmean{h_{n}}}{2}
-    \left(\thkmean{\thkres{u}_{n}\thkres{u}_{n}}+\thkmean{\thkres{v}_{n}\thkres{v}_{n}}\right)$, $N=\nthkmean{h_{n}}
-    \thkmean{\thkres{u}_{n}\thkres{v}_{n}}$, $P=\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}}$, 
-    $R=\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} $ and 
-    $S=\nthkmean{\nthkres{\eta}\nthkres{m}_{y}} $; and once again this
+    \end{subequations}
+    where 
+    \begin{equation*}
+    \begin{array}{ccc}
+    M=\frac{\nthkmean{h_{n}}}{2}
+    \left(\thkmean{\thkres{v}_{n}\thkres{v}_{n}}-\thkmean{\thkres{u}_{n}\thkres{u}_{n}}\right),& K=\frac{\nthkmean{h_{n}}}{2}
+    \left(\thkmean{\thkres{u}_{n}\thkres{u}_{n}}+\thkmean{\thkres{v}_{n}\thkres{v}_{n}}\right),& N=\nthkmean{h_{n}}
+    \thkmean{\thkres{u}_{n}\thkres{v}_{n}},\\ P=\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}}, &
+    R=\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \, \mathrm{and} & 
+    S=\nthkmean{\nthkres{\eta}\nthkres{m}_{y}} ;\\
+    \end{array}
+    \end{equation*} 
+    once again this
     can be bounded by the eddy energy.
     
     With this we have a formulation for the 
@@ -1346,8 +1376,8 @@ For our study the equations that will give us the most efficient model whilst ca
     0&=\nthkmean{ h_{n} \left(\partialdiff[q_{n}]{t} + \boldsymbol{u}_{n} \cdot\boldsymbol{\nabla}q_{n} \right) } =
     \nthkmean{  \partialdiff{t}\left(h_{n}q_{n}\right) +  \boldsymbol{\nabla}\cdot\left(h_{n}\boldsymbol{u}_{n}q_{n} \right)}  \\
     &= \partialdiff{t} \left(\nthkmean{ h_{n} } \thkmean{q}_{n}\right)
-    +  \boldsymbol{\nabla}\cdot\left( \nthkmean{ h_{n}}\thkmean{\boldsymbol{u}_{n}q_{n}} \right)
-    = \partialdiff{t} \left(\nthkmean{h_{n}} \thkmean{q}_{n}\right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\boldsymbol{u}}_{n} \, \thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right) \\
+    +  \boldsymbol{\nabla}\cdot\left( \nthkmean{ h_{n}}\thkmean{\boldsymbol{u}_{n}q_{n}} \right) \\
+    &= \partialdiff{t} \left(\nthkmean{h_{n}} \thkmean{q}_{n}\right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\boldsymbol{u}}_{n} \, \thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right) \\
     &= \nthkmean{h_{n}} \left(\partialdiff[q_{n}]{t}+  \thkmean{\boldsymbol{u}}_{n}\cdot \boldsymbol{\nabla}\thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)
     \end{split}
     \end{equation}
@@ -1411,6 +1441,39 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \end{equation}
   applied to $p$, where bars denote averaging in the $x$ and $y$ directions respectively.
   
+  Typical scales in the ocean are $10 - 100 \mathrm{km}$ for mesoscale eddies,
+  in the kilometres for ocean depth, whilst typical speeds are in
+  $\mathrm{cm}\,\mathrm{s}^{-1}$, because of this we shall rescale the 
+  dimensions so that the model is not operating with values of vastly different magnitudes
+  and hence reducing the chance for floating point errors. Firstly, the layer thicknesses,
+  $h_{n}$, are scaled by the mean depth of the topography so that 
+  $ \int_{D} \left(\sum_{n=1}^{N} h_{n}\right)  \mathrm{ d A} / \int_{D} \mathrm{ d A} \equiv 1 $, 
+  where $D$  is the domain, $N$ the number of layers and
+  $ \mathrm{ d A} = \mathrm{ d x}\, \mathrm{ d y}$. 
+  The first baroclinic deformation radius is approximately $L_{D}=\sqrt{g^{\prime}H}/f_{0}$,
+  where ${g^{\prime}=g\left(\rho_{1}-\rho_{N}\right)}/\rho_{N}$ and $f_{0}$ is 
+  the local Coriolis parameter, and sets the scale of the mesoscale eddies.
+  Hence, we take ${g\left(\rho_{1}-\rho_{N}\right)}/\rho_{N} = 1 $
+  and $f_{0}=1$ so that time is scaled by $1/f_{0}$ and the horizontal velocities and distances are scaled by the wave speed, $\sqrt{g^{\prime}H}$ and deformation radius, $L_{D}=\sqrt{g^{\prime}H}/f_{0}$.
+
+  In order to have well resolved eddies, we choose a grid resolution of $\frac{1}{20} L_{D}$
+  meanwhile we want a domain that is at least around $10$ or $20$ times the 
+  mesoscale. This immediately give around a hundred thousand degrees of freedom,
+  since we are limited by available computation resources it is not sensible
+  to have a large domain or finer grid that this. To cheat this limitation
+  we use a doubly re-entrant domain rather than a basin with boundaries, exploiting
+  the fact we would expect the ocean to be statistically similar across a symmetric 
+  domain and avoiding the large domain required to incorporate an entire ocean basin's
+  dynamics. This choice does have some obvious drawbacks. Firstly, the symmetry is
+  incredibly unrealistic, the ocean is not divided into identical cubes and so the 
+  fact that a piece of dynamics will have an identical neighbour nearby may cause some
+  unrealistic properties. However, this will hopefully only be a problem on the largest 
+  scales. Secondly, this requires a constant Coriolis force which may loose
+  us some important dynamics such as rossby waves, but at high latitudes $f_{0}$
+  dominates the higher order terms of the Coriolis parameter expansion.
+  Finally, there is a similar issue with topography, any choice must be
+  zonally and meridionally symmetric. This limits the choices to sea mounts and ridges.  
+    
   Now, to generate dynamically interesting system we manipulate the system using 
   the forcing and
   dissipation terms, $\boldsymbol{F}_{\boldsymbol{u}} = \left(F_{u}, F_{v}\right)$ and $\boldsymbol{D}_{\boldsymbol{u}} = \left(D_{u}, D_{v}\right)$, in \equref{sweqs}.
@@ -1453,19 +1516,19 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   that a straight forward linear
   bottom friction gives rise to large, unrealistic eddies and that using a higher order
   polynomial gives more realistic results.
-  The advantage of an $n$-polynomial bottom  friction rather than 
-  a linear bottom friction is that it can be scale selective. Take the 
+  One advantage of an $n$-polynomial bottom  friction rather than 
+  a linear bottom friction is that it can be scale selective. By taking the 
   drag to have the form $\boldsymbol{D}_{\boldsymbol{u}_{1}} = 
   - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
   {\left|\boldsymbol{u}^{\ast}\right|}\right)^{n}
   \boldsymbol{u}_{1}/h_{1}$ for some typical velocity $\boldsymbol{u}^{\ast}$, 
-  natural number $n$ and friction coefficient $r$. Note that for $n=0$, this is 
-  just linear bottom friction. Now for $n \geq 1$, $\boldsymbol{D}_{\boldsymbol{u}_{1}}$
+  natural number $n$ and friction coefficient $r$. Now for $n \geq 1$ (note that for $n=0$, this is 
+  just linear bottom friction), $\boldsymbol{D}_{\boldsymbol{u}_{1}}$
   is stronger when $\left|\boldsymbol{u}_{1}\right| > \left|\boldsymbol{u}^{\ast}\right|$
   and weaker when $\left|\boldsymbol{u}_{1}\right| < \left|\boldsymbol{u}^{\ast}\right|$
   than in the linear case. Hence, the higher order polynomials limit the flows from 
   becoming too strong by selectively limiting the stronger currents.
-  This means it's possible, by tuning $r$, $\left|\boldsymbol{u}^{\ast}\right|$ and 
+  This means it is possible that, by tuning $r$, $\left|\boldsymbol{u}^{\ast}\right|$ and 
   $n$, a bottom friction can be chosen that limits the along-topography flow with
   minimal effect on the eddy field. In order to tune these parameters, we begin by 
   introducing topostrophy, a term coined by \cite{holloway2007water}, which is defined as
@@ -1476,8 +1539,10 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   and contours of topography and hence, is a measure of how much the flow is
   following topography. With this tool we can explore the sensitivity of the models
   ability to generate along-topography flow to the choice of bottom friction. 
-  Figure \ref{fig:topostrophy} shows the mean topostrophy in seven models for the
-  initial spin up of the models. The first thing to note is how damped the 
+  Figure \ref{fig:topostrophy} shows the mean topostrophy for the
+  initial spin up of several models with a topographic ridge similar to
+  the schematics in \figref{fig:TopographySchem} and
+	\figref{fig:TopographyCross}. The first thing to note is how damped the 
   topostrophy is in the linear
   bottom friction case. It is clear that the bottom friction is inhibiting the 
   eddies greatly and so stopping the formation of along-topography flows. In
@@ -1519,6 +1584,31 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
 
 
 \hl{Example model output.}
+
+
+\begin{figure}
+	\centering
+	\begin{minipage}[b]{0.45\linewidth}
+		\includegraphics[width=\linewidth]{Topography}
+		\caption{Schematic of the topography. The dimensions of the domain
+			are $10 L_{D}$ in the direction along the 
+			ridge, where $L_{D}$ the deformation
+			radius defined in the text, and $15 L_{D}$ 
+			in the perpendicular direction. }
+		\label{fig:TopographySchem}
+	\end{minipage}
+	\quad
+	\begin{minipage}[b]{0.45\linewidth}
+		\includegraphics[width=\linewidth]{TopographyCross}
+		\caption{Cross-sectional schematic of the topography. 
+			Shows three layers of fluid, with densities 
+			$\rho_{1}$, $\rho_{2}$ and $\rho_{3}$, above the 
+			topography, $s$. Interfaces between individual
+			layers, the surface and topography are labelled $\eta_{i}$ for
+			the interface above layer '$i$' and  $\eta_{0}=s$. }
+		\label{fig:TopographyCross}
+	\end{minipage}
+\end{figure}
 
 \chapter{Analysis of a hierarchy of models}
 

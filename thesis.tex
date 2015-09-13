@@ -907,6 +907,7 @@ the eddy kinetic and potential energy, as well as the Reynolds' stress angle and
  
 
 \chapter{Developement of Stacked Shallow Water Equations}
+\label{sweq}
 
 With the hope of taking advantage of the invariance demonstrated by 
 \cite{maddison2013eliassen}, we need to be able to diagnose the
@@ -1179,6 +1180,8 @@ For our study the equations that will give us the most efficient model whilst ca
     
     
     \section{Eddy Stresses}
+    
+    \label{eddymeantheory}
     
     In a similar fashion to the thickness weighted average  formulation for the primitive equations
     derived by \cite{young2012exact} (see \secref{youngtwa}), we can derive 
@@ -1571,7 +1574,10 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   Given these results it seems sensible to use the cubic parameterisation for bottom 
   friction. It's worth noticing that there is little physical rational for choosing
   one parameterisation over another, other than one might produce more physically 
-  appealing results. 
+  appealing results. Finally, we also require grid-scale dissipation. This is to dissipate the
+  numerical noise which develops at the grid-scale from the cascade of enstophy.
+  In these models we use biharmonic diffusion with the Smagorinsky viscosity (\cite{smagorinsky1963general}). 
+  
   
   \begin{figure}
   	\centering
@@ -1586,12 +1592,34 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   	\label{fig:topostrophy}
   \end{figure}
   
-  Finally, we also require grid-scale dissipation. This is to dissipate the
-  numerical noise which develops at the grid-scale from the cascade of enstophy.
-  In these models we use biharmonic diffusion with the Smagorinsky viscosity (\cite{smagorinsky1963general}).
+  In summary, we have created a model that is simple and quick, but still is a
+  reasonable representation of the ocean. Using this model, we can apply 
+  averaging operators to diagnose eddy-mean interactions in the 
+  presence of topography using the theory developed
+  in \secref{eddymeantheory}. However, before we get to topography, let us convince
+  ourselves that we have a model that is consistent the equations derived in
+  Chapter~\ref{sweq} and our conception of ocean dynamics. 
+  Using the wind stress that we will discuss in detail in \secref{stochwind} in
+  a three-layered domain without topography we spin up a model to examine the 
+  resulting eddy field and momentum and energy balances. 
+  \equref{swlayercorrectenergy} demonstrates a definition of energy that is conserved 
+  except for forcing and dissipation, in this case this is the wind stress, bottom 
+  friction and viscosity. \figref{fig:notopenergy} demonstrates that 
+  the bottom friction balances the energy input from the wind over a large time
+  window beyond the initial spin up.
   
   
   
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{notopenergy}
+  	\caption{Energy change in topography-less model represented by mean rate of change of energy per unit column over $10^{3}/f$ time window. Energy transfer is split into 
+  		energy input by wind stress (\textcolor{blue}{blue}), dissipation through bottom friction (\textcolor{red}{red}) and transfer to small scale through the viscosity
+  		(\textcolor{magenta}{magenta}), where the viscosity is negligible. The sum of these
+  		is are the \textcolor{green}{green} bars. The lines are the mean transfers over the whole time window for wind stress, bottom friction, viscosity and total (\textcolor{blue}{blue}, \textcolor{red}{red}, \textcolor{magenta}{magenta} and \textcolor{green}{green} respectively). The overall energy transfer is about $1\%$
+  		of the wind input and friction dissipation but is vanishingly small when the spin up is excluded.}
+  	\label{fig:notopenergy}
+  \end{figure}
   
   
 \hl{Viscosity: Smagorinsky with laplacian, biharmonic.}
@@ -1614,7 +1642,7 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
 	\quad
 	\begin{minipage}[b]{0.45\linewidth}
 		\includegraphics[width=\linewidth]{TopographyCross}
-		\caption{Cross-sectional schematic of the topography. 
+		\caption{\hl{error in layer depths: 0.25 not 0.5 in layers above ridge} Cross-sectional schematic of the topography. 
 			Shows three layers of fluid, with densities 
 			$\rho_{1}$, $\rho_{2}$ and $\rho_{3}$, above the 
 			topography, $s$. Interfaces between individual
@@ -1645,6 +1673,7 @@ and the available eddy budgets.
 
 \section{Zero-Mean Wind Forced Models}
 
+\label{stochwind}
 Model where the mean forcing is effectively zero. 
 Hence the model is forced by a wind stress which is
 absent from the mean system and hence forces the

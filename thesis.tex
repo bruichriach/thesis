@@ -88,6 +88,7 @@ bottom=30mm,
 
 
 \chapter{Introduction}
+\label{intro}
 
 \glsresetall
 
@@ -1489,7 +1490,7 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   us some important dynamics such as rossby waves, but at high latitudes $f_{0}$
   dominates the higher order terms of the Coriolis parameter expansion.
   Finally, there is a similar issue with topography, any choice must be
-  zonally and meridionally symmetric. This limits the choices to sea mounts and ridges.  
+  zonally and meridionally translationally symmetric. This limits the choices to sea mounts and ridges.  
     
   Now, to generate dynamically interesting system we manipulate the system using 
   the forcing and
@@ -1606,7 +1607,21 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   except for forcing and dissipation, in this case this is the wind stress, bottom 
   friction and viscosity. \figref{fig:notopenergy} demonstrates that 
   the bottom friction balances the energy input from the wind over a large time
-  window beyond the initial spin up.
+  window beyond the initial spin up. \figref{fig:notoppv} shows a snapshot of the \gls{pv}
+  field around $40 \times 10^{3}/f$ into the run. The surface layer shows a strong eddy
+  field with eddies around the scale of the deformation radius and some filamentation.
+  The middle layer has basically uniform \gls{pv} as one would expect since 
+  the only non-conservative term in the \gls{pv} equation for this layer is the
+  viscosity, which is small. In the lowest layer the eddy field is mostly dissipated
+  by the bottom friction, which is scale selective for strong flows leaving only shallow
+  \gls{pv} gradients. This means there is slow and large scale barotropic flow
+  present in all layers which whose magnitude is set by the bottom friction and spacial
+  scale appears to be set by the domain size, whilst in there is a strong eddying 
+  baroclinic flow whose spatial scale is set by the first baroclinic deformation radius
+  and strength is set by the wind. In the time averaged mean, the variations of the
+   \gls{pv} from the mean $f/h_{n}$ are vanishingly small, as shown in \figref{fig:notopmeanpv}, where with an averaging window of around $30 \times 10^{3}/f$
+   the time-mean \gls{pv} varies by around $10 \%$ of the variability of the snapshot 
+   \gls{pv} in \figref{fig:notoppv} whilst the time-mean flow speed is around $5 \%$.
   
   
   
@@ -1617,15 +1632,46 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   		energy input by wind stress (\textcolor{blue}{blue}), dissipation through bottom friction (\textcolor{red}{red}) and transfer to small scale through the viscosity
   		(\textcolor{magenta}{magenta}), where the viscosity is negligible. The sum of these
   		is are the \textcolor{green}{green} bars. The lines are the mean transfers over the whole time window for wind stress, bottom friction, viscosity and total (\textcolor{blue}{blue}, \textcolor{red}{red}, \textcolor{magenta}{magenta} and \textcolor{green}{green} respectively). The overall energy transfer is about $1\%$
-  		of the wind input and friction dissipation but is vanishingly small when the spin up is excluded.}
+  		of the wind input and friction dissipation but is vanishingly small when the first
+  		few averaging windows are excluded, i.e. the spin up period.}
   	\label{fig:notopenergy}
   \end{figure}
   
   
-\hl{Viscosity: Smagorinsky with laplacian, biharmonic.}
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=0.8\linewidth]{notoppv}
+  	\caption{}
+  	\label{fig:notoppv}
+  \end{figure}
+  
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=0.8\linewidth]{notopmeanpv}
+  	\caption{}
+  	\label{fig:notopmeanpv}
+  \end{figure}
 
 
-\hl{Example model output.}
+\chapter{Analysis of a hierarchy of models}
+
+Now that we have system that suits the needs that we outlined in the
+introduction of Chapter~\ref{sweq} we can proceed with investigating the
+role of mean-eddy flow interaction in the presence of topography.
+As mentioned in the previous section, due choosing to have a doubly re-entrant
+domain the choice of topography must be zonally and meridionally translationally symmetric.
+Hence, we choose to have a zonal ridge as shown in the schematics
+ \figref{fig:TopographySchem} as well as \figref{fig:TopographyCross}, which
+ depicts a cross-section of the initial configuration of the domain where
+ the layer thicknesses are chosen in such a way as to attempt reduce the chance of a
+ layer outcropping by evenly distributing the layers above shallowest topography. Our
+ understanding of eddy-topography interactions build from observational 
+ data and experiments that were outlined in Chapter~\ref{intro} would lead us
+ to expect an along topography flow to develop with an westward flow on the south side of
+ the ridge, and an eastward flow on the north side of the ridge for a positive $f_{0}$.
+
 
 
 \begin{figure}
@@ -1652,34 +1698,128 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
 	\end{minipage}
 \end{figure}
 
-\chapter{Analysis of a hierarchy of models}
+%A description of the different dynamics that evolve
+%in the models by using the forcings and 
+%dissipations described above. Different forcings
+%such as different wind stresses or regional heating
+%and cooling. Different dissipation from
+%linear bottom friction to higher order bottom
+%friction.
 
-A description of the different dynamics that evolve
-in the models by using the forcings and 
-dissipations described above. Different forcings
-such as different wind stresses or regional heating
-and cooling. Different dissipation from
-linear bottom friction to higher order bottom
-friction.
+%Break down of the tendency terms for the mean
+%dynamics. A look at how the eddy stresses are 
+%in balancing the mean states (usually through
+%balancing the ageostropic component of the
+%momentum tendency).
 
-Break down of the tendency terms for the mean
-dynamics. A look at how the eddy stresses are 
-in balancing the mean states (usually through
-balancing the ageostropic component of the
-momentum tendency).
-
-A closer look at the eddy stress, their bounds 
-and the available eddy budgets.
+%A closer look at the eddy stress, their bounds 
+%and the available eddy budgets.
 
 \section{Zero-Mean Wind Forced Models}
 
 \label{stochwind}
-Model where the mean forcing is effectively zero. 
+
+To begin, it seems most sensible to investigate the 
+system with the simplest possible mean dynamics.
+That is to say a system where the dynamical equations 
+for the mean variables (for example \equref{swtwaeqs}) is 
+only forced by the eddy-mean interaction and dissipation,
+for example bottom friction. Of course, if the mean system is
+only forced by the eddy-mean interactions and dissipative forces
+then they only way interesting dynamics can occur
+is through the eddy-mean interactions. Hence, we try to
+generate an eddy field from some kind of forcing such that in the mean 
+dynamics there is no contribution from the forcing, that is to say
+that for forcing, $\boldsymbol{\tau}$, we have $\thkmean{\boldsymbol{\tau}}\equiv0$.
+
+
+To achieve such a system we introduce a spatially and temporally 
+varying wind stress. There are a few  way this can be done, a common method
+is to generate a superposition of sine waves at various frequencies and 
+phases as the stream function for the wind stress, this method is discussed at
+length in \cite{brannigan2015seasonal} and \cite{koszalka2009dynamics}. 
+Instead we populate the domain
+with a collection of cyclones and       anticyclones. These, we define
+in such a way that they each  independently give a circular wind
+stress of a curtain maximum amplitude and that is vanishing small far from its centre,
+with a continuous stream function      and curl. The profile shown in 
+Figure~\ref{fig:WindEg}
+satisfies these conditions. It has five properties which can be altered to 
+create a stress field which can be implemented in the model; these are it's
+amplitude, radius, position, duration and orientation (i.e. whether it is cyclonic
+or anticyclonic). By periodically generating these vortices with randomised properties
+we can sum them together to create a wind stress which varies in time, and in the limit
+of a long run time, the time-mean sums to zero. Each individual cyclone or anticyclone
+has the form $\frac{1}{2\pi r}(1-e^{-r^{2}})e^{-r^{2}/2}\boldsymbol{e}_{\theta}$, where
+at the wrap around points half the domain away from the vortex centre the vortex is tapered
+rapidly to zero to avoid a discontinuity; here $r$ is the distance from the centre of the vortex, normalised by the
+radius of the vortex, and $\boldsymbol{e}_{\theta}$ is the unit vector in the 
+rotational direction. The vortexes are also given a certain random duration, $t_{0}$, contained a minimum and maximum duration; the vortexes then
+grow and decline over this period in proportion to a sign wave in the range $[0,\pi]$.
+Examples of how the full wind stress field looks at different
+time steps are shown in Figure~\ref{fig:StochWind}. To further ensure a vanishing
+mean wind stress over a long time averaging window we introduce the vortexes in cyclonic
+and anti-cyclonic pairs of equal size and duration to ensure that the spatial mean
+of the wind stress is precisely zero. 
+
+Now we must check that this wind stress satisfies our needs. 
+The upper bound of momentum contribution from
+this wind stress to the time-averaged mean system is straight forward to calculate
+and is dependent on ratio between the longest $t_{0}$, or vortex duration, 
+and the averaging window. So for similar wind stresses the contribution to the mean system
+is vanishingly small for longer averaging windows. The energy input is a little more
+complicated; the mean and eddy energy equations described in \secref{eddymeantheory} 
+shows that applying the thickness weighted averaging operator to 
+\hl{the energy equation} gives
+$\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}$ and  $\nthkmean{\nthkres{\boldsymbol{\tau}}\cdot\nthkres{\boldsymbol{u}}}$
+as the energy input into the mean and eddy components of the system.
+Taking averaging windows of $10^{3}/f$, \ref{fig:meaneddywind} shows
+that the contribution to the mean component is vanishingly small 
+and hence the wind stress suits our purpose by almost exclusively 
+inputting energy and momentum into the eddy component of the system.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{StochWind}
+	\caption{\hl{not the actual snapshots, need to do redo this (notice the radii are wrong)} Eight different snapshots of the wind forcing
+		generated by randomly seeding vortexes
+		across the domain.
+		These cyclones and anticyclones have a typical radii of between $5$ times
+		the Deformation Radius and half the domain size, and have a lifespan of a couple of weeks}
+	\label{fig:StochWind}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{WindStressEg}
+	\caption{\hl{also am going to redraw} An example of the wind stress given by a cyclone with
+		radius a quarter of the zonal width of the domain. 
+		The heat-map shows the strength of the stresses, 
+		The  stresses are tapered away from the centre of the vortex to
+		avoid discontinuities as the domain wraps around. }
+	\label{fig:WindEg}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{meaneddywind}
+	\caption{ Energy input from the wind stress over each $10^{3}/f$ window. 
+		The \textcolor{red}{red} bars show the energy input into the mean system,
+		$\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}$, in comparison
+		to the total (mean + eddy) input (\textcolor{blue}{blue}), $\nthkmean{\boldsymbol{\tau}\cdot\boldsymbol{u}}
+		=\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}+\nthkmean{\nthkres{\boldsymbol{\tau}}\cdot\nthkres{\boldsymbol{u}}}$. The input into the mean system is around $2\%$ of
+		the total input.}
+	\label{fig:meaneddywind}
+\end{figure}
+
+
+
+\hl{Model where the mean forcing is effectively zero. 
 Hence the model is forced by a wind stress which is
 absent from the mean system and hence forces the
 system by 
 invoking a turbulent cascade. Hence Eddy-Mean
-interaction is entirely from the eddy to the mean.
+interaction is entirely from the eddy to the mean.}
 
 \section{Comparison of Mean PVs}
 

@@ -1400,6 +1400,62 @@ For our study the equations that will give us the most efficient model whilst ca
     \end{split}
     \end{equation}
     as used by \cite{greatbatch1998exploring} and \cite{smith1999primitive}.
+    
+    Similarly we can take the unweighted average of the
+    conservative energy equation, \equref{swlayercorrectenergy}, and 
+    enstrophy equation, 
+    \begin{equation*}
+    \partialdiff{t}\left(h_{n}Q_{n}\right)+\boldsymbol{\nabla}\left(h_{n}\boldsymbol{u}_{n}Q_{n}\right) = 0
+    \end{equation*}
+    where $Q_{n} = \half q_{n}^{2}$, we have an energy and 
+    enstrophy budget for the mean state. For the mean of the
+    energy equation we have
+    \begin{equation}
+    \begin{split}
+        \frac{\partial}{\partial t}\left(\rho_{n} \nthkmean{h_{n}} \thkmean{K_{n}}+ 
+        \half \rho_{N} g_{n+\half }\nthkmean{\eta_{n+\half }^{2}} \right)
+        &+\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \thkmean{\left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}}\right] \\
+        =- \nthkmean{\frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n+1}}
+        &+ \nthkmean{\frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}}.
+      \end{split}
+                    \label{swtwameaneqenergy}
+    \end{equation}
+    But because we also have an equation for the mean dynamics, we
+    can also write down the equation for the mean energy as
+    \begin{equation}
+        \begin{split}
+        \frac{\partial}{\partial t}\left(\rho_{n} \nthkmean{h_{n}} \half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+ 
+        \half \rho_{N} g_{n+\half }\nthkmean{\eta_{n+\half }}^{2} \right) &+\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \left(\rho_{n}\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+\nthkmean{m_{n}}\right) \thkmean{\boldsymbol{u}}_{n}\right] \\
+        =-\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)&- \frac{\partial}{\partial t}\left(\nthkmean{\eta_{n+\half }}\right)   \nthkmean{m_{n+1}}
+        + \frac{\partial}{\partial t}\left(\nthkmean{\eta_{n-\half }}\right) \nthkmean{m_{n}},
+              \end{split}
+              \label{swtwaeqmeanenergy}
+    \end{equation}
+    where we note that this equation differs from \equref{swlayercorrectenergy} by simply the eddy stress
+    term $\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)$.
+    We can therefore difference \equref{swtwaeqmeanenergy} from
+    \equref{swtwameaneqenergy} to retrieve an equation
+    for the eddy energy.
+        \begin{equation}
+        \begin{split}
+            \frac{\partial}{\partial t}\left(\rho_{n} \nthkmean{h_{n}} \half\thkmean{ \left|\thkres{\boldsymbol{u}}_{n}\right|^{2}}+ 
+            \half \rho_{N} g_{n+\half }\nthkmean{\nthkres{\eta_{n+\half ^{2}}}} \right)
+            &\\
+            +\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \thkmean{\left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}}\right] &-\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \left(\rho_{n}\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+\nthkmean{m_{n}}\right) \thkmean{\boldsymbol{u}}_{n}\right]\\
+            =\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)
+            &- \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n+\half }\right)   \nthkres{m}_{n+1}}
+            + \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}.
+          \end{split}
+        \end{equation}
+        Unfortunately, this equation is not entirely helpful as it
+        introduces some triple correlations, or eddy-eddy interactions,
+        namely $\thkmean{K_{n} \boldsymbol{u}_{n}}
+        -\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}
+        \thkmean{\boldsymbol{u}}_{n}$ and 
+        $\nthkmean{h_{n}}\thkmean{m_{n}\boldsymbol{u}_{n}}
+        -\nthkmean{h_{n}} \nthkmean{m_{n}}\thkmean{\boldsymbol{u}}_{n}
+         = \nthkmean{h_{n}m_{n}\boldsymbol{u}_{n}}
+        -\nthkmean{h_{n}}\nthkmean{m_{n}}\thkmean{\boldsymbol{u}}_{n}$.
             
     \hl{Eddy energy and eddy enstrophy. State equations with 
     possible application in terms of carrying them in the system.}

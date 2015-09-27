@@ -1321,7 +1321,7 @@ For our study the equations that will give us the most efficient model whilst ca
     \begin{equation}
     \boldsymbol{E}=\left(\begin{array}{ccc}
     -M + K + P & N & 0 \\
-    N & M + N + P& 0 \\
+    N & M + K + P& 0 \\
     R & S & 0 \\
     \end{array}\right)
     \end{equation}
@@ -1824,9 +1824,10 @@ this wind stress to the time-averaged mean system is straight forward to calcula
 and is dependent on ratio between the longest $t_{0}$, or vortex duration, 
 and the averaging window. So for similar wind stresses the contribution to the mean system
 is vanishingly small for longer averaging windows. The energy input is a little more
-complicated; the mean and eddy energy equations described in \secref{eddymeantheory} 
+complicated; adding the wind forcing into the mean and eddy energy equations described 
+in \secref{eddymeantheory} 
 shows that applying the thickness weighted averaging operator to 
-\hl{the energy equation (eq ref)} gives
+the energy equation, \equref{swtwameaneqenergy}, gives
 $\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}$ and  $\nthkmean{\nthkres{\boldsymbol{\tau}}\cdot\nthkres{\boldsymbol{u}}}$
 as the energy input into the mean and eddy components of the system.
 Taking averaging windows of $10^{3}/f$, \figref{fig:meaneddywind} shows
@@ -1860,11 +1861,13 @@ inputting energy and momentum into the eddy component of the system.
 	\centering
 	\includegraphics[width=\linewidth]{meaneddywind}
 	\caption{ Energy input from the wind stress over each $10^{3}/f$ window. 
-		The \textcolor{red}{red} bars show the energy input into the mean system,
+		The \textcolor{red}{red} bars show the energy input from
+		the mean component into the mean system,
 		$\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}$, in comparison
 		to the total (mean + eddy) input (\textcolor{blue}{blue}), $\nthkmean{\boldsymbol{\tau}\cdot\boldsymbol{u}}
-		=\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}+\nthkmean{\nthkres{\boldsymbol{\tau}}\cdot\nthkres{\boldsymbol{u}}}$. The input into the mean system is around $2\%$ of
-		the total input.}
+		=\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}+\nthkmean{\nthkres{\boldsymbol{\tau}}\cdot\nthkres{\boldsymbol{u}}}$. The input from
+		the mean component into the mean system is around $2\%$ of
+		the total (mean + eddy) input.}
 	\label{fig:meaneddywind}
 \end{figure}
 
@@ -1875,6 +1878,63 @@ inputting energy and momentum into the eddy component of the system.
 Exploiting the symmetry of the ridge, we can average in the zonal direction 
 as well as in time. This allows us to decompose the flow into mean field 
 varying only in the meridional direction and an eddy field. 
+Noting that $\partialdiff{x}\nthkmean{...}\equiv0$ for the zonal mean, we have that
+\begin{subequations}
+	\begin{equation}
+	 \partialdiff[\thkmean{u}_{n}]{t}-(f+\spec{\zeta})\thkmean{v}_{n} 
+	= -\nthkmean{h_{n}}^{-1}\boldsymbol{\nabla}_{3}\cdot\boldsymbol{E}^{u}
+	+\thkmean{F}_{u_{n}}-\thkmean{D}_{u_{n}}, \\
+	\end{equation}
+	\begin{equation}
+	\partialdiff[\thkmean{v}_{n}]{t}+(f+\spec{\zeta})\thkmean{u}_{n} 
+	= -   \frac{\partial }{\partial y}\left(\frac{1}{\rho_{n}}\nthkmean{m}_{n}+\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}\right)
+	-\nthkmean{h_{n}}^{-1}\boldsymbol{\nabla}_{3}\cdot\boldsymbol{E}^{v}
+	+\thkmean{F}_{v_{n}}-\thkmean{D}_{v_{n}}, \\
+	\end{equation}
+	\begin{equation}
+	0 =\frac{\partial \nthkmean{h_{n}} }{\partial t} +
+	\frac{\partial  }{\partial y}\left(\nthkmean{h_{n}}\thkmean{ v_{n}}\right).\\
+	\end{equation}
+	where $\spec{\zeta}=-\partialdiff{\thkmean{\boldsymbol{u}}_{n}}{y}$ is
+	the relative vorticity. The eddy stresses, $\boldsymbol{E}^{u}$, $\boldsymbol{E}^{v}$,
+	become
+	\begin{equation}
+	\begin{array}{c}
+	\boldsymbol{E}^{u}=\left(
+	\begin{array}{c}
+	0 \\
+	\nthkmean{h_{n}}\thkmean{\thkres{u}_{n}\thkres{v}_{n}} \\
+	0 \\
+	\end{array}\right)+\left(
+	\begin{array}{c}
+	0 \\
+	0 \\
+	\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \\
+	\end{array}\right), \\ \\
+	\boldsymbol{E}^{v}=\left(
+	\begin{array}{c}
+	0 \\
+	\nthkmean{h_{n}}\thkmean{\thkres{v}_{n}\thkres{v}_{n}} \\
+	0 \\
+	\end{array}\right)+\left(
+	\begin{array}{c}
+	0\\
+	\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}} \\
+	\nthkmean{\nthkres{\eta}\nthkres{m}_{y}} \\
+	\end{array}\right), \\
+	\end{array}
+	\end{equation}
+	or as a tensor:
+	\begin{equation}
+	\boldsymbol{E}=\left(\begin{array}{ccc}
+	0 & 0 & 0 \\
+	N & M + K + P& 0 \\
+	R & S & 0 \\
+	\end{array}\right).
+	\end{equation}
+\end{subequations}
+Hence in the limit of $\partialdiff[\thkmean{\boldsymbol{u}}_{n}]{t} \xrightarrow 0$
+
 
 \hl{Model where the mean forcing is effectively zero. 
 Hence the model is forced by a wind stress which is

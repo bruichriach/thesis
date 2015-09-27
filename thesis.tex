@@ -1688,7 +1688,7 @@ Hence, we choose to have a zonal ridge as shown in the schematics
 	\quad
 	\begin{minipage}[b]{0.45\linewidth}
 		\includegraphics[width=\linewidth]{TopographyCross}
-		\caption{\hl{error in layer depths: 0.25 not 0.5 in layers above ridge} Cross-sectional schematic of the topography. 
+		\caption{ Cross-sectional schematic of the topography. 
 			Shows three layers of fluid, with densities 
 			$\rho_{1}$, $\rho_{2}$ and $\rho_{3}$, above the 
 			topography, $s$. Interfaces between individual
@@ -1715,7 +1715,7 @@ Hence, we choose to have a zonal ridge as shown in the schematics
 %A closer look at the eddy stress, their bounds 
 %and the available eddy budgets.
 
-\section{Zero-Mean Wind Forced Models}
+\section{Zero-Mean Wind Stress}
 
 \label{stochwind}
 
@@ -1770,10 +1770,10 @@ and the averaging window. So for similar wind stresses the contribution to the m
 is vanishingly small for longer averaging windows. The energy input is a little more
 complicated; the mean and eddy energy equations described in \secref{eddymeantheory} 
 shows that applying the thickness weighted averaging operator to 
-\hl{the energy equation} gives
+\hl{the energy equation (eq ref)} gives
 $\nthkmean{\boldsymbol{\tau}}\cdot\nthkmean{\boldsymbol{u}}$ and  $\nthkmean{\nthkres{\boldsymbol{\tau}}\cdot\nthkres{\boldsymbol{u}}}$
 as the energy input into the mean and eddy components of the system.
-Taking averaging windows of $10^{3}/f$, \ref{fig:meaneddywind} shows
+Taking averaging windows of $10^{3}/f$, \figref{fig:meaneddywind} shows
 that the contribution to the mean component is vanishingly small 
 and hence the wind stress suits our purpose by almost exclusively 
 inputting energy and momentum into the eddy component of the system.
@@ -1814,6 +1814,12 @@ inputting energy and momentum into the eddy component of the system.
 
 
 
+\section{Momentum and Energy Conservation}
+
+Exploiting the symmetry of the ridge, we can average in the zonal direction 
+as well as in time. This allows us to decompose the flow into mean field 
+varying only in the meridional direction and an eddy field. 
+
 \hl{Model where the mean forcing is effectively zero. 
 Hence the model is forced by a wind stress which is
 absent from the mean system and hence forces the
@@ -1821,24 +1827,25 @@ system by
 invoking a turbulent cascade. Hence Eddy-Mean
 interaction is entirely from the eddy to the mean.}
 
-\section{Comparison of Mean PVs}
+\section{\gls{pv} Conservation and Comparison of Mean \glspl{pv}}
 
-An examination of the similarities and differences
+\hl{An examination of the similarities and differences
 of the two definitions of potential vorticity. 
 A discussion of whether the thickness
 weighted and tracer decomposition forms of the
 PV eddy stresses can be used interchangeably.
 This will be done by examining models with
-different structures of potential vorticity.
+different structures of potential vorticity.}
 
-\section{Strong Flow Models}
 
-more interesting situations, such as, models
-with a strong mean state, which hence
-generate there own eddy fields. E.g. Jets in
-channels or double gyres. Hopefully allowing 
-for the investigation of configurations where 
-Eddy Enstrophy is the constraining bound.
+%\section{Strong Flow Models}
+
+%more interesting situations, such as, models
+%with a strong mean state, which hence
+%generate there own eddy fields. E.g. Jets in
+%channels or double gyres. Hopefully allowing 
+%for the investigation of configurations where 
+%Eddy Enstrophy is the constraining bound.
 
 
 \chapter{Diagnostic Summary and Eddy-Mean Interaction Predictions}

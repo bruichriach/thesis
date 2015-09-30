@@ -58,9 +58,9 @@ bottom=30mm,
 \newacronym{awl}{AWL}{Atlantic~Water~Layer}
 \newacronym{aomip}{AOMIP}{Arctic~Ocean~Model~Inter--comparison~Project}
 \newacronym{pv}{PV}{potential vorticity}
-\newacronym{gcm}{GCM}{Global~Climate~Model}
+\newacronym{gcm}{GCM}{General~Circulation~Model}
 \newacronym{bso}{BSO}{Barents~Sea~Opening}
-\newacronym{gm}{GM}{Gent~and~Mcwilliams~Parameterisation}
+\newacronym{gm}{GM}{Gent~and~Mcwilliams~parameterisation}
 
 \newcommand*\mean[1]{\overline{#1}}
 \newcommand*\res[1]{{#1}^{\prime}}
@@ -100,20 +100,20 @@ Despite its small size (only $3\%$ of the Earth's surface), the Arctic
 Ocean is a disproportionately important part of the global ocean and has the potential
 to affect the world's climate in major ways. Located above
 $70\,^{\circ}\mathrm{N}$, the Arctic is characterised by its seasonally
-varying ice cap. This ice cap, along with its counterpart at the South
-Pole, is a major contribution to the planet's albedo as well as being
-a large reservoir for freshwater. The Arctic Ocean is a key component
+varying ice cap. This ice cap, along with its counterpart in the
+Antarctic, is a major contribution to the planet's albedo as well as being
+a huge reservoir of freshwater. The Arctic Ocean is a key component
 in how the polar ice cap interacts with the climate and, in turn, how
 the climate affects the ice cap. 
-The Ocean itself is a highly stable body of water with strong stratification, 
+The Arctic itself is a highly stable body of water with strong stratification, 
 which means that the water column can be divided into advective water masses.
 The Arctic Ocean is commonly divided into four different layers (\figref{fig:amap}):
 The polar mixed layer, which is a well mixed layer in
 contact with the atmosphere and surface ice; the halocline, a
-reservoir of fresh water and penetrates to around ${\sim}200\,\mathrm{m}$, which acts
+reservoir of fresh water and penetrates to around $200\,\mathrm{m}$, which acts
 as a buffer between the sea ice and the \gls{awl}; the \gls{awl},
 which is body of warm salty water which originates from the North Atlantic and Nordic 
-Sea via Fram Strait and typically sits at around ${\sim}400\,\mathrm{m}$ deep; and finally, 
+Sea via Fram Strait and typically sits at around $400\,\mathrm{m}$ deep; and finally, 
 the Polar Deep Water, defined by the water masses that aren't
 able to communicate freely with the global ocean due to being trapped by the Arctic basin walls.
 
@@ -124,15 +124,15 @@ able to communicate freely with the global ocean due to being trapped by the Arc
 	\includegraphics[width=\linewidth]{amap}
 	\caption[\cite{wilson1998amap}]{  A schematic representation of the four-layer structure of the Arctic Ocean, with the Mixed Layer and Halocline
 		above the Atlantic Water and Arctic Deep Water (\cite{aagaard1989role}). 
-		The residence time for the different water masses are also shown (\cite{bonisch1995deep}). \cite{wilson1998amap}.}
+		The residence time for the different water masses are also shown (\cite{bonisch1995deep}). Reproduced from \cite{wilson1998amap}.}
 	\label{fig:amap}
 \end{figure}
 
-Because of the strong stratification, the forcing from the ocean surface 
+Because of the strong stratification, forcing from the ocean surface 
 struggles to penetrate deep into the ocean; and so whether forced directly by wind 
 or by sea ice stress, the circulation
 directly forced from the surface is contained within the Polar Mixed Layer 
-and halocline in the upper ${\sim}200\,\mathrm{m}$ of the Arctic Ocean. 
+and halocline in the upper $200\,\mathrm{m}$ of the Arctic Ocean. 
 This surface circulation has been well documented by observations
 from cruises and moorings  dropped  from  the  ice  shelf  or  deployed  on 
 the  shallower  continental  shelves (\cite{gerdes1997large}, \cite{jones2001circulation}). On the other hand, it is a very different
@@ -155,23 +155,25 @@ strong stratification in the halocline, and hence only leaves a handful of other
 		Whilst the Freshwater regimes are vastly different from each other, the
 		\gls{awl} is unaffected and remains persistently cyclonic.
 		Topography is represented in the background running from 
-		shallow water (light blue) to deep water (dark blue).  \cite{proshutinsky2005arctic}.}
+		shallow water (light blue) to deep water (dark blue).  Reproduced from \cite{proshutinsky2005arctic}.}
 	\label{fig:Proshutinsky2005Circulation}
 \end{figure}
 
 There has been much discussion
-into how the fluxes in and out of the Arctic could influence the circulation,
+of how the fluxes in and out of the Arctic could influence the circulation,
 for example, by a forcing a balance of \gls{pv} within the region by
-the fluxes of \gls{pv} though the boundaries. \cite{yang2005arctic} demonstrates how,
-in an idealised barotropic model of a basin, controlling the flux 
+the fluxes of \gls{pv} though the boundaries. \cite{yang2005arctic} demonstrates 
+in an idealised barotropic model of a basin how, by controlling the flux 
 of \gls{pv} through inflows and outflows
-at the boundary, the circulation in the basin could be switched between cyclonic and
+at the boundary, the circulation in the basin can be switched between cyclonic and
 anti-cyclonic circulations (\figref{fig:Yang2005}). This principle suggests
 that the persistent cyclonic nature of the \gls{awl} is induced by a 
-net influx of \gls{pv} via the Arctic Gateways. Fortunately, permanent moorings 
+net influx of \gls{pv} via the Arctic Gateways. 
+
+Fortunately, permanent moorings 
 covering the majority of the ocean gateways into the Arctic~Ocean have built
 up a detailed picture of the transport in and out of the Arctic Ocean 
-(\cite{tsubouchi2012arctic}, \figref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
+(\cite{tsubouchi2012arctic}, \figref{fig:Tsubouchi2012Transport}). The net flux of \gls{pv} into the Arctic is then estimated by summing the distribution of \gls{pv}; given by $ \Pi_{i} = fQ_{i}/H_{i}$,
 where $Q_{i}$ is the volume transport and $H_i$ the depth, for location $i$. 
 Whilst there is a tendency for total to infer a positive influx of \gls{pv}, the
 results are not convincing; \cite{munchow2006observational} shows that by including the
@@ -190,7 +192,7 @@ internal processes, which are poor understood, especially in an Ocean with such 
 		models. The background colour is the model bathymetry. The left plot has
 		a net influx of \gls{pv} (the inflow is shallower than the outflow) 
 		and a cyclonic circulation whilst the right plot has net outflux of  \gls{pv} 
-		and an anti-cyclonic circulation. \cite{yang2005arctic}.}
+		and an anti-cyclonic circulation. Reproduced from \cite{yang2005arctic}.}
 	\label{fig:Yang2005}
 \end{figure}
 
@@ -203,7 +205,7 @@ internal processes, which are poor understood, especially in an Ocean with such 
 		Demonstrates the pathways through the gateways, from which transport 
 		in to the Arctic can be calculated.
 		Bold black lines show certain isopycnals, and the red (blue) colors show inflow
-		into (outflow from) the Arctic.  Adapted from \cite{tsubouchi2012arctic}.}
+		into (outflow from) the Arctic. Reproduced from \cite{tsubouchi2012arctic}.}
 	\label{fig:Tsubouchi2012Transport}
 \end{figure}
 
@@ -223,18 +225,18 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Woodgate2001Mooring}
-	\caption[Adapted from \cite{woodgate2001arctic}]{A Velocity Stickplot 
-		from a year-long mooring at \ang{78;30.8;} N, \ang{133;57.7;} E, west of the Lomonosov Ridge.  The plot shows a huge amount of variability over time, with many
+	\caption[Adapted from \cite{woodgate2001arctic}]{A  stick-plot showing the velocity vectors at 
+		a year-long mooring at \ang{78;30.8;} N, \ang{133;57.7;} E, west of the Lomonosov Ridge for four depths.  The plot shows a huge amount of variability over time, with many
 		features being persistent throughout the water column. Adapted from \cite{woodgate2001arctic}.}
 	\label{fig:Woodgate2001Mooring}
 \end{figure}
 
-\section{Mean-Eddy Interaction Theory}
+\section{Eddy-Mean Flow Interaction Theory}
 
 \label{meaneddyinteractiontheory}
 
- Obviously, whilst observations play a vital role in understanding the Arctic
- Ocean and its role in the global ocean, it is limited by the sparsely available
+ Whilst observations play a vital role in understanding the Arctic
+ Ocean and its role in the global ocean, progress is limited by the sparsely available
  observations that only usefully reach back a handful of decades into the past.
  To be able to test possible scenarios and make future predictions it is vital
  that we have reliable simulations of the Arctic Ocean (\cite{proshutinsky2008toward});
@@ -277,21 +279,24 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  of unresolved turbulence or simply as a numerical tool to avoid noise at 
  the grid scale, the viscosity parameter is tuned such that the turbulent energy cascade is 
  dissipated at the grid scale whilst still allowing as active dynamics as possible. 
- Assuming modern day computing power this implies a horizontal viscosity of around 
- $10^{5} - 10^{7} \mathrm{Pa} \cdot \mathrm{s}$, a viscosity more suited to peanut butter than 
- a the ocean. A second problem with having such a strong horizontal diffusion is
+ Assuming modern day computing power, this implies a horizontal viscosity of around 
+ $10^{5} - 10^{7} \mathrm{Pa} \cdot \mathrm{s}$, a viscosity more typical of peanut butter than 
+ the ocean. A second problem with having such a strong horizontal diffusion is
  that it diffuses or mixes tracers horizontally, when applied as
- an eddy parameterisation for tracer mixing. It has long been understood that tracers 
- mix much more along isopycnal surfaces than across them (\cite{iselin1939influence}, \cite{montgomery1940present}), which is a property which allowed for the definition of
+ an eddy parameterisation for tracer mixing. 
+ 
+ It has long been understood that tracers 
+ mix much more along isopycnal surfaces than across them (\cite{iselin1939influence}, \cite{montgomery1940present}),  a property which helps maintain the definition of
  distinct water masses in the global ocean (for example, \cite{emery1986global}).
-  Hence, with an excessive horizontal diffusion
- of tracers ocean models are able to break up water masses much quick than
- is observed in the physical ocean creating, for example, the ``Veronis Effect" (\cite{veronis1975role}).
+  In contrast, excessive horizontal diffusion
+ of tracers in ocean models leads to water mass properties
+ being eroded and spurious sources and sinks of heat in the 
+ ocean interior, or the ``Veronis Effect" (\cite{veronis1975role}).
  Hence, a more physically appropriate eddy parameterisation 
  is needed;
   and so, in a way that seems obvious today, eddies need to be
    parameterised in 
- such a way that their effect acts along isopycnal surfaces. 
+ such a way that their effect is isopycnal. 
  The effort to do this in the 80's and early 90's gave birth
  to what is known as the \gls{gm}, first introduced in \cite{gent1990}.
  
@@ -307,7 +312,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
   \label{cont}
   \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = 0,
   \end{equation}
-  where $z_{\rho} = \frac{\partial z}{\partial \rho}$ is defined as the
+  where $z_{\rho} = {\partial z}/{\partial \rho}$ is defined as the
    isopycnal thickness and $\boldsymbol{u}$ is the horizontal fluid
    velocity. Since it is non-linear, when this equation is discretised
    it produces an eddy covariance term as demonstrated by 
@@ -328,42 +333,60 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
     the isopycnal thickness
     being advected by the mean horizontal velocity, $\boldsymbol{u}$, 
     plus an eddy induced
-    `bolus velocity', $\hat{\boldsymbol{u}}$. \cite{gent1990} then goes one
-    step further and proposes that eddies act to homogenise each
-    isopyncal layer via baroclinic instability, hence the 
-    \gls{gm} parameterisation is given by $\boldsymbol{F} = - \left(\kappa
-    \boldsymbol{\nabla} z \right)_{\rho}$, where $\kappa$ can both be
-     spatially and temporally varying parameter. Combining this with  \equref{thicknessgeneralparam} we have
+    `bolus velocity', $\hat{\boldsymbol{u}}$ (\cite{gent1995parameterizing}). \cite{gent1990} proposes that eddies act to flatten each
+    isopyncal via baroclinic instability, achieved by
+    setting 
+    \begin{equation}
+    \boldsymbol{F} = - \left(\kappa
+        \boldsymbol{\nabla} z \right)_{\rho},
+    \end{equation}
+    where $\kappa$ can be a
+     spatially and temporally varying ``eddy diffusivity". Combining this with  \equref{thicknessgeneralparam} we have
           \begin{equation}
           \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = \boldsymbol{\nabla}\cdot\left(\kappa
               \boldsymbol{\nabla} z \right)_{\rho} .
               \label{contgm}
           \end{equation}
-    Similarly, for a tracer, say $\tau$, we can write an equation
-    describing it's transport,
+    By \cite{gent1995parameterizing}, we can similarly, for a tracer, say $\tau$, write an equation
+    describing its transport,
             \begin{equation}
-              \frac{\partial \tau}{\partial t} + \boldsymbol{u}\cdot\boldsymbol{\nabla}\tau = \boldsymbol{\nabla}\tau\cdot
+              \frac{\partial \tau}{\partial t} +
+               %\left(\boldsymbol{u}+\hat{\boldsymbol{u}}\right)
+                \boldsymbol{u}
+              \cdot\boldsymbol{\nabla}\tau = \boldsymbol{\nabla}\tau\cdot
               \left(\kappa \boldsymbol{\nabla} z \right)_{\rho}/z_{\rho} .
             \end{equation}
             
     There are a few properties of this parameterisation that can be 
-    noted to help describe its overall effect of its implementation in
+    noted to help describe the effect of its implementation in
     ocean models. Firstly, by writing $\boldsymbol{u}^{\star} = \boldsymbol{u} -
     \left(\kappa \boldsymbol{\nabla} z \right)_{\rho}/z_{\rho}$ we 
-    simply have that $\frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}^{\star}\right) = 0$ and $\frac{\partial \tau}{\partial t} + \boldsymbol{u}^{\star}\cdot\boldsymbol{\nabla}\tau = 0$ indicating
+    simply have that 
+    \begin{equation}
+    \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}^{\star}\right) = 0
+    \end{equation}
+     and
+     \begin{equation}
+     \frac{\partial \tau}{\partial t} + \boldsymbol{u}^{\star}\cdot\boldsymbol{\nabla}\tau = 0
+     \end{equation} 
+      indicating
     that the tracer $\tau$ is effectively advected by a transport velocity, 
      $\boldsymbol{u}^{\star}$. Secondly, an important 
-    question is how does \gls{gm} change the energy of the system. 
-    The right hand side of \equref{contgm} adds 
-    $\phi \boldsymbol{\nabla}\cdot\left(\kappa
-                  \boldsymbol{\nabla} z \right)_{\rho} 
-                  = \boldsymbol{\nabla}\cdot\left(\phi\kappa
-                       \boldsymbol{\nabla} z \right)_{\rho} 
-                  -\left(\kappa
-              \boldsymbol{\nabla}\phi\cdot \boldsymbol{\nabla} z \right)_{\rho} 
-                                -\left(\kappa g
-                            \boldsymbol{\nabla}z\cdot \boldsymbol{\nabla} z \right)/{\rho_{0}} 
-                $ to the energy tendency. Integrating over an entire domain
+    question is, how does \gls{gm} change the energy of the system? 
+    By dotting the momentum equations with $\boldsymbol{u}$ and
+    multiplying \equref{contgm} by the Montgomery potential, $\phi$,
+    we gain the term
+    \begin{equation}
+    \phi \boldsymbol{\nabla}\cdot\left(\kappa
+                      \boldsymbol{\nabla} z \right)_{\rho} 
+                      = \boldsymbol{\nabla}\cdot\left(\phi\kappa
+                           \boldsymbol{\nabla} z \right)_{\rho} 
+                      -\left(\kappa
+                  \boldsymbol{\nabla}\phi\cdot \boldsymbol{\nabla} z \right)_{\rho} 
+                                    -\left(\kappa g
+                                \boldsymbol{\nabla}z\cdot \boldsymbol{\nabla} z \right)/{\rho_{0}} 
+    \end{equation} 
+     to the right hand side of the energy tendency. Integrating over an entire domain
                 eliminates the first two terms leaving the final term
                 as a positive definite sink of energy. These two 
                 properties characterise \gls{gm}; the parameterisation
@@ -372,17 +395,18 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 
         The dissipative nature of \gls{gm} is both an strength and a
          weakness. \gls{gm} is incapable of introducing spurious energy,
-         which allows it to be very robust and stable meaning it can be implemented 
-         into a \gls{gcm} with little tuning. However, it is also understood that
+         which allows it to be very robust and stable
+         parameterisation, meaning it can be easily implemented 
+         into a \gls{gcm}. However, it is also understood that
          ocean turbulence is not purely dissipative.
-          \cite{adcock2000interactions} concisely demonstrated that
+          \cite{adcock2000interactions} concisely demonstrate that
          in an idealised model, with no external forcing other
-         than an initial eddy field, will develop a persistent along
-         topography flow and the isopycnals will dome slightly above topography.
-          \cite{nost2008asymmetry} showed that these
+         than an initial eddy field, a persistent mean flow will develop along
+         topography and the isopycnals will dome above the topography.
+          \cite{nost2008asymmetry} show that these
          flows develop asymmetrically, such that the flow is 
-         predominantly cyclonic in
-         a basin in the northern hemisphere. For this to occur 
+         predominantly cyclonic above the sloped sides of
+         a basin or anticyclonic over a sea-mount. For this to occur 
          when the eddy field is unresolved there must be an 
          injection of energy into the system representing the 
          inverse cascade of energy from the eddy scales to the large scale.
@@ -395,15 +419,16 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
          \subsection{\gls{pv} Closure}
          
          To proceed one might wonder what makes the continuity equation
-         so special, in truth there is a number of non-linearities that
-         crop up when examining the full state equations. Take, for example, the
-         absolute vorticity, which can be written in the same form as the continuity equation, i.e.
+         so special? In truth there are a number of non-linearities that
+         crop up when examining the full equations of motion. Take, for example, the
+         absolute vorticity equation, which can be written in the same flux form as the continuity equation, i.e.
            \begin{equation}
            \frac{\partial \omega}{\partial t} + \boldsymbol{\nabla}\cdot\left(\omega\boldsymbol{u}\right) = 0,
            \label{vort}
            \end{equation}
            where $\omega=f+\xi$ is the absolute vorticity and
-           $\xi = \boldsymbol{k} \cdot\left( \boldsymbol{\nabla}\wedge \boldsymbol{u}\right)$ is the relative vorticity. 
+           $\xi = \boldsymbol{k} \cdot\left( \boldsymbol{\nabla}\wedge \boldsymbol{u}\right)$ is the relative vorticity
+           in the absence of forcing or stretching. 
            By applying an average operator to \equref{vort}, we have the same averaged equation as \equref{meancont} but for the mean absolute vorticity, $\mean{\omega}$,
                 \begin{equation}
                 \frac{\partial \mean{\omega}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{\omega} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{\omega} \res{\boldsymbol{u}}}\right),
@@ -443,7 +468,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 \label{pvclosure}
                 \end{equation}
                 applied to the mean \gls{pv}, which is advected by the transport velocity $\boldsymbol{u}^\star$ and diffused along isopycnal surfaces. This is now
-                the \gls{pv} closure first proposed in \cite{greatbatch1998exploring}.
+                the \gls{pv} closure as was first proposed by \cite{greatbatch1998exploring}.
                 
                 \equref{pvclosure} represents the interaction of eddies as the
                 down-gradient diffusion of \gls{pv}; and hence suggests that eddies
@@ -459,9 +484,10 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 the result is the slight ``cold doming" above topography as observed in
                 \cite{adcock2000interactions}. 
                 
-                It isn't all bad news though. Whilst, unlike \gls{gm}, the downgradient
-                dissipation of \gls{pv} capable of introducing spurious energy, it does
-                control another important quantity: Enstrophy. By multiplying through 
+                However, whilst, unlike \gls{gm}, the downgradient
+                dissipation of \gls{pv} is capable of introducing spurious energy, it does
+                dissipate another important quantity: 
+                the ``Potential Enstrophy". By multiplying through 
                 by $\mean{z}_{\rho} \mean{q}$, \equref{pvclosure} becomes 
                 \begin{equation}
                 \frac{\partial  }{\partial t}\left(\half z_{\rho}q^{2}\right) + \boldsymbol{\nabla}\cdot\left(z_{\rho}q\boldsymbol{u}^\star-\kappa z_{\rho}q\boldsymbol{\nabla} q
@@ -471,7 +497,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 Integrating over the entire domain eliminates the divergent term
                 leaving just a positive definite dissipation.
                 Hence, in the same way that \gls{gm} dissipates potential energy, this
-                \gls{pv} closure dissipates enstrophy. This suggests the tantalising
+                \gls{pv} closure dissipates potential enstrophy. This suggests the tantalising
                 possibility that eddy-mean interactions are \gls{gm}-like when
                 there is limited eddy energy available but diffuse \gls{pv} when
                 limited by eddy enstrophy.
@@ -495,11 +521,13 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 fluxes only appear in the thermodynamic equation whilst the eddy-mean
                 interactions in the momentum equations appear as the divergence of Eliassen-Palm 
                 Flux vectors (\cite{eliassen1961transfer}, \cite{andrews1976planetary}). 
+                
+                
                 The Eliassen-Palm flux vectors also appear in other descriptions of ocean dynamics.
-                In the averaged hydrostatic primitive equations the eddy-mean interactions
+                In the averaged hydrostatic primitive equations, the eddy-mean interactions
                 appear as two Eliassen-Palm flux vectors, one for each component of the horizontal velocity
                 (\cite{young2012exact}). Similarly, a rank-two Eliassen-Palm flux tensor
-                can be derived for the statistically steady quasi-geostrophic equations (\cite{cronin1996eddy}). \cite{maddison2013eliassen} demonstrates
+                can be derived for the statistically steady quasi-geostrophic equations (\cite{cronin1996eddy}). \cite{maddison2013eliassen} demonstrate
                 the geometric relationship between Eliassen-Palm fluxes and how they
                 collapse into a single coordinate invariant tensor in the
                 quasi-geostrophic limit up to a gauge transformation.
@@ -528,8 +556,11 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  and where $f_{0}$ is the mean value of the Coriolis parameter and $\mathcal{N}_{0}$ is the buoyancy frequency. \cite{marshall2012framework}
                 demonstrates that by taking a weighted Frobenius norm on $\boldsymbol{E} $
                 and applying the Cauchy-Schwarz inequality a handful of times the 
-                 tensor is bounded by the eddy energy ${\left\|\boldsymbol{E}\right\|\leq\left(K+P\right)\equiv E}$,
-                 where $K=\frac{\mean{{\res{u}}^{2} + {\res{v}}^{2}}}{2}$ is the eddy
+                 tensor is bounded by the eddy energy
+                 \begin{equation}
+                 {\left\|\boldsymbol{E}\right\|\leq\sqrt{2}\left(K+P\right)\equiv \sqrt{2}E},
+                 \end{equation} 
+                 where $K={\mean{{\res{u}}^{2} + {\res{v}}^{2}}}/{2}$ is the eddy
                  kinetic energy.
                  Without any loss of generality, this bound allows us to rewrite the components of the tensor in the form
                  \begin{equation}
@@ -544,7 +575,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  Here we have introduced two eddy anisotropies, $0\leq\gamma_{m},\gamma_{b}\leq1$, two eddy flux angles $0\leq\phi_{m},\phi_{b}\leq\pi$ and an eddy energy partition angle,
                  $0\leq\lambda\leq\pi/2$. Now the Eliassen-Palm flux tensor
                  is written in terms of five non-dimensional, bounded parameters
-                 and $E$, the eddy energy.
+                 and $E$, the eddy energy. See \cite{marshall2012framework} for further details.
                  
                  
                  
@@ -577,7 +608,9 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 where $b(\boldsymbol{x},t)$ is the buoyancy,
                  $\rho=\rho_{0}\left(1-g^{-1}b\right)$; $\mathcal{X}$, $\mathcal{Y}$
                  denote adiabatic processes and body forces and $\omega$ represents
-                 any diabatic forcing. In isopycnal coordinates this becomes
+                 any diabatic forcing. 
+                 
+                 In isopycnal coordinates this becomes
                  \begin{subequations}
                  	\label{isopyceq}
                  	\begin{equation}
@@ -594,10 +627,10 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  	\frac{\partial \sigma}{\partial t}  + \left( \sigma u\right)_{x} + \left( \sigma v\right)_{y} + \left( \sigma \omega\right)_{b} = 0 .
                  	\end{equation}
                  \end{subequations}
-                 Here $z \equiv \eta(x,y,b,t) $, where $\eta$ is used to distinguish 
-                 it has a dependent function; $\frac{D}{Dt} \equiv \frac{\partial}{\partial t}
+                 Here $z \equiv \eta(x,y,b,t) $, where the symbol $\eta$ is used to distinguish 
+                 it as a dependent function; ``$\frac{D}{Dt} \equiv \frac{\partial}{\partial t}
                  + u\frac{\partial}{\partial x} + v\frac{\partial}{\partial y}
-                 + \omega\frac{\partial}{\partial b}$ is the
+                 + \omega\frac{\partial}{\partial b}$" is the
                   convective derivative in isopycnal coordinates; $m \equiv p-b\eta$ is the 
                   Montgomery potential and $\sigma \equiv \eta_{b} = -m_{bb}$.
                   Compare the continuity equation, \equref{isopyccont}, with 
@@ -608,9 +641,12 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                   \sigma m \boldsymbol{u}\right) -\left(\frac{\partial \eta}{\partial t} m\right)_{b}, \\
                   \label{isopycenergyeq}
                   \end{equation}
-                  taking $\mathcal{X}$, $\mathcal{Y}$ and $\omega$ to be zero and where $K=\half \left| \boldsymbol{u}\right|^{2}$ is kinetic energy and
-                  $P=\eta^{2}$ is potential energy, integrating over the entire domain
-                  integrates the right hand side to zero. 
+                  where $\mathcal{X}$, $\mathcal{Y}$ and $\omega$ 
+                  have been taken to be zero for convenience and where $K=\half \left| \boldsymbol{u}\right|^{2}$ is kinetic energy and
+                  $P=\eta^{2}$ is potential energy. Integrating over the entire domain,
+                  the right hand side vanishes. 
+                  
+                  
                   Now, by defining a thickness weighted average,
                   $\thkmean{\psi}=\nthkmean{\sigma\psi}/\nthkmean{\sigma}$, where
                   $\nthkmean{\psi}$ is the standard average and their residuals,
@@ -628,14 +664,14 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                   	\frac{\spec{D} \thkmean{v}}{D t} +f\thkmean{u} + \nthkmean{m}_{y}
                   	+\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \thkmean{\mathcal{Y}}, \\
                   	\end{equation}
-                  	where $\frac{\spec{D} }{D t} = \equiv \frac{\partial}{\partial t}
+                  	where ``$\frac{\spec{D} }{D t} = \equiv \frac{\partial}{\partial t}
                   	+ \thkmean{u}\frac{\partial}{\partial x} + \thkmean{v}\frac{\partial}{\partial y}
-                  	+ \thkmean{\omega}\frac{\partial}{\partial b}$ is the
+                  	+ \thkmean{\omega}\frac{\partial}{\partial b}$" is the
                   	mean convective derivative, whilst the continuity equation is just
                   	\begin{equation} 
                   	\frac{\partial \nthkmean{\sigma}}{\partial t}  + \left( \nthkmean{\sigma} \thkmean{u}\right)_{x} + \left( \nthkmean{\sigma} \thkmean{v}\right)_{y} + \left( \nthkmean{\sigma} \thkmean{\omega}\right)_{b} = 0 .
                   	\end{equation}
-                   $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$ are defined as
+                   Here, $\boldsymbol{E}^{u}$ and $\boldsymbol{E}^{v}$ are defined as
                    \begin{equation}
                    \label{youngtwaeptensor}
                    \begin{array}{c}
@@ -671,16 +707,16 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                    $\nthkmean{\sigma}^{-1}\nthkmean{\nthkres{\eta}\nthkres{m}_{y}}$ are
                    precisely the ``inviscid pressure drag"  or ``form drag" identified
                    by \cite{rhines1979theoretical} and represents the transfer of momentum
-                   between isopycnal surfaces. One key feature of this formulation
+                   across isopycnal surfaces. One key feature of this formulation
                    is that the eddy stresses are all entirely described in the momentum
-                   equations, hence one might wonder what has happened to 
-                   the bolus velocity described by \cite{gent1995parameterizing}. 
+                   equations; hence one might wonder what has happened to 
+                   the bolus velocity described by \cite{gent1995parameterizing}? 
                    It turns out that the thickness weighted velocity is precisely 
                    the transport velocity, since $\thkmean{\boldsymbol{u}}=\nthkmean{\sigma\boldsymbol{u}}/\nthkmean{\sigma}=\nthkmean{\boldsymbol{u}} + \nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}/\nthkmean{\sigma}$
                    and  $\nthkmean{\nthkres{\sigma}\nthkres{\boldsymbol{u}}}/\nthkmean{\sigma}$
                    is the bolus velocity. Hence, this implies that  the equations explicitly
                     represent the mean velocities as the  transport velocities.
-                     To retrieve the bounds derived by \cite{marshall2012framework} 
+                     To retrieve the bounds derived by \cite{marshall2012framework},
                      we write $\boldsymbol{E} = (\boldsymbol{E}^{u}, \boldsymbol{E}^{v}, 0)$
                      and note that in the geostrophic limit $m_x \sim fv$ and  $m_y \sim -fu$.
                      Then by writing 
@@ -704,11 +740,11 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                      \end{array}\right).
                      \end{equation}
                      By applying the Frobenius norm in a similar fashion to 
-                     \cite{marshall2012framework} we retain the energy bound on
+                     \cite{marshall2012framework} we recover the energy bound on
                       $\boldsymbol{E}$
                       
                       Equations~\equref{thkweigheq} are of the same form as Equations~\ref{isopyceq}.
-                      Hence, it's possible to derive an
+                      Hence, it is possible to derive an
                       Rossby-Ertel \gls{pv} for the thickness weighted system
                       as
                       \begin{equation}
@@ -749,9 +785,13 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                        \cite{greatbatch1998exploring} form of \gls{pv} closure.
                        Using the Cauchy-Schwarz inequality, it is easily noted that
                        the norm of $\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}$ is bounded
-                       by $2\sqrt{KQ}$, where $K = \frac{\thkmean{{\thkres{u}}^{2} +
+                       \begin{equation}
+                       \left\|\thkmean{\thkres{q} \thkres{\boldsymbol{u}}}\right\|
+                       \leq 2\sqrt{KQ},
+                       \end{equation}
+                       recalling that $K = \frac{\thkmean{{\thkres{u}}^{2} +
                        	{\thkres{v}}^{2}}}{2}$ is the eddy kinetic energy and $Q =
-                        \frac{\thkmean{{\thkres{q}}^{2}}}{2}$ is the eddy enstrophy.
+                        \frac{\thkmean{{\thkres{q}}^{2}}}{2}$ is the eddy potential enstrophy.
                        Providing $\spec{q} \sim \thkmean{q}$, which is equivalent 
                        to the  curl of the bolus velocities $\left(\nthkmean{\nthkres{\sigma}\nthkres{v}}/\nthkmean{\sigma}\right)_{x}-\left(\nthkmean{\nthkres{\sigma}\nthkres{u}}/\nthkmean{\sigma}\right)_{y}$ 
                        being small, then it can be assumed, in the adiabatic case,
@@ -797,7 +837,6 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	
                 \end{itemize}
 
-
 \section{Numerical Models of Arctic}
 
 	It was discussed in \secref{arcticocean} that to understand the circulation of the Arctic
@@ -814,15 +853,16 @@ As mentioned in the previous section, the circulation in the freshwater layer is
  governed by effects of surface forcing. To this extent, providing the various models being
   compared are given the same forcing, or equivalent depending on how the model is
    structured, then the resulting circulations are in good agreement
-    (\cite{proshutinsky2005arctic}). They have been shown to have a good skill in imitating
+    (\cite{proshutinsky2005arctic}). They have been shown to have a good skill in simulating
      certain regimes which have been observed. However, despite good agreement of the general
-      circulation inside the basin there is still some variation between the climate models.
+      circulation inside the basin, there is still some variation between the climate models.
        The first is how the Pacific Water entering via Bering Strait is advected through the
     basin within the freshwater layer. The models, despite showing the same regime for the
      Freshwater layer demonstrate different distributions of the Pacific Water when
       represented as a passive tracer added in Bering Strait (\cite{proshutinsky2011recent}).
-       However, without an easy way of determining what water originates from the Pacific
-        there are few observations available to determine the legitimacy of the models. The
+       However, it is difficult to
+       determine the legitimacy of the models
+       due to limited observations and without an easy way of determining which water originates from the Pacific. The
      most successful attempts at determining the distribution of Pacific Water have been
      done using tracers from other sources, such as radioactive tracers from the Atlantic and
       determining where they?re being blocked by Pacific water such as in \cite{karcher2004dispersion}. More crucially models struggle to coherently and accurately represent
@@ -840,14 +880,14 @@ Observations suggest that the Atlantic Water Layer circulates counter clockwise 
  years to model the Atlantic Water Layer have resulted in confusing predictions where the
  circulation seemingly randomly organises into circulations that are cyclonic or
  anti-cyclonic with almost identical frequency. To attempt to diagnose the skill of a model
- to produce cyclonic boundary currents \cite{holloway2007water} introduces ``topostrophy",
+ to produce cyclonic boundary currents, \cite{holloway2007water} introduces the concept of ``topostrophy",
  defined as   $\tau=(\boldsymbol{f}\times\boldsymbol{V})\cdot\boldsymbol{\nabla}D$, where
  $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{V}$ is velocity and  $D$ is the total
  depth. This so called topostrophy is a measure the strength of along slope flows and gives
  positive values for currents that flow with the upslope to their right (e.g. for cyclonic
  rim currents) and negative values for the opposite.  When calculated for the major
  \gls{aomip} models, most show variable and ambiguous values for $\tau$  whereas models that
- employ the ``Neptune Effect", mentioned in \secref{entropy}, shows a persistent and positive
+ employ the ``Neptune Effect" parameterisation, mentioned in \secref{entropy}, show a persistent and positive
  value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine
  simultaneous simulations using the NEMO model run with and without the Neptune Effect and
  show that the addition of this particular parameterisation is the likely cause of this
@@ -862,15 +902,16 @@ Observations suggest that the Atlantic Water Layer circulates counter clockwise 
 \end{figure}
 
 
-\Gls{aomip} has demonstrated that \glspl{gcm} are woefully inadequate for predicting the
-accurate circulation \gls{awl}. The evidence seems to suggest that this is because on 
-climate time-scales a \gls{gcm} can at best be eddy-permitting and hence
+The \gls{aomip} has demonstrated that \glspl{gcm} are woefully inadequate for predicting the
+accurate circulation in the \gls{awl}. The evidence seems to suggest that this is because, on 
+climate time-scales, a \gls{gcm} can at best be eddy-permitting and hence
 lack the geostrophic turbulence that appears to be critical for setting the 
 cyclonic circulation in the \gls{awl}. As discussed in \secref{meaneddyinteractiontheory},
 the eddy parameterisations used in modern \glspl{gcm}, namely \gls{gm}, are too 
 dissipative and fail to express the driving nature of eddy-topography interactions. 
 The models that are more successful either better resolve the eddy fields or apply 
 a corrective force, such as the ``Neptune Effect", in irresponsible manner. 
+
 
 \section{Summary and Hypothesis}
 
@@ -880,11 +921,11 @@ Attempting to parameterise this in non-eddy-resolving models has lead to
 continuity and \gls{pv} closure parameterisations such as \cite{gent1990}
 and \cite{greatbatch1998exploring} as well maximum entropy principle parameterisations 
 such as the ``Neptune Effect" (\cite{holloway1992representing}) and \cite{polyakov2001eddy}.
-However, to date these parameterisations are hopeless over topography. Either
+However, to date these parameterisations fail woefully over topography. Either
 they are far to dissipative, like \gls{gm}, and fail to represent the driving nature
-of eddies-topographic interactions or they violate energy conservation
+of eddies-topographic interactions, or they violate energy conservation
 by failing to appropriately control the energy injected into the system, as in the cases
-of \gls{pv} closure and the ``Neptune Effect". To avoid this models attempting to
+of \gls{pv} closure and the ``Neptune Effect". To avoid this, models attempting to
 use non-dissipative parameterisations often attempt to tune the parameterisation in
 an ad-hoc fashion to avoid spurious energy injection. However, by carefully implementing
 the framework put forward by \cite{marshall2012framework} and generalised in
@@ -920,8 +961,7 @@ over using observational data as well as output from \glspl{gcm} for a number of
 	averaging operator that splits the eddy components of the system from the mean
 	components, the most effective way of achieving this is to have a large data sample
 	whose average is the mean state. Due to the lack of observational data, especially in the
-	Arctic Ocean means that this  technique wouldn't be able to achieve an accurate or complete
-	picture. 
+	Arctic Ocean,this  technique is not feasible.
 	\item Similarly, defining what is meant by the ``mean component" is non-trivial in the physical ocean. Ideally, we would require a mean such that the residual term is precisely the 
 	geostrophic turbulence that we are interested in. However, the ocean exhibits a multitude 
 	oscillations and variability, such as seasonal and diurnal cycles, tides and many other
@@ -936,7 +976,7 @@ over using observational data as well as output from \glspl{gcm} for a number of
 	of computational power than can be made by simplifying the problem into an idealised situation.
 \end{itemize}
 
-Starting from the full primitive equations we need to carefully make assumptions and
+Starting from the full primitive equations, we need to carefully make assumptions and
 simplifications to create a representation of the ocean which is simple enough for our
 purposes but still a close enough approximation to the ocean that any results are ultimately
  useful. Hence, we now set out the criteria required for such a model.
@@ -946,8 +986,8 @@ purposes but still a close enough approximation to the ocean that any results ar
  	\item The models must be able to cope with a realistic range of topographic slopes.
  	In the Arctic Ocean the sea floor drops by around $3000$ metres over $10$'s of kilometres
  	in places.
- 	\item Baroclinic effects must be represented. It is well understood that a major role
- 	of eddies is the baroclinic effect that \gls{gm} attempts to represent.
+ 	\item Baroclinic effects must be represented. It is well understood that a major effect
+ 	of eddies is the baroclinic instability process that \gls{gm} attempts to represent.
  	\item The model must be fast. The whole point of making these idealisation is to have model
  	 that can be run at high resolution quickly.
  	 \item As mentioned above, we must be able to define an averaging operator which 
@@ -959,7 +999,7 @@ In this section we follow the development of such a model
 \section{Stacked Shallow Water Theory}
 \label{swtheory}
 
-For our study the equations that will give us the most efficient model whilst capturing the
+For our study, the equations that will give us the most efficient model whilst capturing the
  processes we would like are the stacked shallow water equations. Whilst this is a common
   simplification it is worth investigating whether it is an appropriate simplification to make
    here. 
@@ -968,7 +1008,7 @@ For our study the equations that will give us the most efficient model whilst ca
    incompressible or specifically the Boussinesq approximation. This is reasonable
    given the small size of deviations in density from the mean state
    that occurs in the ocean (\cite{vallis2006atmospheric}).
-   The second approximation that is made is that the fluid is hydrostatic. That is to say that the equation $\frac{\partial p}{\partial z} + \rho g=0$ holds, where $p$ is pressure, $\rho$
+   The second approximation that is made is that the fluid is hydrostatic. That is to say that the equation ``${\partial p}/{\partial z} + \rho g=0$" holds, where $p$ is pressure, $\rho$
    is density, $g$ is gravitational acceleration and $z$ is the vertical coordinate. Despite
    the fact that non-hydrostatic effects are likely to affect the vertical velocity, since
    there are only limited areas in the Arctic where dense water could overspill into less
@@ -983,7 +1023,7 @@ For our study the equations that will give us the most efficient model whilst ca
    \frac{Dv}{Dt}+fu = -\frac{1}{\rho}   \frac{\partial p}{\partial y}+F_{v}-D_{v}, \\
    \end{equation}
    \begin{equation}
-   \frac{\partial p}{\partial z} + \rho g=0 \\
+   \frac{\partial p}{\partial z} + \rho g=0, \\
    \end{equation}
    \begin{equation}
    \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +\frac{\partial w}{\partial z}  = 0 ,
@@ -1010,12 +1050,12 @@ For our study the equations that will give us the most efficient model whilst ca
     deriving the shallow water equations for each layer separately. Formally, 
     the density profile is split into $N$ sections with constant densities 
     $\rho_{1}$ through to $\rho_{N}$, where $n=1$ is the lowest layer and $n=N$
-    is the uppermost layer. Integrating the hydrostatic equation, $\frac{\partial p}{\partial z} + \rho g=0$,
+    is the uppermost layer. Integrating the hydrostatic equation
     downwards from the surface yields 
     \begin{equation}
     p(x,y,z)=\sum^{N}_{k=n+1}\left(g \rho_{k} h_{k} \right) + g \rho_{n}\left(\eta_{n+\half } - z \right)
     \end{equation}
-    for $\eta_{n-\half }\leq z \leq \eta_{n+\half }$, where $\eta_{n+\half }(x,y,t)$,
+    for $\eta_{n-\half }\leq z \leq \eta_{n+\half }$. Here $\eta_{n+\half }(x,y,t)$,
     $\eta_{n-\half }(x,y,t)$ are the depths of the interfaces above and below layer $n$
     respectively and $h_{n} = \eta_{n+\half } -\eta_{n-\half }$ is the vertical
      thickness  of layer $n$. Similarly, by integrating the continuity equation over a layer
@@ -1029,14 +1069,29 @@ For our study the equations that will give us the most efficient model whilst ca
       -  \left[ v  \frac{\partial z}{\partial y}\right]^{\eta_{n+\half }}_{\eta_{n-\half }}  +
       \left[ w \right]^{\eta_{n+\half }}_{\eta_{n-\half }} \\
      &=\frac{\partial h_{n} }{\partial t} +\frac{\partial h_{n} u_{n}}{\partial x}+
-     \frac{\partial h_{n} v_{n} }{\partial y},      \\
+     \frac{\partial h_{n} v_{n} }{\partial y}.      \\
      \end{split}
      \end{equation}
-   using that $w =  \frac{\partial z }{\partial t} + u \frac{\partial z}{\partial x} 
-   + v \frac{\partial z}{\partial y}$ at $z = \eta_{n+\half } , \eta_{n-\half }$; $u_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\half }}_{\eta_{n-\half }} u{\rm d} z$ and $v_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\half }}_{\eta_{n-\half }} v{\rm d} z$. By also defining 
+   Here we have used that 
+   \begin{equation*}
+   \begin{array}{ccc}
+   w =  \frac{\partial z }{\partial t} + u \frac{\partial z}{\partial x} 
+         + v \frac{\partial z}{\partial y} &\mathrm{at}& z = \eta_{n+\half } , \eta_{n-\half },
+   \end{array}
+   \end{equation*}
+   and
+   \begin{equation*}
+   \begin{array}{ccc}
+   u_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\half }}_{\eta_{n-\half }} u{\rm d} z &\mathrm{and}& v_{n} =\frac{1}{h_{n}}\int^{\eta_{n+\half }}_{\eta_{n-\half }} v{\rm d} z.
+   \end{array}
+   \end{equation*} 
+   By also defining 
    the Montgomery potential as
-   $m_{n}(x,y,t)=p+g \rho_{n} z=\sum^{N}_{k=n}\left(\rho_{N} g_{k+\half } \eta_{k+\half } \right) $ where 
-   $g_{n+\half } =  \frac{\rho_{n} - \rho_{n+1}}{\rho_{N}}$, we have the stacked shallow water
+   \begin{equation*}
+   m_{n}(x,y,t)=p+g \rho_{n} z=\sum^{N}_{k=n}\left(\rho_{N} g_{k+\half } \eta_{k+\half } \right) 
+   \end{equation*}
+    where 
+         $g_{n+\half } = {\rho_{n} - \rho_{n+1}}/{\rho_{N}}$, we have the stacked shallow water
    equations as derived in \cite{vallis2006atmospheric} and \cite{cushman2011introduction}, 
    \begin{subequations}
    	\label{sweqs}
@@ -1057,11 +1112,11 @@ For our study the equations that will give us the most efficient model whilst ca
  We have three equations and the unknowns, $h_{n}$, $u_{n}$ and $v_{n}$, for each layer $n$. 
  
    It is worth noticing, here, the similarity between these equations and the isopycnal
-    primitive    equations set out by \cite{young2012exact}, and repeated in  \secref{meaneddyinteractiontheory}, but one should be aware that
+    primitive    equations set out by \cite{young2012exact}, and repeated in  \secref{meaneddyinteractiontheory}. However, one should be aware that
     the two sets of equations describe different realities; $h_{n}$, for example, is not
-    equivalent to $\sigma = \frac{\partial z}{\partial \rho}$ since in the shallow water
-    equations $\frac{\partial z}{\partial \rho}$ is not well-defined due to  $\rho$ being
-    constant. This distinction is critical when considering the interfaces between each
+    equivalent to $\sigma = {\partial z}/{\partial \rho}$ since in the shallow water
+    equations $\sigma$ is not well-defined due to  $\rho$ being
+    piecewise constant. This distinction is critical when considering the interfaces between each
     layer. In the isopycnal primitive equations the velocities, the Montgomery potential, 
     the energetics are all continuous throughout the water column, whereas in shallow 
     water there is a discontinuous jump between the layers. This causes problems when
@@ -1083,32 +1138,50 @@ For our study the equations that will give us the most efficient model whilst ca
     of water is easily calculated as $\sum_{n=1}^{N} \rho_{n} g h_{n}\eta_{n}$ where
     $\eta_{n}=\half  \left(\eta_{n-\half }+\eta_{n+\half }\right)$ is
     the centre of mass of each layer in the water column. By using that $h_{n} = \eta_{n+\half }-\eta_{n-\half }$ and manipulating the summation
-    indices, we can also write $\sum_{n=1}^{N} \rho_{n} g h_{n}\eta_{n}$ as
-    $\sum_{n=1}^{N}\half  \rho_{n} g \left(\eta_{n+\half }^{2}-\eta_{n-\half }^{2}\right)$
-    and as $\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \eta_{n+\half }^{2}-\rho_{1}g\eta_{\half }^{2}$, where we 
+    indices, we can also write
+    \begin{equation*}
+    \sum_{n=1}^{N} \rho_{n} g h_{n}\eta_{n} =
+        \sum_{n=1}^{N}\half  \rho_{n} g \left(\eta_{n+\half }^{2}-\eta_{n-\half }^{2}\right) =
+        \sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \eta_{n+\half }^{2}-\rho_{1}g\eta_{\half }^{2},
+    \end{equation*} 
+    where we 
     note that $\eta_{\half }$ is the bottom topography and so it constant
     in time. The total energy in the
-    water column must therefore be $\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right)$. Combining this with \equref{swkeeq} we
+    water column must therefore be 
+    \begin{equation*}
+    \sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right).
+    \end{equation*}
+     Combining this with \equref{swkeeq} we
     can write down an equation for the evolution of this energy,
+        \begin{equation}
+        \begin{split}
+        \frac{\partial}{\partial t}\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right)& \\
+        = -\sum_{n=1}^{N} \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right)& 
+        -\sum_{n=1}^{N}  h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
+        +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} .
+        \end{split}
+        \end{equation}
+        This can be manipulated to give a less opaque equation.
+        Firstly by applying the product rule to $\sum_{n=1}^{N}  h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}$ and using
+        the continuity equation, \equref{swthkeq}, we obtain
+            \begin{equation}
+            \begin{split}
+            \frac{\partial}{\partial t}\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right) 
+            = -\sum_{n=1}^{N} \boldsymbol{\nabla} &\left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right]  \\
+            &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
+            +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2}.
+            \end{split}
+            \end{equation}
+          Now, by using  $h_{n} = \eta_{n+\half }-\eta_{n-\half }$
+          and $m_{n} = m_{n+1} +  \rho_{N}g_{n+\half } \eta_{n+\half }$
+          we have 
     \begin{equation}
     \begin{split}
-    \frac{\partial}{\partial t}\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right) 
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right) 
-    -\sum_{n=1}^{N}  h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
-    +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} \\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right]  \\
-    &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
-    +\sum_{n=1}^{N}\half  \rho_{N} g_{n+\half } \frac{\partial}{\partial t}\eta_{n+\half }^{2} \\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right]  \\
-    &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{N}g_{n+\half } \eta_{n+\half }\right) 
-    +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)   m_{n} \\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
-    &-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)    m_{n+1} +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}\\
-    =& -\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    - \frac{\partial}{\partial t}\left(\eta_{N+\half }\right)    m_{N+1} + \frac{\partial}{\partial t}\left(\eta_{\half }\right) m_{1},
+    \frac{\partial}{\partial t}\sum_{n=1}^{N} \rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right) &+\sum_{n=1}^{N} \boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    =&-\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)    m_{n+1} +\sum_{n=1}^{N} \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}\\
+    =&- \frac{\partial}{\partial t}\left(\eta_{N+\half }\right)    m_{N+1} + \frac{\partial}{\partial t}\left(\eta_{\half }\right) m_{1}.
     \end{split}
     \end{equation}
-    where we have used the continuity equation, \equref{swthkeq}, to get the second line.
     Integrating over the entire domain makes the right hand side equal to zero since
     $m_{n+1} = 0$ and $\eta_{\half }$ is the bottom topography and so is constant in
     time. No problems so far! One would then expect to be able to write down
@@ -1175,7 +1248,7 @@ For our study the equations that will give us the most efficient model whilst ca
     vertical transfer of energy is given by 
     $\left(\frac{\partial \eta}{\partial t} m \right)_{b}$ and recall that since density is
      constant within a layer, $\frac{\partial }{\partial b}$ is not well-defined, and so for
-      these equations the idea of potential energy is a degenerative one. However,
+      these equations the idea of potential energy is degenerative. However,
       for the sake of making progress with this discussion we will take the
       appropriate definition of potential energy as the term which appears in \equref{swlayercorrectenergy}.
     
@@ -1194,7 +1267,7 @@ For our study the equations that will give us the most efficient model whilst ca
     axioms of an averaging operator (for a more precise definition see \cite{maddison2013eliassen}); and their residuals,
     $\thkres{\psi}=\psi-\thkmean{\psi}$ and $\nthkres{\psi}=\psi-\nthkmean{\psi}$.
     By multiplying Equations~\eqref{swumomeq}~and~\eqref{swvmomeq} by $h_{n}$
-    and using \equref{swthkeq} we have that
+    and using \equref{swthkeq}, we have that
     \begin{subequations}
     	\begin{equation}
     	\frac{\partial }{\partial t}\left(h_{n} u_{n}\right) +\frac{\partial }{\partial x}\left(h_{n}u_{n}u_{n}\right)
@@ -1214,12 +1287,18 @@ For our study the equations that will give us the most efficient model whilst ca
     \begin{subequations}
     	\label{swundecconsequ}
     	\begin{equation}
+    	\begin{split}
     	\frac{\partial }{\partial t}\left(\nthkmean{h_{n}}\thkmean{u_{n}}\right) +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{u_{n}u_{n}}\right)
-    	+\frac{\partial }{\partial y}\left(\nthkmean{h_{n}}\thkmean{u_{n}v_{n}}\right) - f\nthkmean{h_{n}}\thkmean{v_{n}} = -\frac{1}{\rho_{n}}   \nthkmean{h_{n}\frac{\partial m_{n}}{\partial x}}+\nthkmean{h_{n}}\thkmean{F}_{u_{n}}-\nthkmean{h_{n}}\thkmean{D}_{u_{n}}, \\
+    	&+\frac{\partial }{\partial y}\left(\nthkmean{h_{n}}\thkmean{u_{n}v_{n}}\right) - f\nthkmean{h_{n}}\thkmean{v_{n}} \\
+    	=& -\frac{1}{\rho_{n}}   \nthkmean{h_{n}\frac{\partial m_{n}}{\partial x}}+\nthkmean{h_{n}}\thkmean{F}_{u_{n}}-\nthkmean{h_{n}}\thkmean{D}_{u_{n}}, \\
+    	    	\end{split}
     	\end{equation}
     	\begin{equation}
+    	    	\begin{split}
     	\frac{\partial }{\partial t}\left(\nthkmean{h_{n}}\thkmean{v_{n}}\right) +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{u_{n}v_{n}}\right)
-    	+\frac{\partial }{\partial y}\left(\nthkmean{h_{n}}\thkmean{v_{n}v_{n}}\right) +f\nthkmean{h_{n}}\thkmean{u_{n}} = -\frac{1}{\rho_{n}}   \nthkmean{h_{n}\frac{\partial m_{n}}{\partial y}}+\nthkmean{h_{n}}\thkmean{F}_{v_{n}}-\nthkmean{h_{n}}\thkmean{D}_{v_{n}}, \\
+    	&+\frac{\partial }{\partial y}\left(\nthkmean{h_{n}}\thkmean{v_{n}v_{n}}\right) +f\nthkmean{h_{n}}\thkmean{u_{n}} \\
+    	=& -\frac{1}{\rho_{n}}   \nthkmean{h_{n}\frac{\partial m_{n}}{\partial y}}+\nthkmean{h_{n}}\thkmean{F}_{v_{n}}-\nthkmean{h_{n}}\thkmean{D}_{v_{n}}, \\
+    	    	    	\end{split}
     	\end{equation}
     	\begin{equation}
     	0 =\frac{\partial \nthkmean{h_{n}} }{\partial t} +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{ u_{n}}\right)+

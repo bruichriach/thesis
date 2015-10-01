@@ -838,6 +838,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 \end{itemize}
 
 \section{Numerical Models of Arctic}
+\label{arcticnumerics}
 
 	It was discussed in \secref{arcticocean} that to understand the circulation of the Arctic
 	 Ocean it is necessary to use \glspl{gcm}. However, due to poorly resolved processes or
@@ -938,7 +939,7 @@ emerge with competing \gls{gm}-like and ``Neptune Effect''-like natures
 the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy enstrophy
 \cite{marshall2012framework}.
 Diagnosis of the contributions to the eddy stress tensor from
-the eddy kinetic and potential energy, as well as the Reynolds' stress angle and eddy bouyancy flux angle will allow the investigation of the following:
+the eddy kinetic and potential energy, as well as the Reynolds stress angle and eddy bouyancy flux angle will allow the investigation of the following:
 \begin{itemize} 
 		\item How much topographic slope is the controlling factor for the structure of the eddy stresses in eddy-topographic interactions.
 		\item How limited energy is likely to inhibit the ability for the eddies the
@@ -1305,8 +1306,8 @@ For our study, the equations that will give us the most efficient model whilst c
     	\frac{\partial  }{\partial y}\left(\nthkmean{h_{n}}\thkmean{ v_{n}}\right).\\
     	\end{equation}
     \end{subequations}
-    Applying Reynold's decomposition it is clear that the advection terms will
-    supply Reynold's stresses, however the Montgomery potential term is more complicated.
+    Applying Reynolds decomposition it is clear that the advection terms will
+    supply Reynolds stresses, however the Montgomery potential term is more complicated.
     Recall that $h_{n}=\eta_{n+\half}-\eta_{n-\half}$ and that, by the definition of $m_{n}$,
     we have that $m_{n}=m_{n+1}+\rho_{N}g_{n+\half}\eta_{n+\half}$; hence,
    \begin{equation}
@@ -1361,12 +1362,12 @@ For our study, the equations that will give us the most efficient model whilst c
     	0 =\frac{\partial \nthkmean{h_{n}} }{\partial t} +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{ u_{n}}\right)+
     	\frac{\partial  }{\partial y}\left(\nthkmean{h_{n}}\thkmean{ v_{n}}\right).\\
     	\end{equation}
-    	where $\frac{\spec{D}\thkmean{v}_{n}}{Dt}=\frac{\partial }{\partial t}+\thkmean{u}_{n}\frac{\partial }{\partial x}+\thkmean{v}_{n}\frac{\partial }{\partial y}$ is the
+    	where ``$\frac{\spec{D}\thkmean{v}_{n}}{Dt}=\frac{\partial }{\partial t}+\thkmean{u}_{n}\frac{\partial }{\partial x}+\thkmean{v}_{n}\frac{\partial }{\partial y}$" is the
     	mean convective derivative in layer $n$; $\boldsymbol{\nabla}_{3}$ is a special operator defined as
-    	$\boldsymbol{\nabla}_{3}=\left(\frac{\partial  }{\partial x},
+    	``$\boldsymbol{\nabla}_{3}=\left(\frac{\partial  }{\partial x},
     	\frac{\partial }{\partial y},
-    	\frac{\partial  }{\partial b}\right)$ such that $\frac{\partial  \psi}{\partial b}
-    	= \left(\psi_{n+\half}-\psi_{n-\half}\right)$ where $\psi_{n+\half}$ and $\psi_{n-\half}$ are the values of $\psi$ on the interfaces above and below
+    	\frac{\partial  }{\partial b}\right)$" such that ``$\frac{\partial  \psi}{\partial b}
+    	= \left(\psi_{n+\half}-\psi_{n-\half}\right)$" where $\psi_{n+\half}$ and $\psi_{n-\half}$ are the values of $\psi$ on the interfaces above and below
     	layer $n$ respectively; and $\boldsymbol{E}^{u}$, $\boldsymbol{E}^{v}$ are the
     	eddy stresses
     	\begin{equation}
@@ -1402,7 +1403,7 @@ For our study, the equations that will give us the most efficient model whilst c
     -M + K + P & N & 0 \\
     N & M + K + P& 0 \\
     R & S & 0 \\
-    \end{array}\right)
+    \end{array}\right),
     \end{equation}
     \end{subequations}
     where 
@@ -1555,16 +1556,15 @@ For our study, the equations that will give us the most efficient model whilst c
 
 Now that we have our governing equations, we need to solve them. To do this we
 discretise the equations onto an Arakawa C-grid and then solve for future times
-using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedrichs-Lewy
- condition (\cite{courant1928partiellen}), the time-step and grid spacing must satisfy $\frac{\Delta x}{\Delta t} \leq c_{\max}$ where $\Delta x$ is the smallest grid spacing, $\Delta t$ is
+using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedrichs-Lewy
+ condition (\cite{courant1928partiellen}), the time-step and grid spacing must satisfy ${\Delta x}/{\Delta t} \leq c_{\max}$ where $\Delta x$ is the smallest grid spacing, $\Delta t$ is
  the time-step and $c_{\max}$ is the fastest speed at which information is propagated at. 
- In our equations this speed the gravity wave speed which is $\sqrt{g H}$, where $H$ is the
- maximum fluid depth. However, since the next fastest speeds, which are the internal gravity
-  wave speeds $\left(\mathrm{approximately} \, \sqrt{g_{n+\half} H}\right)$, are much smaller than the surface
-  wave speed since $g_{n+\half} \sim g/1000$, it makes sense to suppress the surface 
-  wave speed. To do this in such a way that is consistent with mass, momentum and energy 
-  conservation we impose the rigid-lid approximation. By imagining a flat plate 
-  placed across the surface, we can re-imagine the pressure fluctuations from a free
+ In our equations this is the surface gravity wave speed, $\sqrt{g H}$, where $H$ is the
+ maximum fluid depth. However, since the next fastest waves are the internal gravity
+  waves with speeds of order $\sqrt{g_{n+\half} H}$, approximately $1000$ times slower than the surface gravity waves, it makes sense to suppress the surface gravity
+  waves. To do this in such a way that is consistent with mass, momentum and energy 
+  conservation, we impose the rigid-lid approximation. By imagining a flat plate 
+  placed across the surface, we can re-interpret the pressure fluctuations from a free
   surface as the fluid pushing or pulling on the plate and the resulting force 
   applied to the fluid in reaction. 
   
@@ -1601,8 +1601,9 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \end{equation}
   applied to $p$, where bars denote averaging in the $x$ and $y$ directions respectively.
   
-  Typical scales in the ocean are $10 - 100 \mathrm{km}$ for mesoscale eddies,
-  in the kilometres for ocean depth, whilst typical speeds are in
+  Typical scales in the Arctic are $\sim 10 \mathrm{km}$ for
+  the lateral scale of mesoscale eddies,
+  $3-5 \mathrm{km}$ for ocean depth, whilst typical speeds are in
   $\mathrm{cm}\,\mathrm{s}^{-1}$, because of this we shall rescale the 
   dimensions so that the model is not operating with values of vastly different magnitudes
   and hence reducing the chance for floating point errors. Firstly, the layer thicknesses,
@@ -1616,7 +1617,7 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   Hence, we take ${g\left(\rho_{1}-\rho_{N}\right)}/\rho_{N} = 1 $
   and $f_{0}=1$ so that time is scaled by $1/f_{0}$ and the horizontal velocities and distances are scaled by the wave speed, $\sqrt{g^{\prime}H}$ and deformation radius, $L_{D}=\sqrt{g^{\prime}H}/f_{0}$.
 
-  In order to have well resolved eddies, we choose a grid resolution of $\frac{1}{20} L_{D}$
+  In order to have well resolved eddies, we choose a grid resolution of $ L_{D} / 20$
   meanwhile we want a domain that is at least around $10$ or $20$ times the 
   mesoscale. This immediately give around a hundred thousand degrees of freedom,
   since we are limited by available computation resources it is not sensible
@@ -1624,15 +1625,15 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   we use a doubly re-entrant domain rather than a basin with boundaries, exploiting
   the fact we would expect the ocean to be statistically similar across a symmetric 
   domain and avoiding the large domain required to incorporate an entire ocean basin's
-  dynamics. This choice does have some obvious drawbacks. Firstly, the symmetry is
-  incredibly unrealistic, the ocean is not divided into identical cubes and so the 
+  dynamics. This choice does have some obvious drawbacks. Firstly, the doubly-periodic symmetry is
+  incredibly unrealistic, the ocean is not divided into identical cubes; and so the 
   fact that a piece of dynamics will have an identical neighbour nearby may cause some
   unrealistic properties. However, this will hopefully only be a problem on the largest 
-  scales. Secondly, this requires a constant Coriolis force which may loose
-  us some important dynamics such as rossby waves, but at high latitudes $f_{0}$
-  dominates the higher order terms of the Coriolis parameter expansion.
+  scales. Secondly, this requires a constant Coriolis parameter which may loose
+  us some important dynamical processes such as Rossby waves; however, at high latitudes, the Coriolis parameter is nearly constant
+  at leading order.
   Finally, there is a similar issue with topography, any choice must be
-  zonally and meridionally translationally symmetric. This limits the choices to sea mounts and ridges.  
+  translationally symmetric in both the zonal and meridional directions. This limits the choices to sea mounts and ridges.  
     
   Now, to generate dynamically interesting system we manipulate the system using 
   the forcing and
@@ -1647,41 +1648,43 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \end{equation}
   where $\boldsymbol{\tau}$ is the surface wind stress, $\rho_{a}$ is the density of
   air at sea level, $c_{d}$ is the drag coefficient, $\boldsymbol{u}_{a}$ is the ocean
-  surface velocity and $\boldsymbol{U}_{10}$ is the wind velocity.
+  surface velocity and $\boldsymbol{U}_{10}$ is the wind velocity
+  at $10 \mathrm{m}$ above the sea surface.
   Whilst the importance of using the relative velocities is well established
-  (\cite{duhaut2006wind}, \cite{zhai2007wind}, \cite{hughes2008wind}, \cite{zhai2012wind}), 
-  however due to the idealised framework in which we are working in, it's enough
-  to assume that $\left|\boldsymbol{u}_{a}\right| \ll \left|\boldsymbol{U}_{10}\right|$
+  (\cite{duhaut2006wind}, \cite{zhai2007wind}, \cite{hughes2008wind}, \cite{zhai2012wind}); 
+  however, consistent with the idealised framework in which we are 
+  working in, we assume that $\left|\boldsymbol{u}_{a}\right| \ll \left|\boldsymbol{U}_{10}\right|$
   and $\boldsymbol{\tau}=\rho_{a} c_{d} \left|\boldsymbol{U}_{10}\right|
   \boldsymbol{U}_{10}$, which is simply a vector set by the 
-  magnitude of $\rho_{a} c_{d} \left|\boldsymbol{U}_{10}\right|^{2}$ and the
-  direction of $\boldsymbol{U}_{10}$. Since the momentum within each layer
+  magnitude and direction of the wind.
+   Since the momentum within each layer
   is defined to be constant with in each layer, the input of momentum from the wind
-  is distributed through the layer giving $\left(F_{u_{N}},F_{v_{N}}\right)=\boldsymbol{\tau}/\left(\rho_{N}h_{N}\right) \equiv
-  \left(\tau_{u},\tau_{v}\right)/\left(\rho_{N}h_{N}\right) $ in the
-  upper most layer, $n=N$. 
+  is distributed through the layer giving ``$\left(F_{u_{N}},F_{v_{N}}\right)=\boldsymbol{\tau}/\left(\rho_{N}h_{N}\right) \equiv
+  \left(\tau_{u},\tau_{v}\right)/\left(\rho_{N}h_{N}\right) $" in the
+  uppermost layer, $n=N$. 
   
-  Now that we have a mechanism to force the system we need a way of dissipating the 
-  energy input from the winds. The most physically reasonable way to do this would be to
+  Now that we have a mechanism to force the system we need a 
+  mechanism of dissipating the 
+  energy input from the winds. The most physically reasonable way to do this is to
    introduce bottom friction to the model. Bottom friction is a drag intended to represent 
-  the shear stress felt by the ocean as it flows over the ocean floor, however
-  because this operates on a vertical scale much smaller then the layer thicknesses, $h_{n} \sim H$, of  the model it is a term that needs to be 
-  parameterised. Since we want the bottom friction to remove momentum
+  the shear stress felt by the ocean as it flows over the ocean floor; however,
+  in a layered model, the bottom drag must be applied throughout
+  the lowest layer. Since we want the bottom friction to remove momentum
   from the system, it seems sensible for it to be of the form $\boldsymbol{\tau} \propto
   - \boldsymbol{u}_{1}$, where $\boldsymbol{u}_{1}$ is the horizontal velocity
   in the bottom layer. A first guess might be a linear drag, similar to the wind stress,
   given by  $h_{1}\boldsymbol{D}_{\boldsymbol{u}_{1}} = - r \boldsymbol{u}_{1}$ for
   some parameter $r$. However, studies have shown (for example \cite{grianik2004effects} and
   \cite{arbic2008quadratic})
-  that a straight forward linear
+  that a straight-forward linear
   bottom friction gives rise to large, unrealistic eddies and that using a higher order
   polynomial gives more realistic results.
   One advantage of an $n$-polynomial bottom  friction rather than 
   a linear bottom friction is that it can be scale selective. By taking the 
-  drag to have the form $\boldsymbol{D}_{\boldsymbol{u}_{1}} = 
+  drag to have the form ``$\boldsymbol{D}_{\boldsymbol{u}_{1}} = 
   - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
   {\left|\boldsymbol{u}^{\ast}\right|}\right)^{n}
-  \boldsymbol{u}_{1}/h_{1}$ for some typical velocity $\boldsymbol{u}^{\ast}$, 
+  \boldsymbol{u}_{1}/h_{1}$" for some typical velocity $\boldsymbol{u}^{\ast}$, 
   natural number $n$ and friction coefficient $r$. Now for $n \geq 1$ (note that for $n=0$, this is 
   just linear bottom friction), $\boldsymbol{D}_{\boldsymbol{u}_{1}}$
   is stronger when $\left|\boldsymbol{u}_{1}\right| > \left|\boldsymbol{u}^{\ast}\right|$
@@ -1690,12 +1693,14 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   becoming too strong by selectively limiting the stronger currents.
   This means it is possible that, by tuning $r$, $\left|\boldsymbol{u}^{\ast}\right|$ and 
   $n$, a bottom friction can be chosen that limits the along-topography flow with
-  minimal effect on the eddy field. In order to tune these parameters, we begin by 
-  introducing topostrophy, a term coined by \cite{holloway2007water}, which is defined as
+  minimal effect on the eddy field. 
+  
+  In order to tune these parameters, we will diagnose
+  topostrophy which we introduced in \secref{arcticnumerics}
+  defined as
   $\tau = \left(\boldsymbol{ f } \wedge
-  \boldsymbol{ u } \right) \cdot \boldsymbol{\nabla} D $,
-  where $\boldsymbol{f}$ is the Coriolis force, $\boldsymbol{u}$ is velocity and $D$
-  is topographic depth. Topostrophy is a correlation between the flow velocity
+  \boldsymbol{ u } \right) \cdot \boldsymbol{\nabla} D $. 
+  Topostrophy is a correlation between the flow velocity
   and contours of topography and hence, is a measure of how much the flow is
   following topography. With this tool we can explore the sensitivity of the models
   ability to generate along-topography flow to the choice of bottom friction. 
@@ -1712,7 +1717,7 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   It should however be noted that the lower layers have more positive topostrophy than
   the upper layers, indicating that there is some along topography flow in the lower 
   layers but that it's not being precipitated  through the water column
-  The cubic models are much more interesting. The flow appears to have much more
+  The cubic drag models are much more interesting. The flow appears to have much more
   freedom to generate flows, whilst still being capped by $\left|\boldsymbol{u}^{\ast}\right|$. $\left|f\right| = 1$, $\boldsymbol{\nabla} D \sim 0.1$ and so $\left|\boldsymbol{u}\right| \sim 0.01 < \left|\boldsymbol{u}^{\ast}\right|$.
   Given these results it seems sensible to use the cubic parameterisation for bottom 
   friction. It's worth noticing that there is little physical rational for choosing
@@ -1735,8 +1740,8 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   	\label{fig:topostrophy}
   \end{figure}
   
-  In summary, we have created a model that is simple and quick, but still is a
-  reasonable representation of the ocean. Using this model, we can apply 
+  In summary, we have created a model that is simple and fast to run, but still is a
+  reasonable representation of the Arctic Ocean. Using this model, we can apply 
   averaging operators to diagnose eddy-mean interactions in the 
   presence of topography using the theory developed
   in \secref{eddymeantheory}. However, before we get to topography, let us convince
@@ -1745,12 +1750,14 @@ using the 3rd-Order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   Using the wind stress that we will discuss in detail in \secref{stochwind} in
   a three-layered domain without topography we spin up a model to examine the 
   resulting eddy field and momentum and energy balances. 
-  \equref{swlayercorrectenergy} demonstrates a definition of energy that is conserved 
-  except for forcing and dissipation, in this case this is the wind stress, bottom 
-  friction and viscosity. \figref{fig:notopenergy} demonstrates that 
+  \equref{swlayercorrectenergy} demonstrates there is an energy that is conserved 
+  except for forcing and dissipation, in this case due to
+   the wind stress, bottom 
+  friction and viscosity. In \figref{fig:notopenergy}, it
+  is seen that 
   the bottom friction balances the energy input from the wind over a large time
   window beyond the initial spin up. \figref{fig:notoppv} shows a snapshot of the \gls{pv}
-  field around $40 \times 10^{3}/f$ into the run. The surface layer shows a strong eddy
+  field around $40 \times 10^{3}/f$ into the integration. The surface layer shows a strong eddy
   field with eddies around the scale of the deformation radius and some filamentation.
   The middle layer has basically uniform \gls{pv} as one would expect since 
   the only non-conservative term in the \gls{pv} equation for this layer is the
@@ -1876,10 +1883,10 @@ that for forcing, $\boldsymbol{\tau}$, we have $\thkmean{\boldsymbol{\tau}}\equi
 
 
 To achieve such a system we introduce a spatially and temporally 
-varying wind stress. There are a few  way this can be done, a common method
+varying wind stress. There are a few  ways this can be done, a common method
 is to generate a superposition of sine waves at various frequencies and 
 phases as the stream function for the wind stress, this method is discussed at
-length in \cite{brannigan2015seasonal} and \cite{koszalka2009dynamics}. 
+length in \cite{koszalka2009dynamics} and \cite{brannigan2015seasonal}. 
 Instead we populate the domain
 with a collection of cyclones and       anticyclones. These, we define
 in such a way that they each  independently give a circular wind
@@ -1896,7 +1903,7 @@ has the form $\frac{1}{2\pi r}(1-e^{-r^{2}})e^{-r^{2}/2}\boldsymbol{e}_{\theta}$
 at the wrap around points half the domain away from the vortex centre the vortex is tapered
 rapidly to zero to avoid a discontinuity; here $r$ is the distance from the centre of the vortex, normalised by the
 radius of the vortex, and $\boldsymbol{e}_{\theta}$ is the unit vector in the 
-rotational direction. The vortexes are also given a certain random duration, $t_{0}$, contained a minimum and maximum duration; the vortexes then
+rotational direction. The vortices are also given a certain random duration, $t_{0}$, contained a minimum and maximum duration; the vortices then
 grow and decline over this period in proportion to a sign wave in the range $[0,\pi]$.
 Examples of how the full wind stress field looks at different
 time steps are shown in Figure~\ref{fig:StochWind}. To further ensure a vanishing
@@ -2029,12 +2036,12 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  Since the flow is mostly spun up well before $10.0\times10^{3}/f$ since initialisation, we take the time averaging window to be between $10.0\times10^{3}/f$ and $40.0\times10^{3}/f$, so $30.0\times10^{3}/f$ long; or assuming a latitude of around  $70^{\circ}\mathrm{N}$ an
  averaging window of around $7.5$ years. 
  \figref{fig:umomlayer3} shows hows the eddy field interacts with mean dynamics 
- in two ways. Firstly, there are Reynold's stresses in the westward (negative) direction
- on the south side of the ridge and roughly equal Reynold's stresses in the eastward (positive) direction on the north side of the ridge. These Reynold's
+ in two ways. Firstly, there are Reynolds stresses in the westward (negative) direction
+ on the south side of the ridge and roughly equal Reynolds stresses in the eastward (positive) direction on the north side of the ridge. These Reynolds
  stresses are echoed in the lower layers, at least in sign if not shape or magnitude.
  This indicates an overall force from the eddy field in the direction of 
  positive topostrophy. Secondly, the eddy field also generates a form stress
- upon the lower layers which mostly balances the Reynold's stresses and drives
+ upon the lower layers which mostly balances the Reynolds stresses and drives
  momentum down into the lower layers. The residual of these two components is balanced
  by the mean Coriolis force, which is generated by a small meridional velocity.
  The negative sign south of the ridge and positive north of the ridge demonstrates
@@ -2042,7 +2049,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  the fluid isn't fully in a steady state and isopycnals are still increasing the 
  ``cold doming" effect above the ridge. In the central layer, shown in
  \figref{fig:umomlayer2}, the form stress inherited
- from the upper layer combines with a smaller Reynold's stress in the positive topostrophy
+ from the upper layer combines with a smaller Reynolds stress in the positive topostrophy
  direction whilst being balanced by the form stress between the central and lowest layer.
  The lowest layer, \figref{fig:umomlayer1}, has the form stresses built up in the 
  upper and middle layers mostly balancing the bottom friction, again
@@ -2050,7 +2057,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  in opposition to a westward flow south of the ridge (hence positive) and an eastward
  flow north of the ridge (hence negative). This implies that over the entire
  water column, since the form stresses between layers must cancel each other, the 
- Reynold's stresses must balance the bottom friction by pushing the flow in the direction 
+ Reynolds stresses must balance the bottom friction by pushing the flow in the direction 
  of positive topostrophy as shown in \figref{fig:umomtotal}.
  
  

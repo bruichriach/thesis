@@ -1476,19 +1476,14 @@ For our study, the equations that will give us the most efficient model whilst c
     &= \partialdiff{t} \left(\nthkmean{ h_{n} } \thkmean{q}_{n}\right)
     +  \boldsymbol{\nabla}\cdot\left( \nthkmean{ h_{n}}\thkmean{\boldsymbol{u}_{n}q_{n}} \right) \\
     &= \partialdiff{t} \left(\nthkmean{h_{n}} \thkmean{q}_{n}\right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\boldsymbol{u}}_{n} \, \thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right) \\
-    &= \nthkmean{h_{n}} \left(\partialdiff[q_{n}]{t}+  \thkmean{\boldsymbol{u}}_{n}\cdot \boldsymbol{\nabla}\thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)
+    &= \nthkmean{h_{n}} \left(\partialdiff[\thkmean{q}_{n}]{t}+  \thkmean{\boldsymbol{u}}_{n}\cdot \boldsymbol{\nabla}\thkmean{q}_{n} \right) +  \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)
     \end{split}
     \end{equation}
     as used by \cite{greatbatch1998exploring} and \cite{smith1999primitive}.
     
     Similarly we can take the unweighted average of the
-    conservative energy equation, \equref{swlayercorrectenergy}, and 
-    enstrophy equation, 
-    \begin{equation*}
-    \partialdiff{t}\left(h_{n}Q_{n}\right)+\boldsymbol{\nabla}\left(h_{n}\boldsymbol{u}_{n}Q_{n}\right) = 0
-    \end{equation*}
-    where $Q_{n} = \half q_{n}^{2}$, we have an energy and 
-    enstrophy budget for the mean state. For the mean of the
+    conservative energy equation, \equref{swlayercorrectenergy}, to give an energy
+    budget for the mean state. For the mean of the
     energy equation we have
     \begin{equation}
     \begin{split}
@@ -1526,6 +1521,7 @@ For our study, the equations that will give us the most efficient model whilst c
             &- \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n+\half }\right)   \nthkres{m}_{n+1}}
             + \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}.
           \end{split}
+          \label{eddyenergy}
         \end{equation}
         Unfortunately, this equation is not entirely helpful as it
         introduces some triple correlations, or eddy-eddy interactions,
@@ -1539,17 +1535,115 @@ For our study, the equations that will give us the most efficient model whilst c
         Noting that $\thkmean{K_{n}} = \half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2} +
         \half \thkmean{\left|\thkres{\boldsymbol{u}}_{n}\right|^{2}}$
         we can further write that 
-        $\thkmean{\thkres{K}_{n} \thkres{\boldsymbol{u}}_{n}}
-                -\half \thkmean{\left|\thkres{\boldsymbol{u}}_{n}\right|^{2}}
-                \thkmean{\boldsymbol{u}}_{n}$ 
-                 
+        $\thkmean{K_{n} \boldsymbol{u}_{n}}
+        -\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}
+        \thkmean{\boldsymbol{u}}_{n} = \thkmean{\thkres{K}_{n} \thkres{\boldsymbol{u}}_{n}}
+                +\half \thkmean{\left|\thkres{\boldsymbol{u}}_{n}\right|^{2}}
+                \thkmean{\boldsymbol{u}}_{n}$. Similarly we
+                also have 
+                $\nthkmean{h_{n}}\thkmean{m_{n}\boldsymbol{u}_{n}}
+                -\nthkmean{h_{n}} \nthkmean{m_{n}}\thkmean{\boldsymbol{u}}_{n}
+                = 
+                \nthkmean{h_{n}}\thkmean{\nthkres{m}_{n}\thkres{\boldsymbol{u}}_{n}}
+                +\nthkmean{\nthkres{h}_{n} \nthkres{m}_{n}}\thkmean{\boldsymbol{u}}_{n}$.
+                $\nthkmean{\nthkres{h}_{n} \nthkres{m}_{n}}$ is in some sense
+                related to the eddy potential energy and hence we have
+                an evolution equation for the eddy energy. This
+                is, however, of limited use without making some assumptions about
+                $\thkmean{\thkres{K}_{n} \thkres{\boldsymbol{u}}_{n}}$, 
+                $\nthkmean{h_{n}}\thkmean{\nthkres{m}_{n}\thkres{\boldsymbol{u}}_{n}}$ 
+                and the vertical transfer of eddy energy, 
+                $ \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}$. 
+                But if we could say something about these correlations
+                then we would be able to determine the eddy energy of a system
+                entirely from the mean dynamics.
+                
+              
+              Potential enstophy is more straight-forward. The unweighted average of the
+              conservative enstrophy equation,
+              \begin{equation*}
+              \partialdiff{t}\left(h_{n}Q_{n}\right)+\boldsymbol{\nabla}\left(h_{n}\boldsymbol{u}_{n}Q_{n}\right) = 0,
+              \end{equation*}
+              where $Q_{n} = \half q_{n}^{2}$ gives an
+              enstrophy budget for the mean state,  
+              \begin{equation*}
+              \partialdiff{t}\left(\nthkmean{h_{n}}\thkmean{Q}_{n}\right)+\boldsymbol{\nabla}\left(\nthkmean{h_{n}}\thkmean{\boldsymbol{u}_{n}Q_{n}}\right) = 0.
+              \end{equation*}
+              We can also write down an equation for the mean potential enstrophy,
+              $\half \thkmean{q}_{n}^{2}$, as
+              \begin{equation*}
+               \partialdiff[\nthkmean{h_{n}} \half \thkmean{q}_{n}^{2}]{t}+   \boldsymbol{\nabla}\cdot \left(\nthkmean{h_{n}} \thkmean{\boldsymbol{u}}_{n} \half \thkmean{q}_{n}^{2}\right) =-\thkmean{q}_{n} \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right).
+              \end{equation*}
+              Subtracting these equations from one-another  we attain
+              \begin{equation}
+              \partialdiff[\nthkmean{h_{n}} \half \thkmean{{\thkres{q}_{n}}^{2}}]{t}+   \boldsymbol{\nabla}\cdot \left(\nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n} \thkres{Q}_{n}}+\nthkmean{h_{n}} \thkmean{\boldsymbol{u}}_{n} \half \thkmean{{\thkres{q}_{n}}^{2}}\right) =\thkmean{q}_{n} \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)
+              \label{eddyenstrophy}
+              \end{equation}
+              Again we have a correlation, $\thkmean{\thkres{\boldsymbol{u}}_{n} \thkres{Q}_{n}}$, which causes problems; but if this
+              can be ignored or parameterised in some other way then we
+              would have an equation for the evolution
+              of eddy potential enstrophy.
+              
+              The discussion of these equations is important since
+              the structure of the Eliassen-Palm tensor is 
+              dependent on the eddy energy and eddy potential enstrophy. 
+              Hence, for a viable eddy parameterisation to be achieved
+              from this theory a model must be able to 
+              judge how much eddy energy and eddy potential enstrophy it has
+              available. This can of course be done by prescribing the
+               eddy energy and eddy potential enstrophy, but ideally 
+               it would be useful to have a away of predicting these
+               quantities from the dynamics of the system. What Equations~\eqref{eddyenergy}
+               and \eqref{eddyenstrophy} demonstrate is how the eddy energy 
+               and eddy enstrophy interact with the mean field through
+               $\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)$ and $\thkmean{q}_{n} \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)$.
+              
+              
+              In order to apply the theory in this section we need to define an
+              averaging operator that correctly splits a field up into its mean
+              and eddy components. There are a number of ways to do this. 
+              The most \hl{legitimate?} way of achieving this is
+              to average over a large ensemble of models where the eddy field in each
+              ensemble member is in a different state. However, this method is 
+              hugely computationally expensive, requiring a large number of 
+              ensemble members to achieve an appropriate mean and eddy
+              decomposition. Plus if the mean state of the system being modelled happens 
+              to diverge between ensemble members then the ensemble mean stops being 
+              representative of the mean state. Two other ways of decomposing
+              the system into mean and eddy components is with temporal or spatial
+              averages. Spatial means require a large domain to average over to be effective
+              on their own and a certain amount of spatial symmetry; a 
+              zonal average will have problems if the topography, for example,
+              varies in the zonal direction. However, if there is
+              a usable spatial symmetry, then it is possible to use
+              an averaging operator that averages in both temporally and spatially
+              without much of a loss in computational efficiency. However,
+              for a temporal average to be valid the system needs to be in
+              a statistically steady state. That is to say that over a long
+              averaging window $\partial \mean{\phi} /\partial t \sim 0$ for any variable $\phi$
+            in the system.
             
-    \hl{Eddy energy and eddy enstrophy. State equations with 
-    possible application in terms of carrying them in the system.}
-    
-    \hl{Time averaged diagnostics. Explain that this 
-    requires steady state dynamics. Need configurations
-    with a unique mean steady state.}
+            Overall all we have highlighted how the eddy field interacts with the mean
+            field, as well as a way of decomposing a model into its mean and eddy fields.
+            The momentum equations emit an Eliassen-Palm flux tensor, which can
+            be bounded by eddy energy and eddy potential enstrophy as proposed
+            by \cite{marshall2012framework} and \cite{maddison2013eliassen}. 
+            The energy and potential enstrophy equations are more complicated
+            as the mean equations for the eddy component of these quantities,
+            Equations~\eqref{eddyenergy} and \eqref{eddyenstrophy}, both contain
+            triple correlations. However, the equations still demonstrate how
+            the mean and eddy energy and potential enstrophy interact.
+            To decompose a system into its mean and eddy components we will
+            use spatial and temporal averages; the first requires a certain
+            amount of spatial symmetry whilst the second requires the system to be
+            in a statistically steady state. The greatest challenge of the analysis
+            that is to follow is to create a model that allows the application of 
+            these averages in to most efficient way possible.
+            
+            
+            
+            \hl{do I want to swap the order of this section and the next section?}
+                
     
 
 \section{Model Discretisation}

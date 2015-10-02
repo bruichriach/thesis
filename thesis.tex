@@ -231,7 +231,116 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
 	\label{fig:Woodgate2001Mooring}
 \end{figure}
 
-\section{Eddy-Mean Flow Interaction Theory}
+  
+                      \subsection{Entropy  Maximisation}
+                      \label{entropy}
+                     
+                
+                \begin{itemize}    
+                	
+                	\item \hl{Entropy  Maximisation}
+                	\begin{itemize}      
+                		\item \hl{Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy has been developing
+                		in parallel.}
+                		\item \cite{holloway1987systematic} \hl{demonstrated the principle with the idea that eddies in the ocean are like the jiggling of a box of marbles that randomises them into their highest state of entropy.}
+                		\item \hl{This therefore becomes the problem of deriving the maximum
+                		entropy state of the Ocean}
+                		\begin{itemize}      
+                			\item \cite{holloway1992representing} \hl{does this for a
+                			 quasi-geostrophic ocean and by making a number of assumptions  
+                			 arrives at a maximum entropy state which describes along 
+                			 topography flow. Coined ``the Neptune Effect"}
+                			\item \hl{other stuff}
+                			\item \hl{Maximum Entropy Production. See} \cite{polyakov2001eddy}.
+                		\end{itemize}
+                		\item \hl{These principles inevitably give a solution for the ocean in 
+                		a state of maximum entropy and then attempt to ``nudge" the ocean
+                		towards the desired state. }
+                		\item \hl{This could be reason if the ocean was subjected to unbounded 
+                		energy, or ``jiggling", but in reality it is likely the ocean is never
+                		pushed in the direction of maximum entropy production do to
+                		a limitation of available energy.}
+                	\end{itemize}  
+                	
+                \end{itemize}
+
+\section{Numerical Models of Arctic}
+\label{arcticnumerics}
+
+	It was discussed in \secref{arcticocean} that to understand the circulation of the Arctic
+	 Ocean it is necessary to use \glspl{gcm}. However, due to poorly resolved processes or
+	  missing key physics, the \glspl{gcm} available show significant variability between
+	   models and frequently display behaviour not depicted in observations. 
+	A detailed comparison of the major Global Climate Models applied to the Arctic Ocean is
+	 being carried out by the \gls{aomip} (see \cite{proshutinsky2008toward} and
+	  \cite{proshutinsky2011recent}). In this section we will specifically discuss the skill
+	   of these models in reflecting the Arctic circulation and specifically the difficulty
+	    these models have in replicating the perceived flow in the Atlantic Water Layer.  
+
+As mentioned in the previous section, the circulation in the freshwater layer is strongly
+ governed by effects of surface forcing. To this extent, providing the various models being
+  compared are given the same forcing, or equivalent depending on how the model is
+   structured, then the resulting circulations are in good agreement
+    (\cite{proshutinsky2005arctic}). They have been shown to have a good skill in simulating
+     certain regimes which have been observed. However, despite good agreement of the general
+      circulation inside the basin, there is still some variation between the climate models.
+       The first is how the Pacific Water entering via Bering Strait is advected through the
+    basin within the freshwater layer. The models, despite showing the same regime for the
+     Freshwater layer demonstrate different distributions of the Pacific Water when
+      represented as a passive tracer added in Bering Strait (\cite{proshutinsky2011recent}).
+       However, it is difficult to
+       determine the legitimacy of the models
+       due to limited observations and without an easy way of determining which water originates from the Pacific. The
+     most successful attempts at determining the distribution of Pacific Water have been
+     done using tracers from other sources, such as radioactive tracers from the Atlantic and
+      determining where they?re being blocked by Pacific water such as in \cite{karcher2004dispersion}. More crucially models struggle to coherently and accurately represent
+    mechanisms for the release of freshwater from the Arctic Ocean. This is most likely
+     due to poor representation of the Arctic Gateways specifically in the Canadian
+      Archipelago, where many of the straits and channels are much narrower than can be
+   comfortably resolved. However, whilst these discrepancies are important, they are
+    not the main focus here due to the overall competence of climate models to
+ represent the freshwater layer in the Arctic. The more distressing problem is
+  their ability to represent the Atlantic Water Layer. 
+
+Observations suggest that the Atlantic Water Layer circulates counter clockwise around the
+ Arctic basins at a depth of $200$ to $800\mathrm{m}$
+ (\figref{fig:Proshutinsky2005Circulation}). However, many attempts over the past twenty
+ years to model the Atlantic Water Layer have resulted in confusing predictions where the
+ circulation seemingly randomly organises into circulations that are cyclonic or
+ anti-cyclonic with almost identical frequency. To attempt to diagnose the skill of a model
+ to produce cyclonic boundary currents, \cite{holloway2007water} introduces the concept of ``topostrophy",
+ defined as   $\tau=(\boldsymbol{f}\times\boldsymbol{V})\cdot\boldsymbol{\nabla}D$, where
+ $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{V}$ is velocity and  $D$ is the total
+ depth. This so called topostrophy is a measure the strength of along slope flows and gives
+ positive values for currents that flow with the upslope to their right (e.g. for cyclonic
+ rim currents) and negative values for the opposite.  When calculated for the major
+ \gls{aomip} models, most show variable and ambiguous values for $\tau$  whereas models that
+ employ the ``Neptune Effect" parameterisation, mentioned in \secref{entropy}, show a persistent and positive
+ value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine
+ simultaneous simulations using the NEMO model run with and without the Neptune Effect and
+ show that the addition of this particular parameterisation is the likely cause of this
+ tendency (\figref{fig:HolloWang2009}).  
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{HolloWang2009}
+	\caption[\cite{holloway2009representing}]{Left: The velocity field of the Arctic Ocean at 551m depth as simulated by the Nucleus for European Modeling of the Ocean (NEMO). Right: The velocity field at the same depth after NEMO was modified to include the Neptune Effect. The right panel clearly gives a better representation of the topographically aligned currents observed in the Arctic Ocean.  \cite{holloway2009representing}}
+	\label{fig:HolloWang2009}
+\end{figure}
+
+
+The \gls{aomip} has demonstrated that \glspl{gcm} are woefully inadequate for predicting the
+accurate circulation in the \gls{awl}. The evidence seems to suggest that this is because, on 
+climate time-scales, a \gls{gcm} can at best be eddy-permitting and hence
+lack the geostrophic turbulence that appears to be critical for setting the 
+cyclonic circulation in the \gls{awl}. As discussed in \secref{meaneddyinteractiontheory},
+the eddy parameterisations used in modern \glspl{gcm}, namely \gls{gm}, are too 
+dissipative and fail to express the driving nature of eddy-topography interactions. 
+The models that are more successful either better resolve the eddy fields or apply 
+a corrective force, such as the ``Neptune Effect", in irresponsible manner. 
+
+\chapter{Development of Eddy-Mean Flow Interaction Theory}
 
 \label{meaneddyinteractiontheory}
 
@@ -272,7 +381,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
  term in place of the term itself, which is usually dependent on the averaged 
  variables and some physical assumptions.
  
- \subsection{\cite{gent1990}}
+ \section{\cite{gent1990}}
  
  The earliest ocean models (\cite{bryan1969numerical}) had vertical $z$-coordinate, or depth-coordinates, with simple horizontal and vertical Laplacian diffusion to act as 
  the closure. Whether these terms are interpreted as a parameterisation for the effects
@@ -416,7 +525,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
          
          
          
-         \subsection{\gls{pv} Closure}
+         \section{\gls{pv} Closure}
          
          To proceed one might wonder what makes the continuity equation
          so special? In truth there are a number of non-linearities that
@@ -511,7 +620,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 
                 
                 
-                \subsection{Eliassen-Palm Flux Tensor}
+                \section{Eliassen-Palm Flux Tensor}
                 
                 It is clear from these attempts to parameterise the eddy-mean interaction
                 that the only way to proceed is by being able to take into account 
@@ -579,7 +688,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  
                  
                  
-                 \subsection{Thickness Weighted Averaging}
+                 \section{Thickness Weighted Averaging}
                  \label{youngtwa}
                  
                 Returning to the Arctic Ocean as discussed in \secref{arcticocean},
@@ -628,9 +737,12 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                  	\end{equation}
                  \end{subequations}
                  Here $z \equiv \eta(x,y,b,t) $, where the symbol $\eta$ is used to distinguish 
-                 it as a dependent function; ``$\frac{D}{Dt} \equiv \frac{\partial}{\partial t}
-                 + u\frac{\partial}{\partial x} + v\frac{\partial}{\partial y}
-                 + \omega\frac{\partial}{\partial b}$" is the
+                 it as a dependent function; 
+                 \begin{equation*}
+                 \frac{D}{Dt} \equiv \frac{\partial}{\partial t}
+                                  + u\frac{\partial}{\partial x} + v\frac{\partial}{\partial y}
+                                  + \omega\frac{\partial}{\partial b}
+                 \end{equation*} is the
                   convective derivative in isopycnal coordinates; $m \equiv p-b\eta$ is the 
                   Montgomery potential and $\sigma \equiv \eta_{b} = -m_{bb}$.
                   Compare the continuity equation, \equref{isopyccont}, with 
@@ -664,9 +776,12 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                   	\frac{\spec{D} \thkmean{v}}{D t} +f\thkmean{u} + \nthkmean{m}_{y}
                   	+\nthkmean{\sigma}^{-1}\boldsymbol{\nabla}\cdot\boldsymbol{E}^v = \thkmean{\mathcal{Y}}, \\
                   	\end{equation}
-                  	where ``$\frac{\spec{D} }{D t} = \equiv \frac{\partial}{\partial t}
-                  	+ \thkmean{u}\frac{\partial}{\partial x} + \thkmean{v}\frac{\partial}{\partial y}
-                  	+ \thkmean{\omega}\frac{\partial}{\partial b}$" is the
+                  	where 
+                  	\begin{equation*}
+                  	\frac{\spec{D} }{D t} = \equiv \frac{\partial}{\partial t}
+                  	                  	+ \thkmean{u}\frac{\partial}{\partial x} + \thkmean{v}\frac{\partial}{\partial y}
+                  	                  	+ \thkmean{\omega}\frac{\partial}{\partial b}
+                  	\end{equation*} is the
                   	mean convective derivative, whilst the continuity equation is just
                   	\begin{equation} 
                   	\frac{\partial \nthkmean{\sigma}}{\partial t}  + \left( \nthkmean{\sigma} \thkmean{u}\right)_{x} + \left( \nthkmean{\sigma} \thkmean{v}\right)_{y} + \left( \nthkmean{\sigma} \thkmean{\omega}\right)_{b} = 0 .
@@ -800,118 +915,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                        is also bounded by  $2\sqrt{KQ}$.
                        
                        
-                      
-                      
-                      
-                      
-                      
-                      \subsection{Entropy  Maximisation}
-                      \label{entropy}
                      
-                
-                \begin{itemize}    
-                	
-                	\item \hl{Entropy  Maximisation}
-                	\begin{itemize}      
-                		\item \hl{Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy has been developing
-                		in parallel.}
-                		\item \cite{holloway1987systematic} \hl{demonstrated the principle with the idea that eddies in the ocean are like the jiggling of a box of marbles that randomises them into their highest state of entropy.}
-                		\item \hl{This therefore becomes the problem of deriving the maximum
-                		entropy state of the Ocean}
-                		\begin{itemize}      
-                			\item \cite{holloway1992representing} \hl{does this for a
-                			 quasi-geostrophic ocean and by making a number of assumptions  
-                			 arrives at a maximum entropy state which describes along 
-                			 topography flow. Coined ``the Neptune Effect"}
-                			\item \hl{other stuff}
-                			\item \hl{Maximum Entropy Production. See} \cite{polyakov2001eddy}.
-                		\end{itemize}
-                		\item \hl{These principles inevitably give a solution for the ocean in 
-                		a state of maximum entropy and then attempt to ``nudge" the ocean
-                		towards the desired state. }
-                		\item \hl{This could be reason if the ocean was subjected to unbounded 
-                		energy, or ``jiggling", but in reality it is likely the ocean is never
-                		pushed in the direction of maximum entropy production do to
-                		a limitation of available energy.}
-                	\end{itemize}  
-                	
-                \end{itemize}
-
-\section{Numerical Models of Arctic}
-\label{arcticnumerics}
-
-	It was discussed in \secref{arcticocean} that to understand the circulation of the Arctic
-	 Ocean it is necessary to use \glspl{gcm}. However, due to poorly resolved processes or
-	  missing key physics, the \glspl{gcm} available show significant variability between
-	   models and frequently display behaviour not depicted in observations. 
-	A detailed comparison of the major Global Climate Models applied to the Arctic Ocean is
-	 being carried out by the \gls{aomip} (see \cite{proshutinsky2008toward} and
-	  \cite{proshutinsky2011recent}). In this section we will specifically discuss the skill
-	   of these models in reflecting the Arctic circulation and specifically the difficulty
-	    these models have in replicating the perceived flow in the Atlantic Water Layer.  
-
-As mentioned in the previous section, the circulation in the freshwater layer is strongly
- governed by effects of surface forcing. To this extent, providing the various models being
-  compared are given the same forcing, or equivalent depending on how the model is
-   structured, then the resulting circulations are in good agreement
-    (\cite{proshutinsky2005arctic}). They have been shown to have a good skill in simulating
-     certain regimes which have been observed. However, despite good agreement of the general
-      circulation inside the basin, there is still some variation between the climate models.
-       The first is how the Pacific Water entering via Bering Strait is advected through the
-    basin within the freshwater layer. The models, despite showing the same regime for the
-     Freshwater layer demonstrate different distributions of the Pacific Water when
-      represented as a passive tracer added in Bering Strait (\cite{proshutinsky2011recent}).
-       However, it is difficult to
-       determine the legitimacy of the models
-       due to limited observations and without an easy way of determining which water originates from the Pacific. The
-     most successful attempts at determining the distribution of Pacific Water have been
-     done using tracers from other sources, such as radioactive tracers from the Atlantic and
-      determining where they?re being blocked by Pacific water such as in \cite{karcher2004dispersion}. More crucially models struggle to coherently and accurately represent
-    mechanisms for the release of freshwater from the Arctic Ocean. This is most likely
-     due to poor representation of the Arctic Gateways specifically in the Canadian
-      Archipelago, where many of the straits and channels are much narrower than can be
-   comfortably resolved. However, whilst these discrepancies are important, they are
-    not the main focus here due to the overall competence of climate models to
- represent the freshwater layer in the Arctic. The more distressing problem is
-  their ability to represent the Atlantic Water Layer. 
-
-Observations suggest that the Atlantic Water Layer circulates counter clockwise around the
- Arctic basins at a depth of $200$ to $800\mathrm{m}$
- (\figref{fig:Proshutinsky2005Circulation}). However, many attempts over the past twenty
- years to model the Atlantic Water Layer have resulted in confusing predictions where the
- circulation seemingly randomly organises into circulations that are cyclonic or
- anti-cyclonic with almost identical frequency. To attempt to diagnose the skill of a model
- to produce cyclonic boundary currents, \cite{holloway2007water} introduces the concept of ``topostrophy",
- defined as   $\tau=(\boldsymbol{f}\times\boldsymbol{V})\cdot\boldsymbol{\nabla}D$, where
- $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{V}$ is velocity and  $D$ is the total
- depth. This so called topostrophy is a measure the strength of along slope flows and gives
- positive values for currents that flow with the upslope to their right (e.g. for cyclonic
- rim currents) and negative values for the opposite.  When calculated for the major
- \gls{aomip} models, most show variable and ambiguous values for $\tau$  whereas models that
- employ the ``Neptune Effect" parameterisation, mentioned in \secref{entropy}, show a persistent and positive
- value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine
- simultaneous simulations using the NEMO model run with and without the Neptune Effect and
- show that the addition of this particular parameterisation is the likely cause of this
- tendency (\figref{fig:HolloWang2009}).  
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{HolloWang2009}
-	\caption[\cite{holloway2009representing}]{Left: The velocity field of the Arctic Ocean at 551m depth as simulated by the Nucleus for European Modeling of the Ocean (NEMO). Right: The velocity field at the same depth after NEMO was modified to include the Neptune Effect. The right panel clearly gives a better representation of the topographically aligned currents observed in the Arctic Ocean.  \cite{holloway2009representing}}
-	\label{fig:HolloWang2009}
-\end{figure}
-
-
-The \gls{aomip} has demonstrated that \glspl{gcm} are woefully inadequate for predicting the
-accurate circulation in the \gls{awl}. The evidence seems to suggest that this is because, on 
-climate time-scales, a \gls{gcm} can at best be eddy-permitting and hence
-lack the geostrophic turbulence that appears to be critical for setting the 
-cyclonic circulation in the \gls{awl}. As discussed in \secref{meaneddyinteractiontheory},
-the eddy parameterisations used in modern \glspl{gcm}, namely \gls{gm}, are too 
-dissipative and fail to express the driving nature of eddy-topography interactions. 
-The models that are more successful either better resolve the eddy fields or apply 
-a corrective force, such as the ``Neptune Effect", in irresponsible manner. 
 
 
 \section{Summary and Hypothesis}
@@ -921,7 +925,7 @@ Since the likes of \cite{young1982shear}, \cite{holloway1987systematic} and
 Attempting to parameterise this in non-eddy-resolving models has lead to 
 continuity and \gls{pv} closure parameterisations such as \cite{gent1990}
 and \cite{greatbatch1998exploring} as well maximum entropy principle parameterisations 
-such as the ``Neptune Effect" (\cite{holloway1992representing}) and \cite{polyakov2001eddy}.
+such as the ``Neptune Effect" (\cite{holloway1992representing}) and \cite{polyakov2001eddy} discussed in Section~\ref{entropy}.
 However, to date these parameterisations fail woefully over topography. Either
 they are far to dissipative, like \gls{gm}, and fail to represent the driving nature
 of eddies-topographic interactions, or they violate energy conservation
@@ -1009,7 +1013,10 @@ For our study, the equations that will give us the most efficient model whilst c
    incompressible or specifically the Boussinesq approximation. This is reasonable
    given the small size of deviations in density from the mean state
    that occurs in the ocean (\cite{vallis2006atmospheric}).
-   The second approximation that is made is that the fluid is hydrostatic. That is to say that the equation ``${\partial p}/{\partial z} + \rho g=0$" holds, where $p$ is pressure, $\rho$
+   The second approximation that is made is that the fluid is hydrostatic. That is to say that the equation 
+   \begin{equation*}
+   {\partial p}/{\partial z} + \rho g=0
+   \end{equation*} holds, where $p$ is pressure, $\rho$
    is density, $g$ is gravitational acceleration and $z$ is the vertical coordinate. Despite
    the fact that non-hydrostatic effects are likely to affect the vertical velocity, since
    there are only limited areas in the Arctic where dense water could overspill into less
@@ -1362,12 +1369,21 @@ For our study, the equations that will give us the most efficient model whilst c
     	0 =\frac{\partial \nthkmean{h_{n}} }{\partial t} +\frac{\partial }{\partial x}\left(\nthkmean{h_{n}}\thkmean{ u_{n}}\right)+
     	\frac{\partial  }{\partial y}\left(\nthkmean{h_{n}}\thkmean{ v_{n}}\right).\\
     	\end{equation}
-    	where ``$\frac{\spec{D}\thkmean{v}_{n}}{Dt}=\frac{\partial }{\partial t}+\thkmean{u}_{n}\frac{\partial }{\partial x}+\thkmean{v}_{n}\frac{\partial }{\partial y}$" is the
+    	where 
+    	\begin{equation*}
+    	\frac{\spec{D}\thkmean{v}_{n}}{Dt}=\frac{\partial }{\partial t}+\thkmean{u}_{n}\frac{\partial }{\partial x}+\thkmean{v}_{n}\frac{\partial }{\partial y}
+    	\end{equation*} is the
     	mean convective derivative in layer $n$; $\boldsymbol{\nabla}_{3}$ is a special operator defined as
-    	``$\boldsymbol{\nabla}_{3}=\left(\frac{\partial  }{\partial x},
-    	\frac{\partial }{\partial y},
-    	\frac{\partial  }{\partial b}\right)$" such that ``$\frac{\partial  \psi}{\partial b}
-    	= \left(\psi_{n+\half}-\psi_{n-\half}\right)$" where $\psi_{n+\half}$ and $\psi_{n-\half}$ are the values of $\psi$ on the interfaces above and below
+    	\begin{equation*}
+    	\boldsymbol{\nabla}_{3}=\left(\frac{\partial  }{\partial x},
+    	    	\frac{\partial }{\partial y},
+    	    	\frac{\partial  }{\partial b}\right)
+    	\end{equation*}
+    	 such that 
+    	 \begin{equation*}
+    	 \frac{\partial  \psi}{\partial b}
+    	     	= \left(\psi_{n+\half}-\psi_{n-\half}\right)
+    	 \end{equation*} where $\psi_{n+\half}$ and $\psi_{n-\half}$ are the values of $\psi$ on the interfaces above and below
     	layer $n$ respectively; and $\boldsymbol{E}^{u}$, $\boldsymbol{E}^{v}$ are the
     	eddy stresses
     	\begin{equation}
@@ -1753,8 +1769,11 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   magnitude and direction of the wind.
    Since the momentum within each layer
   is defined to be constant with in each layer, the input of momentum from the wind
-  is distributed through the layer giving ``$\left(F_{u_{N}},F_{v_{N}}\right)=\boldsymbol{\tau}/\left(\rho_{N}h_{N}\right) \equiv
-  \left(\tau_{u},\tau_{v}\right)/\left(\rho_{N}h_{N}\right) $" in the
+  is distributed through the layer giving
+  \begin{equation*}
+  \left(F_{u_{N}},F_{v_{N}}\right)=\boldsymbol{\tau}/\left(\rho_{N}h_{N}\right) \equiv
+    \left(\tau_{u},\tau_{v}\right)/\left(\rho_{N}h_{N}\right)
+  \end{equation*}  in the
   uppermost layer, $n=N$. 
   
   Now that we have a mechanism to force the system we need a 
@@ -1775,10 +1794,13 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   polynomial gives more realistic results.
   One advantage of an $n$-polynomial bottom  friction rather than 
   a linear bottom friction is that it can be scale selective. By taking the 
-  drag to have the form ``$\boldsymbol{D}_{\boldsymbol{u}_{1}} = 
-  - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
-  {\left|\boldsymbol{u}^{\ast}\right|}\right)^{n}
-  \boldsymbol{u}_{1}/h_{1}$" for some typical velocity $\boldsymbol{u}^{\ast}$, 
+  drag to have the form 
+  \begin{equation*}
+  \boldsymbol{D}_{\boldsymbol{u}_{1}} = 
+    - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
+    {\left|\boldsymbol{u}^{\ast}\right|}\right)^{n}
+    \boldsymbol{u}_{1}/h_{1}
+  \end{equation*} for some typical velocity $\boldsymbol{u}^{\ast}$, 
   natural number $n$ and friction coefficient $r$. Now for $n \geq 1$ (note that for $n=0$, this is 
   just linear bottom friction), $\boldsymbol{D}_{\boldsymbol{u}_{1}}$
   is stronger when $\left|\boldsymbol{u}_{1}\right| > \left|\boldsymbol{u}^{\ast}\right|$
@@ -2199,6 +2221,49 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  	\end{minipage}
  \end{figure}
  
+ 
+  \begin{figure}
+  	\centering
+  	\begin{minipage}[b]{0.45\linewidth}
+  		\centering
+  		\includegraphics[width=\linewidth ]{vgeo_3}
+  		\caption{Meridional Momentum Balance in the upper layer of 
+  			a doubly re-entrant domain with 
+  			zonal ridge and varying zero-mean wind}
+  		\label{fig:vgeolayer3}
+  	\end{minipage}
+  	\quad
+  	\begin{minipage}[b]{0.45\linewidth}
+  		\centering
+  		\includegraphics[width=\linewidth ]{vgeo_2}
+  		\caption{Meridional Momentum Balance in the middle layer of 
+  			a doubly re-entrant domain with 
+  			zonal ridge and varying zero-mean wind}
+  		\label{fig:vgeolayer2}
+  	\end{minipage}
+  \end{figure}
+  
+  
+  \begin{figure}
+  	\centering
+  	\begin{minipage}[b]{0.45\linewidth}
+  		\centering
+  		\includegraphics[width=\linewidth ]{vgeo_1}
+  		\caption{Meridional Momentum Balance in the lower layer of 
+  			a doubly re-entrant domain with 
+  			zonal ridge and varying zero-mean wind}
+  		\label{fig:vgeolayer1}
+  	\end{minipage}
+  	\quad
+  	\begin{minipage}[b]{0.45\linewidth}
+  		\centering
+  		\includegraphics[width=\linewidth ]{vgeo_4}
+  		\caption{Meridional Momentum Balance for the entire water column of 
+  			a doubly re-entrant domain with 
+  			zonal ridge and varying zero-mean wind}
+  		\label{fig:vgeototal}
+  	\end{minipage}
+  \end{figure}
  
  
  \begin{figure}

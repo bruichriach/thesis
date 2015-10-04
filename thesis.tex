@@ -22,6 +22,11 @@ bottom=30mm,
 \usepackage[backend=biber,style=bwl-FU,citetracker = true,uniquelist=false,uniquename=false,mincitenames=1,maxcitenames=2,maxbibnames=99]{biblatex}
 \addbibresource{bibrefs.bib}
 
+\renewcommand{\bibname}{References}
+%\DefineBibliographyStrings{english}{%
+%	references = {References},
+%}
+
 
 \AtEveryCitekey{\maxminformat} % cite all authors of
 
@@ -338,7 +343,7 @@ cyclonic circulation in the \gls{awl}. As discussed in \secref{meaneddyinteracti
 the eddy parameterisations used in modern \glspl{gcm}, namely \gls{gm}, are too 
 dissipative and fail to express the driving nature of eddy-topography interactions. 
 The models that are more successful either better resolve the eddy fields or apply 
-a corrective force, such as the ``Neptune Effect", in irresponsible manner. 
+a corrective force, such as the ``Neptune Effect", in an irresponsible manner. 
 
 \chapter{Development of Eddy-Mean Flow Interaction Theory}
 
@@ -842,7 +847,7 @@ a corrective force, such as the ``Neptune Effect", in irresponsible manner.
                      K = \frac{\thkmean{{\thkres{u}}^{2} + {\thkres{v}}^{2}}}{2}, & 
                      P =  {\nthkmean{{\nthkres{\eta}}^{2}}}/{\nthkmean{\sigma}},  \\ 
                      R =  f{\nthkmean{\nthkres{\eta}\nthkres{u}}}/{\nthkmean{\sigma}}, \, & \rm and  &  
-                     S = f{\nthkmean{\nthkres{b}\nthkres{v}}}/{\nthkmean{\sigma}} ;
+                     S = f{\nthkmean{\nthkres{\eta}\nthkres{v}}}/{\nthkmean{\sigma}} ;
                      \end{array} 
                      \end{equation}
                      we have (in the adiabatic case) that
@@ -1250,6 +1255,7 @@ For our study, the equations that will give us the most efficient model whilst c
     + \left(1-\lambda\right)\frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n-1}, \\
     \end{split}
     \end{split}
+    \label{swlayergradedenergy}
     \end{equation}
     where $0 \leq \lambda \leq 1$. The reason for this is that the Montgomery potential,
     $m_{n}$, is constant in the vertical in the layers and discontinuous across the interfaces between the layers. Compare with \equref{isopycenergyeq} where the 
@@ -2151,7 +2157,8 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  Since the flow is mostly spun up well before $10.0\times10^{3}/f$ since initialisation, we take the time averaging window to be between $10.0\times10^{3}/f$ and $40.0\times10^{3}/f$, so $30.0\times10^{3}/f$ long; or assuming a latitude of around  $70^{\circ}\mathrm{N}$ an
  averaging window of around $7.5$ years. 
- \figref{fig:umomlayer3} shows hows the eddy field interacts with mean dynamics 
+ \figref{fig:umomlayer3} shows hows the eddy field interacts with mean dynamics of the
+ uppermost layer
  in two ways. Firstly, there are Reynolds stresses in the westward (negative) direction
  on the south side of the ridge and roughly equal Reynolds stresses in the eastward (positive) direction on the north side of the ridge. These Reynolds
  stresses are echoed in the lower layers, at least in sign if not shape or magnitude.
@@ -2174,13 +2181,13 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  flow north of the ridge (hence negative). This implies that over the entire
  water column, since the form stresses between layers must cancel each other, the 
  Reynolds stresses must balance the bottom friction by pushing the flow in the direction 
- of positive topostrophy as shown in \figref{fig:umomtotal}.
+ of positive topostrophy as shown in \figref{fig:umomtotal}. 
  
  
  
  \begin{figure}
  	\centering
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_3}
  		\caption{Zonal Momentum Balance in the upper layer of 
@@ -2189,7 +2196,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\label{fig:umomlayer3}
  	\end{minipage}
  	\quad
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_2}
  		\caption{Zonal Momentum Balance in the middle layer of 
@@ -2202,7 +2209,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_1}
  		\caption{Zonal Momentum Balance in the lower layer of 
@@ -2211,7 +2218,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\label{fig:umomlayer1}
  	\end{minipage}
  	\quad
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_4}
  		\caption{Zonal Momentum Balance for the entire water column of 
@@ -2222,21 +2229,57 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  \end{figure}
  
  
+ In the meridional direction, how the momentum tendency balances is a lot
+ less clear. To try and make sense of it, let us first look at
+ the geostrophic balance. In the meridional direction this
+ is the balance between the Coriolis force due to the mean zonal velocity,
+ $f\thkmean{u}_{n}$,
+ and the meridional gradient of the Montgomery potential,
+ $\rho_{n}^{-1}\boldsymbol{\nabla}\nthkmean{m_{n}}$. Figures~\ref{fig:vgeolayer3}
+ through to \ref{fig:vgeototal} show that the model is in almost perfect
+ geostrophic balance. The lowest layer, \figref{fig:vgeolayer1}, clearly shows
+ an along topography flow in the expected directions; however, \figref{fig:vgeolayer3}
+ shows that the flows are in the opposite directions in the upper layer. 
+ It is likely that the cause of this is the use of the rigid-lid approximation,
+ in the more realistic case where there is a free-surface instead there would be
+ eddy correlations in the form of a form stress at the surface. This form stress 
+ would act on the upper layer in an opposite direction to the form stress 
+ between the uppermost layer and the layer below, dampening the generation of 
+ such a flow. And so, the Coriolis force almost entirely balances the 
+ gradient of the Montgomery potential. The remaining ageostrophic velocity
+ is then balanced by the eddy stresses, as shown in Figures~\ref{fig:vmomlayer3}
+ through to \ref{fig:vmomtotal}. \figref{fig:vmomlayer3} demonstrates
+ the problem with trying to define the potential energy in a layer;
+ the definition we have chosen to stick with from \equref{swlayercorrectenergy}
+ means there is zero eddy potential energy in the upper layer.
+ Since \equref{swlayercorrectenergy} is a special case of \equref{swlayergradedenergy} 
+ for $\lambda = 1$ that we chose for ease of discussion and, in fact,
+ should be interpreted as the equation for potential energy near the top of the layer,
+ where in the upper layer the eddy potential energy is zero, whilst 
+ $\lambda = 0$ is the eddy energy near the bottom of the layer.
+ Overall the eddy
+ stresses simply balance anomalous ageostrophic components and is
+ likely representing the effect of baroclinic instabilities.
+ 
   \begin{figure}
   	\centering
-  	\begin{minipage}[b]{0.45\linewidth}
+  	\begin{minipage}[b]{0.48\linewidth}
   		\centering
   		\includegraphics[width=\linewidth ]{vgeo_3}
-  		\caption{Meridional Momentum Balance in the upper layer of 
+  		\caption{Balance between Coriolis force and the gradient
+  			of the Montgomery potential in the meridional 
+  			direction for the upper layer of 
   			a doubly re-entrant domain with 
   			zonal ridge and varying zero-mean wind}
   		\label{fig:vgeolayer3}
   	\end{minipage}
   	\quad
-  	\begin{minipage}[b]{0.45\linewidth}
+  	\begin{minipage}[b]{0.48\linewidth}
   		\centering
   		\includegraphics[width=\linewidth ]{vgeo_2}
-  		\caption{Meridional Momentum Balance in the middle layer of 
+  		\caption{Balance between Coriolis force and the gradient
+  			of the Montgomery potential in the meridional 
+  			direction for the middle layer of 
   			a doubly re-entrant domain with 
   			zonal ridge and varying zero-mean wind}
   		\label{fig:vgeolayer2}
@@ -2246,19 +2289,23 @@ balances the zonal eddy stresses, forcing and dissipation whilst
   
   \begin{figure}
   	\centering
-  	\begin{minipage}[b]{0.45\linewidth}
+  	\begin{minipage}[b]{0.48\linewidth}
   		\centering
   		\includegraphics[width=\linewidth ]{vgeo_1}
-  		\caption{Meridional Momentum Balance in the lower layer of 
+  		\caption{Balance between Coriolis force and the gradient
+  			of the Montgomery potential in the meridional 
+  			direction for the lower layer of 
   			a doubly re-entrant domain with 
   			zonal ridge and varying zero-mean wind}
   		\label{fig:vgeolayer1}
   	\end{minipage}
   	\quad
-  	\begin{minipage}[b]{0.45\linewidth}
+  	\begin{minipage}[b]{0.48\linewidth}
   		\centering
   		\includegraphics[width=\linewidth ]{vgeo_4}
-  		\caption{Meridional Momentum Balance for the entire water column of 
+  		\caption{Balance between Coriolis force and the gradient
+  			of the Montgomery potential in the meridional 
+  			direction for the entire water column of 
   			a doubly re-entrant domain with 
   			zonal ridge and varying zero-mean wind}
   		\label{fig:vgeototal}
@@ -2268,7 +2315,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_3}
  		\caption{Meridional Momentum Balance in the upper layer of 
@@ -2277,7 +2324,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\label{fig:vmomlayer3}
  	\end{minipage}
  	\quad
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_2}
  		\caption{Meridional Momentum Balance in the middle layer of 
@@ -2290,7 +2337,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_1}
  		\caption{Meridional Momentum Balance in the lower layer of 
@@ -2299,7 +2346,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\label{fig:vmomlayer1}
  	\end{minipage}
  	\quad
- 	\begin{minipage}[b]{0.45\linewidth}
+ 	\begin{minipage}[b]{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_4}
  		\caption{Meridional Momentum Balance for the entire water column of 
@@ -2338,7 +2385,9 @@ different structures of potential vorticity.}
 %Eddy Enstrophy is the constraining bound.
 
 
-\chapter{Diagnostic Summary and Eddy-Mean Interaction Predictions}
+\section{Eddy-Mean Interaction Bounds}
+
+Bounds on the eddy stresses.
 
 Na\"{\i}ve attempt to parameterise eddies using the 
 results from the previous chapters, depending

@@ -18,6 +18,8 @@ bottom=30mm,
 \usepackage{color, soul}
 \usepackage{siunitx}
 
+\usepackage{subcaption}
+
 \usepackage[acronym,translate=false]{glossaries}
 \usepackage[backend=biber,style=bwl-FU,citetracker = true,uniquelist=false,uniquename=false,mincitenames=1,maxcitenames=2,maxbibnames=99]{biblatex}
 \addbibresource{bibrefs.bib}
@@ -944,7 +946,7 @@ inherently bounded by energy and enstrophy constraints.
 
 The discussion in this Section has shown that the mean-eddy interactions 
 emerge with competing \gls{gm}-like and ``Neptune Effect''-like natures
-\cite{adcock2000interactions}. Meanwhile  it's possible to show that
+\cite{adcock2000interactions}. Meanwhile  it is possible to show that
 the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy enstrophy
 \cite{marshall2012framework}.
 Diagnosis of the contributions to the eddy stress tensor from
@@ -1838,11 +1840,11 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   along-topography flow, meaning the bottom friction is still too broadly dissipative.
   It should however be noted that the lower layers have more positive topostrophy than
   the upper layers, indicating that there is some along topography flow in the lower 
-  layers but that it's not being precipitated  through the water column
+  layers but that it is not being precipitated  through the water column
   The cubic drag models are much more interesting. The flow appears to have much more
   freedom to generate flows, whilst still being capped by $\left|\boldsymbol{u}^{\ast}\right|$. $\left|f\right| = 1$, $\boldsymbol{\nabla} D \sim 0.1$ and so $\left|\boldsymbol{u}\right| \sim 0.01 < \left|\boldsymbol{u}^{\ast}\right|$.
   Given these results it seems sensible to use the cubic parameterisation for bottom 
-  friction. It's worth noticing that there is little physical rational for choosing
+  friction. It is worth noticing that there is little physical rational for choosing
   one parameterisation over another, other than one might produce more physically 
   appealing results. Finally, we also require grid-scale dissipation. This is to dissipate the
   numerical noise which develops at the grid-scale from the cascade of enstophy.
@@ -1964,7 +1966,7 @@ Hence, we choose to have a zonal ridge as shown in the schematics
 			$\rho_{1}$, $\rho_{2}$ and $\rho_{3}$, above the 
 			topography, $s$. Interfaces between individual
 			layers, the surface and topography are labelled $\eta_{i}$ for
-			the interface above layer '$i$' and  $\eta_{0}=s$. }
+			the interface above layer `$i$' and  $\eta_{0}=s$. }
 		\label{fig:TopographyCross}
 	\end{minipage}
 \end{figure}
@@ -2016,7 +2018,7 @@ stress of a curtain maximum amplitude and that is vanishing small far from its c
 with a continuous stream function      and curl. The profile shown in 
 Figure~\ref{fig:WindEg}
 satisfies these conditions. It has five properties which can be altered to 
-create a stress field which can be implemented in the model; these are it's
+create a stress field which can be implemented in the model; these are it is
 amplitude, radius, position, duration and orientation (i.e. whether it is cyclonic
 or anticyclonic). By periodically generating these vortices with randomised properties
 we can sum them together to create a wind stress which varies in time, and in the limit
@@ -2088,7 +2090,7 @@ inputting energy and momentum into the eddy component of the system.
 
 
 
-\section{Momentum and Energy Conservation}
+\section{Momentum and Energy Balances}
 
 Exploiting the symmetry of the ridge, we can average in the zonal direction 
 as well as in time. This allows us to decompose the flow into mean field 
@@ -2155,6 +2157,42 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  wind driven eddy field interacts with the mean dynamics to generate an along topography
  flow. 
  
+ 
+ \begin{figure}[ht]
+ 	\centering
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{umom_3}
+ 		\caption{Zonal Momentum Balance in the upper layer}
+ 		\label{fig:umomlayer3}
+ 	\end{subfigure}
+ 	\quad
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{umom_2}
+ 		\caption{Zonal Momentum Balance in the middle layer}
+ 		\label{fig:umomlayer2}
+ 	\end{subfigure}
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{umom_1}
+ 		\caption{Zonal Momentum Balance in the lower layer}
+ 		\label{fig:umomlayer1}
+ 	\end{subfigure}
+ 	\quad
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{umom_4}
+ 		\caption{Zonal Momentum Balance for the entire water column}
+ 		\label{fig:umomtotal}
+ 	\end{subfigure}
+ 	\caption{Zonal Momentum Balance in each layer of 
+ 		a doubly re-entrant domain with 
+ 		zonal ridge and varying zero-mean wind. The total is shown in
+ 		\figref{fig:umomtotal}}
+ 	\label{fig:umom}
+ \end{figure}
+ 
  Since the flow is mostly spun up well before $10.0\times10^{3}/f$ since initialisation, we take the time averaging window to be between $10.0\times10^{3}/f$ and $40.0\times10^{3}/f$, so $30.0\times10^{3}/f$ long; or assuming a latitude of around  $70^{\circ}\mathrm{N}$ an
  averaging window of around $7.5$ years. 
  \figref{fig:umomlayer3} shows hows the eddy field interacts with mean dynamics of the
@@ -2169,7 +2207,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  by the mean Coriolis force, which is generated by a small meridional velocity.
  The negative sign south of the ridge and positive north of the ridge demonstrates
  a migration of fluid away from the ridge in the upper layer, hinting that perhaps
- the fluid isn't fully in a steady state and isopycnals are still increasing the 
+ the fluid is not fully in a steady state and isopycnals are still increasing the 
  ``cold doming" effect above the ridge. In the central layer, shown in
  \figref{fig:umomlayer2}, the form stress inherited
  from the upper layer combines with a smaller Reynolds stress in the positive topostrophy
@@ -2187,47 +2225,80 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{minipage}[b]{0.48\linewidth}
+ 	\begin{subfigure}[b]{0.48\linewidth}
  		\centering
- 		\includegraphics[width=\linewidth ]{umom_3}
- 		\caption{Zonal Momentum Balance in the upper layer of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:umomlayer3}
- 	\end{minipage}
+ 		\includegraphics[width=\linewidth ]{vgeo_3}
+ 		\caption{Balance in the meridional 
+ 			direction for the upper layer}
+ 		\label{fig:vgeolayer3}
+ 	\end{subfigure}
  	\quad
- 	\begin{minipage}[b]{0.48\linewidth}
+ 	\begin{subfigure}[b]{0.48\linewidth}
  		\centering
- 		\includegraphics[width=\linewidth ]{umom_2}
- 		\caption{Zonal Momentum Balance in the middle layer of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:umomlayer2}
- 	\end{minipage}
+ 		\includegraphics[width=\linewidth ]{vgeo_2}
+ 		\caption{Balance in the meridional 
+ 			direction for the middle layer}
+ 		\label{fig:vgeolayer2}
+ 	\end{subfigure}
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{vgeo_1}
+ 		\caption{Balance in the meridional 
+ 			direction for the lower layer}
+ 		\label{fig:vgeolayer1}
+ 	\end{subfigure}
+ 	\quad
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{vgeo_4}
+ 		\caption{Balance in the meridional 
+ 			direction for the entire water column}
+ 		\label{fig:vgeototal}
+ 	\end{subfigure}
+ 	\caption{Balance between Coriolis force and the gradient
+ 		of the Montgomery potential in the meridional 
+ 		direction in each layer of 
+ 		a doubly re-entrant domain with 
+ 		zonal ridge and varying zero-mean wind. The total is shown in
+ 		\figref{fig:vgeototal}}
+ 	\label{fig:vgeo}
  \end{figure}
  
  
  \begin{figure}
  	\centering
- 	\begin{minipage}[b]{0.48\linewidth}
+ 	\begin{subfigure}[b]{0.48\linewidth}
  		\centering
- 		\includegraphics[width=\linewidth ]{umom_1}
- 		\caption{Zonal Momentum Balance in the lower layer of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:umomlayer1}
- 	\end{minipage}
+ 		\includegraphics[width=\linewidth ]{vmom_3}
+ 		\caption{Meridional Momentum Balance in the upper layer}
+ 		\label{fig:vmomlayer3}
+ 	\end{subfigure}
  	\quad
- 	\begin{minipage}[b]{0.48\linewidth}
+ 	\begin{subfigure}[b]{0.48\linewidth}
  		\centering
- 		\includegraphics[width=\linewidth ]{umom_4}
- 		\caption{Zonal Momentum Balance for the entire water column of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:umomtotal}
- 	\end{minipage}
+ 		\includegraphics[width=\linewidth ]{vmom_2}
+ 		\caption{Meridional Momentum Balance in the middle layer}
+ 		\label{fig:vmomlayer2}
+ 	\end{subfigure}
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=\linewidth ]{vmom_1}
+ 		\caption{Meridional Momentum Balance in the lower layer}
+ 		\label{fig:vmomlayer1}
+ 	\end{subfigure}
+ 	\quad
+ 	\begin{subfigure}[b]{0.48\linewidth}
+ 		\centering
+ 		\includegraphics[width=0.91\linewidth ]{vmom_4}
+ 		\caption{Meridional Momentum Balance for the entire water column}
+ 		\label{fig:vmomtotal}
+ 	\end{subfigure}
+ 	\caption{Meridional Momentum Balance in each layer of 
+ 		a doubly re-entrant domain with 
+ 		zonal ridge and varying zero-mean wind. The total is shown in
+ 		\figref{fig:vmomtotal}}
+ 	\label{fig:vmom}
  \end{figure}
- 
  
  In the meridional direction, how the momentum tendency balances is a lot
  less clear. To try and make sense of it, let us first look at
@@ -2261,101 +2332,126 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  stresses simply balance anomalous ageostrophic components and is
  likely representing the effect of baroclinic instabilities.
  
-  \begin{figure}
-  	\centering
-  	\begin{minipage}[b]{0.48\linewidth}
-  		\centering
-  		\includegraphics[width=\linewidth ]{vgeo_3}
-  		\caption{Balance between Coriolis force and the gradient
-  			of the Montgomery potential in the meridional 
-  			direction for the upper layer of 
-  			a doubly re-entrant domain with 
-  			zonal ridge and varying zero-mean wind}
-  		\label{fig:vgeolayer3}
-  	\end{minipage}
-  	\quad
-  	\begin{minipage}[b]{0.48\linewidth}
-  		\centering
-  		\includegraphics[width=\linewidth ]{vgeo_2}
-  		\caption{Balance between Coriolis force and the gradient
-  			of the Montgomery potential in the meridional 
-  			direction for the middle layer of 
-  			a doubly re-entrant domain with 
-  			zonal ridge and varying zero-mean wind}
-  		\label{fig:vgeolayer2}
-  	\end{minipage}
-  \end{figure}
-  
-  
-  \begin{figure}
-  	\centering
-  	\begin{minipage}[b]{0.48\linewidth}
-  		\centering
-  		\includegraphics[width=\linewidth ]{vgeo_1}
-  		\caption{Balance between Coriolis force and the gradient
-  			of the Montgomery potential in the meridional 
-  			direction for the lower layer of 
-  			a doubly re-entrant domain with 
-  			zonal ridge and varying zero-mean wind}
-  		\label{fig:vgeolayer1}
-  	\end{minipage}
-  	\quad
-  	\begin{minipage}[b]{0.48\linewidth}
-  		\centering
-  		\includegraphics[width=\linewidth ]{vgeo_4}
-  		\caption{Balance between Coriolis force and the gradient
-  			of the Montgomery potential in the meridional 
-  			direction for the entire water column of 
-  			a doubly re-entrant domain with 
-  			zonal ridge and varying zero-mean wind}
-  		\label{fig:vgeototal}
-  	\end{minipage}
-  \end{figure}
- 
- 
- \begin{figure}
- 	\centering
- 	\begin{minipage}[b]{0.48\linewidth}
- 		\centering
- 		\includegraphics[width=\linewidth ]{vmom_3}
- 		\caption{Meridional Momentum Balance in the upper layer of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:vmomlayer3}
- 	\end{minipage}
- 	\quad
- 	\begin{minipage}[b]{0.48\linewidth}
- 		\centering
- 		\includegraphics[width=\linewidth ]{vmom_2}
- 		\caption{Meridional Momentum Balance in the middle layer of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:vmomlayer2}
- 	\end{minipage}
- \end{figure}
- 
- 
- \begin{figure}
- 	\centering
- 	\begin{minipage}[b]{0.48\linewidth}
- 		\centering
- 		\includegraphics[width=\linewidth ]{vmom_1}
- 		\caption{Meridional Momentum Balance in the lower layer of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:vmomlayer1}
- 	\end{minipage}
- 	\quad
- 	\begin{minipage}[b]{0.48\linewidth}
- 		\centering
- 		\includegraphics[width=\linewidth ]{vmom_4}
- 		\caption{Meridional Momentum Balance for the entire water column of 
- 			a doubly re-entrant domain with 
- 			zonal ridge and varying zero-mean wind}
- 		\label{fig:vmomtotal}
- 	\end{minipage}
- \end{figure}
  	
+ 	\begin{figure}
+ 		\centering
+ 		\includegraphics[width=\linewidth]{umom_1_4}
+ 		\caption{ Depth integrated zonal momentum balance for three wind
+ 			stress with magnitudes a factor of 2 different from one and another.
+ 			Not that the x-axis is also scaled to allow the comparative magnitudes
+ 			of the stresses to be compared.}
+ 		\label{fig:umombalancewindstrength}
+ 	\end{figure}
+ 	
+ 	\begin{figure}
+ 		\centering
+ 		\includegraphics[width=\linewidth]{vmom_1_4}
+ 		\caption{ Depth integrated meridional momentum balance for three wind
+ 			stress with magnitudes a factor of 2 different from one and another.
+ 			Not that the x-axis is also scaled to allow the comparative magnitudes
+ 			of the stresses to be compared.}
+ 		\label{fig:vmombalancewindstrength}
+ 	\end{figure}
+ 	
+ 	\begin{figure}
+ 		\centering
+ 		\includegraphics[width=\linewidth]{energybal_1_4}
+ 		\caption{ Depth integrated eddy energy balance for three wind
+ 			stress with magnitudes a factor of 2 different from one and another.
+ 			Not that the x-axis is also scaled to allow the comparative magnitudes
+ 			of the stresses to be compared.}
+ 		\label{fig:energybalancewindstrength}
+ 	\end{figure}
+ 	
+ 	These were the results using some typical parameters. Now lets explore parameter space
+ 	to see how this affects the eddy stresses and hence the along-topography flow. 
+ 	Firstly, let us tweak the wind stress. Changing parameters such has the 
+ 	frequency a vortex is spawned, their mean duration or their mean size are all
+ 	either insignificant or equivalent to changing the magnitude of the overall
+ 	wind stress. Hence, we will not present that here but instead focus solely on the
+ 	strength of the wind stress. Taking the control case that we have just discussed
+ 	we generate two more models with half the wind stress and double the wind stress.
+ 	A comparison of the resulting zonal momentum balances are shown in \figref{fig:umombalancewindstrength} along with the control case. One might
+ 	expect that by doubling the wind stress you would double the resulting 
+ 	stresses in the momentum balance. However, \figref{fig:umombalancewindstrength}
+ 	shows that bottom friction, and hence the Reynolds stresses that are balancing it
+ 	are almost four times larger. This is similarly shown in the meridional momentum
+ 	balances, \figref{fig:vmombalancewindstrength}. We can also look at the balance
+ 	of terms from \equref{eddyenergy}, where we call
+ 	\begin{equation*}
+ 	\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \thkmean{\left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}}\right] -\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \left(\rho_{n}\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+\nthkmean{m_{n}}\right) \thkmean{\boldsymbol{u}}_{n}\right]
+ 	\end{equation*}
+ 	the ``eddy advection" and
+ 	\begin{equation*}
+ 	\begin{array}{ccc}
+ 	- \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n+\half }\right)   \nthkres{m}_{n+1}}
+ 	& \mathrm{and} & \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}
+ 	\end{array}
+ 	\end{equation*}
+ 	the energy transfer between layers. 
+ 	\begin{equation*}
+ 	\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)
+ 	\end{equation*}
+ 	is the transfer of energy between the eddy and mean flow.
+ 	When we do we get \figref{fig:energybalancewindstrength}, here it is
+ 	clear to see that much of the eddy energy introduced by the wind
+ 	is removed by the bottom friction. However, the energy that is not 
+ 	removed is transferred into mean energy. The key is that the energy
+ 	input from the wind increased by almost a factor of four when the wind
+ 	stress is doubled allowing for there to be
+ 	almost four times as much more eddy energy available to be transferred into the
+ 	and hence the eddy stresses are  almost four times as large.
+
+  
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{umom_4_4}
+  	\caption{ Depth integrated zonal momentum balance for three bottom frictions
+  		selective for scales that are a factor of 2 different from one and another.
+  		Not that the x-axis is also scaled to allow the comparative magnitudes
+  		of the stresses to be compared.}
+  	\label{fig:umombalancebfricstrength}
+  \end{figure}
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{vmom_4_4}
+  	\caption{ Depth integrated meridional momentum balance for three bottom frictions
+  		selective for scales that are a factor of 2 different from one and another.
+  		Not that the x-axis is also scaled to allow the comparative magnitudes
+  		of the stresses to be compared.}
+  	\label{fig:vmombalancebfricstrength}
+  \end{figure}
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{energybal_4_4}
+  	\caption{ Depth integrated eddy energy balance for three bottom frictions
+  		selective for scales that are a factor of 2 different from one and another.
+  		Not that the x-axis is also scaled to allow the comparative magnitudes
+  		of the stresses to be compared.}
+  	\label{fig:energybalancebfricstrength}
+  \end{figure}
+  
+  Another direction we can travel in parameter space is the bottom friction parameter.
+  Recall that the bottom friction is cubic, given by
+  \begin{equation*}
+  \boldsymbol{D}_{\boldsymbol{u}_{1}} = 
+  - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
+  {\left|\boldsymbol{u}^{\ast}\right|}\right)^{2}
+  \boldsymbol{u}_{1}/h_{1}
+  \end{equation*}
+  where $r$ defines the relaxation time-scale and $\left|\boldsymbol{u}^{\ast}\right|$,
+  the selective scale; hence, a factor of two change in the selective scale
+  is equivalent a factor of four change in the  relaxation time-scale. As well as
+  the control case; Figures~\ref{fig:umombalancebfricstrength}, \ref{fig:vmombalancebfricstrength} and \ref{fig:energybalancebfricstrength}
+  show the zonal and meridional momentum balances and eddy energy balance
+  for a quarter and four time the bottom friction. Interestingly, \figref{fig:umombalancebfricstrength} demonstrates that for a weaker bottom friction,
+  the contribution the momentum balance is much larger. 
+  
+
+
 
 \hl{Model where the mean forcing is effectively zero. 
 Hence the model is forced by a wind stress which is

@@ -239,38 +239,47 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
 \end{figure}
 
   
-                      \subsection{Entropy  Maximisation}
+                      \section{Entropy  Maximisation}
                       \label{entropy}
                      
-                
-                \begin{itemize}    
                 	
-                	\item \hl{Entropy  Maximisation}
-                	\begin{itemize}      
-                		\item \hl{Rather than trying to discover a dynamical description of eddy stresses, an idea that eddies try to maximise entropy has been developing
-                		in parallel.}
-                		\item \cite{holloway1987systematic} \hl{demonstrated the principle with the idea that eddies in the ocean are like the jiggling of a box of marbles that randomises them into their highest state of entropy.}
-                		\item \hl{This therefore becomes the problem of deriving the maximum
-                		entropy state of the Ocean}
-                		\begin{itemize}      
-                			\item \cite{holloway1992representing} \hl{does this for a
-                			 quasi-geostrophic ocean and by making a number of assumptions  
-                			 arrives at a maximum entropy state which describes along 
-                			 topography flow. Coined ``the Neptune Effect"}
-                			\item \hl{other stuff}
-                			\item \hl{Maximum Entropy Production. See} \cite{polyakov2001eddy}.
-                		\end{itemize}
-                		\item \hl{These principles inevitably give a solution for the ocean in 
-                		a state of maximum entropy and then attempt to ``nudge" the ocean
-                		towards the desired state. }
-                		\item \hl{This could be reason if the ocean was subjected to unbounded 
-                		energy, or ``jiggling", but in reality it is likely the ocean is never
-                		pushed in the direction of maximum entropy production do to
-                		a limitation of available energy.}
-                	\end{itemize}  
+                	In the development of the Neptune Effect, \cite{holloway1987systematic} shows, using statistical mechanics theory, that in a barotropic quasi-geostrophic flow with variable topography eddies can be represented as forcing made up of two terms. The first term has the characteristics of a drag force, whilst the other term has little dependence on the direction of flow and can often represent an acceleration of the flow. However, little more information on the effect of eddies on the circulation can be extracted from this approach without making further assumptions.  
                 	
-                \end{itemize}
-
+                	The corner stone in the development of Neptune Effect parameterisation is the assumption that eddies act to maximise statistical entropy, \cite{holloway1992representing} then uses this assumption to develop a parameterisation that captures the effect of the fluid trying to rearrange itself into a maximum entropic state. This state can be derived by applying variational calculus to the total entropy of the system of interest. In the hope of developing a parameterisation that can be applied in general, \cite{holloway1992representing} uses a barotropic quasi-geostrophic flow in a re-entrant channel with rough topographic and a beta-plane. The resultant state of maximum entropy satisfies the equation 
+                	\begin{equation}
+                	\left(\frac{\alpha_{1}}{\alpha_{2}}-\nabla^{2}\right)\left\langle\phi\right\rangle=h
+                	\end{equation} 
+                	where  $\left\langle\phi\right\rangle$  
+                	 is the expected stream-function of the flow, $h$ represents the `roughness' of the topography defined by 
+                	  $H=H_{0}\left(1-\frac{h+\beta y}{f}\right)$, where $H$ is the ocean depth, $H_{0}$ is some typical depth and $f+\beta y$ is the linear approximation to the Coriolis Parameter, and $\frac{\alpha_{1}}{\alpha_{2}}$ is a quantity with dimensions of length which represents the ratio of the energy to enstrophy in the system. Finally by assuming that at the length-scales of interest the Laplacian is small in comparison to $\frac{\alpha_{1}}{\alpha_{2}}=\frac{1}{\lambda^{2}}$, we have that the state of maximum entropy has a flow given by  
+                	\begin{equation}
+                	\boldsymbol{u}^{\ast}=\boldsymbol{k}\times\boldsymbol{\nabla}\phi^{\ast}=
+                	-\frac{\lambda^{2}}{H_{0}}
+                	\boldsymbol{\nabla}\times\boldsymbol{f}H
+                	\end{equation}
+                	So finally, to implement the Neptune Effect substitute $\boldsymbol{u}$ with $\boldsymbol{u}-\boldsymbol{u}^{\ast}$ in the damping term, e.g. viscosity, hence forcing the fluid to tend towards the state of maximum entropy rather than rest.  
+                	A method of implementing the Neptune Effect in a rotating, hydrostatic fluid using the viscosity term could be
+                	\begin{equation}
+                	\frac{D \boldsymbol{u}}{Dt}
+                		+\boldsymbol{f}\times\boldsymbol{u}+
+                		\frac{1}{\rho_{0}}\boldsymbol{\nabla}p
+                		 = \mu \nabla^{2}\left(\boldsymbol{u}
+                		+\frac{\lambda^{2}}{H_{0}}
+                		\boldsymbol{\nabla}\times\boldsymbol{f}H\right)
+                	\end{equation}
+                	 A number of criticisms can be made about the implementation of this parameterisation. The main problem is that there are two variables which are only ever loosely defined, if at all. The first is  , which is emerges from the energy and enstrophy of the system when applying calculus of variations; however, this only constrains its choice to being  O($10$ km) and is often chosen to be the Rossby Radius of Deformation, which implies $\lambda \rightarrow \infty$ as  $\boldsymbol{f} \rightarrow 0$   a situation where the validity of the Neptune Effect is likely to already break down due to the quasi-geostrophic nature of the assumption made. The second unknown is the size of the coefficient of the damping term, e.g. the kinematic viscosity coefficient, which plays the role of determining the timescale of relaxation back to the maximum entropic state. Combined with the possible choices for the type of damping that could be used, e.g. linear friction, viscosity or biharmonic diffusion, the Neptune becomes a highly ad-hoc parameterisation. 
+                	 
+                	 However, the main criticism is that given, for example, a stationary, unforced ocean will be ``spunup" by the Neptune Effect into a non-zero equilibrium. This is because the parameterisation is not respectful
+                	 of the amount of available energy in the system to generate a non-mean
+                	 flow. In the physical ocean this energy is converted from eddy
+                	 energy into mean energy to drive an along topography flow and
+                	 hence likewise an eddy parameterisation must also do this in a controlled fashion. Since the advent of the Neptune Effect there
+                	 have been other attempts to construct an eddy parameterisation
+                	 using the idea of Entropy  Maximisation, such as 
+                	 Maximum Entropy Production (\cite{polyakov2001eddy}). However,
+                	 whilst they have attempted to better constain the introduction of energy none have done it in a widely applicable or entirely 
+                	 physically justified manner.
+                	
 \section{Numerical Models of Arctic}
 \label{arcticnumerics}
 
@@ -616,7 +625,7 @@ a corrective force, such as the ``Neptune Effect", in an irresponsible manner.
                 \gls{pv} closure dissipates potential enstrophy. This suggests the tantalising
                 possibility that eddy-mean interactions are \gls{gm}-like when
                 there is limited eddy energy available but diffuse \gls{pv} when
-                limited by eddy enstrophy.
+                limited by eddy potential enstrophy.
                 
                 \begin{figure}
                 	\centering
@@ -862,8 +871,11 @@ a corrective force, such as the ``Neptune Effect", in an irresponsible manner.
                      \end{array}\right).
                      \end{equation}
                      By applying the Frobenius norm in a similar fashion to 
-                     \cite{marshall2012framework} we recover the energy bound on
-                      $\boldsymbol{E}$
+                     \cite{marshall2012framework} we recover an energy bound on
+                      $\boldsymbol{E}$,
+                      \begin{equation}
+                      {\left\|\boldsymbol{E}\right\|\leq 2\left(K+P\right)\equiv 2E}.
+                      \end{equation} 
                       
                       Equations~\equref{thkweigheq} are of the same form as Equations~\ref{isopyceq}.
                       Hence, it is possible to derive an
@@ -947,7 +959,7 @@ inherently bounded by energy and enstrophy constraints.
 The discussion in this Section has shown that the mean-eddy interactions 
 emerge with competing \gls{gm}-like and ``Neptune Effect''-like natures
 \cite{adcock2000interactions}. Meanwhile  it is possible to show that
-the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy enstrophy
+the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy potential enstrophy
 \cite{marshall2012framework}.
 Diagnosis of the contributions to the eddy stress tensor from
 the eddy kinetic and potential energy, as well as the Reynolds stress angle and eddy bouyancy flux angle will allow the investigation of the following:
@@ -956,7 +968,7 @@ the eddy kinetic and potential energy, as well as the Reynolds stress angle and 
 		\item How limited energy is likely to inhibit the ability for the eddies the
 			generate a mean along-topography flow.
 	    \item That $\spec{q} \sim \thkmean{q}$ so that the enstrophy bound hold for $\spec{F}$,
-		\item and hence, whether eddy stresses are limited by the available eddy enstrophy in the system.
+		\item and hence, whether eddy stresses are limited by the available eddy potential enstrophy in the system.
 \end{itemize} 
  
 
@@ -1442,7 +1454,11 @@ For our study, the equations that will give us the most efficient model whilst c
     \end{array}
     \end{equation*} 
     once again this
-    can be bounded by the eddy energy.
+    can be bounded by the eddy energy,
+    \begin{equation}
+    {\left\|\boldsymbol{E}\right\|\leq 2\left(K+P\right)\equiv 2E}.
+    \label{energybound}
+    \end{equation} 
     
     With this we have a formulation for the 
     averaged system which is equivalent to the
@@ -1619,7 +1635,7 @@ For our study, the equations that will give us the most efficient model whilst c
                it would be useful to have a away of predicting these
                quantities from the dynamics of the system. What Equations~\eqref{eddyenergy}
                and \eqref{eddyenstrophy} demonstrate is how the eddy energy 
-               and eddy enstrophy interact with the mean field through
+               and eddy potential enstrophy interact with the mean field through
                $\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)$ and $\thkmean{q}_{n} \boldsymbol{\nabla}\cdot\left( \nthkmean{h_{n}} \thkmean{\thkres{\boldsymbol{u}}_{n}\thkres{q}_{n}} \right)$.
               
               
@@ -2091,6 +2107,7 @@ inputting energy and momentum into the eddy component of the system.
 
 
 \section{Momentum and Energy Balances}
+\label{momenergybalances}
 
 Exploiting the symmetry of the ridge, we can average in the zonal direction 
 as well as in time. This allows us to decompose the flow into mean field 
@@ -2338,7 +2355,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\includegraphics[width=\linewidth]{umom_1_4}
  		\caption{ Depth integrated zonal momentum balance for three wind
  			stress with magnitudes a factor of 2 different from one and another.
- 			Not that the x-axis is also scaled to allow the comparative magnitudes
+ 			Note that the x-axis is also scaled to allow the comparative magnitudes
  			of the stresses to be compared.}
  		\label{fig:umombalancewindstrength}
  	\end{figure}
@@ -2348,7 +2365,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\includegraphics[width=\linewidth]{vmom_1_4}
  		\caption{ Depth integrated meridional momentum balance for three wind
  			stress with magnitudes a factor of 2 different from one and another.
- 			Not that the x-axis is also scaled to allow the comparative magnitudes
+ 			Note that the x-axis is also scaled to allow the comparative magnitudes
  			of the stresses to be compared.}
  		\label{fig:vmombalancewindstrength}
  	\end{figure}
@@ -2358,7 +2375,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\includegraphics[width=\linewidth]{energybal_1_4}
  		\caption{ Depth integrated eddy energy balance for three wind
  			stress with magnitudes a factor of 2 different from one and another.
- 			Not that the x-axis is also scaled to allow the comparative magnitudes
+ 			Note that the x-axis is also scaled to allow the comparative magnitudes
  			of the stresses to be compared.}
  		\label{fig:energybalancewindstrength}
  	\end{figure}
@@ -2402,99 +2419,148 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  	almost four times as much more eddy energy available to be transferred into the
  	and hence the eddy stresses are  almost four times as large.
 
+%  
+%  
+%  \begin{figure}
+%  	\centering
+%  	\includegraphics[width=\linewidth]{umom_4_4}
+%  	\caption{ Depth integrated zonal momentum balance for three bottom frictions
+%  		selective for scales that are a factor of 2 different from one and another.}
+%  	\label{fig:umombalancebfricstrength}
+%  \end{figure}
+%  
+%  \begin{figure}
+%  	\centering
+%  	\includegraphics[width=\linewidth]{vmom_4_4}
+%  	\caption{ Depth integrated meridional momentum balance for three bottom frictions
+%  		selective for scales that are a factor of 2 different from one and another.}
+%  	\label{fig:vmombalancebfricstrength}
+%  \end{figure}
+%  
+%  \begin{figure}
+%  	\centering
+%  	\includegraphics[width=\linewidth]{energybal_4_4}
+%  	\caption{ Depth integrated eddy energy balance for three bottom frictions
+%  		selective for scales that are a factor of 2 different from one and another.}
+%  	\label{fig:energybalancebfricstrength}
+%  \end{figure}
+%  
+%  Another direction we can travel in parameter space is the bottom friction parameter.
+%  Recall that the bottom friction is cubic, given by
+%  \begin{equation*}
+%  \boldsymbol{D}_{\boldsymbol{u}_{1}} = 
+%  - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
+%  {\left|\boldsymbol{u}^{\ast}\right|}\right)^{2}
+%  \boldsymbol{u}_{1}/h_{1}
+%  \end{equation*}
+%  where $r$ defines the relaxation time-scale and $\left|\boldsymbol{u}^{\ast}\right|$,
+%  the selective scale; hence, a factor of two change in the selective scale
+%  is equivalent a factor of four change in the  relaxation time-scale. As well as
+%  the control case; Figures~\ref{fig:umombalancebfricstrength}, \ref{fig:vmombalancebfricstrength} and \ref{fig:energybalancebfricstrength}
+%  show the zonal and meridional momentum balances and eddy energy balance
+%  for a quarter and four time the bottom friction. Interestingly, \figref{fig:umombalancebfricstrength} demonstrates that for a weaker bottom friction,
+%  the contribution to the momentum balance is much larger. 
   
   
   \begin{figure}
   	\centering
-  	\includegraphics[width=\linewidth]{umom_4_4}
-  	\caption{ Depth integrated zonal momentum balance for three bottom frictions
-  		selective for scales that are a factor of 2 different from one and another.
-  		Not that the x-axis is also scaled to allow the comparative magnitudes
-  		of the stresses to be compared.}
-  	\label{fig:umombalancebfricstrength}
+  	\includegraphics[width=\linewidth]{umom_2_4}
+  	\caption{ Depth integrated zonal momentum balance for three ridge heights: 
+  		$1/8$, $1/4$ and $3/8$ the mean ocean depth.}
+  	\label{fig:umombalanceheight}
   \end{figure}
   
   \begin{figure}
   	\centering
-  	\includegraphics[width=\linewidth]{vmom_4_4}
-  	\caption{ Depth integrated meridional momentum balance for three bottom frictions
-  		selective for scales that are a factor of 2 different from one and another.
-  		Not that the x-axis is also scaled to allow the comparative magnitudes
-  		of the stresses to be compared.}
-  	\label{fig:vmombalancebfricstrength}
+  	\includegraphics[width=\linewidth]{umom_3_4}
+  	\caption{ Depth integrated zonal momentum balance for three ridge widths: 
+  		The slopes of the ridges span approximately $1/24$, $1/4$ and $1/8$
+  		of the domain respectively.}
+  	\label{fig:umombalancewidth}
   \end{figure}
+    
+  Finally, an obvious contributor to generating an along topography flow is the topography
+  itself. There are two easy ways of changing the parameters of the ridge; either
+  by raising or lowering the height of the ridge or by narrowing or widening it. 
+  The obvious effect of lowing the height of the ridge is that it would reduce the 
+  ``cold doming" effect and hence a less strong along-topography flow would occur
+  and vice versa for the higher ridge. 
+  However, this is not the case. \figref{fig:umombalanceheight} demonstrates that
+  the force from the bottom friction is roughly identical in all three models, 
+  indicating that the along topography flow is of roughly equal magnitude in all of them.
+  This can be understood in terms of the available driving power of the eddies,
+  because the wind forcing is identical for all three models, the eddies fields
+  are statistically similar hand hence the eddy stresses in \figref{fig:umombalanceheight}
+  are almost identical. It is a different story when we narrow or widen the ridge.
+  Here the eddy stresses show much more dependence of the shape of the because
+  the area of topography available for the eddies to drive a flow over is smaller 
+  for the narrow ridge and larger for the wider ridge. However, because again the
+  eddy fields are statistically similar, the eddies are only contributing 
+  a similar amount of stress; on the narrower ridge the stresses are even smaller
+  as the eddies drive a certain amount of recirculation over the less steep topography.
+  Overall, whilst the along topography flow must depend on the topographic slope,
+  the characteristics of the eddy field clearly also plays a role.
   
-  \begin{figure}
-  	\centering
-  	\includegraphics[width=\linewidth]{energybal_4_4}
-  	\caption{ Depth integrated eddy energy balance for three bottom frictions
-  		selective for scales that are a factor of 2 different from one and another.
-  		Not that the x-axis is also scaled to allow the comparative magnitudes
-  		of the stresses to be compared.}
-  	\label{fig:energybalancebfricstrength}
-  \end{figure}
-  
-  Another direction we can travel in parameter space is the bottom friction parameter.
-  Recall that the bottom friction is cubic, given by
-  \begin{equation*}
-  \boldsymbol{D}_{\boldsymbol{u}_{1}} = 
-  - r \left( \frac{ \left|\boldsymbol{u}_{1}\right| }
-  {\left|\boldsymbol{u}^{\ast}\right|}\right)^{2}
-  \boldsymbol{u}_{1}/h_{1}
-  \end{equation*}
-  where $r$ defines the relaxation time-scale and $\left|\boldsymbol{u}^{\ast}\right|$,
-  the selective scale; hence, a factor of two change in the selective scale
-  is equivalent a factor of four change in the  relaxation time-scale. As well as
-  the control case; Figures~\ref{fig:umombalancebfricstrength}, \ref{fig:vmombalancebfricstrength} and \ref{fig:energybalancebfricstrength}
-  show the zonal and meridional momentum balances and eddy energy balance
-  for a quarter and four time the bottom friction. Interestingly, \figref{fig:umombalancebfricstrength} demonstrates that for a weaker bottom friction,
-  the contribution to the momentum balance is much larger. 
-  
+\section{Eddy-Mean Interaction Bounds}
+
+Recall that it is possibly to bound the Eliassen-Palm flux tensor with eddy energy, \equref{energybound}, rewritten here as
+\begin{equation}
+{\left\|\begin{array}{ccc}
+		-M + K + P & N & 0 \\
+		N & M + K + P& 0 \\
+		R & S & 0 \\
+		\end{array}\right\|\leq 2\left(K+P\right)\equiv 2E}.
+\end{equation} 
+It turns out that the strictness of this bound is
+a strong determining factor for how the models behave in the parameter space described in
+\secref{momenergybalances}. To make this discussion a little easier, we will use the
+fact that $(-M + K + P)^{2}+(M + K + P)^{2} = 2M^{2}+ 2(K + P)^{2}$ to decompose
+this bound into three more manageable parts. Firstly, the Reynolds Stresses,
+\begin{equation}
+{\left\|\begin{array}{cc}
+	-M & N \\
+	N & M \\
+	\end{array}\right\|\leq \sqrt{2}K};
+\end{equation} 
+secondly, the Form Stresses,
+\begin{equation}
+{\left\|\begin{array}{cc}
+	R & S \\
+	\end{array}\right\|\leq 2\sqrt{KP}},
+\end{equation} 
+at least in the geostrophic limit;
+just leaving the eddy energy
+\begin{equation}
+{\left\|\begin{array}{cc}
+	K + P & 0 \\
+	0 & K + P \\
+	\end{array}\right\|\leq \sqrt{2}(K + P)}.
+\end{equation} 
 
 
+\hl{Bounds on the eddy stresses.}
 
-\hl{Model where the mean forcing is effectively zero. 
-Hence the model is forced by a wind stress which is
-absent from the mean system and hence forces the
-system by 
-invoking a turbulent cascade. Hence Eddy-Mean
-interaction is entirely from the eddy to the mean.}
+\hl{Na\"{\i}ve attempt to parameterise eddies using the 
+results from the previous chapters, depending
+on what can be said about how the eddy stress can
+be characterised and constrained by the topography,
+eddy energy, eddy potential enstrophy etc. }
+
+\hl{Likely will need to carry the time and spatial
+evolution of eddy energy and eddy potential enstrophy and have
+some sort of step function to turn on and off the
+``GM like" and ``holloway like" parts of the parametrisation at appropriate moments.}
+
 
 \section{\gls{pv} Conservation and Comparison of Mean \glspl{pv}}
 
 \hl{An examination of the similarities and differences
-of the two definitions of potential vorticity. 
-A discussion of whether the thickness
-weighted and tracer decomposition forms of the
-PV eddy stresses can be used interchangeably.
-This will be done by examining models with
-different structures of potential vorticity.}
-
-
-%\section{Strong Flow Models}
-
-%more interesting situations, such as, models
-%with a strong mean state, which hence
-%generate there own eddy fields. E.g. Jets in
-%channels or double gyres. Hopefully allowing 
-%for the investigation of configurations where 
-%Eddy Enstrophy is the constraining bound.
-
-
-\section{Eddy-Mean Interaction Bounds}
-
-Bounds on the eddy stresses.
-
-Na\"{\i}ve attempt to parameterise eddies using the 
-results from the previous chapters, depending
-on what can be said about how the eddy stress can
-be characterised and constrained by the topography,
-eddy energy, eddy enstrophy etc. 
-
-Likely will need to carry the time and spatial
-evolution of eddy energy and eddy enstrophy and have
-some sort of step function to turn on and off the
-``GM like" and ``holloway like" parts of the parametrisation at appropriate moments.
+	of the two definitions of potential vorticity. 
+	A discussion of whether the thickness
+	weighted and tracer decomposition forms of the
+	PV eddy stresses can be used interchangeably.
+	This will be done by examining models with
+	different structures of potential vorticity.}
 
 
 \chapter{conclusions and discussions}

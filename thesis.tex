@@ -2175,29 +2175,29 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  flow. 
  
  
- \begin{figure}[ht]
+ \begin{figure}
  	\centering
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_3}
  		\caption{Zonal Momentum Balance in the upper layer}
  		\label{fig:umomlayer3}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_2}
  		\caption{Zonal Momentum Balance in the middle layer}
  		\label{fig:umomlayer2}
  	\end{subfigure}
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_1}
  		\caption{Zonal Momentum Balance in the lower layer}
  		\label{fig:umomlayer1}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{umom_4}
  		\caption{Zonal Momentum Balance for the entire water column}
@@ -2242,7 +2242,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vgeo_3}
  		\caption{Balance in the meridional 
@@ -2250,14 +2250,14 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\label{fig:vgeolayer3}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vgeo_2}
  		\caption{Balance in the meridional 
  			direction for the middle layer}
  		\label{fig:vgeolayer2}
  	\end{subfigure}
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vgeo_1}
  		\caption{Balance in the meridional 
@@ -2265,7 +2265,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\label{fig:vgeolayer1}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vgeo_4}
  		\caption{Balance in the meridional 
@@ -2284,27 +2284,27 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_3}
  		\caption{Meridional Momentum Balance in the upper layer}
  		\label{fig:vmomlayer3}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_2}
  		\caption{Meridional Momentum Balance in the middle layer}
  		\label{fig:vmomlayer2}
  	\end{subfigure}
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=\linewidth ]{vmom_1}
  		\caption{Meridional Momentum Balance in the lower layer}
  		\label{fig:vmomlayer1}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}[b]{0.48\linewidth}
+ 	\begin{subfigure}{0.48\linewidth}
  		\centering
  		\includegraphics[width=0.91\linewidth ]{vmom_4}
  		\caption{Meridional Momentum Balance for the entire water column}
@@ -2517,26 +2517,40 @@ a strong determining factor for how the models behave in the parameter space des
 fact that $(-M + K + P)^{2}+(M + K + P)^{2} = 2M^{2}+ 2(K + P)^{2}$ to decompose
 this bound into three more manageable parts. Firstly, the Reynolds Stresses,
 \begin{equation}
-{\left\|\begin{array}{cc}
-	-M & N \\
-	N & M \\
+{\left\|\begin{array}{ccc}
+	-M & N & 0\\
+	N & M & 0\\
+	0 & 0 & 0\\
 	\end{array}\right\|\leq \sqrt{2}K};
+\label{reynoldbound}
 \end{equation} 
 secondly, the Form Stresses,
 \begin{equation}
-{\left\|\begin{array}{cc}
-	R & S \\
+{\left\|\begin{array}{ccc}
+	0 & 0 & 0\\
+	0 & 0 & 0\\
+	R & S & 0\\
 	\end{array}\right\|\leq 2\sqrt{KP}},
 \end{equation} 
 at least in the geostrophic limit;
 just leaving the eddy energy
 \begin{equation}
-{\left\|\begin{array}{cc}
-	K + P & 0 \\
-	0 & K + P \\
-	\end{array}\right\|\leq \sqrt{2}(K + P)}.
+{\left\|\begin{array}{ccc}
+	K + P & 0 & 0 \\
+	0 & K + P & 0\\
+	0 & 0 & 0\\
+	\end{array}\right\| = \sqrt{2}(K + P)},
+\label{formbound}
 \end{equation} 
-
+so that the norm of the full tensor is bound by,
+\begin{equation}
+{\left\|\begin{array}{ccc}
+	-M + K + P & N & 0 \\
+	N & M + K + P & 0\\
+	R & S & 0\\
+	\end{array}\right\| \leq \sqrt{2(K + P)^{2}+4KP+2K^{2}} \leq 2(K+P)}.
+\end{equation} 
+The bounds \eqref{reynoldbound} and \eqref{formbound} are shown in
 
 \hl{Bounds on the eddy stresses.}
 

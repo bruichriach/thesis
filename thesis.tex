@@ -91,7 +91,73 @@ bottom=30mm,
 
 \begin{document}
 
-\maketitle
+
+\begin{titlepage}
+	
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+	
+	\center % Center everything on the page
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	LOGO SECTION
+	%----------------------------------------------------------------------------------------
+	
+	\includegraphics[width=5cm]{oxcrest}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	
+	%----------------------------------------------------------------------------------------
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	TITLE SECTION
+	%----------------------------------------------------------------------------------------
+	
+	\HRule \\[0.4cm]
+	{ \LARGE \bfseries Ocean Eddy-Mean-flow
+		Interactions over Topography}\\[0.3cm] % Title of your document
+	\HRule \\[1.2cm]
+	
+	%Word Count: 12,348\\[1.0cm] % Minor heading such as course title
+	%{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+	
+	%----------------------------------------------------------------------------------------
+	%	HEADING SECTIONS
+	%----------------------------------------------------------------------------------------
+	
+	\textsc{\large Oriel College}\\[0.5cm] % Minor heading such as course title
+	\textsc{\LARGE University of Oxford}\\[1.5cm] % Name of your university/college
+	%\textsc{\Large Confirmation of Status}\\[0.5cm] % Major heading such as course name
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	AUTHOR SECTION
+	%----------------------------------------------------------------------------------------
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Author:}\\
+			Mark Edward  \textsc{Forshaw} % Your name
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright} \large
+			\emph{Supervisor:} \\
+			Prof. David P. \textsc{Marshall} % Supervisor's Name
+		\end{flushright}
+	\end{minipage}\\[4cm]
+	
+	% If you don't want a supervisor, uncomment the two lines below and remove the section above
+	%\Large \emph{Author:}\\
+	%John \textsc{Smith}\\[3cm] % Your name
+	
+	
+	
+	
+	\vfill % Fill the rest of the page with whitespace
+	
+\end{titlepage}
+
 
 
 \chapter{Introduction}
@@ -218,7 +284,8 @@ internal processes, which are poor understood, especially in an Ocean with such 
 
 A likely candidate for generating a cyclonic circulation in the Northern hemisphere is
 geostrophic turbulence. A number of studies have demonstrated how, in an eddying system, 
-sloping topography can generate along-topography flows (\cite{treguier1989topographically}, \cite{adcock2000interactions}, \cite{nost2008asymmetry}). Hence, in the absence of stronger
+sloping topography can generate along-topography flows (\cite{bretherton1976two}, \cite{rhines1982theory}, \cite{rhines1982homogenization},
+\cite{treguier1989topographically}, \cite{salmon1998lectures}, \cite{adcock2000interactions}, \cite{nost2008asymmetry}). Hence, in the absence of stronger
 forcing, this effect is likely to become the dominant feature. An obvious question that then
 comes to mind is how turbulent is the Arctic Ocean? Over recent years a large amount  of 
 effort has been made to observe and catalogue eddies in the Arctic
@@ -1460,6 +1527,8 @@ For our study, the equations that will give us the most efficient model whilst c
     \label{energybound}
     \end{equation} 
     
+    \subsection{Potential Vorticity Equations}
+    
     With this we have a formulation for the 
     averaged system which is equivalent to the
     unaveraged system but with the addition of an
@@ -1520,6 +1589,10 @@ For our study, the equations that will give us the most efficient model whilst c
     \end{split}
     \end{equation}
     as used by \cite{greatbatch1998exploring} and \cite{smith1999primitive}.
+    
+    
+    
+    \subsection{Eddy Energy Equation}
     
     Similarly we can take the unweighted average of the
     conservative energy equation, \equref{swlayercorrectenergy}, to give an energy
@@ -1586,9 +1659,9 @@ For our study, the equations that will give us the most efficient model whilst c
                 = 
                 \nthkmean{h_{n}}\thkmean{\nthkres{m}_{n}\thkres{\boldsymbol{u}}_{n}}
                 +\nthkmean{\nthkres{h}_{n} \nthkres{m}_{n}}\thkmean{\boldsymbol{u}}_{n}$.
-                $\nthkmean{\nthkres{h}_{n} \nthkres{m}_{n}}$ is in some sense
-                related to the eddy potential energy and hence we have
-                an evolution equation for the eddy energy. This
+                Since $\nthkmean{\nthkres{h}_{n} \nthkres{m}_{n}}$ is in some sense
+                related to the eddy potential energy we have
+                an equation for the time evolution of eddy energy. This
                 is, however, of limited use without making some assumptions about
                 $\thkmean{\thkres{K}_{n} \thkres{\boldsymbol{u}}_{n}}$, 
                 $\nthkmean{h_{n}}\thkmean{\nthkres{m}_{n}\thkres{\boldsymbol{u}}_{n}}$ 
@@ -1598,6 +1671,8 @@ For our study, the equations that will give us the most efficient model whilst c
                 then we would be able to determine the eddy energy of a system
                 entirely from the mean dynamics.
                 
+                
+                \subsection{Eddy Potential Enstrophy Equation}
               
               Potential enstophy is more straight-forward. The unweighted average of the
               conservative enstrophy equation,
@@ -1686,7 +1761,7 @@ For our study, the equations that will give us the most efficient model whilst c
                 
     
 
-\section{Model Discretisation}
+\section{Model Setup}
 
 Now that we have our governing equations, we need to solve them. To do this we
 discretise the equations onto an Arakawa C-grid and then solve for future times
@@ -1701,6 +1776,8 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   placed across the surface, we can re-interpret the pressure fluctuations from a free
   surface as the fluid pushing or pulling on the plate and the resulting force 
   applied to the fluid in reaction. 
+  
+  \subsection{Rigid-Lid Approximation}
   
   In practise, to apply the rigid-lid approximation we add a barotropic pressure
   gradient to the momentum equations. This corrects the time-stepped velocities 
@@ -1735,6 +1812,10 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \end{equation}
   applied to $p$, where bars denote averaging in the $x$ and $y$ directions respectively.
   
+  
+  
+  \subsection{Eddy Deformation Radius and Model Resolution}
+  
   Typical scales in the Arctic are $\sim 10 \mathrm{km}$ for
   the lateral scale of mesoscale eddies,
   $3-5 \mathrm{km}$ for ocean depth, whilst typical speeds are in
@@ -1768,6 +1849,9 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   at leading order.
   Finally, there is a similar issue with topography, any choice must be
   translationally symmetric in both the zonal and meridional directions. This limits the choices to sea mounts and ridges.  
+  
+  
+  \subsection{Wind Stress}
     
   Now, to generate dynamically interesting system we manipulate the system using 
   the forcing and
@@ -1799,6 +1883,10 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
     \left(\tau_{u},\tau_{v}\right)/\left(\rho_{N}h_{N}\right)
   \end{equation*}  in the
   uppermost layer, $n=N$. 
+  
+  
+  
+  \subsection{Bottom Friction}
   
   Now that we have a mechanism to force the system we need a 
   mechanism of dissipating the 
@@ -1879,6 +1967,9 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   		one plot is needed. }
   	\label{fig:topostrophy}
   \end{figure}
+  
+  
+  \subsection{Summary of Model Setup and Example Output}
   
   In summary, we have created a model that is simple and fast to run, but still is a
   reasonable representation of the Arctic Ocean. Using this model, we can apply 
@@ -2348,6 +2439,8 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  Overall the eddy
  stresses simply balance anomalous ageostrophic components and is
  likely representing the effect of baroclinic instabilities.
+ These were the results using some typical parameters. Now lets explore parameter space
+ to see how this affects the eddy stresses and hence the along-topography flow.
  
  	
  	\begin{figure}
@@ -2378,9 +2471,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  			Note that the x-axis is also scaled to allow the comparative magnitudes
  			of the stresses to be compared.}
  		\label{fig:energybalancewindstrength}
- 	\end{figure}
- 	These were the results using some typical parameters. Now lets explore parameter space
- 	to see how this affects the eddy stresses and hence the along-topography flow. 
+ 	\end{figure} 
  	
  	Firstly, let us tweak the wind stress. Changing parameters such has the 
  	frequency a vortex is spawned, their mean duration or their mean size are all
@@ -2548,22 +2639,142 @@ so that the norm of the full tensor is bound by,
 	-M + K + P & N & 0 \\
 	N & M + K + P & 0\\
 	R & S & 0\\
-	\end{array}\right\| \leq \sqrt{2(K + P)^{2}+4KP+2K^{2}} \leq 2(K+P)}.
+	\end{array}\right\| 
+	\begin{array}{c}
+	\leq \sqrt{2(K + P)^{2}+4KP+2K^{2}} \\
+	\leq 2(K+P).\\
+	\end{array}}
 \end{equation} 
-The bounds \eqref{reynoldbound} and \eqref{formbound} are shown in
+The bounds \eqref{reynoldbound} and \eqref{formbound} for the control case
+are shown in \figref{fig:ekebound}.
+The uppermost layer has a large amount of eddy kinetic energy. Around three
+times as much as is available in lower layer, hence the bound on the Reynolds stresses in
+the uppermost layer is the least interesting. 
+Because of this, and the problems generated in the
+upper most layer by the rigid lid approximation outlined in \secref{momenergybalances}, 
+we will ignore the uppermost layer and only discuss the bottom two layers. 
+As demonstrated in \secref{momenergybalances}, the Reynolds stresses attempt to 
+push the flow along the topography and are balanced by the bottom friction.
+As you would expect, the Reynolds stresses are strongest over the steepest topography.
+However, this also takes the norm of the Reynolds stresses closer to their
+eddy kinetic energy bound (\figref{fig:normovereke}); a situation which is critical for explaining some of the 
+momentum balances in \secref{momenergybalances}.
 
-\hl{Bounds on the eddy stresses.}
 
-\hl{Na\"{\i}ve attempt to parameterise eddies using the 
-results from the previous chapters, depending
-on what can be said about how the eddy stress can
-be characterised and constrained by the topography,
-eddy energy, eddy potential enstrophy etc. }
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{ekebound}
+	\caption{ }
+	\label{fig:ekebound}
+\end{figure}
 
-\hl{Likely will need to carry the time and spatial
-evolution of eddy energy and eddy potential enstrophy and have
-some sort of step function to turn on and off the
-``GM like" and ``holloway like" parts of the parametrisation at appropriate moments.}
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{normovereke}
+	\caption{ }
+	\label{fig:normovereke}
+\end{figure}
+
+Firstly, when we change the magnitude of the wind stress we discussed in 
+\secref{momenergybalances} how an increase of factor two in the magnitude of the wind stress
+increases the eddy stresses by a factor of four.  Figures~\ref{fig:ekeboundwindstrength}
+and \ref{fig:normoverekewindstrength}
+demonstrate how the magnitude of the Reynolds stresses is closely linked to the
+amount of eddy kinetic energy. \figref{fig:normoverekewindstrength} plots the
+eddy anisotropy,
+\begin{equation}
+\lambda_{m}=\frac{\sqrt{M^{2}+N^{2}}}{K},
+\end{equation}
+showing a persistent structure for the three wind stresses ranging between 
+$0.3 \lesssim \lambda_{m} \lesssim 0.9$, with the Reynolds stress most constrained
+over the steepest topography ($\lambda_{m} \sim 0.9$).
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{ekebound_0_1}
+	\caption{ }
+	\label{fig:ekeboundwindstrength}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{normovereke_0_1}
+	\caption{ }
+	\label{fig:normoverekewindstrength}
+\end{figure}
+
+In contrast, when systems with similar eddy energy but different topography are compared
+the Reynolds stresses give noticeably  different eddy anisotropies,
+$\lambda_{m}$. When we change the depth of the topography, \figref{fig:ekeboundheight}
+shows that for higher topography, the norm of the Reynolds stresses really pushes against
+the kinetic energy bound, whilst for shallower topography it is much less constrained by the
+bound. Taking a look at the  eddy anisotropies for the Reynolds stresses in 
+\figref{fig:normoverekeheight} we can see that for the higher topography the anisotropy
+is much closer to $1$ for more of the domain than in the control case, whilst for the
+ shallower topography, the  anisotropy doesn't go above $0.6$. It is also worth
+ noting that minimum anisotropy is around $0.2 \leq \lambda_{m} \leq 0.3$ in
+ all three of the models whenever the topography is flat, i.e. at the top and bottom of 
+ the ridge. This indicates that the anisotropies are in some way dependent on 
+ the topographic slope. By making the ridge slope narrower or wider we gain a similar
+ result, shown in Figures~\ref{fig:ekeboundwidth} and \ref{fig:normoverekewidth},
+ The model where the ridge has a wider slope has an anisotropy which is much less
+ constrained than when the slope is steeper.  
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{ekebound_1_1}
+	\caption{ }
+	\label{fig:ekeboundheight}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{normovereke_1_1}
+	\caption{ }
+	\label{fig:normoverekeheight}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{ekebound_2_1}
+	\caption{ }
+	\label{fig:ekeboundwidth}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{normovereke_2_1}
+	\caption{ }
+	\label{fig:normoverekewidth}
+\end{figure}
+
+To bound the form stresses recall that the meridional component of the
+form stress is large, and hence we shall diagnose each component of the
+for the form stress individually. Using the Cauchy-Schwartz Inequality we have
+\begin{equation}
+\frac{1}{\rho_{n}^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\partialdiff[\nthkres{m}_n]{x}}^{2}
+\sim{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{v}_n}^{2}
+\leq{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{\eta}_{n-\half}}\nthkmean{\nthkres{v}_n\nthkres{v}_n}
+\end{equation}
+and 
+\begin{equation}
+\frac{1}{\rho_{n}^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\partialdiff[\nthkres{m}_n]{y}}^{2}
+\sim{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{u}_n}^{2}
+\leq{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{\eta}_{n-\half}}\nthkmean{\nthkres{u}_n\nthkres{u}_n}.
+\end{equation}
+Combining the two we retain the bound 
+\begin{equation}\left\|
+\begin{array}{cc}
+R & S\\
+\end{array}
+\right\| \lesssim \frac{2 f}{\sqrt{g_{n-\half}}} \sqrt{KP}
+\end{equation}
+
+\hl{Form Stress bounds.}
+
 
 
 \section{\gls{pv} Conservation and Comparison of Mean \glspl{pv}}
@@ -2577,12 +2788,14 @@ some sort of step function to turn on and off the
 	different structures of potential vorticity.}
 
 
+\hl{Eddy Potential Enstrophy Bounds}
+
 \chapter{conclusions and discussions}
 
-Summary of results.
-Future work (keep this as unexplored possible ideas for now)
+\hl{Summary of results.
+Future work (keep this as unexplored possible ideas for now)}
 
-isopycnal model. Outcropping at topography, \cite{dell2010abyssal} and used in \cite{diehl2012working}.
+\hl{isopycnal model. Outcropping at topography,} \cite{dell2010abyssal} \hl{and used in} \cite{diehl2012working}.
 
 	 \printbibliography
 

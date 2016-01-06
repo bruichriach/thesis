@@ -1576,7 +1576,7 @@ For our study, the equations that will give us the most efficient model whilst c
     \left(\thkmean{\thkres{v}_{n}\thkres{v}_{n}}-\thkmean{\thkres{u}_{n}\thkres{u}_{n}}\right),& K=\frac{\nthkmean{h_{n}}}{2}
     \left(\thkmean{\thkres{u}_{n}\thkres{u}_{n}}+\thkmean{\thkres{v}_{n}\thkres{v}_{n}}\right),& N=\nthkmean{h_{n}}
     \thkmean{\thkres{u}_{n}\thkres{v}_{n}},\\ P=\half\rho_{N}g_{n+\half} \nthkmean{\nthkres{\eta}_{n+\half}\nthkres{\eta}_{n+\half}}, &
-    R=\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \, \mathrm{and} & 
+    R=\nthkmean{\nthkres{\eta}\nthkres{m}_{x}} \, \mbox{\hspace{5mm} and \hspace{5mm}}  & 
     S=\nthkmean{\nthkres{\eta}\nthkres{m}_{y}} ;\\
     \end{array}
     \end{equation*} 
@@ -2577,10 +2577,8 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  	\end{equation*}
  	the ``eddy advection" and
  	\begin{equation*}
- 	\begin{array}{ccc}
  	- \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n+\half }\right)   \nthkres{m}_{n+1}}
- 	& \mathrm{and} & \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}
- 	\end{array}
+ 	\mbox{\hspace{5mm} and \hspace{5mm}} \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}
  	\end{equation*}
  	the ``energy transfer between layers". 
  	\begin{equation*}
@@ -3060,6 +3058,41 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
   homogenised roughly the same amount in each case and hence there is a much smaller 
   proportional effect  on the huge initial \gls{pv} gradient than there is on the 
   smaller one.
+  
+  Focusing just on the \gls{pv} of the thickness weighted averaged equations, $\spec{q}$, 
+  we can discuss how its time-evolution equation is balanced in the steady state. 
+  Recall that we have \equref{avpveq},
+  \begin{equation*}
+  \frac{\spec{D}\spec{q}_{n}}{D t} 
+  =   -\nthkmean{h_{n}}^{-1}
+  \boldsymbol{\nabla}
+  \cdot\boldsymbol{\spec{F}} +\spec{G} ,
+  \end{equation*} 
+  where $\spec{G}$ has been added to include all of the forcing and dissipation terms.
+  Firstly, the left hand side is vanishingly small since $\spec{q}_{t} \sim 0$ and
+  $\thkmean{v}\spec{q}_{y}\sim 0$ in each layer because of our long averaging window
+  and $\thkmean{u}\spec{q}_{x} = 0$ since we also average zonally. Hence, our \gls{pv}
+  eddy stresses must balance the forcing and dissipation term, $\spec{G}$. 
+  However, by construction the wind stress is vanishingly
+  small in the average, as is the viscosity, and hence layers $2$ and $3$ have no
+  forcing or dissipation for the eddy stresses to balance. Meanwhile, in the lowest layer
+  the eddy stresses must balance the bottom friction. In the \gls{pv} equations this
+  has become
+  \begin{equation}
+  \spec{G}=\frac{\partialdiff{x}\left(D_{\thkmean{v}_{1}}\right)-\partialdiff{y}\left(D_{\thkmean{u}_{1}}\right)}{\nthkmean{h_{1}}}
+  \end{equation}
+  where 
+  \begin{equation*}
+  D_{\thkmean{u}_{1}}=- r  \frac{ 1 }
+  {\left|\boldsymbol{u}^{\ast}\right|^{2}}
+  \nthkmean{ { \left|\boldsymbol{u}_{1}\right| }^{2}
+  u_{1}}/\nthkmean{h_{1}} \mbox{\hspace{5mm} and \hspace{5mm}}
+  D_{\thkmean{v}_{1}}=- r \frac{ 1 }
+  {\left|\boldsymbol{u}^{\ast}\right|^{2}}
+  \nthkmean{ { \left|\boldsymbol{u}_{1}\right| }^{2}
+  	v_{1}}/\nthkmean{h_{1}}.
+  \end{equation*} 
+  
 
 \begin{itemize}
 	\item How the mean field PV looks. Possibly for different parameters as well.

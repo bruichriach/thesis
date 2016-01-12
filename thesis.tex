@@ -115,7 +115,7 @@ bottom=30mm,
 	\HRule \\[0.4cm]
 	{ \LARGE \bfseries Ocean Eddy-Mean Flow
 		Interactions }\\
-	{ \LARGE \bfseries over Topography}\\[0.3cm] % Title of your document
+	{ \LARGE \bfseries Over Topography}\\[0.3cm] % Title of your document
 	\HRule \\[1.2cm]
 	
 	%Word Count: 12,348\\[1.0cm] % Minor heading such as course title
@@ -134,17 +134,17 @@ bottom=30mm,
 	%	AUTHOR SECTION
 	%----------------------------------------------------------------------------------------
 	
-	\begin{minipage}{0.4\textwidth}
+	\begin{minipage}{0.45\textwidth}
 		\begin{flushleft} \large
 			\emph{Author:}\\
 			Mark Edward  \textsc{Forshaw} % Your name
 		\end{flushleft}
 	\end{minipage}
 	~
-	\begin{minipage}{0.4\textwidth}
+	\begin{minipage}{0.45\textwidth}
 		\begin{flushright} \large
-			\emph{Supervisor:} \\
-			Prof. David P. \textsc{Marshall} % Supervisor's Name
+			\emph{Degree:} \\
+			 \textsc{M. Sc.} by Research 
 		\end{flushright}
 	\end{minipage}\\[4cm]
 	
@@ -254,9 +254,9 @@ advective flux of \gls{pv} into the Arctic is then estimated by integrating  the
 Whilst there is a tendency to infer a net positive influx of \gls{pv}, the
 results are not convincing; \cite{munchow2006observational} show that by including the
 Canadian Archipelago in the \cite{yang2005arctic} calculation, the flux can be negated
-whilst \cite{tsubouchi2012arctic} demonstrate large variations of transport from the mean
-over time.
-These factors, especially the large variability, make it unconvincing that its the \gls{pv}
+whilst \cite{tsubouchi2012arctic} demonstrate large variations of transport 
+from the mean over time. These factors, especially the 
+large variability, make it unconvincing that it is the \gls{pv}
  transport, or in fact any properties of the gateway fluxes, that determines the 
 cyclonic nature of the \gls{awl}.
 Hence, the deep water circulation in the Arctic Ocean is most likely determined by 
@@ -314,7 +314,20 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                       \label{entropy}
                      
                 	
-                	In the development of the ``Neptune Effect", \cite{holloway1987systematic} argues, using statistical mechanics theory, that in a barotropic quasi-geostrophic flow with variable topography eddies can be represented as forcing made up of two terms. The first term has the characteristics of a drag force, whilst the second term has little dependence on the direction of flow and can often represent an acceleration of the flow. However, little more information on the effect of eddies on the circulation can be extracted from this approach without making further assumptions.  
+                	During the development of the ``Neptune Effect" mechanism, \cite{holloway1987systematic} argues, using statistical mechanics theory, that in a barotropic quasi-geostrophic flow with variable topography eddies can be represented as forcing made up of two terms,
+                	\begin{equation*}
+                	F_{k}=-\frac{\eta_{k}+\nu_{k}}{\omega_{k}^{2}
+                		+\left(\eta_{k}+\nu_{k}\right)^{2}}\frac{k_{x}^{2}}{k^{2}}UH_{k}
+                	+\frac{\omega_{k}k_{x}}{\omega_{k}^{2}
+                		+\left(\eta_{k}+\nu_{k}\right)^{2}}\frac{\gamma_{k}}{k^{2}}H_{k}.
+                	\end{equation*} 
+                	The precise details of these terms are beyond the scope of this
+                	document; however, the first term has the characteristics of a drag
+                	force, whilst the second term has little dependence on the direction
+                	of flow and can often represent an acceleration of the flow. However,
+                	little more information on the effect of eddies on the circulation
+                	can be extracted from this approach without making further
+                	assumptions.  
                 	
                 	The corner stone in the development of Neptune Effect parameterisation is the assumption that eddies act to maximise statistical entropy, \cite{holloway1992representing} then uses this assumption to develop a parameterisation that captures the effect of the fluid trying to rearrange itself into a maximum entropic state. This state can be derived by applying variational calculus to the total entropy of the system of interest. In the hope of developing a parameterisation that can be applied in general, \cite{holloway1992representing} uses a barotropic quasi-geostrophic flow in a re-entrant channel with rough topographic and a beta-plane. The resultant state of maximum entropy satisfies the equation 
                 	\begin{equation}
@@ -431,7 +444,7 @@ Observations suggest that the \gls{awl} circulates counter clockwise around the
  \gls{aomip} models, most show variable and ambiguous values for $\tau$,  whereas models that
  employ the ``Neptune Effect" parameterisation, mentioned in \secref{entropy}, show a persistent and positive
  value for  $\tau$ (\cite{proshutinsky2011recent}). \cite{holloway2009representing} examine
- simultaneous simulations using the NEMO model run with and without the Neptune Effect and
+ simultaneous simulations using the NEMO model run with and without the ``Neptune Effect" and
  show that the addition of this particular parameterisation is the likely cause of this
  tendency (\figref{fig:HolloWang2009}).  
 
@@ -528,7 +541,8 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
  the grid scale, the viscosity parameter is tuned such that the turbulent energy cascade is 
  dissipated at the grid scale whilst still allowing as active dynamics as possible. 
  Assuming modern day computing power, this implies a horizontal viscosity of around 
- $10^{2} - 10^{4} \mathrm{m^{2}s^{-1}} $, a viscosity more typical of peanut butter than 
+ $10^{2} - 10^{4} \mathrm{m^{2}s^{-1}} $, a viscosity that would be more typical of 
+ Newtonian peanut butter than 
  the ocean. A second problem with having such a strong horizontal diffusion is
  that it diffuses or mixes tracers horizontally, when applied as
  an eddy parameterisation for tracer mixing. 
@@ -758,8 +772,19 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
                 
                 \begin{figure}
                 	\centering
-                	\includegraphics[width=0.6\linewidth]{am00}
-                	\caption[Cold-doming]{\hl{I'm going to redraw these for the basin case.}}
+                	\includegraphics[width=0.8\linewidth]{am00modified}
+                	\caption[Cold-doming]{The effect of different
+                		eddy parameterisation schemes on a baroclinic front in
+                		the presence of topography. 
+                		The solid lines are isopycnals. (a) 
+                		Gent and McWilliams extracts potential energy and
+                		flattens the isopycnals. 
+                		(b) The \gls{pv} closure homogenises
+                		the \gls{pv} within isopycnal layers. This causes the
+                		isopycnals to rise excessively over the topography, violating energy
+                		conservation. (c) In reality there is some doming of the isopycnals
+                		over the topography, but the potential vorticity is not made uniform.
+                		}
                 	\label{fig:Colddoming}
                 \end{figure}
                 
@@ -1094,11 +1119,14 @@ the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy potential e
 Diagnosis of the contributions to the eddy stress tensor from
 the eddy kinetic and potential energy, as well as the Reynolds stress angle and eddy bouyancy flux angle will allow the investigation of the following:
 \begin{itemize} 
+	\item The extent to which finite eddy energy inhibits the ability of eddies to
+	generate a mean along-topography flow.
 		\item The extent to which the topographic slope is the controlling factor for the structure of the eddy stresses in eddy-mean flow interactions over variable bottom topography.
-		\item The extent to which finite eddy energy inhibits the ability of eddies to
-			generate a mean along-topography flow.
 	    \item The extent to which $\spec{q} \sim \thkmean{q}$, so that the enstrophy bound holds for $\spec{F}$ and hence, the extent to which the eddy stresses are inhibited by the available eddy potential enstrophy.
 \end{itemize} 
+The investigation of these hypotheses allows for a deeper understanding of
+how to develop an eddy parameterisation that is not purely dissipative but instead exhibits
+more realistic properties whilst still remaining physically consistent. 
  
 
 \chapter{Developement of Stacked Shallow Water Equations}
@@ -1192,7 +1220,7 @@ For our study, the equations that will give us the most efficient model whilst c
     
     \begin{figure}
     	\centering
-    	\includegraphics[width=0.5\linewidth]{SWDensity}
+    	\includegraphics[width=0.7\linewidth]{SWDensity}
     	\caption[Shallow Water Density Profile]{  A more realistic  continuous
     		density profile (left) compared to the discontinuous, piecewise constant 
     		density profile of the stacked shallow water equations with 3 layers (right)}
@@ -1655,6 +1683,7 @@ For our study, the equations that will give us the most efficient model whilst c
     
     
     \subsection{Eddy Energy Equation}
+    \label{eddyenergyeqs}
     
     Similarly we can take the unweighted average of the
     conservative energy equation, \equref{swlayercorrectenergy}, to give an energy
@@ -1676,7 +1705,7 @@ For our study, the equations that will give us the most efficient model whilst c
         \begin{split}
         \frac{\partial}{\partial t}\left(\rho_{n} \nthkmean{h_{n}} \half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+ 
         \half \rho_{N} g_{n+\half }\nthkmean{\eta_{n+\half }}^{2} \right) &+\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \left(\rho_{n}\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+\nthkmean{m_{n}}\right) \thkmean{\boldsymbol{u}}_{n}\right] \\
-        =-\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)&- \frac{\partial}{\partial t}\left(\nthkmean{\eta_{n+\half }}\right)   \nthkmean{m_{n+1}}
+        =-\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)- \frac{\partial}{\partial t}\left(\nthkmean{\eta_{n+\half }}\right) &  \nthkmean{m_{n+1}}
         + \frac{\partial}{\partial t}\left(\nthkmean{\eta_{n-\half }}\right) \nthkmean{m_{n}},
               \end{split}
               \label{swtwaeqmeanenergy}
@@ -1688,12 +1717,13 @@ For our study, the equations that will give us the most efficient model whilst c
     for the eddy energy,
         \begin{equation}
         \begin{split}
-            \frac{\partial}{\partial t}\left(\rho_{n} \nthkmean{h_{n}} \half\thkmean{ \left|\thkres{\boldsymbol{u}}_{n}\right|^{2}}+ 
+            \frac{\partial}{\partial t}&\left(\rho_{n} \nthkmean{h_{n}} \half\thkmean{ \left|\thkres{\boldsymbol{u}}_{n}\right|^{2}}+ 
             \half \rho_{N} g_{n+\half }\nthkmean{\nthkres{\eta_{n+\half ^{2}}}} \right)
-            &\\
-            +\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \thkmean{\left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}}\right] &-\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \left(\rho_{n}\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+\nthkmean{m_{n}}\right) \thkmean{\boldsymbol{u}}_{n}\right]\\
-            =\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)
-            &- \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n+\half }\right)   \nthkres{m}_{n+1}}
+            \\
+            +&\boldsymbol{\nabla} \left[\nthkmean{h_{n}} \thkmean{\left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}} 
+            -\nthkmean{h_{n}} \left(\rho_{n}\half \left|\thkmean{\boldsymbol{u}}_{n}\right|^{2}+\nthkmean{m_{n}}\right) \thkmean{\boldsymbol{u}}_{n}\right]\\
+            &=\thkmean{\boldsymbol{u}}_{n} \cdot \left(\boldsymbol{\nabla}_{3}\cdot \boldsymbol{E}\right)
+            - \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n+\half }\right)   \nthkres{m}_{n+1}}
             + \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}.
           \end{split}
           \label{eddyenergy}
@@ -2080,7 +2110,11 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \begin{figure}
   	\centering
   	\includegraphics[width=0.8\linewidth]{notoppv}
-  	\caption{}
+  	\caption{ A snapshot of the \gls{pv} and velocities in each of the three layers
+  		at around $65000 f$ in time in a domain without topography. Notice
+  		that the middle layer only exhibit small fluctuations in \gls{pv} whilst
+  		the lowest layer has a relatively inactive eddy field, probably dissipated by the
+  		bottom friction.}
   	\label{fig:notoppv}
   \end{figure}
   
@@ -2088,7 +2122,10 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   \begin{figure}
   	\centering
   	\includegraphics[width=0.8\linewidth]{notopmeanpv}
-  	\caption{}
+  	\caption{ The thickness weighted averaged \gls{pv} and velocities in each of the three layers
+  		over a window of around $60000 f$ in time in a domain without topography. Notice
+  		that the \gls{pv} and velocities are much reduced in the mean in comparison to
+  		\figref{fig:notoppv}.}
   	\label{fig:notopmeanpv}
   \end{figure}
   
@@ -2141,7 +2178,10 @@ Hence, we choose to have a zonal ridge as shown in the schematics
 			are $10 L_{D}$ in the direction along the 
 			ridge, where $L_{D}$ the deformation
 			radius defined in the text, and $15 L_{D}$ 
-			in the perpendicular direction. }
+			in the perpendicular direction.
+			The shaded red regions demonstrate the areas of
+			steepest topography and are replicated later on in
+			the appropriate figures.  }
 		\label{fig:TopographySchem}
 	\end{minipage}
 	\quad
@@ -2245,21 +2285,26 @@ and hence the wind stress suits our purpose by almost exclusively
 inputting energy and momentum into the eddy component of the system.
 
 
-\begin{figure}
+\begin{figure}[t]
 	\centering
-	\includegraphics[width=\linewidth]{WindStressEg}
-	\caption{\hl{also am going to redraw} An example of the wind stress given by a cyclone with
-		radius a quarter of the zonal width of the domain. 
-		The heat-map shows the strength of the stresses, 
-		The  stresses are tapered away from the centre of the vortex to
-		avoid discontinuities as the domain wraps around. }
-	\label{fig:WindEg}
+	\begin{minipage}{0.65\linewidth}
+		\includegraphics[width=\linewidth]{WindStressEg}
+	\end{minipage}
+	\quad
+	\begin{minipage}{0.25\linewidth}
+		\caption{An example of the wind stress given by a cyclone with
+			radius $3 L_{D}$ centre in the middle of the domain. 
+			The heat-map shows the strength of the stresses, 
+			The  stresses are tapered away from the centre of the vortex to
+			avoid discontinuities as the domain wraps around. }
+		\label{fig:WindEg}
+	\end{minipage}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{StochWind}
-	\caption{\hl{not the actual snapshots, need to do redo this (notice the radii are wrong)} Eight different snapshots of the wind forcing
+	\caption{Eight different snapshots of the wind forcing
 		generated by randomly seeding vortexes
 		across the domain.
 		These cyclones and anticyclones have a typical radii of between $5$ times
@@ -3142,24 +3187,136 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
    attempting to parameterise $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ when 
    creating a \gls{pv} closure; as well as parameterising the generation 
    of \gls{pv} from smaller scales within an isopycnal layer there also
-   needs to be communication between layers.
+   needs to be communication between layers. 
+   
+   \begin{figure}
+   	\centering
+   	\includegraphics[width=\linewidth]{eqbound_0_1}
+   	\caption{ }
+   \end{figure}
+   
+   \begin{figure}
+   	\centering
+   	\includegraphics[width=\linewidth]{normoverepq_0_3}
+   	\caption{ }
+   \end{figure}
    
    From another perspective $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ is still useful,
    recall that it is a vital component to bounding the \gls{pv} eddy stresses.
    However, we have already demonstrated that the thickness-weighted averaged 
    \gls{pv} and \gls{pv} of the mean state are similar, and hence the bound 
-   derived for  $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ should also apply to $\boldsymbol{\spec{F}}$.
+   derived for  $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ should also apply to $\boldsymbol{\spec{F}}$. 
+   \hl{figure} demonstrates how the
+   eddy stresses, $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ and $\boldsymbol{\spec{F}}$
+   are bounded by $\sqrt{KQ}$. Meanwhile, \hl{other figure} demonstrates that the bound
+   is non-containing in this situation and the \gls{pv} eddy stress is less than
+   $20\%$ of the bound.  
    
-   
-\hl{Eddy Potential Enstrophy Bounds}
 
-\chapter{conclusions and discussions}
+\chapter{Conclusions and Discussions}
 \label{summary}
 
-\hl{Summary of results.
-Future work (keep this as unexplored possible ideas for now)}
+In Chapter~\ref{intro} we discussed a major failing of \glspl{gcm} when attempting to model
+the Arctic Ocean. We compared the observed circulation with typical output available 
+from a \gls{gcm} and noted that the \gls{awl} in these models is often woefully 
+different from observations. We then explore possible explanations for the cyclonic 
+circulation observed in the  \gls{awl} including the \gls{pv} budget suggested in
+\cite{yang2005arctic} before settling on the role of eddies in generating flow along
+topography. From this it is possible to conclude that the error present in the \gls{awl} of \glspl{gcm} is due to the models not fully resolving the eddy field. Since fully
+resolving the eddy field would require more computing power than is available with 
+present technology we suggest that an improvement in the parameterisation of the effect
+of eddies on the large scale flow
+is required to achieve more accurate \glspl{gcm}.
 
-\hl{isopycnal model. Outcropping at topography, discussed in} \cite{dell2010abyssal} \hl{and explored in} \cite{diehl2012working}.
+The next chapter was therefore a tour of history of eddy-mean flow interaction theory.
+Beginning with the problems created by horizontal diffusion, we explore the development
+of the most successful eddy parameterisation to date, the Gent and McWilliams parameterisation. We re-derive certain attributes of the parameterisation and show
+that it is highly dissipative, hence its high success due to it being very stable. 
+However, it is clear that the parameterisation is no help to us as the along topography
+flow observed in the Arctic Ocean is clearly generated by a mechanism that is not 
+dissipative. We therefore follow the works of \cite{greatbatch1998exploring}, \cite{adcock2000interactions}, \cite{young2012exact}, \cite{marshall2012framework} and
+\cite{maddison2013eliassen} in attempting to develop a parameterisation that,
+rather than being dissipation, correctly encapsulates mean-eddy interactions.
+The work discussed in this Chapter leads the reader to three big questions:
+\begin{itemize} 
+	\item To what extent does finite eddy energy inhibit the ability of eddies to
+	generate a mean along-topography flow?
+	\item To what extent does the topographic slope is the controlling factor for the structure of the eddy stresses in eddy-mean flow interactions over variable bottom topography?
+	\item To what extent is $\spec{q} \sim \thkmean{q}$, and so does the enstrophy bound holds for $\spec{F}$? And hence, to what extent are  the eddy stresses inhibited by the available eddy potential enstrophy?
+\end{itemize} 
+
+To answer these hypotheses eddy-mean interaction theory is developed in Chapter~\ref{sweq}
+specifically for the stacked shallow water equations. Problems were encountered, such
+as how to define potential energy, whilst a configuration was created which allowed
+for an eddy field to be generated over topography with the smallest amount of complexity.
+By generating a temporal and spatial varying random wind stress with zero mean
+an eddy field was able to be generated without first creating a large-scale flow, then
+it was possible to diagnose the eddy stresses to demonstrate how an eddy field is
+involved in generating along topography flows. 
+
+Firstly, we changed the strength of the
+wind stress, effectively increasing or decreasing the input of eddy energy. As one would
+expect, the bottom friction increased and decreased in magnitude to match the changing
+input of eddy energy. But also it was demonstrated that increasing wind stress
+allowed for more available eddy energy which meant the eddy stresses were less constrained
+whilst by decreasing the wind stress would constrain the eddy stresses much more.
+We also discovered that the geostrophic approximation used to derive the
+bound on the form stress is appropriate. In the end this indicated that the eddy energy
+bound is a useful and constraining bound on the eddy stresses, and providing we have
+access to the eddy energy, probably by some ad-hoc approximation as discussed in
+\secref{eddyenergyeqs}, it perhaps possible to create an energy constrained parameterisation.
+
+Secondly, we kept the wind stress, and hence the energy input, the same but varied
+the topography. By simply raising and lowering the height of the ridge there was
+little or no effect of the eddy stresses. This is an indication that the eddy energy 
+is constraining the eddy stresses, as one would expect a larger ridge would have
+greater along topography flows. This could indeed be seen in \figref{fig:normoverekeheight}
+where the magnitude of the eddy stresses are much closer to the bound when the ridge is
+ higher than lower. On the other hand changing the width of the ridge slope does make
+ a difference since the eddy stresses are focused in a much smaller region when the slope is narrow. But again \figref{fig:normoverekewidth} shows how the eddy stresses are much
+ more tightly constrained when the steeper and narrower. This indicated that the eddy
+ stresses are dependent strength of the topographic slope but only when they aren't being tightly constrained by the available eddy energy.
+ 
+ Finally, it has been shown that $\spec{q} \sim \thkmean{q}$, and hence $\spec{F}$ is 
+ bounded by eddy enstrophy. However, in this situation the bound is non-constraining with
+ the magnitude of \gls{pv} eddy  stress at about $20\%$ of the bound. This is most likely
+ due the particular configuration, and perhaps a model that generates a sharp \gls{pv}
+ gradient, such as a double gyre or jet in a channel, would have eddy stresses more 
+ strongly constrained by eddy enstrophy. We also noted that it is perhaps helpful to 
+ split $\spec{F}$ into its vertical and horizontal components and that attempting
+ to parameterise just $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ may be overly simplistic.
+
+ Obviously, in these experiments only a coarse sample of the possible parameter space was
+  explored. This was mostly due to a time limitation, and if the experiments were to be 
+  rerun they would be run with a larger number of smaller incremented, say, wind strength
+  magnitudes to allow for a much more detailed picture to emerge of how the eddy stresses
+  are characterised. Also, a ridge in a doubly re-entrant domain with a zero-mean wind
+  stress is obviously a fairly limiting case. Of course it served its purpose
+  in demonstrating that these sorts of diagnostics work and that the eddy
+  energy and topography both are important factors in determining the eddy stresses, but
+  also it is important to determine whether the enstrophy bound can be limiting 
+  and how the eddy stresses manifest a more active environment. On top of that, 
+  the eddy fields near a domain's boundary are also likely to play a major 
+  factor and so channels or closed domains would be important to explore.
+  Having bounds also allows for more interesting topography such as 
+  coastal shelves more akin to the Arctic Ocean than just a ridge. 
+  
+  Also recall that in the derivation of the eddy stresses for the shallow water
+  equations there is some ambiguity involving the definition of potential energy. 
+  Switching to a more complex set of equations such as the isopycnal primitive equations
+  would remove the ambiguity, however currently there is no real option for
+  an isopycnal model that is versatile enough to apply these diagnostics to. Another
+  problem is that one isopycnal layers start coming into contact with topography 
+  outcropping needs to be taken care of in an consistent manner. This is a problem
+  which has been discussed in \cite{dell2010abyssal} and explored in \cite{diehl2012working}. However, if the technical challenges could be over come
+  the benefit would be huge.
+  
+  Overall, we have answered the hypotheses that were set out, at least for one specific
+  situation. We have successful demonstrated that approximations made in the
+  derivation of the eddy bounds are justified and that there are situations where
+  the eddy stresses are strongly constrained by the eddy energy. Hopefully, this
+  can be expanded in future work and contribute toward a more consistent parameterisation
+  of eddies.
 
 	 \printbibliography
 

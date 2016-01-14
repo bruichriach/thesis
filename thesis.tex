@@ -19,6 +19,7 @@ bottom=30mm,
 \usepackage{siunitx}
 
 \usepackage{subcaption}
+\usepackage{caption}
 
 \usepackage[acronym,translate=false]{glossaries}
 \usepackage[backend=biber,style=bwl-FU,citetracker = true,uniquelist=false,uniquename=false,mincitenames=1,maxcitenames=2,maxbibnames=99]{biblatex}
@@ -67,7 +68,7 @@ bottom=30mm,
 \newacronym{pv}{PV}{potential vorticity}
 \newacronym{gcm}{GCM}{General~Circulation~Model}
 \newacronym{bso}{BSO}{Barents~Sea~Opening}
-\newacronym{gm}{GM}{Gent~and~Mcwilliams~parameterisation}
+\newacronym{gm}{GM}{Gent~and~McWilliams~parameterisation}
 
 \newcommand*\mean[1]{\overline{#1}}
 \newcommand*\res[1]{{#1}^{\prime}}
@@ -160,6 +161,29 @@ bottom=30mm,
 \end{titlepage}
 
 
+\begin{abstract}
+
+Climate modelling fails to accurately represent the global oceans in a number of ways. 
+One area where models are consistently flawed is in the Atlantic Water Layer of the Arctic Ocean,
+by failing to predict the predominantly cyclonic circulation observed. In this document we
+discuss the most likely explanation for this failing, namely that most, if not all, climate
+models fail to have a physically consistent representation of mesoscale eddies, whether
+resolved or parameterised. It has long been known that an eddy field in the presence of
+topography will generate along-topography flow (\cite{bretherton1976two},  \cite{rhines1982homogenization},
+\cite{treguier1989topographically}, \cite{salmon1998lectures}, \cite{adcock2000interactions}, \cite{nost2008asymmetry}), precisely the situation that is seen in the 
+Atlantic Water Layer.
+
+ We will explore recent developments in eddy-mean interaction theory
+ (\cite{young2012exact}, \cite{marshall2012framework}, \cite{maddison2013eliassen}),
+and use it to investigate eddy-mean interactions over topography. To do this we
+will use an idealised stacked shallow water model in which large topographic slopes
+and realistic mesoscale eddy fields can be well represented. The effect of these
+eddy fields on the larger scale will be diagnosed using the
+ theory to determine how the eddy-mean interaction is characterised by both
+ the topography and the properties of the eddy field, such as the eddy
+ energy and eddy enstrophy. 
+ 
+ \end{abstract}
 
 \chapter{Introduction}
 \label{intro}
@@ -249,7 +273,7 @@ covering the majority of the ocean gateways into the Arctic~Ocean have built
 up a detailed picture of the transport in and out of the Arctic Ocean 
 (\cite{tsubouchi2012arctic}, \figref{fig:Tsubouchi2012Transport}). The net 
 advective flux of \gls{pv} into the Arctic is then estimated by integrating  the
- distributions of \gls{pv} fuzes multiplied by the volume transports through the 
+ distributions of \gls{pv} fluxes multiplied by the volume transports through the 
  open boundaries.
 Whilst there is a tendency to infer a net positive influx of \gls{pv}, the
 results are not convincing; \cite{munchow2006observational} show that by including the
@@ -281,7 +305,7 @@ internal processes, which are poor understood, especially in an Ocean with such 
 		sections ($\mathrm{cm}\, \mathrm{s}^{-1}$) from Arctic gateway mooring arrays;
 		Demonstrates the pathways through the gateways, from which transport 
 		in to the Arctic can be calculated.
-		Bold black lines show certain isopycnals, and the red (blue) colors show inflow
+		Bold black lines show certain isopycnals, and the red (blue) colours show inflow
 		into (outflow from) the Arctic. Reproduced from \cite{tsubouchi2012arctic}.}
 	\label{fig:Tsubouchi2012Transport}
 \end{figure}
@@ -329,16 +353,21 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	can be extracted from this approach without making further
                 	assumptions.  
                 	
-                	The corner stone in the development of Neptune Effect parameterisation is the assumption that eddies act to maximise statistical entropy, \cite{holloway1992representing} then uses this assumption to develop a parameterisation that captures the effect of the fluid trying to rearrange itself into a maximum entropic state. This state can be derived by applying variational calculus to the total entropy of the system of interest. In the hope of developing a parameterisation that can be applied in general, \cite{holloway1992representing} uses a barotropic quasi-geostrophic flow in a re-entrant channel with rough topographic and a beta-plane. The resultant state of maximum entropy satisfies the equation 
+                	The corner stone in the development of Neptune Effect parameterisation is the assumption that eddies act to maximise statistical entropy, \cite{holloway1992representing} then uses this assumption to develop a parameterisation that captures the effect of the fluid trying to rearrange itself into a maximum entropic state. This state can be derived by applying variational calculus to the total entropy of the system of interest, whilst
+                	constraining the total energy and enstrophy. In the hope of developing a parameterisation that can be applied in general, \cite{holloway1992representing} uses a barotropic quasi-geostrophic flow in a re-entrant channel with rough topographic and a beta-plane. The resultant state of maximum entropy satisfies the equation 
                 	\begin{equation}
                 	\left(\frac{\alpha_{1}}{\alpha_{2}}-\nabla^{2}\right)\left\langle\phi\right\rangle=h
                 	\end{equation} 
                 	where  $\left\langle\phi\right\rangle$  
                 	 is the expected stream-function of the flow, $h$ represents the `roughness' of the topography defined by 
-                	  $H=H_{0}\left(1-\frac{h+\beta y}{f_{0}}\right)$, where $H$ is the ocean depth, $H_{0}$ is some typical reference  depth and $f_{0}+\beta y$ is the linear approximation to the Coriolis Parameter, and ${\alpha_{1}}/{\alpha_{2}}$ is a quantity with dimensions of length which represents the ratio of the energy to enstrophy in the system. Finally by assuming that at the length-scales of interest the Laplacian is small in comparison to
+                	  $H=H_{0}\left(1-\frac{h+\beta y}{f_{0}}\right)$, where $H$ is the ocean depth, $H_{0}$ is some typical reference  depth and $f_{0}+\beta y$ is the linear approximation to the Coriolis Parameter, and ${\alpha_{1}}/{\alpha_{2}}$ is a quantity with dimensions of length which represents the ratio of 
+                	  sensitivities to the total energy and enstrophy in the system. Finally by
+                	  assuming that at the length-scales of interest the Laplacian is small in
+                	  comparison to
                 	  \begin{equation*}
-                	  \frac{\alpha_{1}}{\alpha_{2}}=\frac{1}{\lambda^{2}}
-                	  \end{equation*}, we have that the state of maximum entropy has a flow given by  
+                	  \frac{\alpha_{1}}{\alpha_{2}}=\frac{1}{\lambda^{2}},
+                	  \end{equation*} 
+                	  we have that the state of maximum entropy has a flow given by  
                 	\begin{equation}
                 	\boldsymbol{u}^{\ast}=\boldsymbol{k}\times\boldsymbol{\nabla}\phi^{\ast}=
                 	-\frac{\lambda^{2}}{H_{0}}
@@ -372,7 +401,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	          the assumption made. The second unknown is the size of the
                 	           coefficient of the damping term, e.g. the kinematic
                 	            viscosity coefficient, which plays the role of determining
-                	             the timescale of relaxation back to the maximum entropic
+                	             the time-scale of relaxation back to the maximum entropic
                 	              state. Combined with the possible choices for the type of
                 	               damping that could be used, e.g. linear friction,
                 	                viscosity or biharmonic diffusion, the Neptune becomes
@@ -387,8 +416,8 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	 hence likewise an eddy parameterisation must also do this in a controlled fashion. Since the advent of the Neptune parameterisation there
                 	 have been other attempts to construct an eddy parameterisation
                 	 using the idea of entropy  maximisation, such as 
-                	 Maximum Entropy Production (\cite{polyakov2001eddy}). However,
-                	 whilst they have attempted to better constain the introduction of energy none have done it in a widely applicable or entirely 
+                	 Maximum Entropy Production (\cite{kazantsev1998subgrid} and \cite{polyakov2001eddy}). However,
+                	 whilst they have attempted to better constrain the introduction of energy none have done it in a widely applicable or entirely 
                 	 physically justified manner.
                 	
 \section{Numerical Models of Arctic}
@@ -439,7 +468,7 @@ Observations suggest that the \gls{awl} circulates counter clockwise around the
  defined as   $\tau=(f\boldsymbol{k}\times\boldsymbol{u})\cdot\boldsymbol{\nabla}H$, where
  $\boldsymbol{f}$  is the Coriolis force,  $\boldsymbol{u}$ is velocity and  $H$ is the total depth. 
  This so called topostrophy is a measure the strength of along slope flows and gives
- positive values for currents that flow with the upslope to their right (e.g. for cyclonic
+ positive values for currents that flow with the up-slope to their right (e.g. for cyclonic
  rim currents) and negative values for the opposite.  When calculated for the major
  \gls{aomip} models, most show variable and ambiguous values for $\tau$,  whereas models that
  employ the ``Neptune Effect" parameterisation, mentioned in \secref{entropy}, show a persistent and positive
@@ -452,7 +481,7 @@ Observations suggest that the \gls{awl} circulates counter clockwise around the
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{HolloWang2009}
-	\caption[\cite{holloway2009representing}]{Left: The velocity field of the Arctic Ocean at 551m depth as simulated by the Nucleus for European Modeling of the Ocean (NEMO). Right: The velocity field at the same depth after NEMO was modified to include the Neptune Effect. The right panel clearly gives a better representation of the topographically aligned currents observed in the Arctic Ocean.  \cite{holloway2009representing}}
+	\caption[\cite{holloway2009representing}]{Left: The velocity field of the Arctic Ocean at 551m depth as simulated by the Nucleus for European Modelling of the Ocean (NEMO). Right: The velocity field at the same depth after NEMO was modified to include the Neptune Effect. The right panel clearly gives a better representation of the topographically aligned currents observed in the Arctic Ocean.  \cite{holloway2009representing}}
 	\label{fig:HolloWang2009}
 \end{figure}
 
@@ -483,7 +512,7 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
  interactions observed over topographic slopes.
  
  In Chapter~\ref{meaneddyinteractiontheory} we will discuss the development
- of the eddy stresses that describe these eddy-mean interactions, namely the Eliassen-Palm
+ of a description of these eddy-mean interactions, namely the Eliassen-Palm
  flux tensor, and how this tensor exhibits certain mathematical properties that
  should allow us to develop a physically consistent parameterisation of these 
  eddy stresses. In Chapter~\ref{sweq} we develop an idealised model in which these
@@ -519,7 +548,7 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
  averaging operator,
  \begin{equation}
  \mean{\phi\psi} = \mean{\phi}\,\mean{\psi} + 
- \mean{\res{\psi}\res{\psi}},
+ \mean{\res{\phi}\res{\psi}},
  \label{non-lin average}
  \end{equation}
  where the ${\mean{\phi}}$ is the average of the variable ${\phi}$, used in
@@ -556,18 +585,18 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
  ocean interior, or the ``Veronis Effect" (\cite{veronis1975role}).
  Hence, a more physically appropriate eddy parameterisation 
  is needed;
-  and so, in a way that seems obvious today, eddies need to be
+  and so, in a way that seems obvious today, it was found that eddies need to be
    parameterised in 
- such a way that their effect is isopycnal. 
+ such a way that their effect is along isopycnals. 
  The effort to do this in the 80's and early 90's gave birth
- to what is known as the \gls{gm}, first introduced in \cite{gent1990}.
+ to what is known as the \gls{gm} parameterisation, first introduced in \cite{gent1990}.
  
  So what is the \gls{gm} parameterisation? Since mixing occurs primarily
  along isopycnal surfaces it make sense to have this discussion in
  isopycnal coordinates, that is in the coordinate space $(x,y,\rho)$,
   where density, $\rho$, has replaced depth, $z$, as the vertical
   coordinate. Whilst the rigorous exploration of this coordinate system
-  will be discussed in detail later on, in the \secref{youngtwa}, for our current purposes 
+  will be discussed in detail in \secref{youngtwa}, for our current purposes 
   it is enough to say that this coordinate system produces an equation
   for isopycnal ``thickness",
   \begin{equation}
@@ -596,7 +625,7 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
     being advected by the mean horizontal velocity, $\boldsymbol{u}$, 
     plus an eddy induced
     `bolus velocity', $\hat{\boldsymbol{u}}$ (\cite{gent1995parameterizing}). \cite{gent1990} proposes that eddies act to flatten each
-    isopyncal via baroclinic instability, achieved by
+    isopycnal via baroclinic instability, achieved by
     setting 
     \begin{equation}
     \boldsymbol{F} = - \left(\kappa
@@ -721,15 +750,15 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
                 of \cite{haynes1987evolution} and \cite{haynes1990conservation}.
                 
                 Now, by making the same assumption that was made for isopycnal thickness in 
-                \gls{gm} for \gls{pv}, that ocean eddies mix PV along isopycnals in the down-gradient direction, \equref{meanpveq} becomes
+                \gls{gm} for \gls{pv}, that ocean eddies mix  \gls{pv} along isopycnals in the down-gradient direction, \equref{meanpveq} becomes
                 \begin{equation}
                 \frac{\partial \left(\mean{z}_{\rho} \mean{q}\right)}{\partial t} +
                 \boldsymbol{\nabla}\cdot\left(\mean{z}_{\rho}\,\mean{q}\,\mean{\boldsymbol{u}}+\mean{q}\mean{\res{z}_{\rho} \res{\boldsymbol{u}}}\right)
                 = \boldsymbol{\nabla}\cdot\left(\kappa \mean{z}_{\rho}\,\boldsymbol{\nabla}\mean{q}\right) ,
                 \label{parammeanpveq}
                 \end{equation}
-                where the small slope approximation has been used, as demonstrated in
-                \cite{gent1990}. By using Equations~\eqref{meancont}~and~\eqref{parammeanpveq} we have exactly the equation for an arbitrary tracer given in Equation (6) of \cite{gent1995parameterizing},
+                where, as demonstrated in
+                \cite{gent1990}, the small slope approximation has been used. By using Equations~\eqref{meancont}~and~\eqref{parammeanpveq} we have exactly the equation for an arbitrary tracer given in Equation (6) of \cite{gent1995parameterizing},
                 \begin{equation}
                 \frac{D^\star \mean{q}}{D t}\equiv\frac{\partial \mean{q}}{\partial t} + \boldsymbol{u}^\star\cdot\boldsymbol{\nabla}\mean{q} = \boldsymbol{\nabla}\cdot
                 \left(\kappa \mean{z}_{\rho}\boldsymbol{\nabla} \mean{q} \right)/\mean{z}_{\rho} ,
@@ -752,7 +781,7 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
                 the result is the slight ``cold doming" above topography as observed in
                 \cite{adcock2000interactions}. 
                 
-                However, whilst, unlike \gls{gm}, the downgradient
+                However, whilst, unlike \gls{gm}, the down-gradient
                 dissipation of \gls{pv} is capable of introducing spurious energy, it does
                 dissipate another important quantity: 
                 the ``Potential Enstrophy". By multiplying through 
@@ -1117,7 +1146,7 @@ emerge with competing \gls{gm}-like and ``Neptune Effect''-like natures
 the Eliassen-Palm flux tensor can be bounded by eddy energy and eddy potential enstrophy
 \cite{marshall2012framework}.
 Diagnosis of the contributions to the eddy stress tensor from
-the eddy kinetic and potential energy, as well as the Reynolds stress angle and eddy bouyancy flux angle will allow the investigation of the following:
+the eddy kinetic and potential energy, as well as the Reynolds stress angle and eddy buoyancy flux angle will allow the investigation of the following:
 \begin{itemize} 
 	\item The extent to which finite eddy energy inhibits the ability of eddies to
 	generate a mean along-topography flow.
@@ -1129,7 +1158,7 @@ how to develop an eddy parameterisation that is not purely dissipative but inste
 more realistic properties whilst still remaining physically consistent. 
  
 
-\chapter{Developement of Stacked Shallow Water Equations}
+\chapter{Development of Stacked Shallow Water Equations}
 \label{sweq}
 
 With the hope of taking advantage of the invariance demonstrated by 
@@ -1185,7 +1214,7 @@ For our study, the equations that will give us the most efficient model whilst c
   simplification it is worth investigating whether it is an appropriate simplification to make
    here. 
    In deriving the shallow water equations we make approximations which are frequently made in
-   most GFD analyses. The first of these approximations to make that is made is that the ocean
+   most GFD analyses. The first of these approximations to make is that the ocean
    incompressible or specifically the Boussinesq approximation. This is reasonable
    given the small size of deviations in density from the mean state
    that occurs in the ocean (\cite{vallis2006atmospheric}).
@@ -1370,23 +1399,20 @@ For our study, the equations that will give us the most efficient model whilst c
     an equation for the energy of a water column in a single layer, i.e. for 
     $\rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right)$, however this is not
     so simple because now the transfer of energy between layers which cancelled neatly
-    in through the full water column need to be taken accounted for:
+    through the full water column need to be taken accounted for:
     \begin{equation}
     \label{swlayerenergycalc}
     \begin{split}
     \frac{\partial}{\partial t}\rho_{n}\left(h_{n} K_{n}+ g h_{n}\eta_{n}\right) 
     =& - \boldsymbol{\nabla} \left(\rho_{n} h_{n} K_{n} \boldsymbol{u}_{n}\right) 
-    - h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n}
-    +\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
+    - h_{n} \boldsymbol{u}_{n}  \boldsymbol{\nabla} m_{n} \\
+    &+\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
     =& - \boldsymbol{\nabla} \left[h_{n}  \left(\rho_{n}K_{n}+ m_{n}\right) \boldsymbol{u}_{n}\right] \\
     &- \frac{\partial}{\partial t}\left(h_{n}\right)   m_{n}
     +\half  \rho_{n} g \frac{\partial}{\partial t}\left(\eta_{n+\half }^{2} -\eta_{n-\half }^{2}\right) \\
     =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
-    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n+\half }\right) 
-    + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right) \\
-    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
-    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n+1} - \rho_{n+1}g \eta_{n+\half }\right) 
-    + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right).
+    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)\left(   m_{n+1} - \rho_{n+1}g \eta_{n+\half }\right) \\
+    &+ \frac{\partial}{\partial t}\left(\eta_{n-\half }\right)\left(   m_{n}- \rho_{n}g \eta_{n-\half }\right).
     \end{split}
     \end{equation}
     Since $m_{n+1} - \rho_{n+1}g \eta_{n+\half }=p\rvert_{z=\eta_{n+\half }}$ and
@@ -1395,20 +1421,24 @@ For our study, the equations that will give us the most efficient model whilst c
     respectively. But \equref{swlayerenergycalc}
     can be rearranged both as
     \begin{equation}
+    \begin{split}
     \frac{\partial}{\partial t}\left(\rho_{n} h_{n} K_{n}+ 
     \half \rho_{N} g_{n+\half }\eta_{n+\half }^{2} \right) 
-    = -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n+1}
+    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right]\\ 
+    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n+1}
     + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n}
+    \end{split}
     \label{swlayercorrectenergy}
     \end{equation}
     or
     \begin{equation}
+    \begin{split}
     \frac{\partial}{\partial t}\left(\rho_{n}h_{n} K_{n}+ 
     \half \rho_{N} g_{n-\half }\eta_{n-\half }^{2} \right) 
-    = -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] 
-    - \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n}
+    =& -\boldsymbol{\nabla} \left[h_{n} \left(\rho_{n}K_{n}+m_{n}\right) \boldsymbol{u}_{n}\right] \\
+    &- \frac{\partial}{\partial t}\left(\eta_{n+\half }\right)   m_{n}
     + \frac{\partial}{\partial t}\left(\eta_{n-\half }\right) m_{n-1};
+    \end{split}
     \end{equation}
     or in fact, any combination of the two
     \begin{equation}
@@ -1760,13 +1790,13 @@ For our study, the equations that will give us the most efficient model whilst c
                 and the vertical transfer of eddy energy, 
                 $ \nthkmean{\frac{\partial}{\partial t}\left(\nthkres{\eta}_{n-\half }\right) \nthkres{m}_{n}}$. 
                 But if we could say something about these correlations
-                then we would be able to determine the eddy energy of a system
-                entirely from the mean dynamics.
+                then we would be able to create a closure which would allow us to
+                determine the eddy energy of the system.
                 
                 
                 \subsection{Eddy Potential Enstrophy Equation}
               
-              Potential enstophy is more straight-forward. The unweighted average of the
+              Potential enstrophy is more straight-forward. The unweighted average of the
               conservative enstrophy equation,
               \begin{equation*}
               \partialdiff{t}\left(h_{n}Q_{n}\right)+\boldsymbol{\nabla}\left(h_{n}\boldsymbol{u}_{n}Q_{n}\right) = 0,
@@ -1826,7 +1856,7 @@ For our study, the equations that will give us the most efficient model whilst c
               an averaging operator that averages in both temporally and spatially
               without much of a loss in computational efficiency. However,
               for a temporal average to be valid the system needs to be in
-              a statistically steady state. That is to say that over a long
+              a statistically steady state, or  ergodic. That is to say that over a long
               averaging window $\partial \mean{\phi} /\partial t \sim 0$ for any variable $\phi$
             in the system.
             
@@ -1910,7 +1940,7 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   $3-5 \mathrm{km}$ for ocean depth, whilst typical speeds are a few
   $\mathrm{cm}\,\mathrm{s}^{-1}$; because of this we shall rescale the 
   dimensions so that the model is not operating with values of vastly different magnitudes
-  and hence reducing the chance for floating point errors. Firstly, the layer thicknesses,
+  and hence reducing the chance for floating point errors. Firstly, the layer thickness's,
   $h_{n}$, are scaled by the mean depth of the topography so that 
   $ \int_{D} \left(\sum_{n=1}^{N} h_{n}\right)  \mathrm{ d A} / \int_{D} \mathrm{ d A} \equiv 1 $, 
   where $D$  is the domain, $N$ the number of layers and
@@ -2017,7 +2047,7 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   defined as
   $\tau = \left(\boldsymbol{ f } \wedge
   \boldsymbol{ u } \right) \cdot \boldsymbol{\nabla} H $. 
-  Topostrophy represents the the extend to which the flow
+  Topostrophy represents the extend to which the flow
   follows topography. With this tool we can explore the sensitivity of the models
   ability to generate along-topography flow to the choice of bottom friction. 
   Figure \ref{fig:topostrophy} shows the mean topostrophy for the
@@ -2039,7 +2069,7 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   friction. It is worth noticing that there is little physical rational for choosing
   one parameterisation over another, other than one might produce more physically 
   appealing results. Finally, we also require grid-scale dissipation. This is to dissipate the
-  numerical noise which develops at the grid-scale from the cascade of enstophy.
+  numerical noise which develops at the grid-scale from the cascade of enstrophy
   In these models we use biharmonic diffusion with the Smagorinsky viscosity (\cite{smagorinsky1963general}). 
   
   
@@ -2093,7 +2123,7 @@ using the 3rd-order Adams-Bashforth scheme. Next, to satisfy the Courant-Friedri
   
   
   
-  \begin{figure}
+  \begin{figure}[t]
   	\centering
   	\includegraphics[width=\linewidth]{notopenergy}
   	\caption{Energy change in topography-less model represented by mean rate of change of energy per unit column over $10^{3}/f$ time window. Energy transfer is split into 
@@ -2161,7 +2191,7 @@ translationally symmetric.
 Hence, we choose to have a zonal ridge as shown in the schematics
  \figref{fig:TopographySchem} as well as \figref{fig:TopographyCross}, which
  depicts a cross-section of the initial configuration of the domain where
- the layer thicknesses are chosen in such a way as to attempt reduce the chance of a
+ the layer thickness's are chosen in such a way as to attempt reduce the chance of a
  layer outcropping by evenly distributing the layers above shallowest topography. Our
  understanding of eddy-topography interactions build from observational 
  data and experiments that were outlined in Chapter~\ref{intro} would lead us
@@ -2208,7 +2238,7 @@ Hence, we choose to have a zonal ridge as shown in the schematics
 %Break down of the tendency terms for the mean
 %dynamics. A look at how the eddy stresses are 
 %in balancing the mean states (usually through
-%balancing the ageostropic component of the
+%balancing the ageostrophic component of the
 %momentum tendency).
 
 %A closer look at the eddy stress, their bounds 
@@ -2239,7 +2269,7 @@ To achieve such a system we introduce a spatially and temporally
 varying wind stress. There are a few  ways this can be done. A common method
 is to generate a superposition of sine waves at various frequencies and 
 phases as the stream function for the wind stress; this method is discussed at
-length in \cite{koszalka2009dynamics} and \cite{brannigan2015seasonal}. 
+length in \cite{koszalka2009dynamics}, \cite{Thomson2015} and \cite{brannigan2015seasonal}. 
 Instead we randomly populate the domain
 with a collection of cyclones and anticyclones. This we achieve through a series of
 independent circular wind stresses that are vanishingly small far from their centres,
@@ -2260,7 +2290,7 @@ create a stress field which can be implemented in the model; these are its
 amplitude, radius, position, duration and orientation (i.e. whether it is cyclonic
 or anticyclonic). By periodically generating these vortices with randomised properties
 we can sum them together to create a wind stress which varies in time, and in the limit
-of a long run time, the time-mean sums to zero.
+of a long run time, the time-mean tends to zero.
 Examples of how the full wind stress field looks at different
 time steps are shown in Figure~\ref{fig:StochWind}. To further ensure a vanishing
 mean wind stress over a long time averaging window we introduce the vortexes in cyclonic
@@ -2287,11 +2317,11 @@ inputting energy and momentum into the eddy component of the system.
 
 \begin{figure}[t]
 	\centering
-	\begin{minipage}{0.65\linewidth}
+	\begin{minipage}{0.55\linewidth}
 		\includegraphics[width=\linewidth]{WindStressEg}
 	\end{minipage}
 	\quad
-	\begin{minipage}{0.25\linewidth}
+	\begin{minipage}{0.3\linewidth}
 		\caption{An example of the wind stress given by a cyclone with
 			radius $3 L_{D}$ centre in the middle of the domain. 
 			The heat-map shows the strength of the stresses, 
@@ -2399,42 +2429,41 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{umom_3}
  		\label{fig:umomlayer3}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{umom_2}
  		\label{fig:umomlayer2}
  	\end{subfigure}
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{umom_1}
  		\label{fig:umomlayer1}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{umom_4}
  		\label{fig:umomtotal}
  	\end{subfigure}
  	\caption{Zonal Momentum Balance in (a) the upper layer, (b) the middle layer
  		(c) the lower layer and (d) the entire water column of 
  		a doubly re-entrant domain with 
- 		zonal ridge and varying zero-mean wind. The total is shown in
- 		\figref{fig:umomtotal}}
+ 		zonal ridge and varying zero-mean wind. Red bands show regions of steepest topography.}
  	\label{fig:umom}
  \end{figure}
  
- Since the flow is mostly spun up well before $10.0\times10^{3}/f$ since initialisation, we take the time averaging window to be between $10.0\times10^{3}/f$ and $40.0\times10^{3}/f$, so $30.0\times10^{3}/f$ long; or assuming a latitude of around  $70^{\circ}\mathrm{N}$ an
- averaging window of around $7.5$ years. 
+ Since the flow is mostly spun up well before $10.0\times10^{3}/f$ since initialisation, we take the time averaging window to be between $10.0\times10^{3}/f$ and $70.0\times10^{3}/f$, so $60.0\times10^{3}/f$ long; or assuming a latitude of around  $70^{\circ}\mathrm{N}$ an
+ averaging window of around $15$ years. 
  \figref{fig:umomlayer3} shows hows the eddy field interacts with mean dynamics of the
  uppermost layer
  in two ways. Firstly, there are Reynolds stresses in the westward (negative) direction
@@ -2465,29 +2494,29 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  
  \begin{figure}
  	\centering
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{vgeo_3}
  		\label{fig:vgeolayer3}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}{0.48\linewidth}
- 		\caption{}
+ 	\begin{subfigure}{0.46\linewidth}
+ 		\refstepcounter{subfigure}
  		\centering
  		\includegraphics[width=\linewidth ]{vgeo_2}
  		\label{fig:vgeolayer2}
  	\end{subfigure}
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{vgeo_1}
  		\label{fig:vgeolayer1}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{vgeo_4}
  		\label{fig:vgeototal}
  	\end{subfigure}
@@ -2496,45 +2525,43 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		direction in (a) the upper layer, (b) the middle layer
  		(c) the lower layer and (d) the entire water column of 
  		a doubly re-entrant domain with 
- 		zonal ridge and varying zero-mean wind. The total is shown in
- 		\figref{fig:vgeototal}}
+ 		zonal ridge and varying zero-mean wind. Red bands show regions of steepest topography. }
  	\label{fig:vgeo}
  \end{figure}
  
  
  \begin{figure}
  	\centering
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{vmom_3}
  		\label{fig:vmomlayer3}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{vmom_2}
  		\label{fig:vmomlayer2}
  	\end{subfigure}
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
+ 		\refstepcounter{subfigure}
  		\includegraphics[width=\linewidth ]{vmom_1}
  		\label{fig:vmomlayer1}
  	\end{subfigure}
  	\quad
- 	\begin{subfigure}{0.48\linewidth}
+ 	\begin{subfigure}{0.46\linewidth}
  		\centering
- 		\caption{}
- 		\includegraphics[width=0.91\linewidth ]{vmom_4}
+ 		\refstepcounter{subfigure}
+ 		\includegraphics[width=\linewidth ]{vmom_4}
  		\label{fig:vmomtotal}
  	\end{subfigure}
  	\caption{Meridional Momentum Balance in (a) the upper layer, (b) the middle layer
  		(c) the lower layer and (d) the entire water column of 
  		a doubly re-entrant domain with 
- 		zonal ridge and varying zero-mean wind. The total is shown in
- 		\figref{fig:vmomtotal}}
+ 		zonal ridge and varying zero-mean wind. Red bands show regions of steepest topography. }
  	\label{fig:vmom}
  \end{figure}
  
@@ -2571,17 +2598,14 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  likely representing the effect of baroclinic instabilities.
  These were the results using some typical parameters. Now lets explore parameter space
  to see how this affects the eddy stresses and hence the along-topography flow.
- 
- \hl{possible the large meridional form stress exists to balance the ageostrophic component
- 	becsuse of the doubly periodic domain?}
- 	
+  	
  	\begin{figure}
  		\centering
  		\includegraphics[width=\linewidth]{umom_1_4}
  		\caption{ Depth integrated zonal momentum balance for three wind
  			stress with magnitudes a factor of 2 different from one and another.
  			Note that the x-axis is also scaled to allow the comparative magnitudes
- 			of the stresses to be compared.}
+ 			of the stresses to be compared. Red bands show regions of steepest topography.}
  		\label{fig:umombalancewindstrength}
  	\end{figure}
  	
@@ -2591,7 +2615,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\caption{ Depth integrated meridional momentum balance for three wind
  			stress with magnitudes a factor of 2 different from one and another.
  			Note that the x-axis is also scaled to allow the comparative magnitudes
- 			of the stresses to be compared.}
+ 			of the stresses to be compared. Red bands show regions of steepest topography.}
  		\label{fig:vmombalancewindstrength}
  	\end{figure}
  	
@@ -2601,11 +2625,11 @@ balances the zonal eddy stresses, forcing and dissipation whilst
  		\caption{ Depth integrated eddy energy balance for three wind
  			stress with magnitudes a factor of 2 different from one and another.
  			Note that the x-axis is also scaled to allow the comparative magnitudes
- 			of the stresses to be compared.}
+ 			of the stresses to be compared. Red bands show regions of steepest topography.}
  		\label{fig:energybalancewindstrength}
  	\end{figure} 
  	
- 	Firstly, let us tweak the wind stress. Changing parameters such has the 
+ 	Firstly, let us tweak the wind stress. Changing parameters such as the 
  	frequency a vortex is spawned, their mean duration or their mean size are all
  	either insignificant or equivalent to changing the magnitude of the overall
  	wind stress. Hence, we will not present that here but instead focus solely on the
@@ -2688,7 +2712,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
   	\centering
   	\includegraphics[width=\linewidth]{umom_2_4}
   	\caption{ Depth integrated zonal momentum balance for three ridge heights: 
-  		$1/8$, $1/4$ and $3/8$ the mean ocean depth.}
+  		$1/8$, $1/4$ and $3/8$ the mean ocean depth. Red bands show regions of steepest topography.}
   	\label{fig:umombalanceheight}
   \end{figure}
   
@@ -2697,7 +2721,7 @@ balances the zonal eddy stresses, forcing and dissipation whilst
   	\includegraphics[width=\linewidth]{umom_3_4}
   	\caption{ Depth integrated zonal momentum balance for three ridge widths: 
   		The slopes of the ridges span approximately $1/24$, $1/4$ and $1/8$
-  		of the domain respectively.}
+  		of the domain respectively. Red bands show regions of steepest topography.}
   	\label{fig:umombalancewidth}
   \end{figure}
     
@@ -2776,7 +2800,11 @@ so that the norm of the full tensor is bound by,
 	\leq 2(K+P).\\
 	\end{array}}
 \end{equation} 
-The bounds \eqref{reynoldbound} and \eqref{formbound} for the control case
+
+\subsection{Reynolds Stress Bound}
+
+Let us begin by discussing the Reynolds stresses. 
+The bounds \eqref{reynoldbound} for the control case
 are shown in \figref{fig:ekebound}.
 The uppermost layer has a large amount of eddy kinetic energy. Around three
 times as much as is available in lower layer, hence the bound on the Reynolds stresses in
@@ -2795,14 +2823,16 @@ momentum balances in \secref{momenergybalances}.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{ekebound}
-	\caption{ }
+	\caption{ The norm of the Reynolds stresses and the kinetic energy bound for
+		each layer of the control case.  Red bands show regions of steepest topography.}
 	\label{fig:ekebound}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{normovereke}
-	\caption{ }
+	\caption{The ratio between the Reynolds stresses and the kinetic energy bound for
+		each layer of the control case.  Red bands show regions of steepest topography. }
 	\label{fig:normovereke}
 \end{figure}
 
@@ -2824,14 +2854,16 @@ over the steepest topography ($\lambda_{m} \sim 0.9$).
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{ekebound_0_1}
-	\caption{ }
+	\caption{ The norm of the Reynolds stresses and the kinetic energy bound in
+		the lowest layer for the control case, $2\times$ and $0.5\times$ wind strength.  Red bands show regions of steepest topography.}
 	\label{fig:ekeboundwindstrength}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{normovereke_0_1}
-	\caption{ }
+	\caption{The ratio between the Reynolds stresses and the kinetic energy bound in
+		the lowest layer for the control case, $2\times$ and $0.5\times$ wind strength.  Red bands show regions of steepest topography. }
 	\label{fig:normoverekewindstrength}
 \end{figure}
 
@@ -2856,14 +2888,16 @@ is much closer to $1$ for more of the domain than in the control case, whilst fo
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{ekebound_1_1}
-	\caption{ }
+	\caption{ The norm of the Reynolds stresses and the kinetic energy bound in
+		the lowest layer for the control case, lower ridge height and higher ridge height.  Red bands show regions of steepest topography.}
 	\label{fig:ekeboundheight}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{normovereke_1_1}
-	\caption{ }
+	\caption{The ratio between the Reynolds stresses and the kinetic energy bound in
+		the lowest layer for the control case, lower ridge height and higher ridge height.  Red bands show regions of steepest topography. }
 	\label{fig:normoverekeheight}
 \end{figure}
 
@@ -2871,31 +2905,44 @@ is much closer to $1$ for more of the domain than in the control case, whilst fo
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{ekebound_2_1}
-	\caption{ }
+	\caption{ The norm of the Reynolds stresses and the kinetic energy bound in
+		the lowest layer for the control case and, shallower and steeper topographic slope.  Red bands show regions of steepest topography.}
 	\label{fig:ekeboundwidth}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{normovereke_2_1}
-	\caption{ }
+	\caption{The ratio between the Reynolds stresses and the kinetic energy bound in
+		the lowest layer for the control case and, shallower and steeper topographic slope. Red bands show regions of steepest topography. }
 	\label{fig:normoverekewidth}
 \end{figure}
 
+In summary, the bound on the Reynolds stresses is highly constraining at times.
+This is predominantly when the eddy kinetic energy is limiting and when topographic
+slope is the strongest. This constrain has the effect of limiting the along 
+topography stress that generates the along topography flow, demonstrating how
+the along topography flow is limited by the available eddy kinetic energy.
+
+
+\subsection{Form Stress Bound}
+
 To bound the form stresses recall that the meridional component of the
-form stress is large in comparison to the zonal component, \hl{perhaps show this in 
-	a plot of zonal, meridional and total}. Hence, we shall diagnose each component of the
+form stress is large in comparison to the zonal component.
+ Hence, we shall diagnose each component of the
 for the form stress individually. Using the Cauchy-Schwartz Inequality we have
 \begin{equation}
 \frac{1}{\rho_{n}^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\partialdiff[\nthkres{m}_n]{x}}^{2}
 \sim{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{v}_n}^{2}
 \leq{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{\eta}_{n-\half}}\nthkmean{\nthkres{v}_n\nthkres{v}_n}
+\label{zonalbound}
 \end{equation}
 and 
 \begin{equation}
 \frac{1}{\rho_{n}^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\partialdiff[\nthkres{m}_n]{y}}^{2}
 \sim{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{u}_n}^{2}
 \leq{f^{2}}\nthkmean{\nthkres{\eta}_{n-\half}\nthkres{\eta}_{n-\half}}\nthkmean{\nthkres{u}_n\nthkres{u}_n}
+\label{meridionalbound}
 \end{equation}
 for the zonal and meridional components respectively. 
 By combining the two components we retain the original form stress bound used to give
@@ -2910,7 +2957,100 @@ However, we can interpret the zonal form stresses at the transfer of along-topog
 momentum between layers, whilst the meridional form stress could be interpreted as the
 baroclinic instability generated by the sloping interfaces between the layers, or isopycnals, and hence it makes sense to discuss the components separately. 
 
-The first thing to note is that the geostrophic approximation that is made when
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{uepebound_0_0}
+	\caption{ The magnitude of the zonal form stress and the potential energy bound for the
+		 interface between
+		the lowest layer and middle for the control case, $2\times$ and $0.5\times$ wind strength.  Red bands show regions of steepest topography.}
+	\label{uepebound00}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{uformnormoverbound_0_0}
+	\caption{The ratio between the magnitude of the zonal form stress 
+		and the potential energy bound for the
+		interface between
+		the lowest layer and middle for the control case, $2\times$ and $0.5\times$ wind strength.  Red bands show regions of steepest topography. }
+	\label{uformnormoverbound00}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{vepebound_0_0}
+	\caption{ The magnitude of the meridional form stress and the potential energy bound for the
+		interface between
+		the lowest layer and middle for the control case, $2\times$ and $0.5\times$ wind strength.  Red bands show regions of steepest topography.}
+	\label{vepebound00}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{vformnormoverbound_0_0}
+	\caption{The ratio between the magnitude of the meridional form stress 
+		and the potential energy bound for the
+		interface between
+		the lowest layer and middle for the control case, $2\times$ and $0.5\times$ wind strength.  Red bands show regions of steepest topography. }
+	\label{vformnormoverbound00}
+\end{figure}
+
+The first thing to note is the differences between the zonal form stress and meridional form stress. 
+\figref{uepebound00} shows that the zonal form stresses are largest above the topographic slopes
+for each of the three wind stress strength with a similar form in each one.
+The ratio shown in \figref{uformnormoverbound00} demonstrates that the zonal form stress
+is proportional to the bound given in \equref{zonalbound} under
+varying wind strength. Meanwhile, \figref{vepebound00} shows the meridional form stress is characterised 
+by the changes of sign that occur fairly consistently at
+different points on the topography. Namely, at the point of steepest topography as
+well as at the top and the bottom of the ridge. However, in terms
+of the proportion of the meridional form stress to its bound given in \equref{meridionalbound},
+ \figref{vformnormoverbound00} the different wind stresses are vastly different.
+ 
+ In terms of the along topography
+flow, the zonal component is the most interesting. As suggested earlier, it represents
+the transfer of the along-topography momentum between layers. Interestingly the
+transfer appears to take place, not at the steepest topography, but on the slope either
+side. The bound also dips at the points of steepest topography, however by looking
+at the ratios between the form stresses and bound, \figref{uformnormoverbound00}, it is clear
+that the bound is not the critical factor in the drop. 
+It is instead likely that form stresses have this
+ shape because the zonal momentum is generated in upper layer at these meridional 
+ positions by the Reynolds stress and hence is transferred directly downwards by the form
+  stresses. Hence, as well as the being bounded by $2 \sqrt{KP}$, the zonal form stress
+  is more strongly determined by the momentum generated in the layers above, for example,
+  by the Reynolds stresses in this case.
+  
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{uepebound_1_0}
+  	\caption{ The magnitude of the meridional form stress and the potential energy bound for the
+  		interface between
+  		the lowest layer and middle for the control case, lower ridge height and higher ridge height.  Red bands show regions of steepest topography.}
+  	\label{uepebound10}
+  \end{figure}
+  
+  \begin{figure}
+  	\centering
+  	\includegraphics[width=\linewidth]{uepebound_2_0}
+  	\caption{ The magnitude of the meridional form stress and the potential energy bound for the
+  		interface between
+  		the lowest layer and middle for the control case and, shallower and steeper topographic slope.  Red bands show regions of steepest topography.}
+  	\label{uepebound20}
+  \end{figure}
+  
+    Manipulating the topography, however, appears to change the zonal form stress in the
+    way one might expect. Both lowering the height of the ridge, \figref{uepebound10},
+    and shallowing the topographic slope, \figref{uepebound20}, reduces the kink that
+    occurs at the point of steepest topography; meanwhile, the reverse strengthens it.
+    Also the shallowing in \figref{uepebound20} spreads out the form stress across
+    the slope with the steepening sharpens it.
+  
+Finally, it can also be seen that the geostrophic approximation that is made when
 deriving the bound for the form stress holds almost perfectly. In other words, and
 in contrast to the large scale flow, we have that 
 \begin{equation}
@@ -2922,99 +3062,16 @@ and
 \frac{1}{\rho_{n}}\partialdiff[\nthkres{m}_n]{y}
 \sim-{f}\nthkres{u}_n
 \end{equation} 
-and the eddy field is in geostrophic balance. 
+and the eddy field is in geostrophic balance.
 
-Secondly, the differences between the zonal form stress and meridional form stress. 
-The zonal form stresses are largest above the topographic slopes. Meanwhile, the meridional
-form stress is characterised by the changes of sign that occur fairly consistently at
-different points on the topography. Namely, at the point of steepest topography as
-well as at the top and the bottom of the ridge. In terms of the along topography
-flow, the zonal component is the most interesting. As suggested early, it represents
-the transfer of the along-topography momentum between layers. Interestingly the
-transfer appears to take place, not at the steepest topography, but on the slope either
-side. The bound also dips at the points of steepest topography, however by looking
-at the ratios between the form stresses and bound, \hl{ratio figures}, it is clear
-that the this is not the critical factor. It is instead likely that form stresses have this
- shape because the zonal momentum is generated in upper layer at these meridional 
- positions by the Reynolds stress and hence is transferred directly downwards by the form
-  stresses. Hence, as well as the being bounded by $2 \sqrt{KP}$, the zonal form stress
-  is more strongly determined by the momentum generated in the layers above, for example,
-  by the Reynolds stresses in this case.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{uepebound_0_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{uepebound_1_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{uepebound_2_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{uformnormoverbound_0_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{uformnormoverbound_1_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{uformnormoverbound_2_0}
-	\caption{ }
-\end{figure}
-
-
-\clearpage
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{vepebound_0_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{vepebound_1_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{vepebound_2_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{vformnormoverbound_0_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{vformnormoverbound_1_0}
-	\caption{ }
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{vformnormoverbound_2_0}
-	\caption{ }
-\end{figure}
+Overall, we have satisfied ourselves that the geostrophic approximation is appropriate
+in this scenario and hence that the form stress bound derived in \secref{eddymeantheory}
+is valid. However, unlike the kinetic energy bound on the Reynolds stresses, the bound
+is much less constraining and the form stresses appear to be much more defined by
+where momentum is being generated and transferring it to other layers. Our models also
+appear to exhibit large meridional form stresses, although this is likely due to the 
+double-periodic domain, the ageostrophic mean flow that arises from it and the need to
+balance it.
 
 
 \section{\gls{pv} Conservation and Comparison of Mean \glspl{pv}}
@@ -3045,7 +3102,8 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{meanpv_0}
- 	\caption{ }
+ 	\caption{ The mean \gls{pv} and \gls{pv} of the mean state in
+ 		comparison to the initial \gls{pv} in the control state. }
  	\label{meanpv0}
  \end{figure}
  
@@ -3067,28 +3125,32 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{meanpv_1}
- 	\caption{ }
+ 	\caption{The mean \gls{pv} and \gls{pv} of the mean state in
+ 		comparison to the initial \gls{pv} for $2\times$ stronger winds. }
  	\label{meanpv1}
  \end{figure}
  
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{meanpv_2}
- 	\caption{ }
+ 	\caption{The mean \gls{pv} and \gls{pv} of the mean state in
+ 		comparison to the initial \gls{pv} for $2\times$ weaker winds. }
  	\label{meanpv2}
  \end{figure}
  
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{meanpv_3}
- 	\caption{ }
+ 	\caption{The mean \gls{pv} and \gls{pv} of the mean state in
+ 		comparison to the initial \gls{pv} for lower ridge height. }
  	\label{meanpv3}
  \end{figure}
  
  \begin{figure}
  	\centering
  	\includegraphics[width=\linewidth]{meanpv_4}
- 	\caption{ }
+ 	\caption{The mean \gls{pv} and \gls{pv} of the mean state in
+ 		comparison to the initial \gls{pv} for higher ridge height. }
  	\label{meanpv4}
  \end{figure}
  
@@ -3108,14 +3170,19 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
   \begin{figure}
   	\centering
   	\includegraphics[width=\linewidth]{pvbalance_0_1}
-  	\caption{ }
+  	\caption{\gls{pv} tendency balance in the lowest layer for
+  		the control and, $2\times$ and  $0.5\times$ wind strength.
+  		The eddy stresses balance the bottom friction. }
   	\label{pvbalance01}
   \end{figure}
   
   \begin{figure}
   	\centering
   	\includegraphics[width=\linewidth]{pvbalance_0_3}
-  	\caption{ }
+  	\caption{\gls{pv} tendency balance in the uppermost layer for
+  		the control and, $2\times$ and  $0.5\times$ wind strength.
+  		The eddy stresses balance to zero with the Reynolds component of the stress
+  		balancing the form stress component.  }
   	\label{pvbalance03}
   \end{figure}
   
@@ -3157,7 +3224,7 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
   \figref{pvbalance01} demonstrates how the \gls{pv} eddy stresses balance the 
   bottom friction in the lowest layer for our three different strength winds.
   However, this balance isn't very informative, in the momentum balances from 
-  earlier \hl{figure references} we had that momentum is generated by the Reynolds 
+  earlier,  \figref{fig:umom} and \figref{fig:vmom}, we had that momentum is generated by the Reynolds 
   stresses and transferred between layers and hence we were able to discuss how
   momentum generated throughout the is able to be balanced by the bottom friction.
   If, instead, we split the contribution from the eddy stresses, $\nthkmean{h_{n}}^{-1}
@@ -3192,23 +3259,29 @@ Eliassen-Palm flux tensor. However, as discussed earlier, $\thkmean{q}_{n}$ cann
    \begin{figure}
    	\centering
    	\includegraphics[width=\linewidth]{eqbound_0_1}
-   	\caption{ }
+   	\caption{ The norm of the eddy stresses for the mean \gls{pv} and
+   		\gls{pv} of the mean state with the enstrophy bound for
+   		the control and, $2\times$ and  $0.5\times$ wind strength. Red bands show regions of steepest topography. }
+   	\label{eqbound01}
    \end{figure}
    
    \begin{figure}
    	\centering
-   	\includegraphics[width=\linewidth]{normoverepq_0_3}
-   	\caption{ }
+   	\includegraphics[width=\linewidth]{normoverepq_0_1}
+   	\caption{ The ratios of the norm of the eddy stresses for the mean \gls{pv} and
+   		\gls{pv} of the mean state with the enstrophy bound for
+   		the control and, $2\times$ and  $0.5\times$ wind strength. Red bands show regions of steepest topography.}
+   	\label{normoverepq01}
    \end{figure}
    
    From another perspective $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ is still useful,
    recall that it is a vital component to bounding the \gls{pv} eddy stresses.
-   However, we have already demonstrated that the thickness-weighted averaged 
-   \gls{pv} and \gls{pv} of the mean state are similar, and hence the bound 
+   However, we have demonstrated that the thickness-weighted averaged 
+   \gls{pv} and the \gls{pv} of the mean state are similar, and hence the bound 
    derived for  $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ should also apply to $\boldsymbol{\spec{F}}$. 
-   \hl{figure} demonstrates how the
+   \figref{eqbound01} demonstrates how the
    eddy stresses, $\thkmean{\thkres{\boldsymbol{u}}\thkres{q}}$ and $\boldsymbol{\spec{F}}$
-   are bounded by $\sqrt{KQ}$. Meanwhile, \hl{other figure} demonstrates that the bound
+   are bounded by $\sqrt{KQ}$. Meanwhile, \figref{normoverepq01} demonstrates that the bound
    is non-containing in this situation and the \gls{pv} eddy stress is less than
    $20\%$ of the bound.  
    
@@ -3275,7 +3348,7 @@ where the magnitude of the eddy stresses are much closer to the bound when the r
  higher than lower. On the other hand changing the width of the ridge slope does make
  a difference since the eddy stresses are focused in a much smaller region when the slope is narrow. But again \figref{fig:normoverekewidth} shows how the eddy stresses are much
  more tightly constrained when the steeper and narrower. This indicated that the eddy
- stresses are dependent strength of the topographic slope but only when they aren't being tightly constrained by the available eddy energy.
+ stresses are dependent on the  strength of the topographic slope but only when they aren't being tightly constrained by the available eddy energy.
  
  Finally, it has been shown that $\spec{q} \sim \thkmean{q}$, and hence $\spec{F}$ is 
  bounded by eddy enstrophy. However, in this situation the bound is non-constraining with
@@ -3306,8 +3379,8 @@ where the magnitude of the eddy stresses are much closer to the bound when the r
   Switching to a more complex set of equations such as the isopycnal primitive equations
   would remove the ambiguity, however currently there is no real option for
   an isopycnal model that is versatile enough to apply these diagnostics to. Another
-  problem is that one isopycnal layers start coming into contact with topography 
-  outcropping needs to be taken care of in an consistent manner. This is a problem
+  problem is that when isopycnal layers have contact with the topography, 
+  outcropping needs to be taken care of in an physically  consistent manner. This is a problem
   which has been discussed in \cite{dell2010abyssal} and explored in \cite{diehl2012working}. However, if the technical challenges could be over come
   the benefit would be huge.
   

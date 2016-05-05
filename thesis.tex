@@ -17,6 +17,7 @@ bottom=30mm,
 
 \usepackage{color, soul}
 \usepackage{siunitx}
+\usepackage{rotating}
 
 \usepackage{subcaption}
 \usepackage{caption}
@@ -149,7 +150,7 @@ bottom=30mm,
 		\end{flushright}
 	\end{minipage}\\[4cm]
 	
-	\emph{Pages:} $98$
+	\emph{Pages:} $99$
 	
 	% If you don't want a supervisor, uncomment the two lines below and remove the section above
 	%\Large \emph{Author:}\\
@@ -186,15 +187,36 @@ bottom=30mm,
 
 	
 	
+%	
+%	Climate modelling fails to accurately represent the global oceans in a number of ways. 
+%	One area where models are consistently flawed is in the Atlantic Water Layer of the Arctic Ocean,
+%	by failing to predict the predominantly cyclonic circulation observed. In this thesis we
+%	discuss the most likely explanation for this failing, namely that most, if not all, climate
+%	models fail to have a physically consistent representation of mesoscale eddies, whether
+%	resolved or parameterised. It has long been known that an eddy field in the presence of
+%	topography will generate along-topography flow, precisely the situation that is seen in the 
+%	Atlantic Water Layer.
+%	
+%	We will explore recent developments in eddy-mean interaction theory,
+%	and use it to investigate eddy-mean interactions over topography. To do this we
+%	will use an idealised stacked shallow water model in which large topographic slopes
+%	and realistic mesoscale eddy fields can be well represented. The effect of these
+%	eddy fields on the larger scale is diagnosed using the
+%	theory to determine how the eddy-mean interaction is characterised by both
+%	the topography and the properties of the eddy field.
+%	
+%	It is shown that the eddy energy and eddy enstrophy provide useful bounds. 
+%	These results will hopefully contribute to developing a dynamically-consistent
+%	parameterisation of eddies over variable topography. And hence, help to improve
+%	the ability of ocean models to reproduce circulation patterns observed in the 
+%	Atlantic Water Layer of the Arctic.
 
 Climate modelling fails to accurately represent the global oceans in a number of ways. 
 One area where models are consistently flawed is in the Atlantic Water Layer of the Arctic Ocean,
 by failing to predict the predominantly cyclonic circulation observed. In this thesis we
 discuss the most likely explanation for this failing, namely that most, if not all, climate
 models fail to have a physically consistent representation of mesoscale eddies, whether
-resolved or parameterised. It has long been known that an eddy field in the presence of
-topography will generate along-topography flow, precisely the situation that is seen in the 
-Atlantic Water Layer.
+resolved or parameterised. 
 
  We will explore recent developments in eddy-mean interaction theory,
 and use it to investigate eddy-mean interactions over topography. To do this we
@@ -205,11 +227,28 @@ eddy fields on the larger scale is diagnosed using the
  the topography and the properties of the eddy field.
  
  It is shown that the eddy energy and eddy enstrophy provide useful bounds. 
+ In the specific configurations explored in this thesis, the eddy energy is shown to 
+ be a highly constraining bound and hence an important factor for the structure of
+ the eddy stresses. Also, despite the two definitions of mean potential 
+ vorticity allowed by eddy-mean interaction theory, we show that these definitions 
+ are effectively identical in our configurations, and hence that the eddy enstrophy 
+ bound is applicable to both definitions.
  These results will hopefully contribute to developing a dynamically-consistent
  parameterisation of eddies over variable topography. And hence, help to improve
  the ability of ocean models to reproduce circulation patterns observed in the 
  Atlantic Water Layer of the Arctic.
  
+ \pagebreak
+ 
+ \thispagestyle{plain}
+ \begin{center}
+ 	\singlespacing    
+ 	
+ 	\vspace{0.9cm}
+ 	\textbf{Acknowledgements}
+ \end{center}
+ 
+  
 
 \chapter{Introduction}
 \label{intro}
@@ -230,11 +269,11 @@ a huge reservoir of freshwater. The Arctic Ocean is a key component
 in how the polar ice cap interacts with the climate and, in turn, how
 the climate affects the ice cap. 
 The Arctic itself is a highly stable body of water with strong stratification, 
-which means that the water column can be divided into advective water masses.
+which means that the water column can be divided into well defined water masses.
 The Arctic Ocean is commonly divided into four different layers (\figref{fig:amap}):
 the polar mixed layer, which is a well mixed layer in
 contact with the atmosphere and surface ice; the halocline, a
-reservoir of fresh water and penetrates to around $200\,\mathrm{m}$, which acts
+reservoir of fresh water penetrating down to around $200\,\mathrm{m}$, which acts
 as a buffer between the sea ice and the \gls{awl}; the \gls{awl},
 which is body of warm salty water which originates from the North Atlantic and Nordic 
 Sea via Fram Strait and typically sits at around $400\,\mathrm{m}$ deep; and finally, 
@@ -306,13 +345,13 @@ results are not convincing; \cite{munchow2006observational} show that by includi
 Canadian Archipelago in the \cite{yang2005arctic} calculation, the flux can be negated
 whilst \cite{tsubouchi2012arctic} demonstrate large variations of transport 
 from the mean over time. These factors, especially the 
-large variability, make it unconvincing that it is the \gls{pv}
+large variability, make it unclear that it is the \gls{pv}
  transport, or in fact any properties of the gateway fluxes, that determines the 
 cyclonic nature of the \gls{awl}.
-Hence, the deep water circulation in the Arctic Ocean is most likely determined by 
-internal processes, which are poor understood, especially in an Ocean with such sparse observations.
+Hence, the deep water circulation in the Arctic Ocean is may be determined by 
+internal processes, which are poorly understood, especially in an Ocean with such sparse observations.
 
-\begin{figure}
+\begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=\linewidth]{Yang2005}
 	\caption[\cite{yang2005arctic}]{ The circulation of two simple barotropic
@@ -321,15 +360,15 @@ internal processes, which are poor understood, especially in an Ocean with such 
 		and a cyclonic circulation whilst the right plot has net outflux of  \gls{pv} 
 		and an anti-cyclonic circulation. Reproduced from \cite{yang2005arctic}.}
 	\label{fig:Yang2005}
-\end{figure}
+\end{sidewaysfigure}
 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{Tsubouchi2012Transport}
 	\caption[Adapted from \cite{tsubouchi2012arctic}]{Velocity
-		sections ($\mathrm{cm}\, \mathrm{s}^{-1}$) from Arctic gateway mooring arrays;
-		Demonstrates the pathways through the gateways, from which transport 
+		sections ($\mathrm{cm}\, \mathrm{s}^{-1}$) from Arctic gateway mooring arrays.
+		 These demonstrate the pathways through the gateways, from which transport 
 		in to the Arctic can be calculated.
 		Bold black lines show certain isopycnals, and the red (blue) colours show inflow
 		into (outflow from) the Arctic. Reproduced from \cite{tsubouchi2012arctic}.}
@@ -366,13 +405,7 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	
                 	\cite{holloway1987systematic} argues, using statistical mechanics theory, 
                 	that in a barotropic quasi-geostrophic flow with variable topography 
-                	eddies can be represented as a mechanical force made up of two terms,
-                	\begin{equation*}
-                	F_{k}=-\frac{\eta_{k}+\nu_{k}}{\omega_{k}^{2}
-                		+\left(\eta_{k}+\nu_{k}\right)^{2}}\frac{k_{x}^{2}}{k^{2}}UH_{k}
-                	+\frac{\omega_{k}k_{x}}{\omega_{k}^{2}
-                		+\left(\eta_{k}+\nu_{k}\right)^{2}}\frac{\gamma_{k}}{k^{2}}H_{k}.
-                	\end{equation*} 
+                	eddies can be represented as a mechanical force made up of two terms.
                 	The precise details of these terms are beyond the scope of this
                 	thesis; however, the first term has the characteristics of a drag
                 	force, whilst the second term has little dependence on the direction
@@ -389,8 +422,12 @@ there is good reason to believe that eddies also penetrate deep into the Arctic
                 	\end{equation} 
                 	where  $\left\langle\phi\right\rangle$  
                 	 is the expected stream-function of the flow, $h$ represents the `roughness' of the topography defined by 
-                	  $H=H_{0}\left(1-\frac{h+\beta y}{f_{0}}\right)$, where $H$ is the ocean depth, $H_{0}$ is some typical reference  depth and $f_{0}+\beta y$ is the linear approximation to the Coriolis Parameter, and ${\alpha_{1}}/{\alpha_{2}}$ is a quantity with dimensions of length which represents the ratio of 
-                	  sensitivities to the total energy and enstrophy in the system. Finally by
+                	  $H=H_{0}\left(1-\frac{h+\beta y}{f_{0}}\right)$, where $H$ is the ocean depth, $H_{0}$ is some typical reference  depth and $f_{0}+\beta y$ is the linear approximation to the Coriolis Parameter, and
+%                	  a quantity with dimensions of length which represents the ratio of 
+%                	  sensitivities to the total energy and enstrophy in the system.
+                	  ${\alpha_{1}}/{\alpha_{2}}$ is a quantity which represents the ratio of 
+                	  sensitivities to the total energy and enstrophy in the system and has
+                	  dimensions which are the inverse square of length. Finally by
                 	  assuming that, at the length-scales of interest, the Laplacian is small in
                 	  comparison to
                 	  \begin{equation*}
@@ -536,7 +573,8 @@ As will be discussed in Chapter~\ref{meaneddyinteractiontheory},
 the eddy parameterisations used in modern \glspl{gcm}, namely \gls{gm}, are too 
 dissipative and fail to express the driving nature of eddy-topography interactions. 
 The models that are more successful either better resolve the eddy fields or apply 
-a corrective force, such as the ``Neptune Effect", in an irresponsible manner. 
+a corrective force, such as the ``Neptune Effect", in such a manner that does not respect the 
+conserved properties of the system. 
 It is therefore critical to physically understand how the mesoscale processes
 manifest their effect in the larger scale and hence develop a more accurate
 parameterisation of eddies that are physical consistent in terms of respecting
@@ -585,7 +623,8 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
  \end{equation}
  where the ${\mean{\phi}}$ is the average of the variable ${\phi}$, used in
  the discretisation and satisfying
- the expected properties of an averaging operator, and the prime denotes the residual, ${\phi^{\prime} = \phi - \mean{\phi}}$.
+ the expected properties of an averaging operator, and the prime denotes the residual, ${\phi^{\prime} = \phi - \mean{\phi}}$. The operator could be an averaging over space, time,
+ a large ensemble or a combination of these.
  The discretised system has no knowledge of the residual terms and hence
  the contributions to the full system by these eddy terms are
  ignored in the discretised system. It is, therefore, this ``sub-grid scale process"
@@ -604,9 +643,9 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
  dissipated at the grid scale whilst still allowing as active dynamics as possible. 
  Assuming modern day computing power, this implies a horizontal viscosity of around 
  $10^{2} - 10^{4} \mathrm{m^{2}s^{-1}} $, a viscosity much greater than 
- that of the physical ocean. A second problem with having such a strong horizontal diffusion is
- that it diffuses or mixes tracers horizontally, when applied as
- an eddy parameterisation for tracer mixing. 
+ that of the physical ocean. This is usually represented by a horizontal diffusion, hence
+ a second problem is
+ that such a strong horizontal diffusion diffuses or mixes tracers excessively. 
  
  It has long been understood that tracers 
  mix much more along isopycnal surfaces than across them (\cite{iselin1939influence}, \cite{montgomery1940present}),  a property which helps maintain the definition of
@@ -633,22 +672,23 @@ the conservation of energy whilst being able to represent the effect of eddy-mea
   for isopycnal ``thickness",
   \begin{equation}
   \label{cont}
-  \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) = 0,
+  \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}_{\rho}\cdot\left(z_{\rho}\boldsymbol{u}\right) = 0,
   \end{equation}
-  where $z_{\rho} = {\partial z}/{\partial \rho}$ is defined as the
-   isopycnal thickness and $\boldsymbol{u}$ is the horizontal fluid
-   velocity. Since it is non-linear, when this equation is discretised
+  where $z_{\rho} = {\partial z}/{\partial \rho}$ is the negative of what is known as the
+   isopycnal thickness, $\boldsymbol{u}$ is the horizontal fluid
+   velocity and $\boldsymbol{\nabla}_{\rho}$ is the horizontal divergence operator as
+   presented in \cite{young2012exact} defined in terms of $\rho$ rather than the buoyancy, $b$. Since it is non-linear, when this equation is discretised
    it produces an eddy covariance term as demonstrated by 
    \equref{non-lin average}; the averaged equation can be written as
      \begin{equation}
-     \frac{\partial \mean{z_{\rho}}}{\partial t} + \boldsymbol{\nabla}\cdot\left(\mean{z_{\rho}} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}\cdot\left(\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}\right).
+     \frac{\partial \mean{z_{\rho}}}{\partial t} + \boldsymbol{\nabla}_{\rho}\cdot\left(\mean{z_{\rho}} \, \mean{\boldsymbol{u}}\right) = - \boldsymbol{\nabla}_{\rho}\cdot\left(\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}\right).
      \label{meancont}
      \end{equation}
    The eddies should therefore be parameterised by some representation
    of $\mean{\res{z_{\rho}} \res{\boldsymbol{u}}}$, say $\boldsymbol{F}$,
    so that the thickness equation becomes
      \begin{equation}
-     \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}\cdot\left(z_{\rho}\boldsymbol{u}\right) + \boldsymbol{\nabla}\cdot\boldsymbol{F} = 0,
+     \frac{\partial z_{\rho}}{\partial t} + \boldsymbol{\nabla}_{\rho}\cdot\left(z_{\rho}\boldsymbol{u}\right) + \boldsymbol{\nabla}_{\rho}\cdot\boldsymbol{F} = 0,
      \label{thicknessgeneralparam}
      \end{equation}
     where the bars have been dropped for convenience. It can also 
